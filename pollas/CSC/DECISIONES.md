@@ -1,0 +1,146 @@
+# CSC — Bitácora: enseñanzas, decisiones y cómo correr
+
+Registro vivo de qué construimos, qué aprendimos y por qué. Polla:
+**La Super Polla de los Pollos 2026** (reglas en el PDF de esta carpeta).
+
+---
+
+## 1. Reglas que mandan en todo (validado contra el PDF)
+
+Puntaje por partido = suma de tres componentes independientes:
+- **Ganador/empate** (tendencia 1X2).
+- **Goles exactos del local.**
+- **Goles exactos del visitante.**
+
+Goles premian a cada equipo por separado; **más goles acertados = más puntos**
+(`# goles + base`), salvo el 0 (puntaje fijo `cero`, menor). Los puntos **suben
+por ronda**:
+
+| Ronda | ganador | goles=0 | goles≠0 |
+|---|---|---|---|
+| primera | 1 | 2 | #goles + 3 |
+| dieciseisavos | 2 | 3 | #goles + 5 |
+| octavos | 3 | 4 | #goles + 7 |
+| cuartos | 4 | 6 | #goles + 10 |
+| semis | 5 | 8 | #goles + 12 |
+| tercer_puesto | 6 | 10 | #goles + 14 |
+| final | 8 | 12 | #goles + 16 |
+
+Los 6 ejemplos del PDF están replicados como tests (`tests/test_motor.py`).
+
+---
+
+## 2. Decisiones del modelo (y por qué)
+
+1. **Fuente de cuotas: consenso de muchas casas** (The Odds API, mediana), no
+   Rushbet (sin API pública y se mueve con el consenso). Más robusto.
+2. **Quitar el margen** de la casa → probabilidades reales. Default
+   `proporcional` (validado: el método casi no cambia el resultado).
+3. **Goles con Poisson + Dixon-Coles**, ajustando λ al 1X2 + Over/Under.
+4. **No se rellena con el marcador más probable**, sino con el que **maximiza
+   puntos esperados** según las reglas de la ronda. Esto es el corazón.
+5. **Optimización POR RONDA**: el relleno óptimo cambia con la tabla de puntos
+   (ej. México 2-1 en grupos → 1-0 en la final: en rondas altas la `base` crece
+   y conviene el conteo más probable, no arriesgar goles).
+6. **Sesgo hacia gol=1** (`sesgo_goles`, default 0.05): el modelo predice "0"
+   de más y "1" de menos, y la regla premia más el "1". Validado **walk-forward**
+   (+~0.03 pts/partido fuera de muestra). Se aplica **solo para elegir el
+   relleno**; las probabilidades reportadas son las reales.
+
+---
+
+## 3. Validación empírica (ver RESULTADOS_BACKTEST.md)
+
+- ~12k partidos reales (football-data.co.uk) con cuotas de cierre y resultado.
+- **Edge real:** EV-máximo +0.285 pts/partido vs "modal" y +0.967 vs
+  "favorito 1-0". Calibración 1X2/Over-Under/goles: muy buena.
+- **Walk-forward:** el edge y el sesgo **persisten fuera de muestra** (sin
+  sobreajuste).
+
+---
+
+## 4. ¿Cuántos cupos? (suma cero)
+
+La polla reparte el 100% del recaudo (premios 50/20/15/10/5%). Solo hay utilidad
+positiva si superamos al participante promedio. El edge medido sitúa al rival
+realista en **field-skill ≈ 0.4–0.6**. Bajo ese supuesto, el óptimo son **pocos
+cupos (≈2–4)** con la estrategia adecuada (ver §5). Comando:
+
+```bash
+python pollas/CSC/cupos.py --participantes <N> --field-skill 0.5
+```
+
+---
+
+## 5. Colas y aleatoriedad mínima (RESUELTO)
+
+Hipótesis (correcta): con premio top-heavy importa **P(que UNA entrada quede de
+primera)**, no el promedio. Cupos idénticos están 100% correlacionados → suben y
+bajan juntos. Una **perturbación mínima** (cambiar al 2º mejor relleno solo en
+partidos donde 1º y 2º están casi empatados en EV) descorrelaciona casi sin
+perder media. Experimento: `pollas/CSC/experimento_colas.py`.
+
+Resultado (k=3, N=120, field-skill 0.5, simulando ranking):
+
+| Estrategia | E[util] | P(1º) | P(premio) |
+|---|---|---|---|
+| evmax (idénticas) | $243k | 2.0% | 15% |
+| **perturbada n=15** | **$823k** | **8.9%** | **36%** |
+| diversificada (mucho azar) | ~$0 | 1.9% | 15% |
+| mano: siempre 2-1 | −$181k | 0.7% | 2% |
+| mano: modal | −$65k | 1.4% | 5% |
+
+Hallazgos:
+- **La perturbación mínima domina** a las copias idénticas en TODO nivel de
+  field (incluso 0.9, donde evmax ya pierde). Sube P(1º) ~4x y la media.
+- **"Demasiado azar" (diversificada) mata el edge.** El punto dulce es chico:
+  **n_swaps ≈ 15** (gana ~78% del máximo sin alejarse del modelo).
+- **El downside está acotado** a lo que compras (peor caso = perder los cupos);
+  por eso se optimiza la **cola de arriba** (P(1º)/P(premio)), no la de abajo.
+- Con perturbación, **cada cupo extra sigue sumando** (a diferencia de las
+  copias idénticas, que se estancan), porque están descorrelacionados.
+
+**Estrategia adoptada:** comprar K cupos con perturbación mínima (cupo 1 =
+EV-máximo; cupos 2..K = 2º mejor en ~15 partidos casi-empatados). Generarlos:
+
+```bash
+python pollas/CSC/llenar.py --all --cupos 4 --csv grupos.csv
+```
+
+**Recomendación de K:** 4 cupos es el balance (captura P(premio)~43%, robusto si
+el field es más sharp, costo $400k). Si crees que el field es muy casual y el
+presupuesto lo permite, 5–6 siguen siendo +EV en el modelo; si conservador, 3.
+
+---
+
+## 6. Runbook — correr por ronda
+
+`llenar.py` infiere la ronda por fecha, pero puedes forzarla con `--round`.
+Necesitas `export ODDS_API_KEY=tu_key`.
+
+```bash
+# FASE DE GRUPOS (primera) — toda de una (deadline: antes del 1er partido)
+python pollas/CSC/llenar.py --all --csv grupos.csv
+
+# Una ronda eliminatoria concreta (cuando se sorteen los cruces):
+python pollas/CSC/llenar.py --round dieciseisavos --csv 16avos.csv
+python pollas/CSC/llenar.py --round octavos       --csv octavos.csv
+python pollas/CSC/llenar.py --round cuartos        --csv cuartos.csv
+python pollas/CSC/llenar.py --round semis          --csv semis.csv
+python pollas/CSC/llenar.py --round tercer_puesto  --csv tercero.csv
+python pollas/CSC/llenar.py --round final           --csv final.csv
+
+# Día específico (la ronda se infiere de la fecha):
+python pollas/CSC/llenar.py --date 2026-06-15
+```
+
+Notas por ronda:
+- El relleno se recalcula con la tabla de puntos de esa ronda (automático).
+- En eliminatorias cuenta el resultado **tras 120 min** (penales no) y se puede
+  apostar al empate. Si la casa publica cuotas "tras alargue", úsalas.
+- **Pendiente eliminatorias:** re-tunear `--sesgo-goles` por ronda (el 0.05 se
+  validó con puntos de *primera*). Mientras tanto 0.05 es razonable.
+
+Deadlines de envío (hora Colombia): primera 11/06 1:59pm · dieciseisavos 28/06
+1:59pm · octavos 04/07 11:59am · cuartos 09/07 2:59pm · semis 14/07 1:59pm ·
+3º/4º 18/07 3:59pm · final 19/07 1:59pm.

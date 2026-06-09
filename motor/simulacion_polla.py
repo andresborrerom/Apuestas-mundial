@@ -69,6 +69,24 @@ def fill_evmax(matrices, params, G=7):
     return np.array(ph), np.array(pa)
 
 
+def fill_evmax_y_segundo(matrices, params, G=7):
+    """EV-máximo, 2º mejor relleno y la brecha de EV (1º-2º) por partido.
+
+    Sirve para la perturbación MÍNIMA: cambiar al 2º solo donde la brecha es
+    chica casi no cuesta puntos esperados pero descorrelaciona los cupos.
+    """
+    e_h, e_a, s_h, s_a, gap = [], [], [], [], []
+    for M in matrices:
+        EV = ev_grid(M, params, G).ravel()
+        orden = np.argsort(-EV)
+        b, s = orden[0], orden[1]
+        e_h.append(b // (G + 1)); e_a.append(b % (G + 1))
+        s_h.append(s // (G + 1)); s_a.append(s % (G + 1))
+        gap.append(EV[b] - EV[s])
+    return (np.array(e_h), np.array(e_a),
+            np.array(s_h), np.array(s_a), np.array(gap))
+
+
 def muestrear_torneos(matrices, S, rng, G=7):
     """Marcador real de cada partido en S torneos. Devuelve gh, ga (M,S)."""
     Mn = len(matrices)
@@ -129,12 +147,17 @@ def generar_field(matrices, E, skill, params, rng, G=7, concentracion=3.0):
 
 
 def generar_nuestras(matrices, k, params, estrategia="diversificada",
-                     T=0.6, rng=None, G=7):
+                     T=0.6, rng=None, G=7, n_swaps=8, pool=25):
     """Genera nuestras k entradas.
 
-    - "evmax": las k idénticas al relleno EV-máximo (máxima media, 0 diversidad).
-    - "diversificada": cada cupo muestrea por partido desde softmax(EV/T).
-      T mayor = más diversidad (más cobertura del azar, algo menos de media).
+    - "evmax": las k idénticas al relleno EV-máximo (media máxima, correlación
+      total: los k cupos suben y bajan juntos).
+    - "perturbada": cupo 0 = EV-máximo (ancla); cada cupo extra copia el
+      EV-máximo pero CAMBIA al 2º mejor relleno en `n_swaps` partidos elegidos
+      entre los `pool` más "empatados" (menor brecha de EV). Aleatoriedad MÍNIMA
+      que descorrelaciona sin alejarse del modelo.
+    - "diversificada": cada cupo extra muestrea por partido desde softmax(EV/T)
+      (más diversidad, más pérdida de media; referencia de "demasiado azar").
     """
     Mn = len(matrices)
     ph = np.empty((k, Mn), dtype=int)
@@ -153,6 +176,18 @@ def generar_nuestras(matrices, k, params, estrategia="diversificada",
             ph[c] = evmax_h; pa[c] = evmax_a
         return ph, pa
 
+    if estrategia == "perturbada":
+        e_h, e_a, s_h, s_a, gap = fill_evmax_y_segundo(matrices, params, G)
+        # candidatos a perturbar: los `pool` partidos con menor brecha de EV
+        candidatos = np.argsort(gap)[:min(pool, Mn)]
+        for c in range(1, k):
+            ph[c] = e_h; pa[c] = e_a
+            swaps = rng.choice(candidatos, size=min(n_swaps, len(candidatos)),
+                               replace=False)
+            ph[c, swaps] = s_h[swaps]
+            pa[c, swaps] = s_a[swaps]
+        return ph, pa
+
     # "diversificada": los cupos 1..k-1 muestrean por partido desde softmax(EV/T)
     for m, M in enumerate(matrices):
         EV = ev_grid(M, params, G).ravel()
@@ -167,20 +202,27 @@ def generar_nuestras(matrices, k, params, estrategia="diversificada",
 def simular_utilidad(matrices, k, N, params, field_skill=0.3,
                      estrategia="diversificada", T=0.6, precio=100_000,
                      S=2000, ruido_extra=0.0, semilla=None, G=7,
-                     concentracion=3.0):
-    """Utilidad esperada (premio − costo) de comprar k cupos.
+                     concentracion=3.0, n_swaps=8, pool=25, fills=None):
+    """Utilidad esperada (premio − costo) y métricas de COLA de comprar k cupos.
 
     N = total de cupos en la polla (incluye los nuestros). pot = N*precio.
     field_skill = qué tan buenos son los rivales (0 casual, 1 óptimos).
-    ruido_extra = desviación de ruido añadido al puntaje total de CADA entrada
-                  (emula el reordenamiento por eliminatorias). 0 = solo grupos.
+    ruido_extra = ruido añadido al puntaje total (emula reordenamiento por
+                  eliminatorias). 0 = solo grupos.
+    fills = (ph, pa) rellenos nuestros explícitos (para probar estrategias
+            hechas a mano); si se pasa, k se infiere de su forma.
     """
     rng = np.random.default_rng(semilla)
+    if fills is not None:
+        oh, oa = fills
+        k = oh.shape[0]
     Ef = N - k
     gh, ga = muestrear_torneos(matrices, S, rng, G)
 
     fh, fa = generar_field(matrices, Ef, field_skill, params, rng, G, concentracion)
-    oh, oa = generar_nuestras(matrices, k, params, estrategia, T, rng, G)
+    if fills is None:
+        oh, oa = generar_nuestras(matrices, k, params, estrategia, T, rng, G,
+                                  n_swaps=n_swaps, pool=pool)
 
     pts_field = _puntos(fh, fa, gh, ga, params)   # (Ef,S)
     pts_ours = _puntos(oh, oa, gh, ga, params)     # (k,S)
@@ -199,11 +241,19 @@ def simular_utilidad(matrices, k, N, params, field_skill=0.3,
     ganancia = (es_nuestra * premio_val[:, None]).sum(axis=0)  # (S,)
     utilidad = ganancia - k * precio
 
+    # métricas de cola: mejor puesto entre nuestros cupos por torneo
+    rangos = np.argsort(orden, axis=0)             # rango (0=1º) de cada entrada
+    mejor_rango = rangos[Ef:, :].min(axis=0)        # (S,)
+
     return {
         "k": k,
         "utilidad_media": float(utilidad.mean()),
         "utilidad_p50": float(np.median(utilidad)),
+        "utilidad_p10": float(np.percentile(utilidad, 10)),
+        "utilidad_p90": float(np.percentile(utilidad, 90)),
         "prob_algun_premio": float((ganancia > 0).mean()),
+        "prob_primera": float((mejor_rango == 0).mean()),
+        "prob_top3": float((mejor_rango <= 2).mean()),
         "ganancia_media": float(ganancia.mean()),
         "costo": k * precio,
         "slots_top5_medio": float(es_nuestra.sum(axis=0).mean()),

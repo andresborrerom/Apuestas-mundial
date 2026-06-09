@@ -29,8 +29,9 @@ from zoneinfo import ZoneInfo
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(
     os.path.abspath(__file__)))))
 
+import numpy as np
 from motor import analizar_partido
-from motor import odds_api
+from motor import odds_api, marcadores, simulacion_polla as sp
 from pollas.CSC.reglas import regla_de_ronda, RONDAS
 
 
@@ -94,6 +95,10 @@ def main(argv=None):
                    choices=["proporcional", "aditivo", "potencia", "shin"])
     p.add_argument("--sesgo-goles", type=float, default=0.05,
                    help="sesgo hacia gol=1 (validado: ~+0.03 pts/partido). 0 lo apaga")
+    p.add_argument("--cupos", type=int, default=1,
+                   help="generar K planillas perturbadas (descorrelacionadas)")
+    p.add_argument("--n-swaps", type=int, default=15,
+                   help="partidos casi-empatados a perturbar por cupo extra")
     p.add_argument("--csv", help="guardar resultado en este archivo CSV")
     p.add_argument("--mock", help="leer JSON de eventos de un archivo (sin red)")
     p.add_argument("--list-sports", action="store_true",
@@ -140,6 +145,7 @@ def main(argv=None):
 
     # 3) filtrar y calcular
     filas = []
+    mats = []  # matrices alineadas con filas (para perturbar múltiples cupos)
     for ev in eventos:
         inicio = ev.get("commence_time")
         if not inicio:
@@ -173,30 +179,62 @@ def main(argv=None):
             "ev_pts": round(r["puntos_esperados"], 2),
             "n_casas": c["n_casas"],
         })
+        mats.append(r["matriz"])
 
     if not filas:
         print("No encontré partidos con cuotas para esa fecha.")
         print("Revisa --date, la --tz, o la clave del torneo con --list-sports.")
         return 0
 
+    # 3b) múltiples cupos: perturbación mínima (cupo 1 = EV-máximo; los demás
+    # cambian al 2º mejor en n_swaps partidos casi-empatados). Descorrelaciona
+    # sin alejarse del modelo (ver experimento_colas.py / DECISIONES.md).
+    if args.cupos > 1:
+        ronda_param = "primera" if args.all else (
+            inferir_ronda(objetivo) if args.round == "auto" else args.round)
+        Msesgo = [marcadores.aplicar_sesgo_goles(M, args.sesgo_goles) for M in mats]
+        ph, pa = sp.generar_nuestras(
+            Msesgo, args.cupos, RONDAS[ronda_param], estrategia="perturbada",
+            rng=np.random.default_rng(7), n_swaps=args.n_swaps, pool=40)
+        for idx, f in enumerate(filas):
+            f["cupos"] = [f"{ph[c, idx]}-{pa[c, idx]}" for c in range(args.cupos)]
+
     filas.sort(key=lambda x: (x["fecha"], x["hora"]))
     ancho = max(len(f"{f['local']} vs {f['visita']}") for f in filas)
     col_f = 11 if objetivo is None else 0
     cab_f = f"{'Fecha':11}" if objetivo is None else ""
-    print(f"{cab_f}{'Hora':6} {'Partido':{ancho}}  {'Marcador':8} "
-          f"{'P(L/E/V)':18} {'E[pts]':>6}  casas")
-    print("-" * (col_f + 6 + ancho + 8 + 18 + 8 + 10))
-    for f in filas:
-        partido = f"{f['local']} vs {f['visita']}"
-        plev = f"{f['p_local']:.2f}/{f['p_empate']:.2f}/{f['p_visita']:.2f}"
-        pref = f"{f['fecha']:11}" if objetivo is None else ""
-        print(f"{pref}{f['hora']:6} {partido:{ancho}}  {f['marcador']:8} "
-              f"{plev:18} {f['ev_pts']:6.2f}  {f['n_casas']}")
+    if args.cupos > 1:
+        cab_c = " ".join(f"cupo{c+1:>2}" for c in range(args.cupos))
+        print(f"{cab_f}{'Hora':6} {'Partido':{ancho}}  {cab_c}")
+        print("-" * (col_f + 6 + ancho + 8 * args.cupos))
+        for f in filas:
+            partido = f"{f['local']} vs {f['visita']}"
+            pref = f"{f['fecha']:11}" if objetivo is None else ""
+            cols = " ".join(f"{m:>6}" for m in f["cupos"])
+            print(f"{pref}{f['hora']:6} {partido:{ancho}}  {cols}")
+    else:
+        print(f"{cab_f}{'Hora':6} {'Partido':{ancho}}  {'Marcador':8} "
+              f"{'P(L/E/V)':18} {'E[pts]':>6}  casas")
+        print("-" * (col_f + 6 + ancho + 8 + 18 + 8 + 10))
+        for f in filas:
+            partido = f"{f['local']} vs {f['visita']}"
+            plev = f"{f['p_local']:.2f}/{f['p_empate']:.2f}/{f['p_visita']:.2f}"
+            pref = f"{f['fecha']:11}" if objetivo is None else ""
+            print(f"{pref}{f['hora']:6} {partido:{ancho}}  {f['marcador']:8} "
+                  f"{plev:18} {f['ev_pts']:6.2f}  {f['n_casas']}")
 
     print(f"\nTotal: {len(filas)} partidos · E[pts] suma = "
           f"{sum(f['ev_pts'] for f in filas):.2f}")
+    if args.cupos > 1:
+        print(f"Cupo 1 = relleno EV-máximo; cupos 2..{args.cupos} perturbados "
+              f"(n_swaps={args.n_swaps}). Llena un formulario por cupo.")
 
     if args.csv:
+        if args.cupos > 1:
+            for f in filas:
+                for c in range(args.cupos):
+                    f[f"cupo_{c+1}"] = f["cupos"][c]
+                del f["cupos"]
         with open(args.csv, "w", newline="", encoding="utf-8") as fh:
             w = csv.DictWriter(fh, fieldnames=list(filas[0].keys()))
             w.writeheader()
