@@ -18,7 +18,8 @@ def analizar_partido(cuotas_1x2, regla,
                      cuotas_marcador_exacto=None,
                      metodo_margen="proporcional",
                      usar_dixon_coles=True,
-                     max_goles_relleno=6):
+                     max_goles_relleno=6,
+                     sesgo_goles=0.0):
     """Analiza un partido de punta a punta y devuelve el relleno óptimo.
 
     Parámetros
@@ -29,6 +30,9 @@ def analizar_partido(cuotas_1x2, regla,
                  recomendado para clavar mejor los goles).
     cuotas_marcador_exacto : dict {(i,j): cuota}. Si lo pasas, se usa
                  directamente en vez de ajustar el modelo Poisson.
+    sesgo_goles : sesgo hacia gol=1 al ELEGIR el relleno (no toca las
+                 probabilidades reportadas). ~0.05 da +~0.03 pts/partido
+                 validado fuera de muestra. 0 = sin sesgo.
 
     Devuelve un dict con probabilidades 1X2, lambdas, marcador más probable
     y, sobre todo, la predicción que maximiza los puntos esperados.
@@ -58,13 +62,18 @@ def analizar_partido(cuotas_1x2, regla,
 
     local, empate, visita = marcadores.prob_1x2(M)
     marc, p_marc = marcadores.marcador_mas_probable(M)
-    optimo = puntuacion.mejor_prediccion(M, regla, max_goles=max_goles_relleno)
+    # El sesgo hacia gol=1 se aplica SOLO para elegir el relleno; los puntos
+    # esperados que reportamos son bajo la distribución REAL (sin sesgo).
+    M_relleno = marcadores.aplicar_sesgo_goles(M, sesgo_goles)
+    optimo = puntuacion.mejor_prediccion(M_relleno, regla, max_goles=max_goles_relleno)
+    pred = optimo["prediccion"]
+    ev_real = puntuacion.puntos_esperados(pred, M, regla)
 
     return {
         "prob_1x2": {"local": local, "empate": empate, "visita": visita},
         "marcador_mas_probable": {"marcador": marc, "prob": p_marc},
-        "relleno_optimo": optimo["prediccion"],
-        "puntos_esperados": optimo["puntos_esperados"],
+        "relleno_optimo": pred,
+        "puntos_esperados": ev_real,
         "ranking_relleno": optimo["ranking"][:8],
         "modelo": info_modelo,
         "matriz": M,

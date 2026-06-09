@@ -50,3 +50,30 @@ python pollas/CSC/cupos.py --participantes <N> --field-skill 0.5
 
 no el optimista 0.1. Con eso la recomendación (≈2–3 cupos, copias EV-máximo)
 queda anclada en datos reales, no en intuición.
+
+## 5) Sesgo hacia gol=1 (recalibración) — `experimento_recalibracion.py`
+
+El modelo predice "0 goles" de más y "1" de menos. Como la regla premia más
+acertar gol≠0 (1+base=4) que el 0 (cero=2), conviene sesgar el relleno hacia
+"1". Validado con **walk-forward** (α tuneado en train por puntos, medido en
+test):
+
+| Variante (TEST out-of-sample) | pts/partido | Δ |
+|---|---|---|
+| Baseline (sin sesgo) | 3.4034 | — |
+| Calibración pura (obs/predicho) | 3.4022 | −0.0012 |
+| **Sesgo α\*=0.04 (tuneado en train)** | **3.4340** | **+0.0306** |
+
+Hallazgos:
+- **Calibrar ≠ maximizar puntos:** la corrección de calibración pura no ayuda;
+  el sesgo que SÍ ayuda es más agresivo, por la asimetría del puntaje.
+- El sesgo **gana fuera de muestra** ~+0.03 pts/partido (~+2 en 72 de grupos).
+  En test, *cualquier* α>0 supera al baseline (α=0 es el peor).
+- La magnitud óptima es algo dependiente de la era (train≈0.04 vs test≈0.16,
+  probablemente por la era COVID en train). Por eso se usa un valor
+  **conservador (α≈0.05)**, no el más agresivo.
+
+Integrado en el pipeline: `analizar_partido(..., sesgo_goles=0.05)` y
+`llenar.py --sesgo-goles 0.05` (default). Se aplica **solo para elegir el
+relleno**; las probabilidades reportadas siguen siendo las reales. Cambia ~8 de
+72 marcadores (p. ej. España 3-0 → 3-1, le pone 1 al débil).

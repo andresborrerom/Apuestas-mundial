@@ -48,8 +48,11 @@ def regla_de_ronda(ronda):
 
 
 def rellenar(ronda, cuotas_1x2, cuotas_ou=None, linea_ou=2.5,
-             cuotas_marcador_exacto=None, metodo_margen="proporcional"):
+             cuotas_marcador_exacto=None, metodo_margen="proporcional",
+             sesgo_goles=0.0):
     """Calcula el relleno óptimo de un partido para CSC en una ronda.
+
+    sesgo_goles: sesgo hacia gol=1 validado en backtest (~0.05 recomendado).
 
     Devuelve el dict de `analizar_partido` (incluye relleno_optimo,
     puntos_esperados, prob_1x2, ranking, etc.).
@@ -62,6 +65,7 @@ def rellenar(ronda, cuotas_1x2, cuotas_ou=None, linea_ou=2.5,
         cuotas_marcador_exacto=cuotas_marcador_exacto,
         metodo_margen=metodo_margen,
         max_goles_relleno=7,
+        sesgo_goles=sesgo_goles,
     )
 
 

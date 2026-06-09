@@ -148,3 +148,37 @@ def matriz_desde_cuotas_exactas(cuotas_por_marcador, max_goles=10,
     if M.sum() == 0:
         raise ValueError("Ningún marcador válido dentro de max_goles")
     return M / M.sum()
+
+
+# --------------------------------------------------------------------------
+# Sesgo hacia gol=1 (capa validada en backtest)
+# --------------------------------------------------------------------------
+# El modelo predice "0 goles" de más y "1" de menos vs la realidad. Y como la
+# regla CSC premia más acertar gol≠0 (1+base) que el 0 (cero), conviene sesgar
+# la distribución hacia 1 ANTES de elegir el relleno. Magnitud validada fuera
+# de muestra (walk-forward): ~+0.03 pts/partido con alpha≈0.04-0.10. Ver
+# pollas/CSC/experimento_recalibracion.py.
+
+def vector_sesgo_goles(alpha, max_goles=10):
+    """Factores por conteo de goles: baja el 0, sube 1 y 2, baja colas altas."""
+    r = np.ones(max_goles + 1)
+    if alpha:
+        r[0] = 1 - alpha
+        r[1] = 1 + alpha
+        r[2] = 1 + alpha / 2
+        if max_goles >= 5:
+            r[5:] = 1 - alpha / 2
+    return r
+
+
+def aplicar_sesgo_goles(M, alpha):
+    """Reescala la matriz hacia gol=1 y renormaliza. alpha=0 la deja igual.
+
+    Se usa SOLO para elegir el relleno; no representa la probabilidad real.
+    """
+    if not alpha:
+        return M
+    r = vector_sesgo_goles(alpha, M.shape[0] - 1)
+    M2 = M * np.outer(r, r)
+    s = M2.sum()
+    return M2 / s if s > 0 else M

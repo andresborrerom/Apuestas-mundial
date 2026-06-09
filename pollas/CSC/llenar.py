@@ -92,6 +92,8 @@ def main(argv=None):
     p.add_argument("--line", type=float, default=2.5, help="línea Over/Under preferida")
     p.add_argument("--metodo-margen", default="proporcional",
                    choices=["proporcional", "aditivo", "potencia", "shin"])
+    p.add_argument("--sesgo-goles", type=float, default=0.05,
+                   help="sesgo hacia gol=1 (validado: ~+0.03 pts/partido). 0 lo apaga")
     p.add_argument("--csv", help="guardar resultado en este archivo CSV")
     p.add_argument("--mock", help="leer JSON de eventos de un archivo (sin red)")
     p.add_argument("--list-sports", action="store_true",
@@ -155,7 +157,8 @@ def main(argv=None):
         r = analizar_partido(
             cuotas_1x2=c["cuotas_1x2"], regla=regla_de_ronda(ronda_ev),
             cuotas_ou=c["cuotas_ou"], linea_ou=c["linea"] or args.line,
-            metodo_margen=args.metodo_margen, max_goles_relleno=7)
+            metodo_margen=args.metodo_margen, max_goles_relleno=7,
+            sesgo_goles=args.sesgo_goles)
         gh, ga = r["relleno_optimo"]
         pr = r["prob_1x2"]
         filas.append({
