@@ -1,0 +1,194 @@
+#!/usr/bin/env python3
+"""
+Comando para CSC: baja las cuotas del Mundial, calcula el relleno ÓPTIMO de
+cada partido de un día y lo imprime (y opcionalmente lo guarda en CSV) listo
+para copiar al formulario de la Super Polla de los Pollos.
+
+Uso típico (rellenar los partidos de mañana):
+    export ODDS_API_KEY=tu_key_de_the-odds-api.com
+    python pollas/CSC/llenar.py
+
+Otros ejemplos:
+    python pollas/CSC/llenar.py --date 2026-06-12 --round primera
+    python pollas/CSC/llenar.py --csv marcadores.csv
+    python pollas/CSC/llenar.py --list-sports          # ver claves de torneo
+    python pollas/CSC/llenar.py --mock pollas/CSC/ejemplo_odds.json  # sin red
+
+Recordatorio: CSC exige enviar TODA una ronda antes de su primer partido (ver
+tabla de deadlines del reglamento). El comando avisa el deadline de la ronda.
+"""
+
+import argparse
+import csv
+import json
+import os
+import sys
+from datetime import datetime, timedelta, date
+from zoneinfo import ZoneInfo
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(
+    os.path.abspath(__file__)))))
+
+from motor import analizar_partido
+from motor import odds_api
+from pollas.CSC.reglas import regla_de_ronda, RONDAS
+
+
+# Calendario oficial Mundial 2026 -> ronda CSC y deadline de envío (hora Col).
+# (inicio_ronda, fin_ronda, nombre_ronda, deadline_texto)
+CALENDARIO = [
+    (date(2026, 6, 11), date(2026, 6, 27), "primera",       "11/06/2026 1:59 PM"),
+    (date(2026, 6, 28), date(2026, 7, 3),  "dieciseisavos", "28/06/2026 1:59 PM"),
+    (date(2026, 7, 4),  date(2026, 7, 7),  "octavos",       "04/07/2026 11:59 AM"),
+    (date(2026, 7, 9),  date(2026, 7, 11), "cuartos",       "09/07/2026 2:59 PM"),
+    (date(2026, 7, 14), date(2026, 7, 15), "semis",         "14/07/2026 1:59 PM"),
+    (date(2026, 7, 18), date(2026, 7, 18), "tercer_puesto", "18/07/2026 3:59 PM"),
+    (date(2026, 7, 19), date(2026, 7, 19), "final",         "19/07/2026 1:59 PM"),
+]
+
+# Traducción de nombres para mostrar (la API los da en inglés). Solo display.
+ES = {
+    "United States": "Estados Unidos", "Mexico": "México", "Canada": "Canadá",
+    "Brazil": "Brasil", "South Korea": "Corea del Sur", "Japan": "Japón",
+    "Saudi Arabia": "Arabia Saudita", "South Africa": "Sudáfrica",
+    "Morocco": "Marruecos", "Croatia": "Croacia", "Switzerland": "Suiza",
+    "Germany": "Alemania", "Spain": "España", "England": "Inglaterra",
+    "France": "Francia", "Belgium": "Bélgica", "Netherlands": "Países Bajos",
+    "Wales": "Gales", "Ivory Coast": "Costa de Marfil", "Egypt": "Egipto",
+}
+
+
+def inferir_ronda(d):
+    for ini, fin, nombre, _ in CALENDARIO:
+        if ini <= d <= fin:
+            return nombre
+    return None
+
+
+def deadline_de_ronda(nombre):
+    for _, _, n, dl in CALENDARIO:
+        if n == nombre:
+            return dl
+    return None
+
+
+def es(nombre):
+    return ES.get(nombre, nombre)
+
+
+def main(argv=None):
+    p = argparse.ArgumentParser(description="Relleno óptimo de marcadores CSC")
+    p.add_argument("--api-key", default=os.environ.get("ODDS_API_KEY"),
+                   help="API key de the-odds-api.com (o variable ODDS_API_KEY)")
+    p.add_argument("--sport", default=odds_api.SPORT_MUNDIAL,
+                   help=f"clave del torneo (default {odds_api.SPORT_MUNDIAL})")
+    p.add_argument("--date", help="fecha objetivo YYYY-MM-DD (default: mañana)")
+    p.add_argument("--tz", default="America/Bogota", help="zona horaria")
+    p.add_argument("--round", default="auto",
+                   help="ronda CSC o 'auto' para inferir por fecha")
+    p.add_argument("--regions", default="us,uk,eu,au")
+    p.add_argument("--line", type=float, default=2.5, help="línea Over/Under preferida")
+    p.add_argument("--metodo-margen", default="proporcional",
+                   choices=["proporcional", "aditivo", "potencia", "shin"])
+    p.add_argument("--csv", help="guardar resultado en este archivo CSV")
+    p.add_argument("--mock", help="leer JSON de eventos de un archivo (sin red)")
+    p.add_argument("--list-sports", action="store_true",
+                   help="listar claves de torneo y salir")
+    args = p.parse_args(argv)
+
+    tz = ZoneInfo(args.tz)
+
+    if args.list_sports:
+        if not args.api_key:
+            p.error("se requiere --api-key o ODDS_API_KEY")
+        for s in odds_api.listar_deportes(args.api_key):
+            if "soccer" in s.get("key", ""):
+                print(f"  {s['key']:32s} {s.get('title','')}")
+        return 0
+
+    # 1) obtener eventos (red o mock)
+    if args.mock:
+        with open(args.mock, encoding="utf-8") as f:
+            eventos = json.load(f)
+    else:
+        if not args.api_key:
+            p.error("se requiere --api-key o ODDS_API_KEY (o usa --mock)")
+        eventos = odds_api.bajar_eventos(
+            args.api_key, sport=args.sport,
+            regions=args.regions, markets="h2h,totals")
+
+    # 2) fecha objetivo
+    objetivo = (datetime.strptime(args.date, "%Y-%m-%d").date() if args.date
+                else (datetime.now(tz) + timedelta(days=1)).date())
+    ronda = inferir_ronda(objetivo) if args.round == "auto" else args.round
+    if ronda not in RONDAS:
+        p.error(f"no pude determinar la ronda para {objetivo}; pásala con --round "
+                f"(opciones: {list(RONDAS)})")
+    regla = regla_de_ronda(ronda)
+
+    print(f"\n📅 Partidos del {objetivo}  |  ronda: {ronda.upper()}  "
+          f"|  deadline envío: {deadline_de_ronda(ronda) or 's/d'}")
+    print(f"   Cuotas: consenso de casas (mediana) · margen quitado por "
+          f"método '{args.metodo_margen}'\n")
+
+    # 3) filtrar al día objetivo y calcular
+    filas = []
+    for ev in eventos:
+        inicio = ev.get("commence_time")
+        if not inicio:
+            continue
+        dt_local = datetime.fromisoformat(inicio.replace("Z", "+00:00")).astimezone(tz)
+        if dt_local.date() != objetivo:
+            continue
+        c = odds_api.consenso_evento(ev, linea_pref=args.line)
+        if not c["cuotas_1x2"]:
+            continue
+        r = analizar_partido(
+            cuotas_1x2=c["cuotas_1x2"], regla=regla,
+            cuotas_ou=c["cuotas_ou"], linea_ou=c["linea"] or args.line,
+            metodo_margen=args.metodo_margen, max_goles_relleno=7)
+        gh, ga = r["relleno_optimo"]
+        pr = r["prob_1x2"]
+        filas.append({
+            "hora": dt_local.strftime("%H:%M"),
+            "local": es(c["home"]), "visita": es(c["away"]),
+            "marcador": f"{gh}-{ga}",
+            "gl": gh, "gv": ga,
+            "p_local": round(pr["local"], 3),
+            "p_empate": round(pr["empate"], 3),
+            "p_visita": round(pr["visita"], 3),
+            "ev_pts": round(r["puntos_esperados"], 2),
+            "n_casas": c["n_casas"],
+        })
+
+    if not filas:
+        print("No encontré partidos con cuotas para esa fecha.")
+        print("Revisa --date, la --tz, o la clave del torneo con --list-sports.")
+        return 0
+
+    filas.sort(key=lambda x: x["hora"])
+    ancho = max(len(f"{f['local']} vs {f['visita']}") for f in filas)
+    print(f"{'Hora':5} {'Partido':{ancho}}  {'Marcador':8} "
+          f"{'P(L/E/V)':18} {'E[pts]':>6}  casas")
+    print("-" * (5 + ancho + 8 + 18 + 8 + 10))
+    for f in filas:
+        partido = f"{f['local']} vs {f['visita']}"
+        plev = f"{f['p_local']:.2f}/{f['p_empate']:.2f}/{f['p_visita']:.2f}"
+        print(f"{f['hora']:5} {partido:{ancho}}  {f['marcador']:8} "
+              f"{plev:18} {f['ev_pts']:6.2f}  {f['n_casas']}")
+
+    print(f"\nTotal: {len(filas)} partidos · E[pts] suma = "
+          f"{sum(f['ev_pts'] for f in filas):.2f}")
+
+    if args.csv:
+        with open(args.csv, "w", newline="", encoding="utf-8") as fh:
+            w = csv.DictWriter(fh, fieldnames=list(filas[0].keys()))
+            w.writeheader()
+            w.writerows(filas)
+        print(f"💾 Guardado en {args.csv}")
+
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

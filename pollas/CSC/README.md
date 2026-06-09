@@ -40,6 +40,32 @@ sea que no marque**. Ejemplo real del motor: con un favorito (goles esperados
 2.0–0.86) el marcador más probable es **2-0**, pero el relleno **óptimo es
 2-1**. Esto sale solo de las reglas y el motor lo explota automáticamente.
 
+## Comando automático (bajar cuotas y rellenar)
+
+`llenar.py` baja las cuotas del Mundial (consenso de varias casas vía
+[The Odds API](https://the-odds-api.com)), calcula el relleno óptimo de cada
+partido del día y lo imprime / exporta a CSV.
+
+```bash
+# 1) key gratis en the-odds-api.com
+export ODDS_API_KEY=tu_key
+
+# 2) rellenar los partidos de mañana (ronda inferida por fecha)
+python pollas/CSC/llenar.py
+
+# variantes
+python pollas/CSC/llenar.py --date 2026-06-12 --round primera --csv marcadores.csv
+python pollas/CSC/llenar.py --list-sports          # ver clave del torneo
+python pollas/CSC/llenar.py --mock pollas/CSC/ejemplo_odds.json --date 2026-06-12
+```
+
+Notas:
+- Usa el **consenso (mediana) de varias casas**, más robusto que una sola.
+  Rushbet no tiene API pública y se mueve cerca de ese consenso.
+- La ronda se infiere de la fecha (calendario 2026) o se fuerza con `--round`.
+- El comando recuerda el **deadline de envío** de la ronda.
+- Zona horaria por defecto `America/Bogota` (la de los deadlines).
+
 ## Pendiente / afinar
 
 - En eliminatorias cuenta el resultado tras **120 min** (no penales) y se

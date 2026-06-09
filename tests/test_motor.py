@@ -88,6 +88,22 @@ def test_csc_relleno_sensato():
     assert r["puntos_esperados"] > 0
 
 
+def test_consenso_evento():
+    from motor import odds_api
+    import json, os
+    ruta = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                        "pollas", "CSC", "ejemplo_odds.json")
+    with open(ruta, encoding="utf-8") as f:
+        eventos = json.load(f)
+    c = odds_api.consenso_evento(eventos[0])
+    assert c["home"] == "Mexico" and c["away"] == "South Africa"
+    # mediana de [1.50, 1.53] = 1.515 para el local
+    assert abs(c["cuotas_1x2"][0] - 1.515) < 1e-9
+    assert c["linea"] == 2.5
+    assert c["cuotas_ou"] is not None  # [under, over]
+    assert c["n_casas"] == 2
+
+
 if __name__ == "__main__":
     fallos = 0
     for nombre, fn in sorted(globals().items()):
