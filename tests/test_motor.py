@@ -88,6 +88,32 @@ def test_csc_relleno_sensato():
     assert r["puntos_esperados"] > 0
 
 
+def test_simulacion_polla_suma_cero():
+    # Invariante de suma cero: si el field juega EXACTAMENTE igual que nosotros
+    # (todos EV-máximo), todo se decide por rifa y la utilidad esperada es ~0.
+    from motor import simulacion_polla as sp
+    rng = np.random.default_rng(0)
+    # 6 partidos ficticios con distribuciones distintas
+    matrices = [marcadores.matriz_marcadores(1.0 + 0.2 * i, 0.8 + 0.1 * i, rho=-0.03)
+                for i in range(6)]
+    r = sp.simular_utilidad(matrices, k=3, N=40, params=(1, 2, 3),
+                            field_skill=1.0, estrategia="evmax",
+                            precio=100_000, S=4000, semilla=1)
+    # utilidad por cupo debe rondar 0 (margen de Monte Carlo)
+    assert abs(r["utilidad_media"]) < 0.15 * r["costo"]
+
+
+def test_simulacion_polla_mas_cupos_no_empeora_premio():
+    # Con estrategia evmax (ancla), más cupos no reducen el premio esperado.
+    from motor import simulacion_polla as sp
+    matrices = [marcadores.matriz_marcadores(1.6, 0.9, rho=-0.03) for _ in range(8)]
+    r1 = sp.simular_utilidad(matrices, k=1, N=50, params=(1, 2, 3),
+                             field_skill=0.3, estrategia="evmax", S=3000, semilla=2)
+    r3 = sp.simular_utilidad(matrices, k=3, N=50, params=(1, 2, 3),
+                             field_skill=0.3, estrategia="evmax", S=3000, semilla=2)
+    assert r3["ganancia_media"] >= r1["ganancia_media"] - 1e-6
+
+
 def test_consenso_evento():
     from motor import odds_api
     import json, os

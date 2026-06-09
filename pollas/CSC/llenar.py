@@ -83,6 +83,8 @@ def main(argv=None):
     p.add_argument("--sport", default=odds_api.SPORT_MUNDIAL,
                    help=f"clave del torneo (default {odds_api.SPORT_MUNDIAL})")
     p.add_argument("--date", help="fecha objetivo YYYY-MM-DD (default: mañana)")
+    p.add_argument("--all", action="store_true",
+                   help="volcar TODA la fase de grupos (ignora --date)")
     p.add_argument("--tz", default="America/Bogota", help="zona horaria")
     p.add_argument("--round", default="auto",
                    help="ronda CSC o 'auto' para inferir por fecha")
@@ -117,39 +119,47 @@ def main(argv=None):
             args.api_key, sport=args.sport,
             regions=args.regions, markets="h2h,totals")
 
-    # 2) fecha objetivo
-    objetivo = (datetime.strptime(args.date, "%Y-%m-%d").date() if args.date
-                else (datetime.now(tz) + timedelta(days=1)).date())
-    ronda = inferir_ronda(objetivo) if args.round == "auto" else args.round
-    if ronda not in RONDAS:
-        p.error(f"no pude determinar la ronda para {objetivo}; pásala con --round "
-                f"(opciones: {list(RONDAS)})")
-    regla = regla_de_ronda(ronda)
-
-    print(f"\n📅 Partidos del {objetivo}  |  ronda: {ronda.upper()}  "
-          f"|  deadline envío: {deadline_de_ronda(ronda) or 's/d'}")
+    # 2) fecha objetivo (o toda la fase de grupos con --all)
+    if args.all:
+        objetivo = None
+        print(f"\n📅 TODA LA FASE DE GRUPOS  |  deadline envío: "
+              f"{deadline_de_ronda('primera')}")
+    else:
+        objetivo = (datetime.strptime(args.date, "%Y-%m-%d").date() if args.date
+                    else (datetime.now(tz) + timedelta(days=1)).date())
+        ronda = inferir_ronda(objetivo) if args.round == "auto" else args.round
+        if ronda not in RONDAS:
+            p.error(f"no pude determinar la ronda para {objetivo}; pásala con "
+                    f"--round (opciones: {list(RONDAS)})")
+        print(f"\n📅 Partidos del {objetivo}  |  ronda: {ronda.upper()}  "
+              f"|  deadline envío: {deadline_de_ronda(ronda) or 's/d'}")
     print(f"   Cuotas: consenso de casas (mediana) · margen quitado por "
           f"método '{args.metodo_margen}'\n")
 
-    # 3) filtrar al día objetivo y calcular
+    # 3) filtrar y calcular
     filas = []
     for ev in eventos:
         inicio = ev.get("commence_time")
         if not inicio:
             continue
         dt_local = datetime.fromisoformat(inicio.replace("Z", "+00:00")).astimezone(tz)
-        if dt_local.date() != objetivo:
+        if objetivo is not None and dt_local.date() != objetivo:
+            continue
+        ronda_ev = (inferir_ronda(dt_local.date()) if args.round == "auto"
+                    else args.round)
+        if ronda_ev not in RONDAS:
             continue
         c = odds_api.consenso_evento(ev, linea_pref=args.line)
         if not c["cuotas_1x2"]:
             continue
         r = analizar_partido(
-            cuotas_1x2=c["cuotas_1x2"], regla=regla,
+            cuotas_1x2=c["cuotas_1x2"], regla=regla_de_ronda(ronda_ev),
             cuotas_ou=c["cuotas_ou"], linea_ou=c["linea"] or args.line,
             metodo_margen=args.metodo_margen, max_goles_relleno=7)
         gh, ga = r["relleno_optimo"]
         pr = r["prob_1x2"]
         filas.append({
+            "fecha": dt_local.strftime("%Y-%m-%d"),
             "hora": dt_local.strftime("%H:%M"),
             "local": es(c["home"]), "visita": es(c["away"]),
             "marcador": f"{gh}-{ga}",
@@ -166,15 +176,18 @@ def main(argv=None):
         print("Revisa --date, la --tz, o la clave del torneo con --list-sports.")
         return 0
 
-    filas.sort(key=lambda x: x["hora"])
+    filas.sort(key=lambda x: (x["fecha"], x["hora"]))
     ancho = max(len(f"{f['local']} vs {f['visita']}") for f in filas)
-    print(f"{'Hora':5} {'Partido':{ancho}}  {'Marcador':8} "
+    col_f = 11 if objetivo is None else 0
+    cab_f = f"{'Fecha':11}" if objetivo is None else ""
+    print(f"{cab_f}{'Hora':6} {'Partido':{ancho}}  {'Marcador':8} "
           f"{'P(L/E/V)':18} {'E[pts]':>6}  casas")
-    print("-" * (5 + ancho + 8 + 18 + 8 + 10))
+    print("-" * (col_f + 6 + ancho + 8 + 18 + 8 + 10))
     for f in filas:
         partido = f"{f['local']} vs {f['visita']}"
         plev = f"{f['p_local']:.2f}/{f['p_empate']:.2f}/{f['p_visita']:.2f}"
-        print(f"{f['hora']:5} {partido:{ancho}}  {f['marcador']:8} "
+        pref = f"{f['fecha']:11}" if objetivo is None else ""
+        print(f"{pref}{f['hora']:6} {partido:{ancho}}  {f['marcador']:8} "
               f"{plev:18} {f['ev_pts']:6.2f}  {f['n_casas']}")
 
     print(f"\nTotal: {len(filas)} partidos · E[pts] suma = "

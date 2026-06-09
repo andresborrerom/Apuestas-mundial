@@ -65,6 +65,33 @@ Notas:
 - La ronda se infiere de la fecha (calendario 2026) o se fuerza con `--round`.
 - El comando recuerda el **deadline de envío** de la ronda.
 - Zona horaria por defecto `America/Bogota` (la de los deadlines).
+- `--all` vuelca **toda la fase de grupos** (72 partidos) de una pasada — útil
+  porque CSC exige enviar todos los marcadores de grupos antes del 11/06.
+
+## ¿Cuántos cupos comprar? (optimizar utilidad)
+
+`cupos.py` simula la polla (Monte Carlo) y recomienda cuántos cupos maximizan
+la **utilidad esperada = premios − costo**.
+
+```bash
+python pollas/CSC/cupos.py --participantes 120 --sensibilidad
+```
+
+Claves del modelo:
+- La polla es **suma cero** (premios = 100% del recaudo). Solo hay utilidad
+  positiva si nuestro relleno **supera al participante promedio**.
+- `--field-skill` (0=rivales casuales, 1=rivales óptimos) es el supuesto más
+  importante y al que el resultado es más sensible. Usa `--sensibilidad`.
+- `--participantes` = total de cupos en la polla (define el pot).
+- Estrategia `evmax` (copias idénticas del relleno óptimo) suele ganarle a
+  `diversificada`: cuando tu puntaje queda arriba, las copias empatan y la
+  **rifa de desempate** las reparte en varios puestos del top-5.
+- `--ruido-extra` añade incertidumbre tipo eliminatorias (la simulación base
+  es solo fase de grupos; el ranking real incluye knockout, con más varianza).
+
+**Hallazgos:** el nº óptimo de cupos es chico (≈1–5) y **cae rápido si el field
+es bueno**. Contra un field sharp (≥60% óptimo) conviene 1 cupo; comprar muchos
+es −EV. Los pesos absolutos son ilustrativos y dependen de tus supuestos.
 
 ## Pendiente / afinar
 
