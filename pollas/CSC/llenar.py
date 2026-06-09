@@ -35,6 +35,15 @@ from motor import odds_api, marcadores, simulacion_polla as sp
 from pollas.CSC.reglas import regla_de_ronda, RONDAS
 
 
+# Dispersión recomendada por ronda (n_swaps): poca en grupos (la ley de grandes
+# números ya protege), mucha en eliminatorias (pocos partidos, mucho valor →
+# cada swap descorrelaciona más). Validado en experimento_dispersion_rondas.py.
+DISPERSION_POR_RONDA = {
+    "primera": 12, "dieciseisavos": 8, "octavos": 5,
+    "cuartos": 3, "semis": 2, "tercer_puesto": 1, "final": 1,
+}
+
+
 # Calendario oficial Mundial 2026 -> ronda CSC y deadline de envío (hora Col).
 # (inicio_ronda, fin_ronda, nombre_ronda, deadline_texto)
 CALENDARIO = [
@@ -97,8 +106,9 @@ def main(argv=None):
                    help="sesgo hacia gol=1 (validado: ~+0.03 pts/partido). 0 lo apaga")
     p.add_argument("--cupos", type=int, default=1,
                    help="generar K planillas perturbadas (descorrelacionadas)")
-    p.add_argument("--n-swaps", type=int, default=15,
-                   help="partidos casi-empatados a perturbar por cupo extra")
+    p.add_argument("--n-swaps", type=int, default=-1,
+                   help="partidos a perturbar por cupo extra (-1 = auto por ronda: "
+                        "poco en grupos, mucho en eliminatorias)")
     p.add_argument("--csv", help="guardar resultado en este archivo CSV")
     p.add_argument("--mock", help="leer JSON de eventos de un archivo (sin red)")
     p.add_argument("--list-sports", action="store_true",
@@ -193,9 +203,12 @@ def main(argv=None):
         ronda_param = "primera" if args.all else (
             inferir_ronda(objetivo) if args.round == "auto" else args.round)
         Msesgo = [marcadores.aplicar_sesgo_goles(M, args.sesgo_goles) for M in mats]
+        ns = (args.n_swaps if args.n_swaps >= 0
+              else DISPERSION_POR_RONDA.get(ronda_param, 12))
+        ns_usado = ns
         ph, pa = sp.generar_nuestras(
             Msesgo, args.cupos, RONDAS[ronda_param], estrategia="perturbada",
-            rng=np.random.default_rng(7), n_swaps=args.n_swaps, pool=40)
+            rng=np.random.default_rng(7), n_swaps=ns, pool=max(40, 2 * ns + 1))
         for idx, f in enumerate(filas):
             f["cupos"] = [f"{ph[c, idx]}-{pa[c, idx]}" for c in range(args.cupos)]
 
@@ -227,7 +240,7 @@ def main(argv=None):
           f"{sum(f['ev_pts'] for f in filas):.2f}")
     if args.cupos > 1:
         print(f"Cupo 1 = relleno EV-máximo; cupos 2..{args.cupos} perturbados "
-              f"(n_swaps={args.n_swaps}). Llena un formulario por cupo.")
+              f"(n_swaps={ns_usado}). Llena un formulario por cupo.")
 
     if args.csv:
         if args.cupos > 1:

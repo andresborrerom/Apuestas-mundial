@@ -114,8 +114,30 @@ rivales que muestrean dispersan y puntúan poco); los humanos reales se
 concentran en el modal y son más duros. Los valores absolutos varían mucho con
 el supuesto → confiar en lo RELATIVO (perturbar > idénticas; diferenciarse).
 
-**Estrategia adoptada:** comprar K cupos con perturbación mínima (cupo 1 =
-EV-máximo; cupos 2..K = 2º mejor en ~15 partidos casi-empatados). Generarlos:
+**Dispersión CRECIENTE por ronda** (`experimento_dispersion_rondas.py`,
+`motor/torneo.py`): la polla paga por el TOTAL acumulado; en grupos (72
+partidos) la ley de grandes números ya protege nuestra ventaja → perturbar ahí
+es casi desperdicio; en eliminatorias (pocos partidos, cada uno vale ×5 a ×16)
+cada swap descorrelaciona mucho más. Test con MISMO presupuesto (24 swaps, 6
+semillas, simulación de torneo completo):
+
+| dónde se pone la dispersión | P(1º) |
+|---|---|
+| todo en grupos | 17.7% |
+| uniforme | 25.7% |
+| **knockout-pesado** | **30.0%** |
+
+→ El modelo NO es único por ronda en DOS ejes: (a) el relleno EV-máximo cambia
+con los puntos de la ronda (ground truth), y (b) la **dispersión óptima sube por
+ronda** (simulación). Operacionalizado en `llenar.py` (`DISPERSION_POR_RONDA`):
+grupos 12 · 16avos 8 · octavos 5 · cuartos 3 · semis 2 · 3º/final 1. Honesto:
+(a) es medible en ground truth; (b) depende del modelo de rivales (simulación).
+Pendiente: en rondas de 1-2 partidos conviene cubrir el top-k de rellenos
+distintos (no swaps aleatorios) — afinar al llegar.
+
+**Estrategia adoptada:** comprar K cupos con perturbación CRECIENTE por ronda
+(cupo 1 = EV-máximo; cupos 2..K = 2º mejor en los casi-empatados, pocos en
+grupos y muchos en eliminatorias). Generarlos:
 
 ```bash
 python pollas/CSC/llenar.py --all --cupos 4 --csv grupos.csv
