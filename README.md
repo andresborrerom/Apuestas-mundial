@@ -4,6 +4,15 @@ Herramienta para rellenar pollas del Mundial maximizando los **puntos
 esperados** según las reglas de cada polla, a partir de las cuotas de las
 casas de apuestas.
 
+## 📚 Documentos clave (empieza aquí)
+
+- **[`HISTORIA.md`](HISTORIA.md)** — la crónica de cómo llegamos al modelo
+  (material de enseñanza: "cómo usar Claude para ciencia de datos").
+- **[`PLAYBOOK.md`](PLAYBOOK.md)** — la receta reutilizable para atacar una
+  polla nueva. **Punto de partida para COLFONDOS, INGENIERO, LEMAITRE.**
+- **[`pollas/CSC/DECISIONES.md`](pollas/CSC/DECISIONES.md)** — la bitácora
+  técnica completa (números, fórmulas, comandos, hallazgos y refutaciones).
+
 ## La idea
 
 Las cuotas de las casas son el mejor predictor barato que existe: incorporan
@@ -24,18 +33,27 @@ Para campeón / subcampeón se simula el torneo entero miles de veces
 ## Estructura
 
 ```
-motor/            # común a todas las pollas (no depende de reglas)
-  cuotas.py       # cuotas -> probabilidades (quita el margen)
-  marcadores.py   # distribución de marcadores (Poisson/Dixon-Coles)
-  puntuacion.py   # relleno que maximiza puntos esperados
-  simulacion.py   # Monte Carlo del torneo (campeón, subcampeón, ...)
+motor/                # común a todas las pollas (no depende de reglas)
+  cuotas.py           # cuotas -> probabilidades (quita el margen)
+  marcadores.py       # distribución de marcadores (Poisson/DC) + sesgo gol=1
+  puntuacion.py       # relleno que maximiza puntos esperados
+  odds_api.py         # bajar cuotas (consenso de casas, The Odds API)
+  simulacion_polla.py # simulador de la polla (utilidad, P(1º), perturbación)
+  torneo.py           # simulador del torneo completo (dispersión por ronda)
+  backtest.py         # validación con partidos reales (football-data.co.uk)
+  simulacion.py       # Monte Carlo del torneo (campeón, subcampeón, ...)
 pollas/
-  _plantilla/     # ejemplo de cómo definir las reglas de una polla
-  CSC/            # cada polla: su presentación + sus reglas
-  COLFONDOS/
-  INGENIERO/
-tests/            # verificación de la matemática
+  _plantilla/         # ejemplo de cómo definir las reglas de una polla
+  CSC/                # CERRADA: reglas + experimentos + DECISIONES.md + planilla
+  COLFONDOS/          # por montar (incluye campeón/goleador)
+  INGENIERO/          # por montar (incluye campeón/goleador)
+  LEMAITRE/           # por montar
+tests/                # verificación de la matemática
 ```
+
+Cada `pollas/<X>/` tiene scripts ejecutables y autoexplicados: `reglas.py`
+(puntuación), `llenar.py` (genera planilla), `cupos.py` (cuántos comprar),
+`experimento_*.py` (cada teoría probada) y `demo_*.py` (demos pedagógicas).
 
 ## Uso rápido
 
@@ -63,7 +81,11 @@ python tests/test_motor.py
 ## Estado / siguientes pasos
 
 - [x] Motor de cuotas, marcadores, puntuación y simulación.
-- [ ] Reglas concretas de cada polla (CSC, COLFONDOS, INGENIERO).
-- [ ] Cargar cuotas reales de la casa.
-- [ ] Estructura del Mundial 2026 (48 equipos) para la simulación.
-- [ ] Ajuste *contrarian* para pollas grandes con premio único.
+- [x] **CSC cerrada:** reglas validadas, modelo validado con ground truth
+  (backtest + walk-forward), decisión de **5 cupos**, planilla generada.
+- [x] Mecanismos validados: EV-máximo, sesgo a gol=1, perturbación mínima entre
+  cupos, dispersión creciente por ronda.
+- [ ] COLFONDOS / INGENIERO / LEMAITRE: aplicar el `PLAYBOOK.md` a sus reglas.
+- [ ] Modelo de campeón/goleador (Monte Carlo + `soccer_fifa_world_cup_winner`).
+- [ ] Eliminatorias: top-k de rellenos en rondas de 1-2 partidos.
+- [ ] Opcional: scrapear OddsPortal (gratis) para Over/Under de Mundiales.

@@ -140,12 +140,23 @@ distintos (no swaps aleatorios) — afinar al llegar.
 grupos y muchos en eliminatorias). Generarlos:
 
 ```bash
-python pollas/CSC/llenar.py --all --cupos 4 --csv grupos.csv
+python pollas/CSC/llenar.py --all --cupos 5 --csv grupos_CSC.csv
 ```
 
-**Recomendación de K:** 4 cupos es el balance (captura P(premio)~43%, robusto si
-el field es más sharp, costo $400k). Si crees que el field es muy casual y el
-presupuesto lo permite, 5–6 siguen siendo +EV en el modelo; si conservador, 3.
+**Decisión final de K = 5 cupos** (tras el análisis de deciles, `demo_ranking_torneo.py`
+y la comparación 3/4/5/6 con 24.000 sims, N=100, torneo completo):
+
+| cupos | E[util] | ROI | P(1º) | P(premio) | pierde |
+|---|---|---|---|---|---|
+| 3 | $2.01M | 6.7× | 26.6% | 68.6% | 31.4% |
+| 4 | $2.37M | 5.9× | 30.0% | 72.2% | 27.8% |
+| **5** | **$2.55M** | 5.1× | 31.6% | **74.9%** | **25.1%** |
+| 6 | $2.76M | 4.6× | 34.0% | 76.0% | 30.1% |
+
+El E[util] sube siempre (no hay pico); "sweet spot" = balance riesgo/eficiencia.
+**5 cupos** maximiza P(premio) y **minimiza el riesgo de perder (25%)** con ROI
+sólido. (3-4 si priorizas ROI; 6 si priorizas ganancia absoluta.) Insensible a
+N entre 80-100: más participantes → más pot pero más difícil ganar, se cancelan.
 
 ---
 
@@ -172,7 +183,7 @@ gris ToS); The Odds API histórico (solo 2022, $30/mes).
 
 ---
 
-## 6. Runbook — correr por ronda
+## 7. Runbook — correr por ronda
 
 `llenar.py` infiere la ronda por fecha, pero puedes forzarla con `--round`.
 Necesitas `export ODDS_API_KEY=tu_key`.
@@ -203,3 +214,35 @@ Notas por ronda:
 Deadlines de envío (hora Colombia): primera 11/06 1:59pm · dieciseisavos 28/06
 1:59pm · octavos 04/07 11:59am · cuartos 09/07 2:59pm · semis 14/07 1:59pm ·
 3º/4º 18/07 3:59pm · final 19/07 1:59pm.
+
+---
+
+## 8. Índice de scripts (todo reproducible)
+
+**Producción:**
+- `reglas.py` — puntuación CSC por ronda + `rellenar()`.
+- `llenar.py` — genera la planilla (`--all`, `--cupos K`, dispersión auto/ronda).
+- `cupos.py` — recomienda cuántos cupos (sensibilidad al field).
+
+**Validación con ground truth (datos reales):**
+- `backtest.py` — edge y calibración en ~12k partidos de clubes (walk-forward).
+- `backtest_mundial.py` — transferencia a 4 Mundiales reales (`oddor`).
+- `experimento_recalibracion.py` — sesgo a gol=1 (tuneo train / test).
+- `experimento_sesgo_favorito.py` — sesgo asimétrico (REFUTADO).
+- `experimento_sesgo_lambda.py` — sesgo λ-dependiente (REFUTADO).
+
+**Simulación de la polla (rivales sintéticos):**
+- `experimento_colas.py` — perturbación mínima vs copias vs mano (colas).
+- `experimento_rivales.py` — robustez al modelo de rivales (arquetipos).
+- `experimento_dispersion_rondas.py` — dispersión creciente por ronda.
+
+**Demos pedagógicas:**
+- `demo_modelo.py` — el modelo GENERANDO marcadores (muestreo de M).
+- `demo_evmax.py` — cómo el EV-máximo ELIGE el relleno (cuenta celda por celda).
+- `demo_cupos.py` — los 5 cupos: aleatoriedad mínima (casi todo idéntico).
+- `demo_comparacion.py` — nuestro modelo vs métodos a mano (Mundiales reales).
+- `demo_ranking.py` / `demo_ranking_torneo.py` — el "libro mayor" y los deciles
+  de la utilidad (de dónde sale el E[util]).
+
+> Narrativa de cómo llegamos: `../../HISTORIA.md`. Receta para otra polla:
+> `../../PLAYBOOK.md`.
