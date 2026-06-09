@@ -199,10 +199,44 @@ def generar_nuestras(matrices, k, params, estrategia="diversificada",
     return ph, pa
 
 
+def generar_field_mix(matrices, E, pesos, params, rng, G=7, conc_hum=4.0):
+    """Field como MEZCLA de arquetipos de rival (más realista y testeable).
+
+    pesos = {"opt":w1, "cal":w2, "hum":w3} (se normalizan). Cada rival es de UN
+    arquetipo durante todo el torneo (una persona tiene un estilo consistente):
+      - "opt": juega EV-máximo (rival sharp, como nosotros).
+      - "cal": muestrea el marcador de M (calibrado a la prob. de ocurrencia;
+               la idea del usuario / distribución implícita del mercado).
+      - "hum": muestrea de M^conc_hum (concentrado cerca del marcador modal;
+               humano que pone el marcador "obvio" y casi nunca gol al débil).
+    """
+    Mn = len(matrices)
+    ph = np.empty((E, Mn), dtype=int)
+    pa = np.empty((E, Mn), dtype=int)
+    arche = ["opt", "cal", "hum"]
+    w = np.array([max(0.0, pesos.get(a, 0.0)) for a in arche], float)
+    w = w / w.sum()
+    asign = rng.choice(3, size=E, p=w)
+    evmax_h, evmax_a = fill_evmax(matrices, params, G)
+    for m, M in enumerate(matrices):
+        ncol = M.shape[1]
+        flat = M.ravel(); flat = flat / flat.sum()
+        flath = M.ravel() ** conc_hum; flath = flath / flath.sum()
+        opt = asign == 0
+        ph[opt, m] = evmax_h[m]; pa[opt, m] = evmax_a[m]
+        for arq, fl in ((1, flat), (2, flath)):
+            idx = np.where(asign == arq)[0]
+            if len(idx):
+                s = rng.choice(fl.size, size=len(idx), p=fl)
+                ph[idx, m] = s // ncol; pa[idx, m] = s % ncol
+    return ph, pa
+
+
 def simular_utilidad(matrices, k, N, params, field_skill=0.3,
                      estrategia="diversificada", T=0.6, precio=100_000,
                      S=2000, ruido_extra=0.0, semilla=None, G=7,
-                     concentracion=3.0, n_swaps=8, pool=25, fills=None):
+                     concentracion=3.0, n_swaps=8, pool=25, fills=None,
+                     field=None):
     """Utilidad esperada (premio − costo) y métricas de COLA de comprar k cupos.
 
     N = total de cupos en la polla (incluye los nuestros). pot = N*precio.
@@ -219,7 +253,10 @@ def simular_utilidad(matrices, k, N, params, field_skill=0.3,
     Ef = N - k
     gh, ga = muestrear_torneos(matrices, S, rng, G)
 
-    fh, fa = generar_field(matrices, Ef, field_skill, params, rng, G, concentracion)
+    if field is not None:   # mezcla de arquetipos (modelo de rivales realista)
+        fh, fa = generar_field_mix(matrices, Ef, field, params, rng, G)
+    else:
+        fh, fa = generar_field(matrices, Ef, field_skill, params, rng, G, concentracion)
     if fills is None:
         oh, oa = generar_nuestras(matrices, k, params, estrategia, T, rng, G,
                                   n_swaps=n_swaps, pool=pool)

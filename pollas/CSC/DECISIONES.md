@@ -46,6 +46,10 @@ Los 6 ejemplos del PDF están replicados como tests (`tests/test_motor.py`).
    de más y "1" de menos, y la regla premia más el "1". Validado **walk-forward**
    (+~0.03 pts/partido fuera de muestra). Se aplica **solo para elegir el
    relleno**; las probabilidades reportadas son las reales.
+   - Variantes probadas y **REFUTADAS** (ground truth, no mejoran el constante):
+     sesgo asimétrico al favorito (`experimento_sesgo_favorito.py`) — el 1X2 ya
+     está en el modelo; y sesgo λ-dependiente (`experimento_sesgo_lambda.py`) —
+     el "0 de más" es parejo entre partidos. **El α constante basta.**
 
 ---
 
@@ -99,6 +103,16 @@ Hallazgos:
   por eso se optimiza la **cola de arriba** (P(1º)/P(premio)), no la de abajo.
 - Con perturbación, **cada cupo extra sigue sumando** (a diferencia de las
   copias idénticas, que se estancan), porque están descorrelacionados.
+
+**Robustez al modelo de rivales** (`experimento_rivales.py`): rivales como
+MEZCLA de arquetipos (motor.generar_field_mix): "cal" (muestrea de M, idea del
+usuario), "hum" (cerca del modal, humano), "opt" (EV-máximo). Resultado: la
+**perturbación le gana a las copias idénticas en TODAS las mezclas** (k=4,
+N=100), y el efecto crece cuando los rivales son buenos (evmax colapsa a ~5% de
+P(1º), perturbada ~47%). Matiz: el "calibrado puro" es el field más FÁCIL (los
+rivales que muestrean dispersan y puntúan poco); los humanos reales se
+concentran en el modal y son más duros. Los valores absolutos varían mucho con
+el supuesto → confiar en lo RELATIVO (perturbar > idénticas; diferenciarse).
 
 **Estrategia adoptada:** comprar K cupos con perturbación mínima (cupo 1 =
 EV-máximo; cupos 2..K = 2º mejor en ~15 partidos casi-empatados). Generarlos:
