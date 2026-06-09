@@ -138,3 +138,42 @@ def puntos(pred, real, params):
     if pv == rv:
         pts += cero if rv == 0 else rv + base
     return pts
+
+
+# --------------------------------------------------------------------------
+# Recalibración empírica de la distribución de goles
+# --------------------------------------------------------------------------
+# El modelo Poisson/DC predice "0 goles" un poco de más y "1" de menos. Si
+# corregimos la distribución de goles con el sesgo OBSERVADO (aprendido en
+# train) y recomputamos el relleno EV-máximo, puede que ganemos puntos. Hay que
+# medirlo fuera de muestra (test) para no sobreajustar.
+
+def aprender_recalibracion(matrices, reales, G=7):
+    """Factores r_g = freq_observada(g) / prob_media_predicha(g), por conteo de
+    goles (juntando local y visita). Aprender SOLO en train."""
+    pred = np.zeros(G + 1)
+    obs = np.zeros(G + 1)
+    for M, (rh, ra) in zip(matrices, reales):
+        mh = M.sum(axis=1)
+        ma = M.sum(axis=0)
+        for g in range(G + 1):
+            pred[g] += (mh[g] if g < len(mh) else 0) + (ma[g] if g < len(ma) else 0)
+        obs[min(rh, G)] += 1
+        obs[min(ra, G)] += 1
+    pred = pred / pred.sum()
+    obs = obs / obs.sum()
+    r = np.where(pred > 1e-9, obs / pred, 1.0)
+    return r
+
+
+def matriz_recalibrada(M, r):
+    """Reescala la matriz por r en cada conteo de goles y renormaliza.
+
+    M'[i,j] ∝ M[i,j] · r_i · r_j  (corrige ambas marginales de goles).
+    """
+    G = len(r) - 1
+    n = M.shape[0]
+    rr = np.array([r[min(i, G)] for i in range(n)])
+    M2 = M * np.outer(rr, rr)
+    s = M2.sum()
+    return M2 / s if s > 0 else M
