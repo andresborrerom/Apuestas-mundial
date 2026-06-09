@@ -52,6 +52,34 @@ def regla_solo_resultado(pts=1):
     return regla
 
 
+def regla_goles_por_equipo(pts_resultado, pts_goles_cero, base_goles):
+    """Puntúa por separado el resultado (1X2) y los goles de CADA equipo.
+
+    Es el modelo de "La Super Polla de los Pollos". Los tres componentes se
+    SUMAN:
+      - acertar ganador/empate (la tendencia 1X2): pts_resultado.
+      - acertar los goles de un equipo:
+          * si ese equipo marcó 0 y lo acertaste: pts_goles_cero.
+          * si marcó g>0 y lo acertaste: g + base_goles.
+
+    Consecuencia: como acertar más goles da más puntos, el relleno óptimo no
+    es el marcador más probable; conviene a veces predecir más goles a un
+    favorito. El optimizador resuelve ese balance con la distribución real.
+    """
+    def regla(prediccion, real):
+        pa, pv = prediccion   # goles predichos: local, visita
+        ra, rv = real
+        pts = 0.0
+        if np.sign(pa - pv) == np.sign(ra - rv):
+            pts += pts_resultado
+        if pa == ra:
+            pts += pts_goles_cero if ra == 0 else (ra + base_goles)
+        if pv == rv:
+            pts += pts_goles_cero if rv == 0 else (rv + base_goles)
+        return pts
+    return regla
+
+
 # --------------------------------------------------------------------------
 # Esperanza de puntos y optimización
 # --------------------------------------------------------------------------

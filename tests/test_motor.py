@@ -65,6 +65,29 @@ def test_bonus_argmax():
     assert abs(r["puntos_esperados"] - 2.2) < 1e-9
 
 
+def test_csc_ejemplos_del_reglamento():
+    # Replica EXACTAMENTE los ejemplos del PDF de CSC (fase de grupos:
+    # ganador/empate=1, goles 0 acertado=2, goles!=0 acertado = #goles+3).
+    regla = puntuacion.regla_goles_por_equipo(1, 2, 3)
+    # (prediccion_local, prediccion_visita), (real_local, real_visita) -> pts
+    assert regla((0, 0), (2, 0)) == 2   # acierta el 0 de visita
+    assert regla((1, 2), (3, 2)) == 5   # acierta 2 goles visita (2+3)
+    assert regla((2, 0), (2, 0)) == 8   # pleno: 1 + (2+3) + 2
+    assert regla((2, 0), (2, 1)) == 6   # ganador + goles local (1 + 5)
+    assert regla((2, 2), (2, 1)) == 5   # solo goles local (2+3), pierde tendencia
+    assert regla((0, 0), (2, 2)) == 1   # solo acierta empate
+
+
+def test_csc_relleno_sensato():
+    from pollas.CSC import reglas as csc
+    r = csc.rellenar("primera", cuotas_1x2=[1.50, 4.20, 6.50],
+                     cuotas_ou=[2.10, 1.75])
+    gh, ga = r["relleno_optimo"]
+    assert gh > ga          # favorito local: predecir que gana
+    assert 1 <= gh <= 4     # número de goles razonable
+    assert r["puntos_esperados"] > 0
+
+
 if __name__ == "__main__":
     fallos = 0
     for nombre, fn in sorted(globals().items()):
