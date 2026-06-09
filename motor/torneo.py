@@ -46,10 +46,12 @@ def construir_rondas(grupo_matrices, rng):
 
 
 def simular_torneo(rondas, N, k, schedule, field_pesos, precio=100_000,
-                   S=4000, sesgo=0.05, semilla=0):
+                   S=4000, sesgo=0.05, semilla=0, detalle=False):
     """Simula el torneo completo y devuelve métricas de cola.
 
     schedule: dict {ronda: n_swaps} = cuántos partidos perturbar por ronda.
+    detalle=True añade los arrays por simulación (util, ganancia, mejor_rango,
+    rangos_nuestros) para inspeccionar la distribución.
     """
     rng = np.random.default_rng(semilla)
     Ef = N - k
@@ -75,10 +77,15 @@ def simular_torneo(rondas, N, k, schedule, field_pesos, precio=100_000,
     ganancia = (es_nuestra * premio[:, None]).sum(axis=0)
     util = ganancia - k * precio
     rangos = np.argsort(orden, axis=0)
-    mejor_rango = rangos[Ef:, :].min(axis=0)
-    return {
+    rangos_nuestros = rangos[Ef:, :] + 1          # puesto 1..N de cada cupo
+    mejor_rango = rangos_nuestros.min(axis=0)
+    res = {
         "utilidad_media": float(util.mean()),
-        "prob_primera": float((mejor_rango == 0).mean()),
-        "prob_top3": float((mejor_rango <= 2).mean()),
+        "prob_primera": float((mejor_rango == 1).mean()),
+        "prob_top3": float((mejor_rango <= 3).mean()),
         "prob_premio": float((ganancia > 0).mean()),
     }
+    if detalle:
+        res.update(util=util, ganancia=ganancia, mejor_rango=mejor_rango,
+                   rangos_nuestros=rangos_nuestros, pot=N * precio)
+    return res
