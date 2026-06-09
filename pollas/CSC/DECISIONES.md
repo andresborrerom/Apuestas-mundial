@@ -113,6 +113,29 @@ presupuesto lo permite, 5–6 siguen siendo +EV en el modelo; si conservador, 3.
 
 ---
 
+## 6. ¿Cambia la relación cuotas↔resultados en Mundiales? (validado)
+
+Datos: paquete R `oddor` (gratis) — 1X2 de cierre + goles reales de los 4
+Mundiales 2010–2022 (256 partidos). Script `backtest_mundial.py`.
+
+- **1X2:** razonablemente calibrado también en Mundial (más ruidoso, n chico).
+- **Goles:** el Mundial es **más defensivo** (marca 0 más seguido que en clubes:
+  0.291 vs 0.251). Pero el **modelo sigue prediciendo "0" de más** (0.341 vs
+  0.291) → **el sesgo a gol=1 sigue siendo correcto en Mundiales** (+0.035 pts).
+- **Edge EV-máximo vs modal: +0.48 pts/partido** (mayor que el +0.285 de clubes;
+  el Mundial tiene más mismatches de grupo donde optimizar goles rinde más).
+
+**Conclusión:** el modelo transfiere bien al Mundial; no hace falta comprar
+datos ahora. Confound: solo hay 1X2 de Mundial (sin Over/Under); parte del "0 de
+más" podría ser el O/U faltante. Mejora futura **gratis**: scrapear OddsPortal
+(OddsHarvester) para O/U y marcador exacto de Mundiales y recalibrar.
+
+Fuentes de histórico de Mundial (del agente): `oddor` (gratis, 1X2 de 4
+Mundiales) ✅ usado; OddsPortal+scraper (gratis, +O/U +marcador exacto, zona
+gris ToS); The Odds API histórico (solo 2022, $30/mes).
+
+---
+
 ## 6. Runbook — correr por ronda
 
 `llenar.py` infiere la ronda por fecha, pero puedes forzarla con `--round`.
