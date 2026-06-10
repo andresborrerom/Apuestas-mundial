@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-LEMAITRE — clasificación de grupos (Monte Carlo).
+LEMAITRE — clasificación de grupos (Monte Carlo CONJUNTO).
 
-La polla LEMAITRE puntúa sobre todo PREDECIR QUIÉN CLASIFICA y en qué ORDEN
-(no marcadores de grupos). Esto simula cada grupo (round-robin de 6 partidos)
-miles de veces usando nuestros modelos de partido, y devuelve:
-  - P(cada equipo termine 1º/2º/3º/4º) en su grupo,
-  - el orden más probable por grupo,
-  - los 8 mejores terceros (para la fase de 32).
+Mejora sobre la primera versión:
+  - Simula los 12 grupos a la vez (mismo índice de sim) para poder rankear los
+    12 TERCEROS y elegir los 8 mejores correctamente (formato 2026).
+  - Usa las distribuciones REALES sin sesgo (el sesgo a gol=1 de CSC NO se usa
+    aquí: la clasificación va de RESULTADOS, no de optimizar un pago de goles).
+  - Desempate de grupo por (puntos, dif. de gol, goles a favor).
 
     python pollas/LEMAITRE/clasificacion.py --mock /tmp/wc_grupos.json
 """
@@ -26,45 +26,6 @@ from motor import odds_api
 from pollas.CSC.cupos import matriz_de_evento
 
 
-def detectar_grupos(partidos):
-    """Agrupa equipos por sus rivales (cada equipo juega a los otros 3 del grupo)."""
-    opp = defaultdict(set)
-    for h, a, _ in partidos:
-        opp[h].add(a); opp[a].add(h)
-    grupos, vistos = [], set()
-    for t in opp:
-        if t in vistos:
-            continue
-        g = frozenset({t} | opp[t])
-        if len(g) == 4 and not (g & vistos):
-            grupos.append(sorted(g)); vistos |= g
-    return grupos
-
-
-def simular_grupo(equipos, partidos_idx, partidos, S, rng):
-    """Devuelve matriz P[equipo, posición] (4x4) para un grupo."""
-    idx = {e: i for i, e in enumerate(equipos)}
-    pts = np.zeros((4, S)); gd = np.zeros((4, S)); gf = np.zeros((4, S))
-    for h, a, M in [partidos[k] for k in partidos_idx]:
-        flat = M.ravel() / M.sum()
-        k = rng.choice(flat.size, size=S, p=flat)
-        gh, ga = k // M.shape[1], k % M.shape[1]
-        ih, ia = idx[h], idx[a]
-        pts[ih] += np.where(gh > ga, 3, np.where(gh == ga, 1, 0))
-        pts[ia] += np.where(ga > gh, 3, np.where(gh == ga, 1, 0))
-        gd[ih] += gh - ga; gd[ia] += ga - gh
-        gf[ih] += gh; gf[ia] += ga
-    # ranking por (pts, gd, gf, ruido) por simulación
-    clave = pts * 1e6 + gd * 1e3 + gf + rng.random((4, S)) * 1e-3
-    orden = np.argsort(-clave, axis=0)             # orden[pos, s] = equipo
-    P = np.zeros((4, 4))
-    for pos in range(4):
-        for e in range(4):
-            P[e, pos] = np.mean(orden[pos] == e)
-    # info de terceros: pts/gd para comparar mejores terceros
-    return P, pts, gd, gf, orden
-
-
 def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("--mock", default="/tmp/wc_grupos.json")
@@ -79,36 +40,74 @@ def main(argv=None):
     for e in eventos:
         c = odds_api.consenso_evento(e)
         if c["cuotas_1x2"]:
-            partidos.append((c["home"], c["away"], matriz_de_evento(c, "proporcional", 2.5)))
-    grupos = detectar_grupos(partidos)
-    # partidos por grupo
-    pidx = {tuple(g): [] for g in grupos}
-    setg = [set(g) for g in grupos]
-    for k, (h, a, _) in enumerate(partidos):
-        for g, s in zip(grupos, setg):
-            if h in s and a in s:
-                pidx[tuple(g)].append(k); break
+            partidos.append((c["home"], c["away"],
+                             matriz_de_evento(c, "proporcional", 2.5)))
 
+    # equipos y grupos (por rivales)
+    opp = defaultdict(set)
+    for h, a, _ in partidos:
+        opp[h].add(a); opp[a].add(h)
+    grupos, vistos = [], set()
+    for t in opp:
+        if t in vistos:
+            continue
+        g = frozenset({t} | opp[t])
+        if len(g) == 4 and not (g & vistos):
+            grupos.append(sorted(g)); vistos |= g
+    grupos.sort()
+    teams = sorted(vistos); tid = {t: i for i, t in enumerate(teams)}
+    NT, S = len(teams), args.sims
+
+    # simular TODOS los partidos a la vez
     rng = np.random.default_rng(0)
-    print(f"{len(grupos)} grupos · {len(partidos)} partidos · {args.sims} sims\n")
-    terceros = []  # (E[pts del 3º], grupo, equipo más probable 3º)
+    pts = np.zeros((NT, S)); gd = np.zeros((NT, S)); gf = np.zeros((NT, S))
+    for h, a, M in partidos:
+        fl = M.ravel() / M.sum()
+        k = rng.choice(fl.size, size=S, p=fl)
+        gh, ga = k // M.shape[1], k % M.shape[1]
+        ih, ia = tid[h], tid[a]
+        pts[ih] += np.where(gh > ga, 3, np.where(gh == ga, 1, 0))
+        pts[ia] += np.where(ga > gh, 3, np.where(gh == ga, 1, 0))
+        gd[ih] += gh - ga; gd[ia] += ga - gh; gf[ih] += gh; gf[ia] += ga
+
+    clave = pts * 1e6 + gd * 1e3 + gf + rng.random((NT, S)) * 1e-3
+
+    # posición dentro de cada grupo + capturar el 3º de cada grupo por sim
+    Ppos = {}                      # team -> [P1,P2,P3,P4]
+    tercer_key = np.zeros((12, S)) # clave del 3º de cada grupo
+    tercer_tid = np.zeros((12, S), dtype=int)
+    for gi, g in enumerate(grupos):
+        ids = [tid[t] for t in g]
+        sub = clave[ids]                       # (4,S)
+        orden = np.argsort(-sub, axis=0)       # (4,S) índices locales por puesto
+        for local, t in enumerate(g):
+            Ppos[t] = [float(np.mean(orden[pos] == local)) for pos in range(4)]
+        loc3 = orden[2]                        # local del 3º por sim
+        tercer_tid[gi] = np.array(ids)[loc3]
+        tercer_key[gi] = sub[loc3, np.arange(S)]
+
+    # mejores 8 terceros: por sim, rankear los 12 terceros, top 8 avanzan
+    avanza3 = np.zeros(NT)
+    orden3 = np.argsort(-tercer_key, axis=0)   # (12,S) grupos ordenados
+    for s in range(S):
+        for gi in orden3[:8, s]:
+            avanza3[tercer_tid[gi, s]] += 1
+    Pavanza3 = avanza3 / S
+
     GRP = "ABCDEFGHIJKL"
-    for gi, g in enumerate(sorted(grupos, key=lambda x: x)):
-        P, pts, gd, gf, orden = simular_grupo(g, pidx[tuple(g)], partidos, args.sims, rng)
-        # orden más probable: asignar por P(1º) desc (greedy)
-        print(f"Grupo {GRP[gi]}:")
-        for e in sorted(range(4), key=lambda e: -P[e, 0]):
-            print(f"   {g[e][:16]:16}  1º:{P[e,0]*100:4.0f}%  2º:{P[e,1]*100:4.0f}%  "
-                  f"3º:{P[e,2]*100:4.0f}%  4º:{P[e,3]*100:4.0f}%  (clasifica {(P[e,0]+P[e,1])*100:3.0f}%)")
-        # equipo más probable de quedar 3º y su "fuerza de tercero"
-        e3 = max(range(4), key=lambda e: P[e, 2])
-        # E[pts] del que quede 3º (proxy de fuerza): media de pts del tercero
-        pts_tercero = np.mean([pts[orden[2, s], s] for s in range(0, args.sims, 50)])
-        terceros.append((pts_tercero, GRP[gi], g[e3]))
-    terceros.sort(reverse=True)
-    print("\nMejores 8 terceros (proxy por pts esperados del 3º del grupo):")
-    for pt, gl, eq in terceros[:8]:
-        print(f"   Grupo {gl}: {eq}  (pts~{pt:.2f})")
+    print(f"{len(grupos)} grupos · {len(partidos)} partidos · {S} sims "
+          f"(SIN sesgo de goles)\n")
+    for gi, g in enumerate(grupos):
+        print(f"Grupo (auto {GRP[gi]}):")
+        for t in sorted(g, key=lambda t: -Ppos[t][0]):
+            p = Ppos[t]
+            extra = f" · 3º-avanza {Pavanza3[tid[t]]*100:3.0f}%" if p[2] > 0.15 else ""
+            print(f"   {t[:16]:16}  1º:{p[0]*100:3.0f}% 2º:{p[1]*100:3.0f}% "
+                  f"3º:{p[2]*100:3.0f}% 4º:{p[3]*100:3.0f}%  (clasif top2 {(p[0]+p[1])*100:3.0f}%){extra}")
+
+    print("\n8 MEJORES TERCEROS más probables (P de avanzar como 3º):")
+    for t in sorted(teams, key=lambda t: -Pavanza3[tid[t]])[:8]:
+        print(f"   {t:18} {Pavanza3[tid[t]]*100:4.0f}%")
     return 0
 
 
