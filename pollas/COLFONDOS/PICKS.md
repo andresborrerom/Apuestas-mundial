@@ -58,6 +58,28 @@ MARGEN, así que en partidos desbalanceados el óptimo es mayor que en CSC
 (p.ej. Brasil 3-0 Haití, Curazao 0-2 C. Marfil). El `--riesgo` desvía hacia
 upside cuando vamos atrás en el field.
 
+## Estrategia de 2 plazas — caminos adaptativos (`caminos_colfondos.py`)
+Con N=50 y plazas gratis, el lever NO es la varianza marcador-a-marcador (mueve
+el std de 32 a 32) sino **diversificar la TESIS DE CAMPEÓN** entre plazas (el
+campeón vale 20 pts + todo su bracket de marcadores). Política (N=50):
+
+| Tu déficit vs líder | Mejor 2ª plaza | P(1º) sólo A → A+B |
+|---|---|---|
+| Adelantado/cerca | **campeón = Inglaterra** (otra mitad) | 25% → 39% |
+| Atrás | Inglaterra / Portugal (más contrario) | 3% → 12% |
+| Muy atrás | Portugal / dark horse | — |
+
+**Recomendación con tus 2 plazas:**
+- **Plaza A (ancla):** España campeón + EV-máx en todo (la favorita).
+- **Plaza B:** **Inglaterra campeón** (finalista de la otra mitad) + marcadores
+  decorrelados. Cubre el 2º escenario más probable; A y B tienen finales
+  distintas → máxima divergencia. Sube P(1º) de 25% a ~39%.
+- **Día a día:** re-correr `caminos_colfondos.py` con tu **déficit real** al líder
+  y `--frac` (torneo restante). Si España es eliminada, A pasa a modo remonte; si
+  caes lejos, empuja B a una tesis más contraria (Portugal/Francia/dark horse).
+- **3ª plaza (si compras):** cubre una **3ª tesis** de campeón (Francia o Portugal)
+  → cubrirías las 3-4 salidas más probables del torneo.
+
 ## Pendiente del usuario
 - ¿Cuántos "clasificados 2da ronda" pide Pollaya (¿16? ¿24? ¿32?)?
 - Confirmar puntos reales si el creador los editó.

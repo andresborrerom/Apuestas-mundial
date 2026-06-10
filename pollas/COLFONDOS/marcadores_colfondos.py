@@ -57,6 +57,20 @@ def evmax(M, riesgo=0.0, modo_goles="uno"):
     return (int(a), int(b)), float(EV[a, b])
 
 
+def evmax_riesgo(M, r=0.0, modo_goles="uno"):
+    """Elige el marcador que maximiza EV + r·desviación (busca-varianza).
+    r=0 -> EV-máx; r alto -> marcadores de más upside (para remontar al field).
+    Devuelve (a,b), EV, std."""
+    nA, nB = M.shape
+    S = matriz_puntos(nA, nB, modo_goles)            # (a,b,x,y) puntos
+    EV = np.einsum("abxy,xy->ab", S, M)
+    E2 = np.einsum("abxy,xy->ab", S * S, M)
+    std = np.sqrt(np.clip(E2 - EV * EV, 0, None))
+    obj = EV + r * std
+    a, b = np.unravel_index(np.argmax(obj), obj.shape)
+    return (int(a), int(b)), float(EV[a, b]), float(std[a, b])
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("--mock", default="")
