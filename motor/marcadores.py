@@ -125,6 +125,56 @@ def ajustar_lambdas(p_local, p_empate, p_visita,
     }
 
 
+def _p_equipo_over(M, linea, eje):
+    """P(goles del equipo > linea). eje=0 -> local (filas), 1 -> visita (cols)."""
+    marg = M.sum(axis=1) if eje == 0 else M.sum(axis=0)
+    return float(marg[np.arange(len(marg)) > linea].sum())
+
+
+def ajustar_lambdas_rico(p_local, p_empate, p_visita,
+                         totales=None, team_local=None, team_visita=None,
+                         usar_dixon_coles=True, max_goles=10):
+    """Como ajustar_lambdas pero usando MÁS mercados (gratis en The Odds API):
+
+    - totales     : lista [(linea, p_over), ...] de la curva de Over/Under total
+                    (alternate_totals). Reemplaza el único punto 2.5.
+    - team_local  : lista [(linea, p_over), ...] del O/U del equipo LOCAL
+                    (team_totals) → restringe directo sus goles.
+    - team_visita : idem para el visitante.
+
+    Ajusta (lambda_local, lambda_visita, rho) por mínimos cuadrados a TODAS las
+    restricciones disponibles. Si solo pasas 1X2, equivale al modelo base.
+    """
+    totales = totales or []
+    team_local = team_local or []
+    team_visita = team_visita or []
+
+    def perdida(params):
+        lh, la = params[0], params[1]
+        rho = params[2] if usar_dixon_coles else 0.0
+        M = matriz_marcadores(lh, la, rho, max_goles=max_goles)
+        h, d, a = prob_1x2(M)
+        err = (h - p_local) ** 2 + (d - p_empate) ** 2 + (a - p_visita) ** 2
+        for linea, po in totales:
+            err += (prob_totales(M, linea)[1] - po) ** 2
+        for linea, po in team_local:
+            err += (_p_equipo_over(M, linea, 0) - po) ** 2
+        for linea, po in team_visita:
+            err += (_p_equipo_over(M, linea, 1) - po) ** 2
+        return err
+
+    if usar_dixon_coles:
+        x0, bounds = [1.3, 1.1, -0.05], [(0.05, 6.0), (0.05, 6.0), (-0.15, 0.15)]
+    else:
+        x0, bounds = [1.3, 1.1], [(0.05, 6.0), (0.05, 6.0)]
+    res = minimize(perdida, x0, bounds=bounds, method="L-BFGS-B")
+    lh, la = res.x[0], res.x[1]
+    rho = res.x[2] if usar_dixon_coles else 0.0
+    M = matriz_marcadores(lh, la, rho, max_goles=max_goles)
+    return {"lambda_local": float(lh), "lambda_visita": float(la),
+            "rho": float(rho), "matriz": M, "error": float(res.fun)}
+
+
 # --------------------------------------------------------------------------
 # Construcción directa desde cuotas de marcador exacto
 # --------------------------------------------------------------------------

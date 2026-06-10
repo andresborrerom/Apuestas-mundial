@@ -19,7 +19,8 @@ def analizar_partido(cuotas_1x2, regla,
                      metodo_margen="proporcional",
                      usar_dixon_coles=True,
                      max_goles_relleno=6,
-                     sesgo_goles=0.0):
+                     sesgo_goles=0.0,
+                     matriz=None):
     """Analiza un partido de punta a punta y devuelve el relleno óptimo.
 
     Parámetros
@@ -37,7 +38,10 @@ def analizar_partido(cuotas_1x2, regla,
     Devuelve un dict con probabilidades 1X2, lambdas, marcador más probable
     y, sobre todo, la predicción que maximiza los puntos esperados.
     """
-    if cuotas_marcador_exacto is not None:
+    if matriz is not None:
+        M = matriz
+        info_modelo = {"fuente": "matriz_precomputada"}
+    elif cuotas_marcador_exacto is not None:
         M = marcadores.matriz_desde_cuotas_exactas(
             cuotas_marcador_exacto, metodo_margen=metodo_margen)
         info_modelo = {"fuente": "cuotas_marcador_exacto"}

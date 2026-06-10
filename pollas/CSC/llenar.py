@@ -31,7 +31,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(
 
 import numpy as np
 from motor import analizar_partido
-from motor import odds_api, marcadores, simulacion_polla as sp
+from motor import odds_api, cuotas, marcadores, simulacion_polla as sp
 from pollas.CSC.reglas import regla_de_ronda, RONDAS
 
 
@@ -104,6 +104,9 @@ def main(argv=None):
                    choices=["proporcional", "aditivo", "potencia", "shin"])
     p.add_argument("--sesgo-goles", type=float, default=0.05,
                    help="sesgo hacia gol=1 (validado: ~+0.03 pts/partido). 0 lo apaga")
+    p.add_argument("--rico", action="store_true",
+                   help="modelo enriquecido (curva O/U + O/U por equipo, gratis). "
+                        "1 llamada API por partido; recomendado en eliminatorias")
     p.add_argument("--cupos", type=int, default=1,
                    help="generar K planillas perturbadas (descorrelacionadas)")
     p.add_argument("--n-swaps", type=int, default=-1,
@@ -170,11 +173,22 @@ def main(argv=None):
         c = odds_api.consenso_evento(ev, linea_pref=args.line)
         if not c["cuotas_1x2"]:
             continue
+        matriz_rica = None
+        if args.rico and args.api_key and ev.get("id"):
+            try:  # modelo enriquecido: curva O/U + O/U por equipo (gratis)
+                rc = odds_api.consenso_rico(
+                    odds_api.bajar_evento_mercados(args.api_key, ev["id"]))
+                pp = cuotas.a_probabilidades(rc["cuotas_1x2"], args.metodo_margen)
+                matriz_rica = marcadores.ajustar_lambdas_rico(
+                    pp[0], pp[1], pp[2], totales=rc["totales"],
+                    team_local=rc["team_local"], team_visita=rc["team_visita"])["matriz"]
+            except Exception:
+                matriz_rica = None
         r = analizar_partido(
             cuotas_1x2=c["cuotas_1x2"], regla=regla_de_ronda(ronda_ev),
             cuotas_ou=c["cuotas_ou"], linea_ou=c["linea"] or args.line,
             metodo_margen=args.metodo_margen, max_goles_relleno=7,
-            sesgo_goles=args.sesgo_goles)
+            sesgo_goles=args.sesgo_goles, matriz=matriz_rica)
         gh, ga = r["relleno_optimo"]
         pr = r["prob_1x2"]
         filas.append({

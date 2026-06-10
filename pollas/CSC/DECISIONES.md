@@ -246,3 +246,29 @@ Deadlines de envío (hora Colombia): primera 11/06 1:59pm · dieciseisavos 28/06
 
 > Narrativa de cómo llegamos: `../../HISTORIA.md`. Receta para otra polla:
 > `../../PLAYBOOK.md`.
+
+---
+
+## 9. Mercados enriquecidos (gratis) y trampas conocidas
+
+**Datos extra gratis (ya en la key):** `alternate_totals` (curva completa de
+Over/Under) y `team_totals` (O/U por equipo). Integrados:
+- `motor/odds_api.py`: `bajar_evento_mercados` (endpoint por-evento) + `consenso_rico`.
+- `motor/marcadores.py`: `ajustar_lambdas_rico` (ajusta λ a 1X2 + curva O/U +
+  O/U por equipo).
+- `motor/analizar_partido(..., matriz=...)` y `llenar.py --rico`.
+
+Efecto medido en partidos reales del 2026: los λ se mueven ~+0.1, pero los
+**marcadores óptimos no cambian** (el modelo de goles ya estaba bien calibrado
+con 1X2+O/U 2.5). Marginal. Recomendado solo en eliminatorias (1 llamada API por
+partido). **No validado en E[util]** (necesitaría histórico de `team_totals`,
+plan The Odds API $30/mes; ground truth `correct_score` de Mundial: Betfair
+Historical Basic gratis, 2018/2022).
+
+**Trampa conocida (a NO repetir):** al traducir un edge medido en ground truth a
+E[util] de la polla, **NO inyectes el promedio como una constante determinista**
+en la simulación de ranking. Un edge fijo y sin varianza vale muchísimo más que
+uno ruidoso con la misma media (en colas/ranking la varianza pesa tanto como la
+media — "flaw of averages"). **Siempre re-simula el mecanismo real** (genera los
+rellenos de cada estrategia y deja que puntúen con su diferencia natural por
+torneo). Pasó una vez con un "+1.2 constante" y se corrigió.

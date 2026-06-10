@@ -48,6 +48,71 @@ def bajar_eventos(api_key, sport=SPORT_MUNDIAL,
     return _get(f"{BASE}/sports/{sport}/odds/?{q}")
 
 
+def bajar_evento_mercados(api_key, event_id, sport=SPORT_MUNDIAL,
+                          regions="eu",
+                          markets="h2h,alternate_totals,team_totals"):
+    """Descarga mercados ADICIONALES de UN evento (gratis en tu plan): la curva
+    completa de Over/Under (`alternate_totals`) y el O/U por equipo
+    (`team_totals`). Requiere el endpoint por-evento. Devuelve el dict del evento.
+    """
+    q = urllib.parse.urlencode({
+        "apiKey": api_key, "regions": regions, "markets": markets,
+        "oddsFormat": "decimal", "dateFormat": "iso",
+    })
+    return _get(f"{BASE}/sports/{sport}/events/{event_id}/odds/?{q}")
+
+
+def _devig_par(over, under):
+    """De-vig de un par Over/Under -> P(over)."""
+    io, iu = 1.0 / over, 1.0 / under
+    return io / (io + iu)
+
+
+def consenso_rico(evento):
+    """Consenso (mediana de casas) de un evento con mercados adicionales.
+
+    Devuelve dict con: cuotas_1x2 [L,E,V], totales [(linea, p_over), ...] (curva
+    Over/Under), team_local [(linea, p_over), ...] y team_visita [...]. Listo
+    para `marcadores.ajustar_lambdas_rico`.
+    """
+    home, away = evento.get("home_team"), evento.get("away_team")
+    h2h = {home: [], "Draw": [], away: []}
+    tot = {}                  # punto -> {"Over":[odds], "Under":[odds]}
+    team = {home: {}, away: {}}  # equipo -> punto -> {"Over":[],"Under":[]}
+    for casa in evento.get("bookmakers", []):
+        for m in casa.get("markets", []):
+            k = m["key"]
+            for o in m["outcomes"]:
+                nm, pt, pr = o.get("name"), o.get("point"), o.get("price")
+                if k == "h2h" and nm in h2h:
+                    h2h[nm].append(pr)
+                elif k in ("totals", "alternate_totals") and pt is not None:
+                    tot.setdefault(pt, {}).setdefault(nm, []).append(pr)
+                elif k == "team_totals" and pt is not None:
+                    eq = o.get("description")
+                    if eq in team:
+                        team[eq].setdefault(pt, {}).setdefault(nm, []).append(pr)
+
+    def curva(d):
+        out = []
+        for pt, oc in sorted(d.items()):
+            if oc.get("Over") and oc.get("Under"):
+                out.append((pt, _devig_par(median(oc["Over"]), median(oc["Under"]))))
+        return out
+
+    c1x2 = None
+    if all(h2h[k] for k in (home, "Draw", away)):
+        c1x2 = [median(h2h[home]), median(h2h["Draw"]), median(h2h[away])]
+    return {
+        "home": home, "away": away, "inicio": evento.get("commence_time"),
+        "cuotas_1x2": c1x2,
+        "totales": curva(tot),
+        "team_local": curva(team[home]),
+        "team_visita": curva(team[away]),
+        "n_casas": len(evento.get("bookmakers", [])),
+    }
+
+
 # --------------------------------------------------------------------------
 # Consenso de casas (parsing puro, testeable sin red)
 # --------------------------------------------------------------------------
