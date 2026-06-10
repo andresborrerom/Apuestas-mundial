@@ -71,7 +71,12 @@ def construir(args):
     r32_occ = {sl: (occp(c1, sl), occp(c2, sl)) for sl, c1, c2 in R32}
     arbolN = M.arbol_consistente(atk, dfn, tid, inv, {sl: (inv[a], inv[b]) for sl, (a, b) in r32_occ.items()})
     arbol = {sl: (tid[A], tid[B], tid[g]) for sl, (A, B, g) in arbolN.items()}
-    pick_marc = {sl: M.evmax_marcador(score[sl][0], score[sl][1], PTS[sl])[0] for sl in PTS}
+    # marcador EV-máx, orientado a coherencia con el ganador del árbol
+    pick_marc = {}
+    for sl in PTS:
+        A, B, gw = arbol[sl]
+        orient = "A" if gw == A else ("B" if gw == B else None)
+        pick_marc[sl] = M.evmax_marcador(score[sl][0], score[sl][1], PTS[sl], orient=orient)[0]
     nuestra = dict(grupo=grupo_pick, r32=r32_occ, arbol=arbol, marc=pick_marc,
                    honor={1: arbol[104][2], 2: (arbol[104][0] if arbol[104][2]==arbol[104][1] else arbol[104][1]),
                           3: arbol[103][2], 4: (arbol[103][0] if arbol[103][2]==arbol[103][1] else arbol[103][1])})

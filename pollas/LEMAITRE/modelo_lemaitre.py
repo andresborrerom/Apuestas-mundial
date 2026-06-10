@@ -202,11 +202,18 @@ def calibrar(atk0, dfn0, ent_r32, teams, tid, futures, S):
     return delta, q, p_mkt, tau
 
 
-def evmax_marcador(gA, gB, pe):
+def evmax_marcador(gA, gB, pe, orient=None):
+    """Marcador EV-máx bajo (exacto,resultado,parcial). orient restringe a
+    coherencia con el ganador del árbol: 'A' (a>=b), 'B' (a<=b) o None (libre).
+    El empate se permite (penales deciden quién avanza)."""
     exact, res, parc = pe
     best, bev = (1, 0), -1.0
     for a in range(7):
         for b in range(7):
+            if orient == "A" and a < b:
+                continue
+            if orient == "B" and a > b:
+                continue
             ex = (gA == a) & (gB == b)
             rmatch = (np.sign(a - b) == np.sign(gA - gB)) & ~ex
             pmatch = ((gA == a) | (gB == b)) & ~ex & (np.sign(a - b) != np.sign(gA - gB))
@@ -342,14 +349,17 @@ def main(argv=None):
     print("\n=== BRACKET (árbol coherente) — equipos + marcador EV-máx ===")
     ev_total_marc = 0.0
     pick_marc = {}
+    def _orient(sl):
+        A, B, g = arbol[sl]
+        return "A" if g == A else ("B" if g == B else None)
     for sl, c1, c2 in R32:
         A, B, g = arbol[sl]
-        (a, b), ev = evmax_marcador(score[sl][0], score[sl][1], PTS[sl]); ev_total_marc += ev
+        (a, b), ev = evmax_marcador(score[sl][0], score[sl][1], PTS[sl], _orient(sl)); ev_total_marc += ev
         pick_marc[sl] = (a, b)
         print(f"  P#{sl} [{c1:8}vs {c2:9}] {A[:13]:13} {a}-{b} {B[:13]:13} | gana {g[:12]} (EV marc {ev:.1f})")
     for sl in [89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104]:
         A, B, g = arbol[sl]
-        (a, b), ev = evmax_marcador(score[sl][0], score[sl][1], PTS[sl]); ev_total_marc += ev
+        (a, b), ev = evmax_marcador(score[sl][0], score[sl][1], PTS[sl], _orient(sl)); ev_total_marc += ev
         pick_marc[sl] = (a, b)
         print(f"  P#{sl} [{ETIQUETA[sl]:8}] {A[:13]:13} {a}-{b} {B[:13]:13} | gana {g[:12]}")
     camp = arbol[104][2]; sub = arbol[104][0] if arbol[104][2] == arbol[104][1] else arbol[104][1]
