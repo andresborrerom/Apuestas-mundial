@@ -31,12 +31,22 @@ def main(argv=None):
     def topc(arr, n):
         return [(inv[i], v / S) for i, v in Counter(arr.tolist()).most_common(n)]
 
-    print("=== CAMPEÓN (20 pts) ===")
+    print("=== CAMPEÓN (20 pts) — P marginal ===")
     for t, p in topc(realiz["campeon"], 6): print(f"   {t:14} {p*100:4.1f}%")
-    print("=== SUBCAMPEÓN (15 pts) ===")
+    print("=== SUBCAMPEÓN (15 pts) — P marginal ===")
     for t, p in topc(realiz["subcampeon"], 5): print(f"   {t:14} {p*100:4.1f}%")
-    print("=== TERCER PUESTO (10 pts) — ganador del partido por el 3º ===")
+    print("=== TERCER PUESTO (10 pts) — P marginal ===")
     for t, p in topc(realiz["tercero"], 5): print(f"   {t:14} {p*100:4.1f}%")
+
+    # recomendación COHERENTE (del árbol): campeón/sub/3º que SÍ pueden co-ocurrir.
+    # España y Francia caen en la MISMA semifinal -> si España es campeón, Francia
+    # no puede ser subcampeón. El subcampeón debe salir del OTRO lado del cuadro.
+    h = nuestra["honor"]
+    print("\n=== RECOMENDADO (coherente con el cuadro, win-óptimo) ===")
+    print(f"   Campeón:    {inv[h[1]]}")
+    print(f"   Subcampeón: {inv[h[2]]}   (del otro lado del cuadro; puede perder la final vs el campeón)")
+    print(f"   3er puesto: {inv[h[3]]}   (perdió la semi contra el campeón)")
+    print("   -> mismo E[pts] que el marginal, pero el escenario bueno pega los 3 juntos (gana pollas)")
 
     # P(avanzar a 2da ronda = ronda de 32): aparece como ocupante en algún slot R32
     NT = len(teams); adv = np.zeros(NT)
@@ -46,11 +56,14 @@ def main(argv=None):
             valido = arr[arr >= 0]          # ignorar slots de 3º sin asignar (-1)
             np.add.at(adv, valido, 1)
     Padv = adv / S
-    print("\n=== CLASIFICADOS 2da RONDA (4 pts c/u) — P(avanzar), top 24 ===")
+    print("\n=== CLASIFICADOS 2da RONDA (4 pts c/u) — los 32 que clasifican ===")
     orden = np.argsort(-Padv)
-    for k, i in enumerate(orden[:24]):
-        marca = "  <- pick seguro" if Padv[i] > 0.6 else (" (burbuja)" if Padv[i] > 0.4 else "")
-        print(f"   {inv[i]:16} {Padv[i]*100:4.0f}%{marca}")
+    for k, i in enumerate(orden[:32]):
+        sep = "  ----- corte 32 -----" if k == 31 else ""
+        burbuja = " (BURBUJA <70%)" if Padv[i] < 0.70 else ""
+        print(f"   {k+1:2}. {inv[i]:16} {Padv[i]*100:4.0f}%{burbuja}{sep}")
+    print(f"   Siguientes fuera: " +
+          ", ".join(f"{inv[i]}({Padv[i]*100:.0f}%)" for i in orden[32:36]))
 
     # Malla menos vencida (7 pts): defensa fuerte que va lejos.
     # E[GC por partido de grupo] como calidad defensiva; ponderar por P(ir lejos).
