@@ -147,10 +147,41 @@ Necesito tu lectura del campo. (`--p-afilado` ajusta el supuesto.)
 python pollas/LEMAITRE/competencia_lemaitre.py --inscritos N --planillas K --p-afilado X
 ```
 
+## 8. ¿Cuánto vale la aleatoriedad y DÓNDE meterla? (decorrelación de planillas)
+Misma idea estrella de CSC. Si compras K planillas, ganas si **una** pega; para
+eso hay que **decorrelarlas en decisiones baratas y de alta varianza**. Medido
+(`aleatoriedad_lemaitre.py`, N=50, campo blando p_afilado=12%):
+
+| Estrategia | K | E[pts]/plla | P(1º) | E[utilidad] |
+|---|---:|---:|---:|---:|
+| 1 planilla | 1 | 1086 | 13.4% | +$1.11M |
+| **idénticas** | 5 | 1086 | 14.1% | +$1.00M |
+| + marcadores | 5 | 1056 | 23.6% | +$1.63M |
+| + marc + grupos | 5 | 1049 | 27.4% | +$1.91M |
+| + marc + grupos + bracket | 5 | 1040 | 32.6% | **+$2.25M** |
+
+A N=100: 1 planilla +$0.96M (P 5.2%) → decorrelada K=5 +$2.78M (P 19%).
+
+**Dónde meter el azar, por costo-beneficio:**
+1. **Marcadores** (30 con 2ª opción a <1.5 pts del óptimo): el lugar más barato,
+   casi duplica P(1º) por ~6 pts/planilla. El marcador exacto ya es lotería.
+2. **Grupos cerrados** (1º/2º casi 50-50: **D, B, K, F**): el crédito "invertido"
+   amortigua el swap.
+3. **Cruce de bracket disputado** (cuartos/semis parejos): caro en E[pts] pero
+   mueve los puntos grandes de clasificación+honor.
+- **Planillas idénticas no sirven** (todas empatan, no ensanchan la cola).
+
+Caveats: cifras en $ **indicativas** (dependen del modelo de campo y de
+p_afilado); lo robusto es el **orden** (idénticas=0 < marcadores < grupos <
+bracket) y que decorrelar **multiplica P(1º)**.
+
 ## Reproducir
 ```
 ODDS_API_KEY=... python pollas/LEMAITRE/modelo_lemaitre.py            # live
 python pollas/LEMAITRE/modelo_lemaitre.py --mock /tmp/wc_grupos.json  # cache
 python pollas/LEMAITRE/backtest_clasificacion.py                      # ground truth
+python pollas/LEMAITRE/competencia_lemaitre.py --inscritos N          # E[ganancia]
+python pollas/LEMAITRE/aleatoriedad_lemaitre.py                       # dónde meter azar
+python pollas/LEMAITRE/llenar_excel.py                                # llenar el Excel
 ```
-Salida del formulario completo: `pollas/LEMAITRE/FORMULARIO_lemaitre.csv`.
+Salidas: `FORMULARIO_lemaitre.csv` y `2026 06 Form Polla Mundial US-MX-CA_LLENO.xlsx`.

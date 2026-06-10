@@ -25,9 +25,23 @@ CSC como plantilla y ajusta los puntos 1-2.
 Mecanismos validados (transferibles, re-tunear magnitudes por polla):
 - **EV-máximo** (rellenar maximizando puntos esperados, no el más probable).
 - **Sesgo a gol=1** (si la regla premia goles exactos asimétricamente).
-- **Perturbación mínima** entre cupos (descorrelacionar para subir P(1º)).
+- **Perturbación mínima / decorrelación** entre cupos (subir P(1º)). Dónde meter
+  el azar, por costo-beneficio: **marcadores casi-empatados** (baratísimo) →
+  **grupos cerrados** (crédito "invertido" amortigua) → **cruces de bracket
+  disputados** (caro, alto impacto). Idénticas = plata botada.
 - **Dispersión creciente por ronda** (poca donde hay muchos partidos, mucha
   donde hay pocos y valen más).
+
+Para pollas con CLASIFICACIÓN / CAMPEÓN (tipo LEMAITRE; ver `pollas/LEMAITRE/`):
+- **Sim de grupos desde cuotas de partido** → posiciones + mejores terceros
+  (validado: P(clasificar) calibrada; top-2 exacto ~38% = piso de incertidumbre).
+- **Ratings ataque/defensa** para cruces arbitrarios (`motor/ratings.py`), pero
+  **OJO sesgo**: derivados solo de grupos sobre-estiman a equipos de grupos
+  débiles. **Calibrar la fuerza de eliminatoria al futures de campeón**
+  (`soccer_fifa_world_cup_winner`) con 1 temperatura τ (búsqueda 1-D por KL).
+- **Árbol coherente** (forward pass) para que el ganador fluya; **marcador
+  orientado** al ganador (no contradecir a quién avanza).
+- **Llenado del Excel/Form** automatizado por celda + artefacto verificado.
 
 ---
 
@@ -83,7 +97,13 @@ Mecanismos validados (transferibles, re-tunear magnitudes por polla):
 
 | Polla | Reglas | Modelo | Estado |
 |---|---|---|---|
-| CSC | ✅ (PDF) | EV-máx + sesgo + perturbación + dispersión/ronda | **Cerrada: 5 cupos** |
-| COLFONDOS | imagen subida | pendiente (incluye campeón/goleador) | por montar |
-| INGENIERO | PDF + xlsx subidos | pendiente (incluye campeón/goleador) | por montar |
-| LEMAITRE | por subir | parte del playbook | por montar |
+| CSC | ✅ (PDF) | EV-máx + sesgo + perturbación + dispersión/ronda | **Cerrada: 5 cupos enviados** |
+| LEMAITRE | ✅ (xlsx) | sim grupos + ratings calibrados a futures + bracket coherente + decorrelación | **Lleno; falta N para # planillas (deadline 11-jun)** |
+| COLFONDOS | imagen (IMG_9925.png) | pendiente | **siguiente** |
+| INGENIERO | PDF + xlsx | pendiente (deadline grupos pasó 1-jun) | en pausa |
+
+Notas clave por polla:
+- **LEMAITRE**: el 44% del puntaje es clasificación (no goles). Ver
+  `pollas/LEMAITRE/MODELO.md`. E[pts] ≈ 1086/3900 (sin extras de jugador ~360).
+  Comandos: `modelo_lemaitre.py` (form), `competencia_lemaitre.py` (E[ganancia]
+  vs N), `aleatoriedad_lemaitre.py` (dónde meter azar), `llenar_excel.py` (Excel).

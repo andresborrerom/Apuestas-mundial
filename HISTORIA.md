@@ -217,6 +217,123 @@ poniendo los números.
 
 ---
 
+## Acto 13 — Polla nueva (LEMAITRE): cuando el puntaje NO son los goles
+
+**El usuario abrió otra polla** (LEMAITRE) y subió el Excel oficial. Al leer las
+reglas, **el supuesto por defecto de CSC se cayó**: aquí **no se puntúan los
+marcadores de fase de grupos**; el 44% del puntaje es **clasificación** (qué
+equipos avanzan y a qué puesto), y hay 750 pts de **extras** (total goles,
+continente campeón, Colombia, goleador…).
+
+**Claude hizo:** leyó las 7 hojas del Excel, sacó el **presupuesto de puntos por
+sección** (máx 3900) y reorientó el modelo: el motor de CSC optimizaba goles;
+LEMAITRE exige optimizar **clasificación**. Construyó una sim Monte Carlo de los
+12 grupos (de las cuotas de cada partido) → quién clasifica, posiciones, 8
+mejores terceros — y la **validó con ground truth** (`backtest_clasificacion.py`,
+4 Mundiales reales del paquete `oddor`): P(clasificar) **bien calibrada**;
+ganador de grupo 69%; top-2 exacto **38%** (los grupos son genuinamente
+impredecibles — ese 38% es **piso de incertidumbre**, no error del modelo).
+
+**Lección:** **las reglas de pago redefinen el problema.** El usuario lo dijo
+sin rodeos: *"calibramos para unos pagos que poco tienen que ver con goles"*. El
+mismo motor, reapuntado a otra función objetivo.
+
+---
+
+## Acto 14 — El sesgo oculto de los ratings y la calibración al MERCADO de campeón
+
+**El problema:** para las eliminatorias hay que cruzar equipos de grupos
+distintos. Claude armó un modelo de **fuerzas (ataque/defensa)** sacado de los
+partidos de grupo. Al simular el bracket, salía **Bélgica 7.6% campeón, Alemania
+9.9%** — sospechosamente alto.
+
+**Claude diagnosticó (medido, no supuesto):** derivar ratings **solo** de
+partidos de grupo **sobre-estima a equipos de grupos débiles** (Bélgica le gana
+fácil a Egipto/Irán/N.Zelanda → infla su ataque) e **infra-estima escuadras
+élite en grupos medios** (Francia, Inglaterra). Lo confrontó con un **mercado
+gratis que no estábamos usando**: las cuotas de **campeón** (`soccer_fifa_world_
+cup_winner`, 5 casas). Brecha clara: Francia mercado 14.7% vs sim 8.2%; Bélgica
+mercado 2.1% vs sim 7.3%.
+
+**Claude hizo:** **calibró la fuerza de eliminatoria al futures de campeón.**
+Primero intentó regresión + gradiente-en-el-loop — **inestable, lo descartó y lo
+documentó**. La versión final: **una sola temperatura τ** que importa el ranking
+del mercado (δ ∝ log p_campeón) **reemplazando** la fuerza sesgada de la sim,
+buscada en 1-D por mínima divergencia KL. Resultado: la distribución de campeón
+**cuadra con el consenso de 5 casas** (España 15.8 vs 15.4, Francia 14.2 vs
+14.7…). Separación limpia: **los grupos no se tocan** (sus cuotas ya son el
+mercado correcto); solo se recalibra la fuerza cruzada.
+
+**Lección:** **usa TODOS los mercados gratis** — cada uno calibra una parte
+distinta (partidos→grupos, futures→profundidad). Y cuando un método de
+calibración es inestable, **se dice y se reemplaza**, no se maquilla.
+
+---
+
+## Acto 15 — Llenar el Excel completo (y un bug de coherencia)
+
+**El usuario:** "Hay que llenar **todo** el Excel."
+
+**Claude hizo:** mapeó las celdas exactas de las hojas *Grupos* y *Form000*,
+construyó el **árbol del bracket coherente** (forward pass: en cada llave avanza
+el de mayor P(ganar) cabeza a cabeza con los ratings calibrados; el ganador
+fluye al siguiente partido) y escribió todo en una copia `*_LLENO.xlsx`. Al
+verificar, **encontró su propio bug**: el marcador EV-máx (que es
+team-independiente) decía "Brasil 1-0 Inglaterra" pero Claude hacía avanzar a
+Inglaterra → la planilla se contradecía. Lo arregló **restringiendo el marcador
+a ser coherente con el equipo que avanza** (costo de EV despreciable). Los
+extras de **jugador** (goleador, 1er/últ gol) los dejó marcados `[REVISAR]`:
+**sin data gratis, no se inventan.**
+
+**Lección:** automatizar la **operatividad** (no pasarte un CSV para que copies)
+y **verificar el artefacto final**, no solo el modelo. Los bugs aparecen al mirar
+la salida real.
+
+---
+
+## Acto 16 — ¿Cuánto vale la aleatoriedad y DÓNDE meterla? (decorrelación, otra vez)
+
+**El usuario:** "Me interesa cuánto vale algo de aleatoriedad y dónde meterla,
+como hicimos en el pasado." (la idea estrella de CSC, ahora en LEMAITRE).
+
+**Claude hizo:** un análisis que separa el valor de aleatorizar en tres lugares
+y mide su **costo en E[pts]** vs su **ganancia en P(1º)** (`aleatoriedad_lemaitre
+.py`), con reparto de premios real (60/30/10, con desempates). Hallazgos (N=50,
+campo blando):
+- **Planillas idénticas no sirven** (P(1º) 13→14% con K=5): todas empatan, no
+  ensanchan la cola ganadora. Plata botada.
+- **Marcadores = el lugar más barato** (30 con 2ª opción casi igual): cuesta ~6
+  pts/planilla y **casi duplica P(1º)**.
+- Luego **grupos cerrados** (D, B, K, F — el crédito "invertido" amortigua el
+  swap) y por último un **cruce de bracket disputado** (caro pero alto impacto).
+- Decorrelando en los tres, K=5 → **P(1º) 33%, E[util] +$2.25M** (vs +$1.11M con
+  1 planilla). A N=100 el patrón se mantiene.
+
+**Lección:** la mejor mejora de CSC **transfiere** a una polla de estructura
+muy distinta, y Claude la volvió a **cuantificar por separado** (dónde, cuánto
+cuesta, cuánto rinde) en vez de "echar azar a todo".
+
+---
+
+## Acto 17 — Field model honesto: el resultado vive de un supuesto
+
+**Para E[ganancias]** Claude construyó un **modelo de campo** (rivales
+sintéticos con habilidad θ: afilados que siguen el mercado vs casuales que
+siguen nombres grandes) y midió P(1º/2º/3º) y E[util] según **N inscritos**.
+
+**La bandera de honestidad:** el resultado es **extremadamente sensible** a qué
+tan afilado es el campo — a N=80 va de **+$1.13M** (campo casual) a **−$203k**
+(campo afilado). Nuestra ventaja en E[pts] es real (1086 vs 853), pero que se
+vuelva +dinero depende de un dato del mundo real que **solo el usuario conoce**.
+Claude lo dejó como **supuesto explícito y ajustable** (`--p-afilado`), nunca
+escondido en un número.
+
+**Lección:** cuando el resultado depende de algo que no se puede medir desde los
+datos, **se nombra el supuesto, se da la sensibilidad, y se le pide al usuario su
+lectura** — no se entrega un número falsamente preciso.
+
+---
+
 ## Las 10 lecciones de "cómo usar Claude" (para el curso)
 
 1. **Da el objetivo, no la implementación.** Claude aporta el marco técnico.
@@ -230,6 +347,12 @@ poniendo los números.
 8. **Pide sensibilidad y varias semillas;** desconfía de un solo número.
 9. **Delega investigación a sub-agentes** (buscar datos, comparar precios).
 10. **Mira la distribución, no solo la media.** Deciles, casos, colas.
+11. **Las reglas de pago redefinen el problema.** El mismo motor, reapuntado a
+    otra función objetivo (CSC=goles, LEMAITRE=clasificación).
+12. **Usa todos los mercados gratis** — cada uno calibra una parte distinta
+    (cuotas de partido→grupos; futures de campeón→fuerza de eliminatoria).
+13. **Verifica el artefacto final**, no solo el modelo: el bug de coherencia del
+    marcador apareció al mirar el Excel lleno, no la simulación.
 
 ---
 
