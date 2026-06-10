@@ -137,18 +137,18 @@ def main(argv=None):
         escribe_slot(sl, A, B, nuestra["marc"][sl])
 
     # Extras Colombia (col N) y Extras (col R)
-    wf["N6"] = "[REVISAR] (jugador)"      # Anotador 1er Gol
-    wf["N7"] = "[REVISAR] (jugador)"      # Anotador Ultimo Gol
+    wf["N6"] = "Luis Díaz"                # Anotador 1er Gol Colombia (conjetura: estrella COL)
+    wf["N7"] = "Luis Díaz"                # Anotador Ultimo Gol Colombia (conjetura)
     wf["N8"] = extras["col_gf"]            # Total goles Favor Colombia
     wf["N9"] = extras["col_gc"]            # Total goles Contra Colombia
     wf["N10"] = f"{extras['col_pos']}º grupo K"  # Posición Tabla
     wf["R6"] = extras["total_goles"]      # Número Total de Goles
-    wf["R7"] = "[REVISAR] (jugador)"      # Jugador Goleador
-    wf["R8"] = "[REVISAR] (jugador)"      # Número de Goles
-    wf["R9"] = "[REVISAR]"                # Equipo Primer Gol
-    wf["R10"] = "[REVISAR]"               # Equipo Ultimo Gol
-    wf["R11"] = "[REVISAR]"               # Equipo Gol No. 50
-    wf["R12"] = "[REVISAR]"               # Equipo Gol No. 100
+    wf["R7"] = "Kylian Mbappé"            # Jugador Goleador (favorito mercado ~14%)
+    wf["R8"] = 7                           # Número de Goles del goleador (estimado formato ampliado)
+    wf["R9"] = "México"                   # Equipo Primer Gol (local del partido inaugural)
+    wf["R10"] = "España"                  # Equipo Ultimo Gol (campeón anota en la final)
+    wf["R11"] = "España"                  # Equipo Gol No. 50 (conjetura: equipo más goleador)
+    wf["R12"] = "Alemania"               # Equipo Gol No. 100 (conjetura: equipo más goleador)
     wf["R13"] = extras["ultimo_lugar"]    # Equipo Ultimo Lugar
     wf["R14"] = extras["mas_gf"]          # Equipo + Goles a favor
     wf["R15"] = extras["mas_gc"]          # Equipo + Goles en contra
