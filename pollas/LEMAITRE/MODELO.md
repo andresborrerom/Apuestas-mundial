@@ -127,6 +127,26 @@ E[ganancia] = Σ P(quedar 1º/2º/3º)·premio − inscripción. Necesita:
   aciertos raros — igual que en CSC, conviene **diferenciar** si se compran
   varias planillas. Listo para correr en cuanto pases N.
 
+### Sensibilidad CRÍTICA: qué tan afilado es el campo (N=80, 1 planilla)
+Nuestra ventaja en E[pts] es real (1083 vs ~879 del pool), pero que se convierta
+en +E[dinero] depende **enteramente** de la habilidad de los rivales — un dato
+del mundo real que solo tú conoces (¿son familiares casuales o apostadores
+afilados?):
+
+| Campo (fracción afilados) | P(1º) | E[utilidad] |
+|---|---:|---:|
+| Mayormente casual (10%) | 7.2% | **+$1.13M** |
+| Mixto (25%) | 1.6% | +$196k |
+| Afilado (50%) | 0.4% | −$97k |
+| Muy afilado (80%) | 0.1% | −$203k |
+
+→ La decisión de comprar (y cuántas planillas) depende de **N** y de esta mezcla.
+Necesito tu lectura del campo. (`--p-afilado` ajusta el supuesto.)
+
+```
+python pollas/LEMAITRE/competencia_lemaitre.py --inscritos N --planillas K --p-afilado X
+```
+
 ## Reproducir
 ```
 ODDS_API_KEY=... python pollas/LEMAITRE/modelo_lemaitre.py            # live
