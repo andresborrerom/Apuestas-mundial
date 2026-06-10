@@ -1,0 +1,127 @@
+seccion,casilla,pick,marcador,detalle
+GRUPO_A,pos1,Mexico,,
+GRUPO_A,pos2,Czech Republic,,
+GRUPO_A,pos3,South Korea,,
+GRUPO_A,pos4,South Africa,,
+GRUPO_B,pos1,Switzerland,,
+GRUPO_B,pos2,Canada,,
+GRUPO_B,pos3,Bosnia & Herzegovina,,
+GRUPO_B,pos4,Qatar,,
+GRUPO_C,pos1,Brazil,,
+GRUPO_C,pos2,Morocco,,
+GRUPO_C,pos3,Scotland,,
+GRUPO_C,pos4,Haiti,,
+GRUPO_D,pos1,USA,,
+GRUPO_D,pos2,Turkey,,
+GRUPO_D,pos3,Paraguay,,
+GRUPO_D,pos4,Australia,,
+GRUPO_E,pos1,Germany,,
+GRUPO_E,pos2,Ecuador,,
+GRUPO_E,pos3,Ivory Coast,,
+GRUPO_E,pos4,Curaçao,,
+GRUPO_F,pos1,Netherlands,,
+GRUPO_F,pos2,Japan,,
+GRUPO_F,pos3,Sweden,,
+GRUPO_F,pos4,Tunisia,,
+GRUPO_G,pos1,Belgium,,
+GRUPO_G,pos2,Egypt,,
+GRUPO_G,pos3,Iran,,
+GRUPO_G,pos4,New Zealand,,
+GRUPO_H,pos1,Spain,,
+GRUPO_H,pos2,Uruguay,,
+GRUPO_H,pos3,Cape Verde,,
+GRUPO_H,pos4,Saudi Arabia,,
+GRUPO_I,pos1,France,,
+GRUPO_I,pos2,Norway,,
+GRUPO_I,pos3,Senegal,,
+GRUPO_I,pos4,Iraq,,
+GRUPO_J,pos1,Argentina,,
+GRUPO_J,pos2,Austria,,
+GRUPO_J,pos3,Algeria,,
+GRUPO_J,pos4,Jordan,,
+GRUPO_K,pos1,Portugal,,
+GRUPO_K,pos2,Colombia,,
+GRUPO_K,pos3,DR Congo,,
+GRUPO_K,pos4,Uzbekistan,,
+GRUPO_L,pos1,England,,
+GRUPO_L,pos2,Croatia,,
+GRUPO_L,pos3,Ghana,,
+GRUPO_L,pos4,Panama,,
+FASE32,P#73_2A,Czech Republic,,
+FASE32,P#73_2B,Canada,,
+FASE32,P#73_marcador,Czech Republic,1-1,gana Czech Republic
+FASE32,P#74_1E,Germany,,
+FASE32,P#74_3:ABCDF,Bosnia & Herzegovina,,
+FASE32,P#74_marcador,Germany,1-0,gana Germany
+FASE32,P#75_1F,Netherlands,,
+FASE32,P#75_2C,Morocco,,
+FASE32,P#75_marcador,Netherlands,1-0,gana Netherlands
+FASE32,P#76_1C,Brazil,,
+FASE32,P#76_2F,Japan,,
+FASE32,P#76_marcador,Brazil,1-0,gana Brazil
+FASE32,P#77_1I,France,,
+FASE32,P#77_3:CDFGH,Iran,,
+FASE32,P#77_marcador,France,1-0,gana France
+FASE32,P#78_2E,Ecuador,,
+FASE32,P#78_2I,Norway,,
+FASE32,P#78_marcador,Norway,0-1,gana Norway
+FASE32,P#79_1A,Mexico,,
+FASE32,P#79_3:CEFHI,Ivory Coast,,
+FASE32,P#79_marcador,Mexico,1-0,gana Mexico
+FASE32,P#80_1L,England,,
+FASE32,P#80_3:EHIJK,DR Congo,,
+FASE32,P#80_marcador,England,1-0,gana England
+FASE32,P#81_1D,USA,,
+FASE32,P#81_3:BEFIJ,Bosnia & Herzegovina,,
+FASE32,P#81_marcador,USA,1-0,gana USA
+FASE32,P#82_1G,Belgium,,
+FASE32,P#82_3:AEHIJ,South Korea,,
+FASE32,P#82_marcador,Belgium,1-0,gana Belgium
+FASE32,P#83_2K,Colombia,,
+FASE32,P#83_2L,Croatia,,
+FASE32,P#83_marcador,Colombia,1-0,gana Colombia
+FASE32,P#84_1H,Spain,,
+FASE32,P#84_2J,Austria,,
+FASE32,P#84_marcador,Spain,1-0,gana Spain
+FASE32,P#85_1B,Switzerland,,
+FASE32,P#85_3:EFGIJ,Uzbekistan,,
+FASE32,P#85_marcador,Switzerland,1-0,gana Switzerland
+FASE32,P#86_1J,Argentina,,
+FASE32,P#86_2H,Uruguay,,
+FASE32,P#86_marcador,Argentina,1-0,gana Argentina
+FASE32,P#87_1K,Portugal,,
+FASE32,P#87_3:DEIJL,Ghana,,
+FASE32,P#87_marcador,Portugal,1-0,gana Portugal
+FASE32,P#88_2D,Turkey,,
+FASE32,P#88_2G,Egypt,,
+FASE32,P#88_marcador,Turkey,1-0,gana Turkey
+Octavos,P#89,France,0-1,Germany vs France
+Octavos,P#90,Netherlands,0-1,Czech Republic vs Netherlands
+Octavos,P#91,Brazil,1-0,Brazil vs Norway
+Octavos,P#92,England,0-1,Mexico vs England
+Octavos,P#93,Spain,0-1,Colombia vs Spain
+Octavos,P#94,Belgium,0-1,USA vs Belgium
+Octavos,P#95,Argentina,1-0,Argentina vs Turkey
+Octavos,P#96,Portugal,0-1,Switzerland vs Portugal
+Cuartos,P#97,France,1-0,France vs Netherlands
+Cuartos,P#98,Spain,1-0,Spain vs Belgium
+Cuartos,P#99,England,1-0,Brazil vs England
+Cuartos,P#100,Portugal,1-0,Argentina vs Portugal
+Semi,P#101,Spain,0-1,France vs Spain
+Semi,P#102,England,1-0,England vs Portugal
+3er/4to,P#103,France,0-1,France vs Portugal
+Final,P#104,Spain,1-0,Spain vs England
+HONOR,campeon,Spain,,
+HONOR,subcampeon,England,,
+HONOR,tercero,France,,
+HONOR,cuarto,Portugal,,
+EXTRA,continente_campeon,UEFA,,
+EXTRA,continente_subcampeon,UEFA,,
+EXTRA,total_goles,275,,
+EXTRA,equipo_mas_gf,Spain,,
+EXTRA,equipo_menos_gf,Curaçao,,
+EXTRA,equipo_mas_gc,Curaçao,,
+EXTRA,equipo_menos_gc,Spain,,
+EXTRA_COL,posicion_grupo_colombia,2,,GF~5 GC~3
+EXTRA_COL,colombia_gf,5,,
+EXTRA_COL,colombia_gc,3,,
