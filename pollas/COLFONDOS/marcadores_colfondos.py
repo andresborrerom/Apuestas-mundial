@@ -2,10 +2,10 @@
 """
 COLFONDOS (Pollaya) — filler DIARIO de marcadores EV-máx.
 
-Puntaje por partido (tablero Pollaya):
-  marcador exacto 4 · ganador/empate 3 · diferencia de gol 1 · goles de un equipo 1
-Es CUMULATIVO (cada sub-acierto suma). Supuesto: "goles de un equipo" = +1 si
-aciertas los goles de AL MENOS un equipo (redacción en singular). Ajustable.
+Puntaje por partido (tablero Pollaya, CONFIRMADO por el usuario):
+  marcador exacto 4 · ganador/empate 3 · diferencia de gol 1 · goles de CADA equipo 1
+Es CUMULATIVO. "Goles de un equipo" = +1 por CADA equipo cuyo nº de goles aciertes
+(máx 2). Por eso un MARCADOR EXACTO = 4+3+1+1+1 = 10 puntos.
 
 Pensado para correr DÍA A DÍA (loop): baja cuotas, filtra los partidos del día y
 escupe el marcador EV-máx de cada uno. El 'dial de riesgo' (--riesgo) desvía del
@@ -24,7 +24,7 @@ from pollas.CSC.cupos import matriz_de_evento
 W_EXACTO, W_GANADOR, W_DIF, W_GOLES = 4, 3, 1, 1
 
 
-def matriz_puntos(nA, nB, modo_goles="uno"):
+def matriz_puntos(nA, nB, modo_goles="cada"):
     """pts[a,b,x,y] -> matriz de puntos COLFONDOS de predecir (a,b) si sale (x,y).
     Devuelve P[a,b] (EV por celda) tras multiplicar por probabilidades aparte."""
     A = np.arange(nA)[:, None, None, None]
@@ -42,7 +42,7 @@ def matriz_puntos(nA, nB, modo_goles="uno"):
     return s  # (a,b,x,y)
 
 
-def evmax(M, riesgo=0.0, modo_goles="uno"):
+def evmax(M, riesgo=0.0, modo_goles="cada"):
     """Marcador EV-máx bajo COLFONDOS. M = matriz de prob de marcador (x,y).
     riesgo in [0,1]: 0 = EV-máx puro; >0 penaliza la prob del marcador elegido
     (busca upside, para remontar en el field)."""
@@ -57,7 +57,7 @@ def evmax(M, riesgo=0.0, modo_goles="uno"):
     return (int(a), int(b)), float(EV[a, b])
 
 
-def evmax_riesgo(M, r=0.0, modo_goles="uno"):
+def evmax_riesgo(M, r=0.0, modo_goles="cada"):
     """Elige el marcador que maximiza EV + r·desviación (busca-varianza).
     r=0 -> EV-máx; r alto -> marcadores de más upside (para remontar al field).
     Devuelve (a,b), EV, std."""
@@ -76,7 +76,7 @@ def main(argv=None):
     ap.add_argument("--mock", default="")
     ap.add_argument("--api-key", default=os.environ.get("ODDS_API_KEY"))
     ap.add_argument("--riesgo", type=float, default=0.0, help="0=EV-máx, >0 busca upside")
-    ap.add_argument("--modo-goles", default="uno", choices=["uno", "cada"])
+    ap.add_argument("--modo-goles", default="cada", choices=["uno", "cada"])
     args = ap.parse_args(argv)
     eventos = (json.load(open(args.mock, encoding="utf-8"))
                if args.mock and os.path.exists(args.mock) else odds_api.bajar_eventos(args.api_key))

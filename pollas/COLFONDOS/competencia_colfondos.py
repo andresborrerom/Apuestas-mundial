@@ -31,7 +31,7 @@ def cf_pts(pred, gx, gy):
     a, b = pred
     s = 3 * (np.sign(a - b) == np.sign(gx - gy))
     s = s + 1 * ((a - b) == (gx - gy))
-    s = s + 1 * ((a == gx) | (b == gy))
+    s = s + 1 * (a == gx) + 1 * (b == gy)   # goles de CADA equipo (per-team)
     s = s + 4 * ((a == gx) & (gy == b))
     return s
 

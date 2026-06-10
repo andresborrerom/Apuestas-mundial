@@ -6,13 +6,15 @@ iniciar el torneo"* → **hay que confirmar que el creador no cambió estos punt
 
 ## Puntos asignados (default Pollaya)
 
-**Por PARTIDO (marcador):**
+**Por PARTIDO (marcador) — CUMULATIVO:**
 | Concepto | Puntos |
 |---|---:|
 | Marcador exacto | 4 |
 | Selección del ganador (1X2) | 3 |
-| Goles de un equipo (acertar goles de uno) | 1 |
+| Goles de un equipo (por CADA equipo acertado, máx 2) | 1 |
 | Diferencia de gol | 1 |
+
+→ **Marcador EXACTO = 10 puntos** (4+3+1+1+1, confirmado por el usuario).
 
 **Apuestas de TORNEO (outrights):**
 | Concepto | Puntos |
