@@ -94,7 +94,7 @@ def construir(args):
         for arr in (a, b):
             m = arr >= 0; adv[arr[m], np.arange(S)[m]] = 1
     realiz = dict(gmatch=gmatch, Mmat=Mmat, score=score, ganador=ganador, perdedor=perdedor,
-                  ent_r32=ent_r32, campeon=ganador[104], subcampeon=perdedor[104],
+                  ent_r32=ent_r32, occ=occ, campeon=ganador[104], subcampeon=perdedor[104],
                   tercero=ganador[103], cuarto=perdedor[103], adv=adv, gc=gc, tid=tid,
                   inv=inv, S=S, pos=pos)
     # árbol coherente nuestro (para outrights + marcadores KO orientados)
