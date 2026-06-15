@@ -1,0 +1,44 @@
+name: Marcadores y puntos diarios
+
+# Cada mañana baja resultados reales, corre el tablero y abre un issue con los
+# marcadores del día + cómo vamos. También se puede correr a mano (workflow_dispatch).
+#
+# REQUISITO: agregar el secreto ODDS_API_KEY en
+#   Settings -> Secrets and variables -> Actions -> New repository secret
+#   (name: ODDS_API_KEY, value: tu key de the-odds-api.com)
+
+on:
+  schedule:
+    - cron: '0 12 * * *'      # 12:00 UTC = 07:00 Colombia
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  tablero:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet numpy openpyxl
+      - name: Correr tablero
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: |
+          python pollas/puntos.py > salida.txt 2>&1 || true
+          echo "Marcadores y puntos del día (generado automático):" > body.md
+          echo '' >> body.md
+          echo '```' >> body.md
+          cat salida.txt >> body.md
+          echo '```' >> body.md
+          cat salida.txt
+      - name: Abrir issue con el día
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          HOY=$(TZ=America/Bogota date +%F)
+          gh issue create --title "⚽ Marcadores y puntos — $HOY" --body-file body.md
