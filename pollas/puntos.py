@@ -80,10 +80,23 @@ def cargar_colfondos():
 def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("--api-key", default=os.environ.get("ODDS_API_KEY"))
+    ap.add_argument("--mock", default="/tmp/wc_scores.json")
     ap.add_argument("--hoy", default="")
     ap.add_argument("--detalle", action="store_true")
     args = ap.parse_args(argv)
-    ev = bajar_scores(args.api_key)
+    ev = None
+    if args.api_key:
+        try:
+            ev = bajar_scores(args.api_key)
+        except Exception as ex:
+            print(f"(aviso: no hay datos en vivo: {ex})")
+    if ev is None:
+        try:
+            with open(args.mock, encoding="utf-8") as f:
+                ev = json.load(f)
+            print(f"(usando datos en caché: {args.mock})")
+        except Exception:
+            ev = []
     csc = cargar_csc(); col = cargar_colfondos()
     regla = regla_de_ronda("primera")
 
