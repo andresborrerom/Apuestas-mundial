@@ -1,0 +1,58 @@
+name: CSC eliminatorias — cupos antes del deadline
+
+# En los días previos al deadline de cada ronda de eliminatoria, baja las cuotas
+# de la ronda que viene, genera los 5 cupos descorrelacionados y los publica en
+# un issue. Si aún no es momento (o no hay cuotas todavía), no hace nada.
+#
+# REQUISITO: secreto ODDS_API_KEY en Settings -> Secrets and variables -> Actions.
+
+on:
+  schedule:
+    - cron: '0 13 * * *'      # 13:00 UTC = 08:00 Colombia
+  workflow_dispatch:
+    inputs:
+      round:
+        description: "Forzar ronda (dieciseisavos/octavos/cuartos/semis/tercer_puesto/final) o vacío=auto"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  cupos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet numpy openpyxl
+      - name: Generar cupos de la ronda que viene
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: |
+          ROUND="${{ github.event.inputs.round }}"
+          ARGS="--csv cupos_ronda.csv --dias-antes 5"
+          if [ -n "$ROUND" ]; then ARGS="$ARGS --round $ROUND --force"; fi
+          python pollas/CSC/eliminatorias.py $ARGS > salida.txt 2>&1 || true
+          cat salida.txt
+      - name: Abrir issue si se generaron cupos
+        if: ${{ hashFiles('cupos_ronda.csv') != '' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # solo si el CSV tiene filas además del encabezado
+          if [ "$(wc -l < cupos_ronda.csv)" -le 1 ]; then
+            echo "CSV sin filas; no abro issue."; exit 0
+          fi
+          HOY=$(TZ=America/Bogota date +%F)
+          echo "Cupos CSC de la ronda que viene (generado automático):" > body.md
+          echo '' >> body.md
+          echo '```' >> body.md
+          cat salida.txt >> body.md
+          echo '```' >> body.md
+          echo '' >> body.md
+          echo 'Llena **un formulario por cupo** (cupo 1 = EV-máximo; 2..5 descorrelacionados).' >> body.md
+          gh issue create --title "⚔️ CSC cupos eliminatoria — $HOY" --body-file body.md

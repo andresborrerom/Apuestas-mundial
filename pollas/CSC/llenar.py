@@ -139,11 +139,17 @@ def main(argv=None):
             args.api_key, sport=args.sport,
             regions=args.regions, markets="h2h,totals")
 
-    # 2) fecha objetivo (o toda la fase de grupos con --all)
+    # 2) fecha objetivo (o toda una ronda con --all)
+    # ronda_all: si se pidió --all con --round, se vuelca esa ronda completa
+    # (sirve para eliminatorias, que abarcan varios días); si no, grupos.
+    ronda_all = None
     if args.all:
         objetivo = None
-        print(f"\n📅 TODA LA FASE DE GRUPOS  |  deadline envío: "
-              f"{deadline_de_ronda('primera')}")
+        ronda_all = None if args.round == "auto" else args.round
+        etq = "TODA LA FASE DE GRUPOS" if ronda_all in (None, "primera") \
+            else f"TODA LA RONDA: {ronda_all.upper()}"
+        print(f"\n📅 {etq}  |  deadline envío: "
+              f"{deadline_de_ronda(ronda_all or 'primera')}")
     else:
         objetivo = (datetime.strptime(args.date, "%Y-%m-%d").date() if args.date
                     else (datetime.now(tz) + timedelta(days=1)).date())
@@ -169,6 +175,10 @@ def main(argv=None):
         ronda_ev = (inferir_ronda(dt_local.date()) if args.round == "auto"
                     else args.round)
         if ronda_ev not in RONDAS:
+            continue
+        # con --all + --round X: limitar a los partidos de esa ronda
+        if objetivo is None and ronda_all is not None and \
+                inferir_ronda(dt_local.date()) != ronda_all:
             continue
         c = odds_api.consenso_evento(ev, linea_pref=args.line)
         if not c["cuotas_1x2"]:
@@ -214,7 +224,7 @@ def main(argv=None):
     # cambian al 2º mejor en n_swaps partidos casi-empatados). Descorrelaciona
     # sin alejarse del modelo (ver experimento_colas.py / DECISIONES.md).
     if args.cupos > 1:
-        ronda_param = "primera" if args.all else (
+        ronda_param = (ronda_all or "primera") if args.all else (
             inferir_ronda(objetivo) if args.round == "auto" else args.round)
         Msesgo = [marcadores.aplicar_sesgo_goles(M, args.sesgo_goles) for M in mats]
         ns = (args.n_swaps if args.n_swaps >= 0
