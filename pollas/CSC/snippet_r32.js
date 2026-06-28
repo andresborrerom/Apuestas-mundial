@@ -5,6 +5,7 @@
   function hasA(t,al){for(var i=0;i<al.length;i++){if(t.indexOf(al[i])>=0)return true;}return false;}
   function setVal(el,v){el.value=v;["input","change","blur","keyup"].forEach(function(ev){el.dispatchEvent(new Event(ev,{bubbles:true}));});}
   var inputs=[].slice.call(document.querySelectorAll("input")).filter(function(i){return i.type!=="email"&&i.type!=="hidden";});
+  if(inputs.length<10){console.log("%c⚠️ CONTEXTO EQUIVOCADO: arriba-izq de la consola, en el dropdown elige userHtmlFrame (userCodeAppPanel) y vuelve a pegar.","font-size:16px;font-weight:bold;color:red");return;}
   var els=[].slice.call(document.querySelectorAll("h1,h2,h3,h4,h5,h6,div,span,p,label,td,li,b,strong"));
   var used=[],ok=0,miss=[],log=[];
   PART.forEach(function(p){
