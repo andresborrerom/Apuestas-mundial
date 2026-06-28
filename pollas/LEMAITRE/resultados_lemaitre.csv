@@ -1,0 +1,55 @@
+seccion,clave,valor,nota
+# Posiciones reales de grupo, derivadas del calendario oficial (hoja "Cal Fases
+# 32 en ad" del Excel) cruzado con los cruces reales de R32 (The Odds API).
+# pos3/pos4 con '?' = el 3º no avanzó y el reglamento/bracket no fija su orden.
+GRUPO_A,pos1,Mexico,1A=P#79
+GRUPO_A,pos2,South Africa,2A=P#73
+GRUPO_A,pos3,?,Czech Republic / South Korea (no avanzó)
+GRUPO_A,pos4,?,
+GRUPO_B,pos1,Switzerland,1B=P#85
+GRUPO_B,pos2,Canada,2B=P#73
+GRUPO_B,pos3,Bosnia & Herzegovina,3º avanzó (P#81)
+GRUPO_B,pos4,Qatar,
+GRUPO_C,pos1,Brazil,1C=P#76
+GRUPO_C,pos2,Morocco,2C=P#75
+GRUPO_C,pos3,?,Scotland / Haiti (no avanzó)
+GRUPO_C,pos4,?,
+GRUPO_D,pos1,USA,1D=P#81
+GRUPO_D,pos2,Australia,2D=P#88
+GRUPO_D,pos3,Paraguay,3º avanzó (P#74)
+GRUPO_D,pos4,Turkey,
+GRUPO_E,pos1,Germany,1E=P#74
+GRUPO_E,pos2,Ivory Coast,2E=P#78
+GRUPO_E,pos3,Ecuador,3º avanzó (P#79)
+GRUPO_E,pos4,Curaçao,
+GRUPO_F,pos1,Netherlands,1F=P#75
+GRUPO_F,pos2,Japan,2F=P#76
+GRUPO_F,pos3,Sweden,3º avanzó (P#77)
+GRUPO_F,pos4,Tunisia,
+GRUPO_G,pos1,Belgium,1G=P#82
+GRUPO_G,pos2,Egypt,2G=P#88
+GRUPO_G,pos3,?,Iran / New Zealand (no avanzó)
+GRUPO_G,pos4,?,
+GRUPO_H,pos1,Spain,1H=P#84
+GRUPO_H,pos2,Cape Verde,2H=P#86
+GRUPO_H,pos3,?,Uruguay / Saudi Arabia (no avanzó)
+GRUPO_H,pos4,?,
+GRUPO_I,pos1,France,1I=P#77
+GRUPO_I,pos2,Norway,2I=P#78
+GRUPO_I,pos3,Senegal,3º avanzó (P#82)
+GRUPO_I,pos4,Iraq,
+GRUPO_J,pos1,Argentina,1J=P#86
+GRUPO_J,pos2,Austria,2J=P#84
+GRUPO_J,pos3,Algeria,3º avanzó (P#85)
+GRUPO_J,pos4,Jordan,
+GRUPO_K,pos1,Colombia,1K=P#87 (¡Colombia ganó el grupo!)
+GRUPO_K,pos2,Portugal,2K=P#83
+GRUPO_K,pos3,DR Congo,3º avanzó (P#80)
+GRUPO_K,pos4,Uzbekistan,
+GRUPO_L,pos1,England,1L=P#80
+GRUPO_L,pos2,Croatia,2L=P#83
+GRUPO_L,pos3,Ghana,3º avanzó (P#87)
+GRUPO_L,pos4,Panama,
+# --- Eliminatorias: llenar a medida que se juegan (ganador y marcador) ---
+# FASE32,P#73,<ganador>,<marcador ej 2-1>
+# OCTAVOS,P#89,<ganador>,<marcador>
