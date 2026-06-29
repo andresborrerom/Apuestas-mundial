@@ -53,3 +53,5 @@ GRUPO_L,pos4,Panama,
 # --- Eliminatorias: llenar a medida que se juegan (ganador y marcador) ---
 # FASE32,P#73,<ganador>,<marcador ej 2-1>
 # OCTAVOS,P#89,<ganador>,<marcador>
+FASE32,P#73,Canada,0-1,Sudafrica vs Canada
+FASE32,P#76,Brazil,2-1,Brasil vs Japon
