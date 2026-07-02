@@ -52,16 +52,19 @@ def norm(name):
 
 
 def calc_marcador(pred, real, fase):
+    # Regla ADITIVA (validada contra el oficial 2/7/2026): exacto=e; si no,
+    # ganador (g) y parcial (p) SUMAN por separado. Un 1-0 sobre un 2-0 da
+    # 18 (ganador) + 12 (acertó el 0 de la visita) = 30 — NO se degrada.
     if not real or real.get('g1') is None or real.get('g2') is None: return 0
     if not pred or pred.get('e1') is None or pred.get('e2') is None: return 0
     pp = PTS[fase]; r1, r2 = real['g1'], real['g2']; e1, e2 = pred['e1'], pred['e2']
     if e1 == r1 and e2 == r2: return pp['e']
     rw = 1 if r1 > r2 else (2 if r1 < r2 else 0)
     pw = 1 if e1 > e2 else (2 if e1 < e2 else 0)
-    partial = (e1 == r1 or e2 == r2)
-    if rw == pw: return pp['p'] if partial else pp['g']
-    if partial: return pp['p']
-    return 0
+    pts = 0
+    if rw == pw: pts += pp['g']
+    if e1 == r1 or e2 == r2: pts += pp['p']
+    return pts
 
 
 def calc_clasif(predE, realEq):
