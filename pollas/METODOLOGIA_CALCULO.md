@@ -39,7 +39,32 @@
   lógica de desempate del organizador (leerla del código: p.ej. LEMAITRE usa
   pts → dif de gol → GF para grupos; último lugar = peor por pts → dif → +GC).
 
-## Principio #5 — Honestidad sobre incertidumbre
+## Principio #5 — El peligro es contra el RIVAL DIRECTO, no contra el promedio
+
+> Aprendizaje del 3-jul-2026 (P#83 Portugal 2-1 Croacia). En el "qué nos
+> conviene" reporté que nos golpeaban los empates y **no** marqué el 2-1 — que
+> fue justo lo que salió y nos costó caer a 3º.
+
+Dos errores a no repetir:
+
+1. **No recortar a un top-3 arbitrario.** El 2-1 quedó de 4º peor (−9.0) a solo
+   0.3 del 3º (1-1, −9.3): estaba empatado en peligro y lo escondí. Mostrar
+   TODOS los resultados con neto negativo relevante, no solo los 3 peores.
+
+2. **El neto-promedio ESCONDE el golpe posicional.** El neto se promedia sobre
+   todos los perseguidores; si unos aciertan y otros fallan, se diluye. En el
+   2-1: Dionisio, Papo y Fabian tenían 2-1 exacto (40) — contra los DOS líderes
+   directos era **−22**, pero promediado con los que fallaban daba solo −9.
+   Un empate que todos fallan baja poco en la tabla; un marcador que **clavan
+   los punteros** te hunde aunque el promedio se vea moderado.
+
+**Regla operativa:** en el análisis de marcadores, marcar explícitamente los
+resultados que son el **pick de la(s) persona(s) que tenemos justo arriba y justo
+abajo**, y reportar el **neto contra el rival directo** (el 1º si vamos 2º), no
+solo el promedio. El `que_marcador.py` ya lo hace (columna "vs líder directo" +
+🚨 si un rival directo lo clava).
+
+## Principio #6 — Honestidad sobre incertidumbre
 
 - Si un dato no está confirmado (p.ej. el organizador aún no cargó un extra, o un
   resultado difiere entre fuentes), decirlo. No presentar proyección como hecho.

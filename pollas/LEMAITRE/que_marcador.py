@@ -36,6 +36,14 @@ def analizar(BD, P, n_chasers=5, maxg=4):
     print("  Perseguidores: " + ", ".join(
         f"{sc[n]['name'].split()[0]} {pm[n].get(P, {}).get('e1')}-{pm[n].get(P, {}).get('e2')}"
         for n in chasers))
+    # rival DIRECTO: el que tenemos justo encima (o justo debajo si vamos 1º).
+    # LECCIÓN 3-jul-2026: el peligro real es contra el rival directo y contra los
+    # marcadores que CLAVAN los punteros, NO contra el promedio del pelotón.
+    orden = [n for n, _ in rank]
+    ipos = orden.index(yo)
+    directo = orden[ipos - 1] if ipos > 0 else orden[ipos + 1]
+    dname = sc[directo]['name'].split()[0]
+
     filas = []
     for g1 in range(maxg + 1):
         for g2 in range(maxg + 1):
@@ -43,14 +51,20 @@ def analizar(BD, P, n_chasers=5, maxg=4):
             nos = calc_marcador(nuestro, real, fase)
             chas = [calc_marcador(pm[n].get(P), real, fase) for n in chasers]
             avg = sum(chas) / len(chas)
-            filas.append((g1, g2, nos, avg, nos - avg))
+            net_dir = nos - calc_marcador(pm[directo].get(P), real, fase)
+            # ¿algún puntero (top-3 perseguidores) lo clava exacto?
+            clava = [sc[n]['name'].split()[0] for n in chasers[:3]
+                     if calc_marcador(pm[n].get(P), real, fase) == pp['e']]
+            filas.append((g1, g2, nos, avg, nos - avg, net_dir, clava))
     filas.sort(key=lambda x: -x[4])
-    print("\n  TOP-3 resultados que más nos CONVIENEN (ganancia neta de ventaja):")
-    for g1, g2, nos, avg, d in filas[:3]:
-        print(f"    {g1}-{g2}:  nosotros +{nos:>2}  ·  perseguidores +{avg:4.1f}  ·  NETO {d:+.1f}")
-    print("  PELIGRO — resultados donde nos sacan ventaja:")
-    for g1, g2, nos, avg, d in [f for f in filas if f[4] < 0][-3:]:
-        print(f"    {g1}-{g2}:  nosotros +{nos:>2}  ·  perseguidores +{avg:4.1f}  ·  NETO {d:+.1f}")
+    print(f"\n  (rival directo = {dname}; net_dir = nosotros − {dname})")
+    print("  TOP-3 resultados que más nos CONVIENEN:")
+    for g1, g2, nos, avg, d, nd, clava in filas[:3]:
+        print(f"    {g1}-{g2}:  nos +{nos:>2} · pers +{avg:4.1f} · NETO {d:+.1f} · vs {dname} {nd:+d}")
+    print("  PELIGRO — TODOS los netos negativos (🚨 = lo clava un puntero):")
+    for g1, g2, nos, avg, d, nd, clava in [f for f in filas if f[4] < 0]:
+        flag = "  🚨 clavan: " + ",".join(clava) if clava else ""
+        print(f"    {g1}-{g2}:  nos +{nos:>2} · pers +{avg:4.1f} · NETO {d:+.1f} · vs {dname} {nd:+d}{flag}")
 
 
 def main(argv=None):
