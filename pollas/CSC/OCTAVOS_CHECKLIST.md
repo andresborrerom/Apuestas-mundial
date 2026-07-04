@@ -20,13 +20,17 @@
 | P#91 | **Brasil vs Noruega** | ✅ definido |
 | P#92 | **México vs Inglaterra** | ✅ definido |
 | P#93 | **España vs Portugal** | ✅ definido |
+| P#95 | **Argentina vs Egipto** | ✅ definido (Arg 3-2 ET · Egipto penales) |
+| P#96 | **Suiza vs Colombia** | ✅ definido (Suiza 2-0 · Colombia 1-0) |
 | P#89 | Francia vs G#74 (Ale/Par) | ½ (falta penales P74) |
 | P#90 | Canadá vs G#75 (Hol/Mar) | ½ (falta penales P75) |
 | P#94 | USA vs G#82 (Bél/Sen) | ½ (falta penales P82) |
-| P#95 | G#86 (Arg/CV) vs G#88 (Aus/Egi) | falta R32 |
-| P#96 | G#85 (Sui/Arg) vs G#87 (Col/Gha) | falta R32 |
 
-Falta cerrar R32: **P85, P86, P87, P88**, y los penales de los empates **P74, P75, P82**.
+**5 de 8 llaves ya definidas.** Faltan solo los penales de 3 empates de R32:
+**P74 Alemania-Paraguay · P75 Holanda-Marruecos · P82 Bélgica-Senegal**.
+Recordatorio: para LEMAITRE el marcador es a los 90' (el avance por ET/penales
+solo define el bracket, no cambia puntaje). Para CSC el resultado válido es a
+los 120' (penales no).
 
 ## Estrategia position-aware (PDF 2-jul: vamos #1 y #2 → DEFENDER)
 
