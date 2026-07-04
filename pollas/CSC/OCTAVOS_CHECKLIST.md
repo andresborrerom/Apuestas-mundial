@@ -3,15 +3,16 @@
 **Deadline de octavos: 04/07/2026 11:59 AM (hora Colombia).** LEMAITRE está locked
 (no se manda nada); solo CSC (e INGENIERO si aplica) se llenan por ronda.
 
-## Estado del motor (2-jul-2026) — LISTO
+## Estado del motor (4-jul-2026) — ✅ CUPOS GENERADOS
 
 - ✅ Regla octavos validada contra el reglamento: **(3, 4, 7)** — ganador 3 /
   gol=0 vale 4 / gol≠0 vale (#+7).
 - ✅ Generador `generar_octavos.py` probado end-to-end (position-aware, ajuste 120').
 - ✅ `ALIAS` de equipos reutiliza los 32 de R32 (⊇ equipos de octavos) → el
   snippet casa nombres en el formulario.
-- ⏳ **Único input que falta: las CUOTAS de octavos** (la API no las tiene hasta
-  que el bracket esté oficial).
+- ✅ **Cuotas de octavos bajadas** (oct_odds_snapshot.json, 8 partidos, 47 casas).
+- ✅ **Cupos generados**: oct_CSC.csv + snippet_oct.js. LISTOS PARA PEGAR.
+- ⚠️ **DEADLINE HOY 4/07 11:59 AM** — enviar los 5 cupos ya.
 
 ## Bracket de octavos (89-96)
 
