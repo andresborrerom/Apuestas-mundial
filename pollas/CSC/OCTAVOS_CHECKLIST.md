@@ -64,3 +64,27 @@ Genera `oct_CSC.csv` (los 5 cupos) y `snippet_oct.js`. Luego, en el formulario
 (Google Form del blog CSC): pegar el snippet, cambiar `CUPO` de 1 a 5 y re-pegar
 por cada cupo (ANDRES BORRERO 1..5), revisar el "llené 8/8" verde, y **dar ENVIAR
 tú**. Repetir por cada uno de los 5 cupos. Todo antes del **4/07 11:59 AM**.
+
+## POST-MORTEM del snippet (recordar para futuras rondas)
+
+**Bug (pasó en R32 y volvió a pasar en la 1ª versión de octavos):** el snippet
+buscaba un "contenedor por texto" (subía por parentElement hasta hallar un div
+con ≥2 inputs y llenaba `ins[0]/ins[1]`). Ese contenedor a veces era compartido
+→ reescribía **las mismas 2 casillas** y dejaba las demás vacías, PERO reportaba
+"llené 8/8" en verde (falso positivo).
+
+**Corrección (validada, es la única que se debe usar):**
+1. Anclar en el **elemento de título más corto** que contiene AMBOS equipos
+   (recorrer h1..strong y quedarse con el de menor `textContent.length`).
+2. Llenar los 2 inputs que están **dentro** de ese título (si son exactamente 2)
+   o, si no, los que le **SIGUEN** en el DOM (`compareDocumentPosition &
+   DOCUMENT_POSITION_FOLLOWING`).
+3. Marcar los inputs ya usados en un array `used` y excluirlos → cada partido
+   recibe casillas DISTINTAS.
+4. Guardia de contexto: si `inputs.length < PART.length` → avisar en rojo que hay
+   que elegir `userHtmlFrame (userCodeAppPanel)` en el dropdown de la consola.
+5. Imprimir un **log por partido** (`Canadá 1-2 Marruecos`, ...) para verificar a
+   ojo que llenó bien, no solo el conteo.
+
+`generar_octavos.py` YA emite esta versión corregida. No volver a la lógica de
+"contenedor por texto".

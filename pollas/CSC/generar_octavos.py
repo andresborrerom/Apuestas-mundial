@@ -120,26 +120,38 @@ def main(argv=None):
     PART = [{"L": f["local"], "V": f["visita"], "aL": alias_de(f["local"]), "aV": alias_de(f["visita"]),
              "s": [[int(f[f"cupo_{n}"].split("-")[0]), int(f[f"cupo_{n}"].split("-")[1])] for n in range(1, 6)]}
             for f in filas]
+    # snippet con la lógica CORREGIDA (validada en R32): ancla en el ELEMENTO
+    # de título más corto que contiene ambos equipos y llena los 2 inputs que
+    # están DENTRO o que le SIGUEN, marcando inputs ya usados (used) para no
+    # reescribir las mismas casillas. NO usar la lógica de "contenedor por texto"
+    # (reescribía las mismas 2 celdas). Ver POST-MORTEM en OCTAVOS_CHECKLIST.md.
     snip = ('(function(){\n'
-            '  /* CSC OCTAVOS MIXTO+120\'. CUPO = nº de ANDRES BORRERO (1..5). Cambia y re-pega. NO envía. */\n'
+            '  /* CSC MIXTO+120\'. CUPO = nº de ANDRES BORRERO (1..5). Cambia y re-pega. NO envía. */\n'
             '  var CUPO = 4;  // <<<<<< 4=ancla(B4) · 1,2=defensivas · 3,5=lotería\n'
             '  var PART = ' + json.dumps(PART, ensure_ascii=False) + ';\n'
             '  function k(s){return (s||"").normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").toLowerCase().replace(/[^a-z]/g,"");}\n'
-            '  function has(t,al){for(var i=0;i<al.length;i++){if(t.indexOf(al[i])>=0)return t.indexOf(al[i]);}return -1;}\n'
-            '  function setVal(el,v){el.value=v;["input","change","blur"].forEach(function(ev){el.dispatchEvent(new Event(ev,{bubbles:true}));});}\n'
-            '  var inputs=[].slice.call(document.querySelectorAll("input[type=number],input[type=text],input:not([type])"));\n'
-            '  var conts=[],seen=[];\n'
-            '  inputs.forEach(function(inp){var n=inp;for(var u=0;u<7&&n;u++){n=n.parentElement;if(!n)break;\n'
-            '    if(n.querySelectorAll("input[type=number],input[type=text],input:not([type])").length>=2){if(seen.indexOf(n)<0){seen.push(n);conts.push(n);}break;}}});\n'
-            '  var ok=0,miss=[];\n'
-            '  PART.forEach(function(p){var done=false;\n'
-            '    for(var c=0;c<conts.length;c++){var t=k(conts[c].textContent);var iL=has(t,p.aL),iV=has(t,p.aV);\n'
-            '      if(iL>=0&&iV>=0){var ins=conts[c].querySelectorAll("input[type=number],input[type=text],input:not([type])");if(ins.length<2)continue;\n'
-            '        var rev=iV<iL,gl=p.s[CUPO-1][0],gv=p.s[CUPO-1][1];setVal(ins[0],rev?gv:gl);setVal(ins[1],rev?gl:gv);ok++;done=true;break;}}\n'
-            '    if(!done)miss.push(p.L+" vs "+p.V);});\n'
-            '  console.log("%cCSC ANDRES BORRERO "+CUPO+": llené "+ok+"/"+PART.length,"font-size:14px;color:"+(ok==PART.length?"green":"orange"));\n'
+            '  function hasA(t,al){for(var i=0;i<al.length;i++){if(t.indexOf(al[i])>=0)return true;}return false;}\n'
+            '  function setVal(el,v){el.value=v;["input","change","blur","keyup"].forEach(function(ev){el.dispatchEvent(new Event(ev,{bubbles:true}));});}\n'
+            '  var inputs=[].slice.call(document.querySelectorAll("input")).filter(function(i){return i.type!=="email"&&i.type!=="hidden";});\n'
+            '  if(inputs.length<PART.length){console.log("%c⚠️ CONTEXTO EQUIVOCADO: en el dropdown arriba-izq de la consola elige userHtmlFrame (userCodeAppPanel) y re-pega.","font-size:16px;font-weight:bold;color:red");return;}\n'
+            '  var els=[].slice.call(document.querySelectorAll("h1,h2,h3,h4,h5,h6,div,span,p,label,td,li,b,strong"));\n'
+            '  var used=[],ok=0,miss=[],log=[];\n'
+            '  PART.forEach(function(p){\n'
+            '    var lab=null,len=1e9;\n'
+            '    for(var i=0;i<els.length;i++){var t=k(els[i].textContent||"");\n'
+            '      if(hasA(t,p.aL)&&hasA(t,p.aV)){var L=(els[i].textContent||"").length;if(L<len){len=L;lab=els[i];}}}\n'
+            '    if(!lab){miss.push(p.L+" vs "+p.V);return;}\n'
+            '    var inside=inputs.filter(function(x){return lab.contains(x)&&used.indexOf(x)<0;});\n'
+            '    var foll=inputs.filter(function(x){return (lab.compareDocumentPosition(x)&Node.DOCUMENT_POSITION_FOLLOWING)&&used.indexOf(x)<0;});\n'
+            '    var cand=(inside.length===2)?inside:foll;\n'
+            '    if(cand.length<2){miss.push(p.L+" vs "+p.V);return;}\n'
+            '    var gl=p.s[CUPO-1][0],gv=p.s[CUPO-1][1];\n'
+            '    setVal(cand[0],gl);setVal(cand[1],gv);used.push(cand[0],cand[1]);ok++;\n'
+            '    log.push(p.L+" "+gl+"-"+gv+" "+p.V);\n'
+            '  });\n'
+            '  console.log("%cCSC BORRERO "+CUPO+": llené "+ok+"/"+PART.length,"font-size:15px;font-weight:bold;color:"+(ok==PART.length?"green":"orange"));\n'
+            '  console.log(log.join("\\n"));\n'
             '  if(miss.length)console.warn("FALTAN (a mano):",miss);\n'
-            '  console.log("Revisa y dale ENVIAR tú. Cambia CUPO y re-pega para el siguiente.");\n'
             '})();')
     open(args.snippet, "w", encoding="utf-8").write(snip)
     print(f"💾 snippet -> {args.snippet}")
