@@ -77,10 +77,17 @@ def main(N=20000):
     base_tot = {n: base[n]['total'] for n in parts}
     yo = next(n for n in parts if names[n] == 'Pocho')
 
-    # resultado conocido de P#92 (México 2-3 Inglaterra) que el app aún no cargó
-    KNOWN92 = ('México', 'Inglaterra', 2, 3)
-    # equipos ya definidos en slots de octavos (para avance)
-    winners_known = {89: 'Francia', 90: 'Marruecos', 91: 'Noruega', 92: 'Inglaterra'}
+    # Octavos YA jugados: fijos (avance + marcador). Los que están en real_scores
+    # ya tienen su marcador en base_tot (no re-sumar); P#92 lo conocemos pero el
+    # admin no lo cargó, así que SÍ se le suma el marcador.
+    fixed = {}
+    for s in range(89, 97):
+        r = rs.get(str(s))
+        if r and r.get('g1') is not None:
+            fixed[s] = (r['e1'], r['e2'], r['g1'], r['g2'])
+    if 92 not in fixed:
+        fixed[92] = ('México', 'Inglaterra', 2, 3)   # jugado, admin no lo cargó
+    en_base = set(int(k) for k in rs if rs[k].get('g1') is not None)  # marcador ya en base_tot
 
     def strength(team):
         return max(0.35, lam.get(cn(team), 1.0))
@@ -94,11 +101,7 @@ def main(N=20000):
     for _ in range(N):
         gan = dict(base_tot)                  # copia del total base
         scores = {}                           # slot -> (e1,e2,g1,g2)
-        winner = dict(winners_known)          # slot -> equipo que avanza
-        loser = {}
-        # P#92 conocido (suma marcador a quien corresponda)
-        for n in parts:
-            gan[n] += marc_pts(pm[n].get('92'), KNOWN92[2], KNOWN92[3], 'OCT')
+        winner = {}; loser = {}
 
         def equipos_de(slot):
             a, b = pt[str(slot)]
@@ -108,28 +111,34 @@ def main(N=20000):
                 return None
             return resolve(a), resolve(b)
 
-        # jugar slots 93..104 en orden
-        for slot in range(93, 105):
+        # slots 89..104: fijos (jugados) o simulados
+        for slot in range(89, 105):
             fase = ph[str(slot)]
-            if slot <= 96:
-                e = req.get(str(slot), {}); t1, t2 = e.get('e1'), e.get('e2')
+            if slot in fixed:
+                t1, t2, g1, g2 = fixed[slot]
+                if slot not in en_base:           # marcador aún no en base (P#92)
+                    for n in parts:
+                        gan[n] += marc_pts(pm[n].get(str(slot)), g1, g2, fase)
             else:
-                t1, t2 = equipos_de(slot)
-            if not t1 or not t2:
-                continue
-            l1, l2 = strength(t1), strength(t2)
-            g1 = min(int(rng.poisson(l1)), 7); g2 = min(int(rng.poisson(l2)), 7)
+                if slot <= 96:
+                    e = req.get(str(slot), {}); t1, t2 = e.get('e1'), e.get('e2')
+                else:
+                    t1, t2 = equipos_de(slot)
+                if not t1 or not t2:
+                    continue
+                l1, l2 = strength(t1), strength(t2)
+                g1 = min(int(rng.poisson(l1)), 7); g2 = min(int(rng.poisson(l2)), 7)
+                for n in parts:
+                    gan[n] += marc_pts(pm[n].get(str(slot)), g1, g2, fase)
             scores[slot] = (t1, t2, g1, g2)
             # avance (penales si empate) — no aplica a 3er puesto (103)
             if slot != 103:
+                l1, l2 = strength(t1), strength(t2)
                 if g1 > g2: w, lo = t1, t2
                 elif g2 > g1: w, lo = t2, t1
                 else:
                     w, lo = (t1, t2) if rng.random() < l1 / (l1 + l2) else (t2, t1)
                 winner[slot] = w; loser[slot] = lo
-            # marcadores restantes
-            for n in parts:
-                gan[n] += marc_pts(pm[n].get(str(slot)), g1, g2, fase)
 
         # clasificación de tramos futuros (cuartos 97-100, semis 101-102)
         for slot, tramo in [(97, 'CUAR'), (98, 'CUAR'), (99, 'CUAR'), (100, 'CUAR'),
