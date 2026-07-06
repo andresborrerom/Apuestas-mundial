@@ -68,15 +68,23 @@ def calc_marcador(pred, real, fase):
 
 
 def calc_clasif(predE, realEq):
+    # Clasificación por SLOT (equipos predichos vs reales en cada llave). El app
+    # puntúa dos tramos (validado en index.html/calcClasifScore):
+    #   Fase 32 (slots 73-88): 40 ambos en orden / 25 invertidos / 20 uno / 15 otro
+    #   Octavos (slots 89-96): 35 / 25 / 18 / 12
+    # Se acumula a medida que se define el bracket de cada ronda.
+    TRAMOS = [(range(73, 89), (40, 25, 20, 15)),
+              (range(89, 97), (35, 25, 18, 12))]
     pts = 0
-    for pid in range(73, 89):
-        s = str(pid); real = realEq.get(s); pred = predE.get(s)
-        if not real or not real.get('e1') or not real.get('e2') or not pred: continue
-        p1, p2 = norm(pred['e1']), norm(pred['e2']); r1, r2 = norm(real['e1']), norm(real['e2'])
-        if p1 == r1 and p2 == r2: pts += 40
-        elif p1 == r2 and p2 == r1: pts += 25
-        elif p1 == r1 or p2 == r2: pts += 20
-        elif p1 == r2 or p2 == r1: pts += 15
+    for rng, (a, b, c, d) in TRAMOS:
+        for pid in rng:
+            s = str(pid); real = realEq.get(s); pred = predE.get(s)
+            if not real or not real.get('e1') or not real.get('e2') or not pred: continue
+            p1, p2 = norm(pred['e1']), norm(pred['e2']); r1, r2 = norm(real['e1']), norm(real['e2'])
+            if p1 == r1 and p2 == r2: pts += a
+            elif p1 == r2 and p2 == r1: pts += b
+            elif p1 == r1 or p2 == r2: pts += c
+            elif p1 == r2 or p2 == r1: pts += d
     return pts
 
 
