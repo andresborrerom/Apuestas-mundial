@@ -198,3 +198,17 @@ Pozo $6.318.000; premios 1º $3.41M / 2º $1.71M / 3º $569k.
 > proxy de ataque; clasificación de cuartos/semis y standings final con valores
 > ASUMIDOS (el app aún no los codifica). Los números se refinan a medida que se
 > resuelven rondas y se confirman los puntajes reales.
+
+### Techos "vivos" y colisiones de bracket (techos_lemaitre.py)
+
+El Monte Carlo ya respeta que un equipo predicho y ya eliminado no puntúa (nunca
+aparece en el bracket simulado). ADEMÁS hay que ver COLISIONES: dos picks de un
+mismo participante que se enfrentan antes de semis no pueden coexistir en el top-4.
+Los 4 semifinalistas salen uno de cada "grupo de cuarto":
+- P97: Francia/Marruecos · P98: Portugal/España/EEUU/Bélgica ·
+  P99: Noruega/Inglaterra · P100: Argentina/Egipto/Suiza/Colombia.
+
+Diagnóstico 6-jul: **Dionisio tiene los 4 picks de final en grupos distintos
+(techo pleno 210)**; nosotros tenemos España(campeón) y Portugal(4to) en el MISMO
+grupo P98 → colisión −30 y hueco en P100. Por eso **hoy nos conviene que gane
+España** (mantiene vivo el pick de campeón, 80 pts, vs 4to de Portugal, 30).
