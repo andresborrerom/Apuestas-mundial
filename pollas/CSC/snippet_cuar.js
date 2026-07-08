@@ -1,7 +1,7 @@
 (function(){
-  /* CSC MIXTO+120'. CUPO = nº de ANDRES BORRERO (1..5). Cambia y re-pega. NO envía. */
+  /* CSC CUARTOS MIXTO+120'. CUPO = nº de ANDRES BORRERO (1..5). Cambia y re-pega. NO envía. */
   var CUPO = 4;  // <<<<<< 4=ancla(B4) · 1,2=defensivas · 3,5=lotería
-  var PART = [{"L": "Francia", "V": "Marruecos", "aL": ["francia", "france"], "aV": ["marruecos", "morocco"], "s": [[2, 1], [2, 1], [3, 1], [2, 1], [2, 0]]}, {"L": "España", "V": "Bélgica", "aL": ["espana", "spain"], "aV": ["belgica", "belgium"], "s": [[2, 1], [2, 1], [3, 1], [2, 1], [2, 0]]}, {"L": "Norway", "V": "Inglaterra", "aL": ["noruega", "norway"], "aV": ["inglaterra", "england"], "s": [[1, 2], [1, 2], [1, 3], [1, 2], [1, 1]]}, {"L": "Argentina", "V": "Suiza", "aL": ["argentina"], "aV": ["suiza", "switzerland"], "s": [[2, 1], [2, 1], [3, 1], [2, 1], [2, 0]]}];
+  var PART = [{"L": "Francia", "V": "Marruecos", "aL": ["francia", "france"], "aV": ["marruecos", "morocco"], "s": [[2, 1], [2, 0], [3, 1], [2, 1], [2, 1]]}, {"L": "España", "V": "Bélgica", "aL": ["espana", "spain"], "aV": ["belgica", "belgium"], "s": [[2, 1], [2, 0], [3, 1], [2, 1], [2, 1]]}, {"L": "Norway", "V": "Inglaterra", "aL": ["noruega", "norway"], "aV": ["inglaterra", "england"], "s": [[1, 2], [1, 1], [1, 3], [1, 2], [1, 2]]}, {"L": "Argentina", "V": "Suiza", "aL": ["argentina"], "aV": ["suiza", "switzerland"], "s": [[2, 1], [2, 0], [3, 1], [2, 1], [2, 1]]}];
   function k(s){return (s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z]/g,"");}
   function hasA(t,al){for(var i=0;i<al.length;i++){if(t.indexOf(al[i])>=0)return true;}return false;}
   function setVal(el,v){el.value=v;["input","change","blur","keyup"].forEach(function(ev){el.dispatchEvent(new Event(ev,{bubbles:true}));});}
