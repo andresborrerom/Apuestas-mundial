@@ -33,8 +33,8 @@ from pollas.CSC.experimento_r32 import ajuste_120, ranking_fills
 from pollas.CSC.generar_r32_final import ALIAS  # 32 equipos R32 ⊇ equipos octavos
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
-RONDA = "octavos"
-PARAMS = RONDAS[RONDA]; G = 7
+G = 7
+SUF = {"octavos":"oct","cuartos":"cuar","semis":"semi","tercer_puesto":"terc","final":"final"}
 
 
 def alias_de(nombre_es):
@@ -49,12 +49,16 @@ def alias_de(nombre_es):
 def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("--api-key", default=os.environ.get("ODDS_API_KEY"))
-    ap.add_argument("--snapshot", default=None, help="JSON de eventos de octavos")
+    ap.add_argument("--ronda", default="octavos", choices=list(RONDAS))
+    ap.add_argument("--snapshot", default=None, help="JSON de eventos de la ronda")
     ap.add_argument("--delta", type=float, default=0.45)
     ap.add_argument("--modo", choices=["defender", "equilibrado", "atacar"], default="defender")
-    ap.add_argument("--csv", default=os.path.join(AQUI, "oct_CSC.csv"))
-    ap.add_argument("--snippet", default=os.path.join(AQUI, "snippet_oct.js"))
+    ap.add_argument("--csv", default=None)
+    ap.add_argument("--snippet", default=None)
     args = ap.parse_args(argv)
+    RONDA = args.ronda; PARAMS = RONDAS[RONDA]; suf = SUF[RONDA]
+    if not args.csv: args.csv = os.path.join(AQUI, f"{suf}_CSC.csv")
+    if not args.snippet: args.snippet = os.path.join(AQUI, f"snippet_{suf}.js")
 
     # dispersión por modo (n_swaps de las perturbadas B1/B2)
     swaps = {"defender": (2, 3), "equilibrado": (3, 4), "atacar": (5, 6)}[args.modo]

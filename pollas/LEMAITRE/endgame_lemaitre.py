@@ -85,6 +85,7 @@ def main(N=20000):
         r = rs.get(str(s))
         if r and r.get('g1') is not None:
             fixed[s] = (r['e1'], r['e2'], r['g1'], r['g2'])
+    PEN_WINNERS = {96: 'Suiza'}   # penales conocidos (Suiza pasó)
     if 92 not in fixed:
         fixed[92] = ('México', 'Inglaterra', 2, 3)   # jugado, admin no lo cargó
     en_base = set(int(k) for k in rs if rs[k].get('g1') is not None)  # marcador ya en base_tot
@@ -134,7 +135,9 @@ def main(N=20000):
             # avance (penales si empate) — no aplica a 3er puesto (103)
             if slot != 103:
                 l1, l2 = strength(t1), strength(t2)
-                if g1 > g2: w, lo = t1, t2
+                if slot in PEN_WINNERS and g1 == g2:
+                    w = PEN_WINNERS[slot]; lo = t2 if w == t1 else t1
+                elif g1 > g2: w, lo = t1, t2
                 elif g2 > g1: w, lo = t2, t1
                 else:
                     w, lo = (t1, t2) if rng.random() < l1 / (l1 + l2) else (t2, t1)
