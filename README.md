@@ -1,61 +1,59 @@
-# Apuestas Mundial — motor de probabilidades para pollas
+# World Cup Pool Engine — can math beat your office betting pool?
 
-Herramienta para rellenar pollas del Mundial maximizando los **puntos
-esperados** según las reglas de cada polla, a partir de las cuotas de las
-casas de apuestas.
+A probabilistic engine that fills out World Cup prediction pools ("pollas")
+by maximizing **expected points** under each pool's specific scoring rules,
+starting from bookmaker odds.
 
-## 📚 Documentos clave (empieza aquí)
+*Documentación en español: [`README.es.md`](README.es.md). The modeling
+chronicle ([`HISTORIA.md`](HISTORIA.md)) and the reusable recipe
+([`PLAYBOOK.md`](PLAYBOOK.md)) are currently in Spanish.*
 
-- **[`HISTORIA.md`](HISTORIA.md)** — la crónica de cómo llegamos al modelo
-  (material de enseñanza: "cómo usar Claude para ciencia de datos").
-- **[`PLAYBOOK.md`](PLAYBOOK.md)** — la receta reutilizable para atacar una
-  polla nueva. **Punto de partida para COLFONDOS, INGENIERO, LEMAITRE.**
-- **[`pollas/CSC/DECISIONES.md`](pollas/CSC/DECISIONES.md)** — la bitácora
-  técnica completa (números, fórmulas, comandos, hallazgos y refutaciones).
+## The idea
 
-## La idea
+Bookmaker odds are the best cheap predictor available: they aggregate
+enormous amounts of information and are notoriously hard to beat. But there
+are three keys almost nobody applies correctly — and that's where pools are
+won:
 
-Las cuotas de las casas son el mejor predictor barato que existe: incorporan
-muchísima información y son difíciles de batir. Pero hay tres claves que casi
-nadie aplica bien y que son donde se ganan las pollas:
+1. **Odds are not probabilities.** Their inverses sum to more than 100%;
+   the excess is the bookmaker's margin, and it must be removed
+   (`motor/cuotas.py`).
+2. **You don't fill in the most likely outcome — you fill in the one that
+   maximizes expected points** under YOUR pool's rules
+   (`motor/puntuacion.py`). With exact-score points, the optimum is usually
+   1-0 / 1-1 even when you expect a blowout.
+3. **Scorelines come from the full probability distribution** of results
+   (Poisson / Dixon-Coles), backed out from 1X2 + Over/Under markets
+   (`motor/marcadores.py`).
 
-1. **Las cuotas no son probabilidades.** Sus inversos suman >100%; ese exceso
-   es el margen de la casa. Hay que quitarlo (`motor/cuotas.py`).
-2. **No se rellena con lo más probable, sino con lo que maximiza puntos
-   esperados** según las reglas de TU polla (`motor/puntuacion.py`). Con
-   marcador exacto el óptimo suele ser 1-0 / 1-1 aunque esperes goleada.
-3. **Los goles salen de la distribución completa** de marcadores (Poisson /
-   Dixon-Coles), despejada del 1X2 + Over/Under (`motor/marcadores.py`).
+For champion / runner-up picks, the entire tournament is simulated thousands
+of times (`motor/simulacion.py`).
 
-Para campeón / subcampeón se simula el torneo entero miles de veces
-(`motor/simulacion.py`).
-
-## Estructura
+## Structure
 
 ```
-motor/                # común a todas las pollas (no depende de reglas)
-  cuotas.py           # cuotas -> probabilidades (quita el margen)
-  marcadores.py       # distribución de marcadores (Poisson/DC) + sesgo gol=1
-  puntuacion.py       # relleno que maximiza puntos esperados
-  odds_api.py         # bajar cuotas (consenso de casas, The Odds API)
-  simulacion_polla.py # simulador de la polla (utilidad, P(1º), perturbación)
-  torneo.py           # simulador del torneo completo (dispersión por ronda)
-  backtest.py         # validación con partidos reales (football-data.co.uk)
-  simulacion.py       # Monte Carlo del torneo (campeón, subcampeón, ...)
+motor/                # pool-agnostic engine (independent of scoring rules)
+  cuotas.py           # odds -> probabilities (removes bookmaker margin)
+  marcadores.py       # scoreline distribution (Poisson/DC) + goal=1 bias
+  puntuacion.py       # fill-in that maximizes expected points
+  odds_api.py         # fetch odds (bookmaker consensus, The Odds API)
+  simulacion_polla.py # pool simulator (utility, P(1st), perturbation)
+  torneo.py           # full-tournament simulator (dispersion by round)
+  backtest.py         # validation against real matches (football-data.co.uk)
+  simulacion.py       # tournament Monte Carlo (champion, runner-up, ...)
 pollas/
-  _plantilla/         # ejemplo de cómo definir las reglas de una polla
-  CSC/                # CERRADA: reglas + experimentos + DECISIONES.md + planilla
-  COLFONDOS/          # por montar (incluye campeón/goleador)
-  INGENIERO/          # por montar (incluye campeón/goleador)
-  LEMAITRE/           # por montar
-tests/                # verificación de la matemática
+  _plantilla/         # template showing how to define a pool's rules
+  CSC/                # CLOSED: rules + experiments + decision log + entry sheet
+  ...                 # other private pools built from the playbook
+tests/                # verification of the math
 ```
 
-Cada `pollas/<X>/` tiene scripts ejecutables y autoexplicados: `reglas.py`
-(puntuación), `llenar.py` (genera planilla), `cupos.py` (cuántos comprar),
-`experimento_*.py` (cada teoría probada) y `demo_*.py` (demos pedagógicas).
+Each `pollas/<X>/` contains self-explanatory executable scripts: `reglas.py`
+(scoring), `llenar.py` (generates the entry sheet), `cupos.py` (how many
+entries to buy), `experimento_*.py` (each theory tested) and `demo_*.py`
+(teaching demos).
 
-## Uso rápido
+## Quick use
 
 ```python
 from motor import analizar_partido
@@ -64,28 +62,33 @@ from motor.puntuacion import regla_personalizada
 regla = regla_personalizada(pts_exacto=5, pts_diferencia=3, pts_resultado=2)
 
 r = analizar_partido(
-    cuotas_1x2=[1.80, 3.60, 4.50],   # [local, empate, visita]
+    cuotas_1x2=[1.80, 3.60, 4.50],   # [home, draw, away]
     cuotas_ou=[2.00, 1.80],          # [under, over] 2.5
     regla=regla,
 )
 print(r["relleno_optimo"], r["puntos_esperados"])
 ```
 
-## Instalar y probar
+## Install and test
 
 ```bash
 pip install -r requirements.txt
 python tests/test_motor.py
 ```
 
-## Estado / siguientes pasos
+## Status / next steps
 
-- [x] Motor de cuotas, marcadores, puntuación y simulación.
-- [x] **CSC cerrada:** reglas validadas, modelo validado con ground truth
-  (backtest + walk-forward), decisión de **5 cupos**, planilla generada.
-- [x] Mecanismos validados: EV-máximo, sesgo a gol=1, perturbación mínima entre
-  cupos, dispersión creciente por ronda.
-- [ ] COLFONDOS / INGENIERO / LEMAITRE: aplicar el `PLAYBOOK.md` a sus reglas.
-- [ ] Modelo de campeón/goleador (Monte Carlo + `soccer_fifa_world_cup_winner`).
-- [ ] Eliminatorias: top-k de rellenos en rondas de 1-2 partidos.
-- [ ] Opcional: scrapear OddsPortal (gratis) para Over/Under de Mundiales.
+- [x] Odds, scoreline, scoring and simulation engine.
+- [x] **First pool closed:** rules validated, model validated against ground
+  truth (backtest + walk-forward), entry count decided, sheet generated.
+- [x] Validated mechanisms: max-EV fill-in, goal=1 bias, minimal perturbation
+  across entries, increasing dispersion by round.
+- [ ] Apply the playbook to the remaining pools.
+- [ ] Champion / top-scorer model (Monte Carlo + `soccer_fifa_world_cup_winner`).
+- [ ] Knockout rounds: top-k fill-ins for 1-2 match rounds.
+- [ ] Optional: scrape OddsPortal (free) for World Cup Over/Unders.
+
+---
+
+*Built end-to-end (data → model → backtesting → tool) with AI coding agents,
+by a mathematician who takes betting pools far too seriously.*
