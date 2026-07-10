@@ -81,7 +81,7 @@ def main(N=20000):
     # ya tienen su marcador en base_tot (no re-sumar); P#92 lo conocemos pero el
     # admin no lo cargó, así que SÍ se le suma el marcador.
     fixed = {}
-    for s in range(89, 97):
+    for s in range(89, 105):
         r = rs.get(str(s))
         if r and r.get('g1') is not None:
             fixed[s] = (r['e1'], r['e2'], r['g1'], r['g2'])
