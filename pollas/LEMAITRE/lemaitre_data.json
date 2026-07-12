@@ -298,8 +298,10 @@
       "g2": 2
     },
     "100": {
-      "e1": null,
-      "e2": null
+      "e1": "Argentina",
+      "e2": "Suiza",
+      "g1": 3,
+      "g2": 1
     },
     "101": {
       "e1": null,
@@ -3940,8 +3942,8 @@
       "e2": "Inglaterra"
     },
     "100": {
-      "e1": null,
-      "e2": null
+      "e1": "Argentina",
+      "e2": "Suiza"
     },
     "101": {
       "e1": null,
