@@ -334,6 +334,71 @@ lectura** — no se entrega un número falsamente preciso.
 
 ---
 
+## Acto 18 — La auditoría multi-agente que se pagó sola (semis, 13-jul)
+
+Con la estrategia de semis ya definida, commiteada y con el snippet listo para
+llenar, **el usuario dijo:** *"Revisa lo que está hecho para rematar y mira si
+puedes mejorarlo. Manda agentes para que la auditoría sea independiente."*
+
+**Claude hizo:** lanzó **tres sub-agentes en paralelo, ciegos entre sí y con
+mandatos adversariales** (no "revisa que esté bien", sino "encuentra lo que
+está mal / derrota esta config"):
+
+1. **Auditor de código** — reproducir el motor de premio línea por línea, con
+   instrucción explícita de buscar el tipo de bug que ya nos mordió antes (un
+   eje de broadcasting invertido en cuartos).
+2. **Auditor de datos** — re-derivar TODO de las fuentes primarias con parser
+   propio (PDF del field, cuotas crudas de 49 casas), sin mirar los scripts
+   existentes.
+3. **Estratega adversarial** — búsqueda más amplia que la del optimizador
+   original + atacar la metodología misma: la miopía de horizonte (optimizar
+   semis ignorando 3er puesto/final) y el herding real del field (la lección
+   que el usuario había dado dos días antes: "no asumamos que todo el field
+   estaba clavado").
+
+**Lo que salió** (cada auditor encontró cosas de naturaleza distinta — por eso
+se separan los mandatos):
+
+- **Datos: 100% limpios.** Field re-parseado idéntico al peso; consenso de
+  cuotas exacto. Valor: convierte "creo que los insumos están bien" en hecho.
+- **Código: hallazgo GRAVE.** La planilla escrita en el CSV/snippet **no era la
+  config que ganó la simulación**. El optimizador simuló anclas 2-1 (el EV-máx
+  real bajo matrices a 120') pero Claude escribió 1-1 por una **etiqueta mal
+  puesta** ("EV-máx" era 1-1 solo a 90 minutos). Costo del error: ~$500-700k de
+  EV. La matemática estaba perfecta; la etiqueta no. Además: un bug latente
+  (ranking de fills con la regla de otra ronda) que aún no dolía pero iba a
+  doler en la final.
+- **Estratega: encontró una config MEJOR** (G3, "cobertura de la grilla de
+  ganadores": picks distintos POR PARTIDO cubriendo los 4 cuadrantes
+  local/visita), que el menú estrecho del optimizador original — perfiles
+  simétricos entre partidos — **nunca podía encontrar**. Dominante en TODOS los
+  escenarios de sensibilidad, especialmente si el field se agolpa en el modal.
+
+**Y el usuario remató con la pregunta clave:** *"En tus propios números, revisa
+que esto de verdad mejore contra lo que tenías."* Es decir: **no le creas a tus
+auditores tampoco.** Claude re-validó G3 con SU propio evaluador (no el del
+agente), 10 semillas frescas y comparación PAREADA (misma realidad simulada por
+semilla, solo cambian los picks): G3 ganó **10/10** contra la planilla vieja
+(+$716k de media; +$286k incluso en la peor semilla) y 8/10 contra el óptimo
+original del sweep.
+
+**El cierre institucional:** el error de etiqueta se volvió **candado
+automático** (`pollas/CSC/verificar_semis.py`): lee el CSV y el snippet **tal
+como quedaron escritos**, verifica que coincidan entre sí, evalúa esos picks
+exactos en el simulador y **truena si no rinden como la config auditada**. La
+lección 13 ("verifica el artefacto final") dejó de ser consejo y pasó a ser un
+gate ejecutable que corre antes de cada envío.
+
+**Lección:** la auditoría multi-agente independiente no es lujo — aquí **pagó
+~$1.2M de EV** (error evitado + config mejor) por unos minutos de cómputo. Las
+claves: (a) mandatos **adversariales y separados** — código, datos y estrategia
+fallan distinto y se auditan distinto; (b) **ciegos entre sí** para no
+contaminarse; (c) el hallazgo se **re-verifica con números propios** antes de
+adoptarlo (verificar al verificador); (d) todo error grave se convierte en un
+**candado ejecutable**, no en un propósito de enmienda.
+
+---
+
 ## Las 10 lecciones de "cómo usar Claude" (para el curso)
 
 1. **Da el objetivo, no la implementación.** Claude aporta el marco técnico.
@@ -353,6 +418,17 @@ lectura** — no se entrega un número falsamente preciso.
     (cuotas de partido→grupos; futures de campeón→fuerza de eliminatoria).
 13. **Verifica el artefacto final**, no solo el modelo: el bug de coherencia del
     marcador apareció al mirar el Excel lleno, no la simulación.
+14. **Audita con agentes independientes y mandatos ADVERSARIALES.** No "revisa
+    que esté bien" sino "encuentra el error / derrota esta config". Separa
+    código / datos / estrategia (fallan distinto) y mantenlos ciegos entre sí.
+    (Acto 18: un agente halló un error de ~$500k, otro una config mejor.)
+15. **El error más caro puede ser de ETIQUETA, no de matemática.** Lo simulado
+    y lo enviado divergieron por un nombre mal puesto ("EV-máx"). Antídoto:
+    candados ejecutables que evalúan el artefacto ESCRITO contra la simulación
+    (`verificar_semis.py`), corriendo antes de cada envío.
+16. **Verifica al verificador.** Antes de adoptar el hallazgo de un sub-agente,
+    reprodúcelo con tu propio evaluador, semillas frescas y comparación pareada.
+    Si no sobrevive a eso, no era hallazgo.
 
 ---
 
