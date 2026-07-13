@@ -17,9 +17,9 @@ from pollas.CSC.experimento_r32 import ajuste_120
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 PARAMS = RONDAS["semis"]; G = 7; PRECIO = 100_000
-FD = ("/tmp/claude-0/-home-user-Apuestas-mundial/"
-      "d76ca134-7088-56fe-a905-16046e9d8c41/scratchpad/field11.json")
-E_MIN = 6_200_000     # G3 validado ~6.4-6.6M en seeds frescas; <6.2M = config equivocada
+FD = os.path.join(AQUI, "field_semis.json")   # field 11.7 CORREGIDO (v2 del PDF)
+E_MIN = 5_200_000     # G3 con field 11.7v2 ~5.4-5.6M (rivales corregidos al alza,
+                      # corte 482); configs malas rinden <5.0M. Antes 6.2M con field v1.
 
 def leer_csv():
     filas = list(csv.DictReader(open(os.path.join(AQUI, "semi_CSC.csv"), encoding="utf-8")))
