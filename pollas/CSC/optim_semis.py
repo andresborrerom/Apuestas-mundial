@@ -1,7 +1,14 @@
 #!/usr/bin/env python3
 """SEMIS CSC — optim de los 5 cupos con el field REAL (PDF 11.7).
 Mide el tradeoff E[premio total] (copar plata) vs P(recuperar #1) (casilla 50%).
-Solo 2 partidos (Fra-Esp, Ing-Arg). EV-máx de ambos = 1-1 (empate)."""
+Solo 2 partidos (Fra-Esp, Ing-Arg).
+
+⚠️ OJO (auditoría 13-jul): bajo las matrices 120' (ajuste_120 δ=0.45) el
+perfil "D(EV-máx)" es 2-1, NO 1-1 (1-1 solo es EV-máx a 90'). Además los
+perfiles aquí son simétricos entre partidos (menú estrecho). La config
+GANADORA real (G3: cobertura de la grilla de ganadores, picks POR PARTIDO)
+salió de la búsqueda amplia del reto adversarial y está en semi_CSC.csv +
+verificar_semis.py. Este script queda como referencia del sweep original."""
 import json, os, sys
 import numpy as np
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))

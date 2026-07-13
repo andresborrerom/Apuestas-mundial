@@ -88,11 +88,15 @@ def evmax_fill(M, alpha=0.05):
     o = int(np.argmax(EV)); return (o // (G + 1), o % (G + 1))
 
 
-def ranking_fills(Msesgo):
-    """Top-5 fills por EV de cada partido (para escalón/mixto)."""
+def ranking_fills(Msesgo, params=None):
+    """Top-5 fills por EV de cada partido (para escalón/mixto).
+
+    ⚠️ params default = PARAMS de DIECISEISAVOS (2,3,5) por compatibilidad.
+    Para otras rondas PASAR params explícito: el orden de fills puede cambiar
+    con la regla (auditoría 13-jul: en semis top-3 coincidía por suerte)."""
     out = []
     for M in Msesgo:
-        EV = sp.ev_grid(M, PARAMS, G).ravel(); o = np.argsort(-EV)[:5]
+        EV = sp.ev_grid(M, params or PARAMS, G).ravel(); o = np.argsort(-EV)[:5]
         out.append([(int(x // (G + 1)), int(x % (G + 1))) for x in o])
     return out
 

@@ -1,7 +1,7 @@
 (function(){
-  /* CSC SEMIS máx-dinero. CUPO = nº de ANDRES BORRERO (1..5). Cambia y re-pega. NO envía. */
-  var CUPO = 4;  // <<<<<< 4=decorr · 2=decorr · 1,3,5=EV-máx(1-1)
-  var PART = [{"L": "Francia", "V": "España", "aL": ["francia", "france"], "aV": ["espana", "spain"], "s": [[1, 1], [1, 2], [1, 1], [1, 2], [1, 1]]}, {"L": "Inglaterra", "V": "Argentina", "aL": ["inglaterra", "england"], "aV": ["argentina"], "s": [[1, 1], [1, 2], [1, 1], [1, 2], [1, 1]]}];
+  /* CSC SEMIS G3 (grilla de ganadores, auditada 13-jul). CUPO = nº de ANDRES BORRERO (1..5). Cambia y re-pega. NO envía. */
+  var CUPO = 4;  // <<<<<< B4:1-2/2-1 · B1:2-1/1-2 · B2:2-1/2-1 · B5:1-2/1-2 · B3:2-2/1-2
+  var PART = [{"L": "Francia", "V": "España", "aL": ["francia", "france"], "aV": ["espana", "spain"], "s": [[2, 1], [2, 1], [2, 2], [1, 2], [1, 2]]}, {"L": "Inglaterra", "V": "Argentina", "aL": ["inglaterra", "england"], "aV": ["argentina"], "s": [[1, 2], [2, 1], [1, 2], [2, 1], [1, 2]]}];
   function k(s){return (s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z]/g,"");}
   function hasA(t,al){for(var i=0;i<al.length;i++){if(t.indexOf(al[i])>=0)return true;}return false;}
   function setVal(el,v){el.value=v;["input","change","blur","keyup"].forEach(function(ev){el.dispatchEvent(new Event(ev,{bubbles:true}));});}
