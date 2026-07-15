@@ -310,8 +310,10 @@
       "g2": 2
     },
     "102": {
-      "e1": null,
-      "e2": null
+      "e1": "Inglaterra",
+      "e2": "Argentina",
+      "g1": 1,
+      "g2": 2
     },
     "103": {
       "e1": null,
@@ -3952,8 +3954,8 @@
       "e2": "España"
     },
     "102": {
-      "e1": null,
-      "e2": null
+      "e1": "Inglaterra",
+      "e2": "Argentina"
     },
     "103": {
       "e1": null,
