@@ -93,6 +93,119 @@ def main(N=20000):
     def strength(team):
         return max(0.35, lam.get(cn(team), 1.0))
 
+    # ---------------- EXTRAS PENDIENTES (auditoría 15-jul) ----------------
+    # Ground truth calculado de los resultados (con P#92): goles totales 293,
+    # GF: Argentina 17 / Francia 16 / Inglaterra 14 / España 13; GC: España 1 =
+    # Colombia 1 (México 3); último lugar Irak; más GC Túnez=Irak (12); menos GF
+    # Panamá; Colombia GF 5 / GC 1. Goleador real (Goal.com 15-jul): Mbappé 8
+    # (1 asist) > Messi 8 (0) > Haaland 7 > Kane/Bellingham 6.
+    # Solo se suma lo que el admin AÚN no cargó (real_extras[k] is None).
+    pxs = BD['predictions_x']; rx = BD.get('real_extras', {})
+    def nx(s): return cn(s) if s else ''
+    def gpick(n, k): return (pxs.get(n) or {}).get(k)
+    det = {n: 0 for n in parts}     # concluibles deterministas
+    if rx.get('real_ultimo_lugar') is None:
+        for n in parts:
+            if nx(gpick(n, 'ultimo_lugar')) == 'irak': det[n] += 30
+    if rx.get('real_menos_goles_fav') is None:
+        for n in parts:
+            if nx(gpick(n, 'menos_goles_fav')) == 'panama': det[n] += 30
+    if rx.get('real_mas_goles_contra') is None:      # empate Túnez/Irak: pago generoso a ambos
+        for n in parts:
+            if nx(gpick(n, 'mas_goles_contra')) in ('tunez', 'irak'): det[n] += 30
+    if rx.get('real_col_goles_fav') is None:
+        for n in parts:
+            try:
+                if int(gpick(n, 'col_goles_fav')) == 5: det[n] += 50
+            except (TypeError, ValueError): pass
+    if rx.get('real_col_goles_contra') is None:
+        for n in parts:
+            try:
+                if int(gpick(n, 'col_goles_contra')) == 1: det[n] += 50
+            except (TypeError, ValueError): pass
+    for n in parts:
+        base_tot[n] += det[n]
+
+    def gol_name(s):
+        s = nx(s)
+        if 'mbap' in s: return 'mbappe'
+        if 'kane' in s or 'kean' in s: return 'kane'
+        if 'messi' in s: return 'messi'
+        return s
+    PICK_GOL = {n: gol_name(gpick(n, 'goleador')) for n in parts}
+    def pick_int(n, k):
+        try: return int(gpick(n, k))
+        except (TypeError, ValueError): return None
+    PICK_NGOL = {n: pick_int(n, 'goles_goleador') for n in parts}
+    PICK_TOT = {n: pick_int(n, 'total_goles') for n in parts}
+    PICK_MGF = {n: nx(gpick(n, 'mas_goles_fav')) for n in parts}
+    PICK_mGC = {n: nx(gpick(n, 'menos_goles_contra')) for n in parts}
+    PICK_UG = {n: nx(gpick(n, 'ultimo_gol_equipo')) for n in parts}
+    PICK_CC = {n: nx(gpick(n, 'continente_camp')) for n in parts}
+    PICK_CS = {n: nx(gpick(n, 'continente_subcamp')) for n in parts}
+    def es_europa(s): return 'europ' in s
+    def es_america(s): return 'amer' in s or 'sudam' in s or s == 'ame'
+    GF0 = {'Francia': 16, 'Argentina': 17, 'Inglaterra': 14, 'España': 13}
+
+    def extras_sim(scores, winner, loser, rng):
+        """Extras que dependen del 3er puesto (103) y la final (104). SUPUESTOS:
+        cuota de goles del goleador en su equipo (Mbappé .45 Fra, Kane .35 Ing,
+        Messi .45 Arg); empates de GF/GC pagan a todos los empatados; empate de
+        goleador lo gana Mbappé (asistencias) y Messi le gana a Kane."""
+        add = {n: 0 for n in parts}
+        s3 = scores.get(103); s4 = scores.get(104)
+        if not s3 or not s4: return add
+        gF, gI = s3[2], s3[3]; gE, gA = s4[2], s4[3]
+        # total de goles del torneo (120)
+        if rx.get('real_total_goles') is None:
+            tot = 293 + gF + gI + gE + gA
+            for n in parts:
+                if PICK_TOT[n] == tot: add[n] += 120
+        # más goles a favor (30)
+        if rx.get('real_mas_goles_fav') is None:
+            gf = {'francia': GF0['Francia'] + gF, 'inglaterra': GF0['Inglaterra'] + gI,
+                  'espana': GF0['España'] + gE, 'argentina': GF0['Argentina'] + gA}
+            mx = max(gf.values()); lids = {k for k, v in gf.items() if v == mx}
+            for n in parts:
+                if PICK_MGF[n] in lids: add[n] += 30
+        # menos goles en contra (30): España 1+gA vs Colombia 1 (México 3)
+        if rx.get('real_menos_goles_contra') is None:
+            lids = {'colombia'} | ({'espana'} if gA == 0 else set())
+            for n in parts:
+                if PICK_mGC[n] in lids: add[n] += 30
+        # último gol del torneo (20): equipo del último gol de la final (o del 3er si final 0-0)
+        if rx.get('real_ultimo_gol_equipo') is None:
+            if gE + gA > 0:
+                ug = 'espana' if rng.random() < gE / (gE + gA) else 'argentina'
+            elif gF + gI > 0:
+                ug = 'francia' if rng.random() < gF / (gF + gI) else 'inglaterra'
+            else: ug = None
+            for n in parts:
+                if ug and PICK_UG[n] == ug: add[n] += 20
+        # continentes (20 c/u)
+        camp = winner.get(104); sub = loser.get(104)
+        if rx.get('real_continente_camp') is None and camp:
+            eur = norm(camp) == norm('España')
+            for n in parts:
+                if (es_europa(PICK_CC[n]) if eur else es_america(PICK_CC[n])): add[n] += 20
+        if rx.get('real_continente_subcamp') is None and sub:
+            eur = norm(sub) == norm('España')
+            for n in parts:
+                if (es_europa(PICK_CS[n]) if eur else es_america(PICK_CS[n])): add[n] += 20
+        # goleador (50) + nº goles del goleador (50)
+        if rx.get('real_goleador') is None:
+            mb = 8 + rng.binomial(gF, 0.45); ms = 8 + rng.binomial(gA, 0.45)
+            kn = 6 + rng.binomial(gI, 0.35)
+            if mb >= ms and mb >= kn: lider, ngl = 'mbappe', mb
+            elif ms >= kn:            lider, ngl = 'messi', ms
+            else:                     lider, ngl = 'kane', kn
+            for n in parts:
+                if PICK_GOL[n] == lider:
+                    add[n] += 50
+                    if PICK_NGOL[n] == ngl: add[n] += 50
+        return add
+    # -----------------------------------------------------------------------
+
     rng = np.random.default_rng(7)
     pot = NPART * CUOTA
     premio_val = [PREMIOS[i] * 0.9 * pot for i in range(3)]
@@ -157,6 +270,10 @@ def main(N=20000):
             for k, pts in PFINAL.items():
                 if realfin[k] and pe[n].get(k) and norm(pe[n][k]) == norm(realfin[k]):
                     gan[n] += pts
+        # extras pendientes que dependen del 3er puesto y la final
+        eadd = extras_sim(scores, winner, loser, rng)
+        for n in parts:
+            gan[n] += eadd[n]
 
         # ranking + premios (desempate por rifa)
         arr = sorted(parts, key=lambda n: -(gan[n] + rng.random() * 1e-6))
@@ -165,9 +282,14 @@ def main(N=20000):
         wins[arr[0]] += 1
         rank_hist[yo].append(arr.index(yo) + 1)
 
-    print(f"=== ENDGAME LEMAITRE — {N} simulaciones ===")
+    print(f"=== ENDGAME LEMAITRE — {N} simulaciones (extras pendientes INCLUIDOS) ===")
     print(f"Pozo ${pot:,.0f} · premios 1º ${premio_val[0]:,.0f} · 2º ${premio_val[1]:,.0f} · 3º ${premio_val[2]:,.0f}")
-    print(f"Estado base: Pocho {base_tot[yo]} (2º, a {max(base_tot.values())-base_tot[yo]} del líder)\n")
+    print(f"Estado base: Pocho {base_tot[yo]} (a {max(base_tot.values())-base_tot[yo]} del líder)")
+    con_det = [(names[n], det[n]) for n in parts if det[n]]
+    if con_det:
+        print("Extras concluibles sumados (admin aún no carga):",
+              " · ".join(f"{nm[:16]} +{d}" for nm, d in sorted(con_det, key=lambda x: -x[1])))
+    print()
     rk = np.array(rank_hist[yo])
     print(f"POCHO (nosotros):")
     print(f"  P(quedar 1º / ganar) = {wins[yo]/N*100:.1f}%")
