@@ -31,8 +31,8 @@ from pollas.LEMAITRE.puntos_lemaitre import calc_todo, calc_marcador, norm
 AQUI = os.path.dirname(os.path.abspath(__file__))
 PMARC = {"OCT": (40, 18, 12), "CUAR": (50, 30, 14), "SEMI": (60, 40, 15),
          "TERC": (70, 48, 20), "FINAL": (80, 48, 24)}
-PCLAS = {"CUAR": (30, 20, 15, 10), "SEMI": (25, 18, 12, 8)}   # SUPUESTO (app aún no codifica)
-PFINAL = {"camp": 80, "sub": 60, "3er": 40, "4to": 30}         # SUPUESTO (Excel)
+# clasif 97-102 + finalistas/terceros: YA en calc_todo (regla real validada 17-jul)
+PFINAL = {"camp": 80, "sub": 40, "3er": 40, "4to": 30}         # REAL (FINAL_KEYS del app)
 CUOTA = 234_000; NPART = 27; PREMIOS = [0.60, 0.30, 0.10]
 
 ALIAS = {'francia':'france','marruecos':'morocco','noruega':'norway','inglaterra':'england',
@@ -256,13 +256,6 @@ def main(N=20000):
                     w, lo = (t1, t2) if rng.random() < l1 / (l1 + l2) else (t2, t1)
                 winner[slot] = w; loser[slot] = lo
 
-        # clasificación de tramos futuros (cuartos 97-100, semis 101-102)
-        for slot, tramo in [(97, 'CUAR'), (98, 'CUAR'), (99, 'CUAR'), (100, 'CUAR'),
-                            (101, 'SEMI'), (102, 'SEMI')]:
-            if slot in scores:
-                t1, t2, _, _ = scores[slot]
-                for n in parts:
-                    gan[n] += clasif_pts(pe[n].get(str(slot)), t1, t2, PCLAS[tramo])
         # standings final: campeón=winner[104], sub=loser[104], 3º=winner[103], 4º=loser[103]
         camp = winner.get(104); sub = loser.get(104); ter = winner.get(103); cua = loser.get(103)
         realfin = {'camp': camp, 'sub': sub, '3er': ter, '4to': cua}

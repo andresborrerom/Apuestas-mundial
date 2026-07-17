@@ -218,8 +218,8 @@
     "86": {
       "e1": "Argentina",
       "e2": "Cabo Verde",
-      "g1": 1,
-      "g2": 1
+      "g1": 3,
+      "g2": 2
     },
     "87": {
       "e1": "Colombia",
@@ -253,7 +253,9 @@
     },
     "92": {
       "e1": "México",
-      "e2": "Inglaterra"
+      "e2": "Inglaterra",
+      "g1": 2,
+      "g2": 3
     },
     "93": {
       "e1": "Portugal",
@@ -295,12 +297,12 @@
       "e1": "Noruega",
       "e2": "Inglaterra",
       "g1": 1,
-      "g2": 2
+      "g2": 1
     },
     "100": {
       "e1": "Argentina",
       "e2": "Suiza",
-      "g1": 3,
+      "g1": 1,
       "g2": 1
     },
     "101": {
@@ -316,12 +318,16 @@
       "g2": 2
     },
     "103": {
-      "e1": null,
-      "e2": null
+      "e1": "Francia",
+      "e2": "Inglaterra",
+      "g1": null,
+      "g2": null
     },
     "104": {
-      "e1": null,
-      "e2": null
+      "e1": "España",
+      "e2": "Argentina",
+      "g1": null,
+      "g2": null
     }
   },
   "predictions_m": {
@@ -3807,16 +3813,16 @@
         "e2": 2
       },
       "101": {
-        "e1": null,
-        "e2": null
+        "e1": 2,
+        "e2": 1
       },
       "94": {
         "e1": 1,
         "e2": 2
       },
       "102": {
-        "e1": null,
-        "e2": null
+        "e1": 0,
+        "e2": 0
       },
       "95": {
         "e1": 1,
@@ -3958,12 +3964,12 @@
       "e2": "Argentina"
     },
     "103": {
-      "e1": null,
-      "e2": null
+      "e1": "Francia",
+      "e2": "Inglaterra"
     },
     "104": {
-      "e1": null,
-      "e2": null
+      "e1": "España",
+      "e2": "Argentina"
     }
   },
   "predictions_e": {
@@ -4093,8 +4099,8 @@
         "e2": "Portugal"
       },
       "104": {
-        "e1": "Francia",
-        "e2": "Portugal"
+        "e1": "España",
+        "e2": "Brasil"
       },
       "camp": "Brasil",
       "sub": "España",
@@ -4227,8 +4233,8 @@
         "e2": "Brasil"
       },
       "104": {
-        "e1": "España",
-        "e2": "Brasil"
+        "e1": "Francia",
+        "e2": "Argentina"
       },
       "camp": "Argentina",
       "sub": "Francia",
@@ -4361,8 +4367,8 @@
         "e2": "Argentina"
       },
       "104": {
-        "e1": "España",
-        "e2": "Argentina"
+        "e1": "Francia",
+        "e2": "Inglaterra"
       },
       "camp": "Francia",
       "sub": "Inglaterra",
@@ -4495,8 +4501,8 @@
         "e2": "Inglaterra"
       },
       "104": {
-        "e1": "España",
-        "e2": "Inglaterra"
+        "e1": "Francia",
+        "e2": "Argentina"
       },
       "camp": "Francia",
       "sub": "Argentina",
@@ -4629,8 +4635,8 @@
         "e2": "Portugal"
       },
       "104": {
-        "e1": "Francia",
-        "e2": "Portugal"
+        "e1": "España",
+        "e2": "Inglaterra"
       },
       "camp": "Inglaterra",
       "sub": "España",
@@ -4763,8 +4769,8 @@
         "e2": "Brasil"
       },
       "104": {
-        "e1": "Francia",
-        "e2": "Brasil"
+        "e1": "Argentina",
+        "e2": "España"
       },
       "camp": "Argentina",
       "sub": "España",
@@ -4897,8 +4903,8 @@
         "e2": "Inglaterra"
       },
       "104": {
-        "e1": "Colombia",
-        "e2": "Inglaterra"
+        "e1": "Francia",
+        "e2": "Portugal"
       },
       "camp": "Francia",
       "sub": "Portugal",
@@ -5031,8 +5037,8 @@
         "e2": "Inglaterra"
       },
       "104": {
-        "e1": "Francia",
-        "e2": "Inglaterra"
+        "e1": "España",
+        "e2": "Argentina"
       },
       "camp": "España",
       "sub": "Argentina",
@@ -5165,8 +5171,8 @@
         "e2": "Portugal"
       },
       "104": {
-        "e1": "España",
-        "e2": "Portugal"
+        "e1": "Holanda",
+        "e2": "Inglaterra"
       },
       "camp": "Inglaterra",
       "sub": "Holanda",
@@ -5299,8 +5305,8 @@
         "e2": "Portugal"
       },
       "104": {
-        "e1": "Colombia",
-        "e2": "Portugal"
+        "e1": "Holanda",
+        "e2": "Brasil"
       },
       "camp": "Brasil",
       "sub": "Holanda",
@@ -5433,8 +5439,8 @@
         "e2": "Brasil"
       },
       "104": {
-        "e1": "Francia",
-        "e2": "Brasil"
+        "e1": "España",
+        "e2": "Argentina"
       },
       "camp": "España",
       "sub": "Argentina",
@@ -5567,8 +5573,8 @@
         "e2": "Argentina"
       },
       "104": {
-        "e1": "España",
-        "e2": "Argentina"
+        "e1": "Francia",
+        "e2": "Inglaterra"
       },
       "camp": "Francia",
       "sub": "Inglaterra",
@@ -5701,8 +5707,8 @@
         "e2": "Portugal"
       },
       "104": {
-        "e1": "España",
-        "e2": "Portugal"
+        "e1": "Francia",
+        "e2": "Inglaterra"
       },
       "camp": "Francia",
       "sub": "Inglaterra",
@@ -5835,8 +5841,8 @@
         "e2": "Brasil"
       },
       "104": {
-        "e1": "España",
-        "e2": "Brasil"
+        "e1": "Francia",
+        "e2": "Argentina"
       },
       "camp": "Francia",
       "sub": "Argentina",
@@ -5969,8 +5975,8 @@
         "e2": "Inglaterra"
       },
       "104": {
-        "e1": "Francia",
-        "e2": "Inglaterra"
+        "e1": "España",
+        "e2": "Portugal"
       },
       "camp": "Portugal",
       "sub": "España",
@@ -6103,8 +6109,8 @@
         "e2": "Inglaterra"
       },
       "104": {
-        "e1": "Francia",
-        "e2": "Inglaterra"
+        "e1": "España",
+        "e2": "Argentina"
       },
       "camp": "España",
       "sub": "Argentina",
@@ -6237,8 +6243,8 @@
         "e2": "Brasil"
       },
       "104": {
-        "e1": "España",
-        "e2": "Brasil"
+        "e1": "Francia",
+        "e2": "Portugal"
       },
       "camp": "Francia",
       "sub": "Portugal",
@@ -6371,8 +6377,8 @@
         "e2": "Portugal"
       },
       "104": {
-        "e1": "Brasil",
-        "e2": "Portugal"
+        "e1": "Francia",
+        "e2": "España"
       },
       "camp": "Francia",
       "sub": "España",
@@ -6505,8 +6511,8 @@
         "e2": "Brasil"
       },
       "104": {
-        "e1": "España",
-        "e2": "Brasil"
+        "e1": "Francia",
+        "e2": "Portugal"
       },
       "camp": "Portugal",
       "sub": "Francia",
@@ -6639,8 +6645,8 @@
         "e2": "Portugal"
       },
       "104": {
-        "e1": "Inglaterra",
-        "e2": "Portugal"
+        "e1": "España",
+        "e2": "Francia"
       },
       "camp": "Francia",
       "sub": "España",
@@ -6773,8 +6779,8 @@
         "e2": "Brasil"
       },
       "104": {
-        "e1": "Francia",
-        "e2": "Brasil"
+        "e1": "España",
+        "e2": "Argentina"
       },
       "camp": "España",
       "sub": "Argentina",
@@ -6907,8 +6913,8 @@
         "e2": "Inglaterra"
       },
       "104": {
-        "e1": "España",
-        "e2": "Inglaterra"
+        "e1": "Holanda",
+        "e2": "Portugal"
       },
       "camp": "Portugal",
       "sub": "Holanda",
@@ -7041,8 +7047,8 @@
         "e2": "Brasil"
       },
       "104": {
-        "e1": "Colombia",
-        "e2": "Brasil"
+        "e1": "Francia",
+        "e2": "Argentina"
       },
       "camp": "Francia",
       "sub": "Argentina",
@@ -7175,8 +7181,8 @@
         "e2": "Portugal"
       },
       "104": {
-        "e1": "Francia",
-        "e2": "Portugal"
+        "e1": "España",
+        "e2": "Inglaterra"
       },
       "camp": "España",
       "sub": "Inglaterra",
@@ -7309,7 +7315,7 @@
         "e2": "Portugal"
       },
       "104": {
-        "e1": "Brasil",
+        "e1": "Francia",
         "e2": "Portugal"
       },
       "camp": "Colombia",
@@ -7443,8 +7449,8 @@
         "e2": "Argentina"
       },
       "104": {
-        "e1": "España",
-        "e2": "Argentina"
+        "e1": "Francia",
+        "e2": "Brasil"
       },
       "camp": "Brasil",
       "sub": "Francia",
@@ -8549,43 +8555,43 @@
       "Octavos"
     ],
     "97": [
-      "G#89",
-      "G#90",
+      "Francia",
+      "Marruecos",
       "Cuartos"
     ],
     "98": [
-      "G#93",
-      "G#94",
+      "España",
+      "Bélgica",
       "Cuartos"
     ],
     "99": [
-      "G#91",
-      "G#92",
+      "Noruega",
+      "Inglaterra",
       "Cuartos"
     ],
     "100": [
-      "G#95",
-      "G#96",
+      "Argentina",
+      "Suiza",
       "Cuartos"
     ],
     "101": [
-      "G#97",
-      "G#98",
+      "Francia",
+      "España",
       "Semifinal"
     ],
     "102": [
-      "G#99",
-      "G#100",
+      "Inglaterra",
+      "Argentina",
       "Semifinal"
     ],
     "103": [
-      "P#101",
-      "P#102",
+      "Francia",
+      "Inglaterra",
       "3er Lugar"
     ],
     "104": [
-      "G#101",
-      "G#102",
+      "España",
+      "Argentina",
       "Final"
     ]
   },
@@ -9194,14 +9200,14 @@
   },
   "grupos_goleadores": [
     {
-      "nombre": "Lionel Messi",
-      "equipo": "Argentina",
-      "goles": 7
-    },
-    {
       "nombre": "Kylian Mbappé",
       "equipo": "Francia",
-      "goles": 7
+      "goles": 8
+    },
+    {
+      "nombre": "Lionel Messi",
+      "equipo": "Argentina",
+      "goles": 8
     },
     {
       "nombre": "Erling Haaland",

@@ -85,6 +85,24 @@ def calc_clasif(predE, realEq):
             elif p1 == r2 and p2 == r1: pts += b
             elif p1 == r1 or p2 == r2: pts += c
             elif p1 == r2 or p2 == r1: pts += d
+    # Cuartos (97-100) y Semis (101-102): POR EQUIPO — 30 posición correcta,
+    # 20 posición cruzada (validado en calcClasifScore 17-jul; NO es por pareja).
+    for pid in range(97, 103):
+        s = str(pid); real = realEq.get(s); pred = predE.get(s)
+        if not real or not real.get('e1') or not real.get('e2') or not pred: continue
+        p1, p2 = norm(pred['e1']), norm(pred['e2']); r1, r2 = norm(real['e1']), norm(real['e2'])
+        if p1 == r1: pts += 30
+        elif p1 == r2: pts += 20
+        if p2 == r2: pts += 30
+        elif p2 == r1: pts += 20
+    # Finalistas (slot 104): 55 por cada equipo predicho que SÍ está en la final.
+    # Equipos del 3er puesto (slot 103): 40 por cada uno acertado.
+    for pid, val in ((104, 55), (103, 40)):
+        s = str(pid); real = realEq.get(s); pred = predE.get(s) or {}
+        if not real or not real.get('e1') or not real.get('e2'): continue
+        rset = {norm(real['e1']), norm(real['e2'])}
+        for eq in (pred.get('e1'), pred.get('e2')):
+            if eq and norm(eq) in rset: pts += val
     return pts
 
 
