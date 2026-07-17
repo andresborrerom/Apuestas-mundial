@@ -1,8 +1,8 @@
 (function(){
-  /* CSC FINALES A+B (3er puesto + final). Llena EMAIL + CUPO (numero) + marcadores. NO envía. */
-  var CUPO = 1;  // <<<<<< cambia 1..5 y re-pega. B1:2-1/1-0 · B2:1-2/2-1 · B3:1-2/1-2 · B4:3-1/2-1 · B5:2-1/1-2
+  /* CSC FINALES A_hedge (auditada) (3er puesto + final). Llena EMAIL + CUPO (numero) + marcadores. NO envía. */
+  var CUPO = 1;  // <<<<<< cambia 1..5 y re-pega. B1:1-2/1-0 · B2:1-2/2-1 · B3:1-2/1-2 · B4:3-1/2-1 · B5:2-1/1-2
   var EMAIL = "andres.borrerom@gmail.com";
-  var PART = [{"L": "Francia", "V": "Inglaterra", "aL": ["francia", "france"], "aV": ["inglaterra", "england"], "s": [[2, 1], [1, 2], [1, 2], [3, 1], [2, 1]]}, {"L": "España", "V": "Argentina", "aL": ["espana", "spain"], "aV": ["argentina"], "s": [[1, 0], [2, 1], [1, 2], [2, 1], [1, 2]]}];
+  var PART = [{"L": "Francia", "V": "Inglaterra", "aL": ["francia", "france"], "aV": ["inglaterra", "england"], "s": [[1, 2], [1, 2], [1, 2], [3, 1], [2, 1]]}, {"L": "España", "V": "Argentina", "aL": ["espana", "spain"], "aV": ["argentina"], "s": [[1, 0], [2, 1], [1, 2], [2, 1], [1, 2]]}];
   var MAXLAB = 80;   // un ancla de partido debe ser un elemento corto (título), no un contenedor
   function k(s){return (s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]/g,"");}
   function hasA(t,al){for(var i=0;i<al.length;i++){if(t.indexOf(al[i])>=0)return true;}return false;}

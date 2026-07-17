@@ -53,7 +53,7 @@ class Env:
         f1h, f1a = sp.generar_field_mix([Ms[1]], Ef, mix, PAR_M[1], rng, G)
         gfield = (score_pick(f0h[:, [0]], f0a[:, [0]], gh[0][None, :], ga[0][None, :], PAR_M[0])
                   + score_pick(f1h[:, [0]], f1a[:, [0]], gh[1][None, :], ga[1][None, :], PAR_M[1]))
-        field_tot = rivals[:, None] + gfield
+        field_tot = rivals[:, None] + gfield + rng.random((Ef, S)) * 1e-6  # rifa justa (H1 auditoría)
         self.Ftop = np.sort(np.partition(field_tot, -5, axis=0)[-5:], axis=0)[::-1]
         self.jit = rng.random((5, S)) * 1e-6
         cand = [np.stack([score_pick(a, b, gh[m], ga[m], PAR_M[m]) for (a, b) in menu[m]])
