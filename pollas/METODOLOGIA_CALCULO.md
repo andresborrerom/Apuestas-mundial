@@ -100,3 +100,13 @@ solo el promedio. El `que_marcador.py` ya lo hace (columna "vs líder directo" +
 3. ¿Separé conocido / concluible / pendiente?  ✅/❌
 4. ¿Marqué proyecciones como proyección?  ✅/❌
 5. ¿Actualicé el `.md` de ground truth de la polla con la fecha/fuente?  ✅/❌
+
+## Principio #7 — Un supuesto con fuente disponible es un BUG (17-jul-2026)
+
+Si el dato existe en una fuente accesible (código del app, PDF, API, web), NO
+se asume: se va por él. Los supuestos legítimos son solo los INCOGNOSCIBLES
+(planillas rivales futuras, decisiones del admin no publicadas), y van
+declarados con sensibilidad. Además, toda fuente VIVA (código que evoluciona
+por ronda) necesita un TRIPWIRE automático que detecte sus cambios
+(`LEMAITRE/check_reglas.py`), porque el error del 17-jul no fue asumir mal el
+6-jul — fue seguir asumiendo el 14-jul cuando la fuente ya había cambiado.

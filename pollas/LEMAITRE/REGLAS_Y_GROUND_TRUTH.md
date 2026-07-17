@@ -212,3 +212,34 @@ Diagnóstico 6-jul: **Dionisio tiene los 4 picks de final en grupos distintos
 (techo pleno 210)**; nosotros tenemos España(campeón) y Portugal(4to) en el MISMO
 grupo P98 → colisión −30 y hueco en P100. Por eso **hoy nos conviene que gane
 España** (mantiene vivo el pick de campeón, 80 pts, vs 4to de Portugal, 30).
+
+---
+
+## 7. POST-MORTEM 17-jul + LIBRO DE SUPUESTOS VIVO
+
+**Lo que pasó:** el app activó los tramos de clasif de cuartos/semis con regla
+POR EQUIPO (30/20 c/u) + bonos de finalistas (55 c/u) y terceros (40 c/u) —
+valores MUY distintos a los asumidos en el endgame (30/20/15/10 por pareja).
+La advertencia de re-validar estaba escrita en este mismo doc (§2) y no se
+ejecutó cuando cuartos se definió: proyectamos una semana con P(2º)=33% cuando
+la posición real era 6º. **Un supuesto cuya fuente está disponible es un BUG,
+no un supuesto.**
+
+**Corrección estructural:** `check_reglas.py` = tripwire que baja el código
+oficial y compara hashes de los 6 bloques de scoring. **Correr SIEMPRE antes
+de cualquier proyección.** Si truena: leer código nuevo → actualizar scorer →
+re-validar 7/7 → `--accept`.
+
+### Libro de supuestos (estado 17-jul, tras validación 7/7)
+
+| # | Ítem | Estado | Fuente / nota |
+|---|------|--------|---------------|
+| 1 | Marcadores por fase (PTS) | ✅ VALIDADO | código app, hash vigilado |
+| 2 | Clasif 73-102 + finalistas/terceros | ✅ VALIDADO 7/7 | código app 17-jul |
+| 3 | Standings camp/sub/3er/4to = 80/40/40/30 | ⚠️ DECLARADO-NO-CODIFICADO | FINAL_KEYS (UI) del app; el bloque de scoring AÚN no existe — el tripwire avisará cuando aparezca. NO usar el 80/60/40/30 del Excel |
+| 4 | Extras/Colombia (valores) | ✅ VALIDADO | calcExtrasScore/calcColombiaScore |
+| 5 | Premio 90% pozo, 60/30/10 | ⚠️ SUPUESTO (organizador) | no está en el app; confirmar con el admin antes de contar plata |
+| 6 | Ground truth extras pendientes (goles 293, GF/GC, Irak, Panamá, Colombia 5/1) | ✅ CALCULADO de resultados | endgame los suma solo si real_extras=None |
+| 7 | Goleador Mbappé 8 (1 asist) / Messi 8 / Kane 6 | ✅ INVESTIGADO (Goal.com 15-jul) | cuotas de gol por jugador (.45/.45/.35) = SUPUESTO no observable, declarado |
+| 8 | Desempates del admin (GF empatado, goleador empatado, etc.) | ❓ INCOGNOSCIBLE hasta que cargue | pago "generoso" en el modelo, declarado |
+| 9 | Fuerzas Poisson de cuotas (lam) | SUPUESTO DE MODELO declarado | único rol: marcadores futuros |
