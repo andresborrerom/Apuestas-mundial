@@ -326,8 +326,8 @@
     "104": {
       "e1": "España",
       "e2": "Argentina",
-      "g1": null,
-      "g2": null
+      "g1": 1,
+      "g2": 0
     }
   },
   "predictions_m": {
