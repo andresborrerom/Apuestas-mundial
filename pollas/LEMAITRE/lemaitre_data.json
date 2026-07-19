@@ -320,8 +320,8 @@
     "103": {
       "e1": "Francia",
       "e2": "Inglaterra",
-      "g1": null,
-      "g2": null
+      "g1": 4,
+      "g2": 6
     },
     "104": {
       "e1": "España",

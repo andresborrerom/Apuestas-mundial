@@ -101,7 +101,9 @@ def main(N=20000):
     # (1 asist) > Messi 8 (0) > Haaland 7 > Kane/Bellingham 6.
     # Solo se suma lo que el admin AÚN no cargó (real_extras[k] is None).
     pxs = BD['predictions_x']; rx = BD.get('real_extras', {})
-    def nx(s): return cn(s) if s else ''
+    def nx(s):   # normaliza SIN alias inglés (bug 18-jul: cn() mapeaba
+        # 'España'->'spain' y los literales 'espana'/'francia' nunca pagaban)
+        return re.sub('[^a-z]', '', unicodedata.normalize('NFD', str(s or '')).encode('ascii', 'ignore').decode().lower())
     def gpick(n, k): return (pxs.get(n) or {}).get(k)
     det = {n: 0 for n in parts}     # concluibles deterministas
     if rx.get('real_ultimo_lugar') is None:
@@ -192,13 +194,13 @@ def main(N=20000):
             eur = norm(sub) == norm('España')
             for n in parts:
                 if (es_europa(PICK_CS[n]) if eur else es_america(PICK_CS[n])): add[n] += 20
-        # goleador (50) + nº goles del goleador (50)
+        # goleador (50) + nº goles del goleador (50) — POST-P103 (18-jul): Mbappé
+        # cerró con 10 (doblete en el 6-4); Kane NO marcó (queda 6); Messi 8 y
+        # solo él puede alcanzarlo en la final (empate 10-10 -> Mbappé por asist).
         if rx.get('real_goleador') is None:
-            mb = 8 + rng.binomial(gF, 0.45); ms = 8 + rng.binomial(gA, 0.45)
-            kn = 6 + rng.binomial(gI, 0.35)
-            if mb >= ms and mb >= kn: lider, ngl = 'mbappe', mb
-            elif ms >= kn:            lider, ngl = 'messi', ms
-            else:                     lider, ngl = 'kane', kn
+            mb = 10; ms = 8 + rng.binomial(gA, 0.45)
+            if ms > mb: lider, ngl = 'messi', ms
+            else:       lider, ngl = 'mbappe', mb
             for n in parts:
                 if PICK_GOL[n] == lider:
                     add[n] += 50
@@ -245,16 +247,17 @@ def main(N=20000):
                 for n in parts:
                     gan[n] += marc_pts(pm[n].get(str(slot)), g1, g2, fase)
             scores[slot] = (t1, t2, g1, g2)
-            # avance (penales si empate) — no aplica a 3er puesto (103)
-            if slot != 103:
-                l1, l2 = strength(t1), strength(t2)
-                if slot in PEN_WINNERS and g1 == g2:
-                    w = PEN_WINNERS[slot]; lo = t2 if w == t1 else t1
-                elif g1 > g2: w, lo = t1, t2
-                elif g2 > g1: w, lo = t2, t1
-                else:
-                    w, lo = (t1, t2) if rng.random() < l1 / (l1 + l2) else (t2, t1)
-                winner[slot] = w; loser[slot] = lo
+            # avance (penales si empate). El 103 TAMBIÉN define winner/loser
+            # (= 3er y 4to puesto) — bug corregido 18-jul: se saltaba y los
+            # standings 3er/4to no se pagaban nunca en el sim.
+            l1, l2 = strength(t1), strength(t2)
+            if slot in PEN_WINNERS and g1 == g2:
+                w = PEN_WINNERS[slot]; lo = t2 if w == t1 else t1
+            elif g1 > g2: w, lo = t1, t2
+            elif g2 > g1: w, lo = t2, t1
+            else:
+                w, lo = (t1, t2) if rng.random() < l1 / (l1 + l2) else (t2, t1)
+            winner[slot] = w; loser[slot] = lo
 
         # standings final: campeón=winner[104], sub=loser[104], 3º=winner[103], 4º=loser[103]
         camp = winner.get(104); sub = loser.get(104); ter = winner.get(103); cua = loser.get(103)
