@@ -158,3 +158,33 @@ Al iniciar trabajo analítico, Claude hace esto sin que se lo pidan:
 *Versión 1.0 — destilado del proyecto Apuestas-Mundial 2026 (LEMAITRE + CSC),
 donde cada regla de este documento se pagó con puntos, plata o posiciones
 antes de ser regla.*
+
+---
+
+## §10. LA ÚLTIMA MILLA (regla nacida del error más caro: −$4.56M, 19-jul-2026)
+
+El fallo: el snippet de llenado asumía que el formulario listaba los equipos en
+el mismo orden que nuestra fuente de cuotas. El form de las finales los listó
+al revés ("Inglaterra vs Francia") y los 5 cupos se enviaron con el marcador
+INVERTIDO — incluyendo un 1-0 exacto de la final que valía el campeonato.
+El candado validaba planilla≡simulación≡snippet… hasta NUESTRA frontera.
+Nadie verificó la SEMÁNTICA del canal de entrega ni el recibo del receptor.
+
+**Reglas permanentes:**
+
+1. **El canal de entrega es una FUENTE, no un supuesto.** El orden de campos,
+   etiquetas y semántica del formulario/API/plantilla destino se LEE del
+   propio canal (el snippet tenía el texto del título en la mano y no lo usó).
+   Si el código puede leerlo, DEBE leerlo y adaptarse o negarse a llenar.
+2. **Verificación de RECIBO obligatoria.** Nada está "enviado" hasta comparar
+   el acuse del receptor (recibo, confirmación, respuesta cruda) contra la
+   planilla intencionada, campo por campo. El artefacto que importa no es el
+   que sale de nuestras manos: es el que ACEPTA el otro lado.
+3. **Supuesto invisible = el peor bug.** En cada entrega, preguntarse
+   explícitamente: "¿qué estoy asumiendo del RECEPTOR?" y meterlo al Libro de
+   Supuestos aunque parezca obvio. Los supuestos que nadie escribe son los
+   que nadie audita.
+4. **Si Claude no puede corroborar, EXIGE el paso de verificación** — bloquea
+   el flujo y pide al usuario la evidencia (foto, recibo, texto) ANTES del
+   punto de no retorno. Seguir sin corroborar es una decisión, y es la
+   equivocada. El usuario tiene derecho a esperar que Claude pare el tren.

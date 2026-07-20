@@ -399,6 +399,42 @@ adoptarlo (verificar al verificador); (d) todo error grave se convierte en un
 
 ---
 
+## Acto 19 — El bug de la última milla: −$4.56M y el título (19-jul)
+
+La final terminó España 1-0. El cupo B1 tenía **exactamente ese marcador**:
+564 puntos proyectados, campeón de la polla por 16, $5.7M del pozo. El PDF
+final dijo otra cosa: B1 quedó 6º con +0 en los últimos dos partidos, y el
+título se perdió por 2 puntos. Quedamos 2º y 3º ($3.99M) — plata grande,
+pero $4.56M menos que lo que la planilla correcta pagaba.
+
+**La causa, probada con los recibos:** el formulario de las finales listó los
+partidos en orden INVERSO a nuestra fuente de cuotas ("Inglaterra vs Francia",
+"Argentina vs España"). El snippet de llenado anclaba el partido verificando
+que el título contuviera ambos equipos — **sin verificar cuál iba primero** —
+y escribía los goles en orden fijo. Los 5 cupos se enviaron con el marcador
+volteado. El 1-0 de España se convirtió en 1-0 de Argentina. La auditoría del
+desastre tomó 10 minutos: las ganancias observadas de los 5 cupos cuadraron
+exactas con los picks invertidos. Prueba matemática, cero dudas.
+
+**Por qué es la lección más importante del proyecto:** ese día ya existían el
+protocolo anti-supuestos, el tripwire, el candado planilla≡simulación y dos
+auditorías multi-agente. TODO eso validaba hasta nuestra frontera. El supuesto
+que mató no estaba en el modelo ni en los datos: estaba en la SEMÁNTICA DEL
+CANAL DE ENTREGA, y nunca fue registrado como supuesto porque nadie lo vio
+como uno. El usuario lo dijo con precisión y con razón, furioso: "pedí CERO
+supuestos; ¿qué supuesto tan bobo el de no ver qué va primero? ¿cómo no me
+exiges revisar si no lo puedes corroborar?".
+
+**Lección (la que resume todas):** los supuestos invisibles son los que nadie
+audita. El canal de entrega es una fuente que se LEE (el snippet tenía el
+título del partido en la mano y no lo usó para ordenar los goles). Nada está
+"enviado" hasta verificar el RECIBO del receptor contra la planilla
+intencionada. Y cuando Claude no puede corroborar algo, su obligación es
+BLOQUEAR y exigir la verificación humana antes del punto de no retorno —
+seguir de largo también es una decisión, y es la equivocada.
+
+---
+
 ## Las 10 lecciones de "cómo usar Claude" (para el curso)
 
 1. **Da el objetivo, no la implementación.** Claude aporta el marco técnico.
@@ -429,6 +465,13 @@ adoptarlo (verificar al verificador); (d) todo error grave se convierte en un
 16. **Verifica al verificador.** Antes de adoptar el hallazgo de un sub-agente,
     reprodúcelo con tu propio evaluador, semillas frescas y comparación pareada.
     Si no sobrevive a eso, no era hallazgo.
+17. **La última milla es una fuente, no un supuesto.** El error más caro del
+    proyecto (−$4.56M) no estuvo en el modelo sino en la semántica del canal
+    de entrega (el orden de los equipos en el formulario). Regla triple: leer
+    el canal desde el canal mismo; verificar el RECIBO del receptor campo por
+    campo antes de dar por entregado; y si no se puede corroborar, BLOQUEAR y
+    exigir la verificación humana. Los candados deben cubrir hasta donde el
+    artefacto es ACEPTADO, no hasta donde sale de tus manos.
 
 ---
 
