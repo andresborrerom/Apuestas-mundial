@@ -22,3 +22,9 @@
   artefacto final. Su candado: simulacro de draft completo contra la hoja
   ANTES del 7-sep (¿se decide un pick en <45 s con ella? ¿sobrevive picks
   fuera de guion?). El "recibo" del draft = roster final en ESPN vs plan.
+
+## DISCREPANCIAS DETECTADAS (fuente vs prompt)
+| # | Ítem | Prompt dice | App dice (screenshot 10-ago) | Resolución |
+|---|---|---|---|---|
+| D1 | Número de equipos | 16 | **14** ("Peace and Love", ID 2107128204) | El dump 2026 manda. Si son 14: cambian TODOS los baselines (28 slots QB, no 32), la secuencia snake (R2=pick 19, no 23) y la estructura de playoffs (¿8 de 14?). H1 se recalcula. |
+| D2 | Máx QBs rosterables | no mencionado | "QB 1 (4 max)" | Relevante para estrategia de acaparar QBs en superflex: techo de 4 |
