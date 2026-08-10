@@ -24,10 +24,8 @@ def carga(tabla, patron, años=YEARS):
     print(f' {tabla}: {len(dd)}')
     return dd
 
-print('== fact_player_week_off ==', flush=True)
-carga('fact_player_week_off','player_stats/player_stats_{y}.parquet')
-print('== fact_player_week_def ==', flush=True)
-carga('fact_player_week_def','player_stats/player_stats_def_{y}.parquet')
+print('== fact_player_week (esquema unificado of+def, tag stats_player) ==', flush=True)
+carga('fact_player_week','stats_player/stats_player_week_{y}.parquet')
 print('== fact_snaps ==', flush=True)
 carga('fact_snaps','snap_counts/snap_counts_{y}.parquet')
 
