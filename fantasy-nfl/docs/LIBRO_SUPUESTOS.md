@@ -56,3 +56,34 @@
    sus box scores reales (pregunta de segundos).
 3. Semana 1 (9-sep) = validación en caliente jugador por jugador, a 2 días del
    draft NO sirve para el draft → por eso 1 y 2 son críticos antes.
+
+## VALIDACIÓN DEL MOTOR (10-ago) — vía kona_player_info
+**Descubrimiento clave:** la API de la liga 2026 expone la temporada REAL 2025
+de cada jugador YA PUNTUADA por ESPN bajo NUESTRAS reglas (statSourceId=0,
+seasonId=2025, appliedTotal) + stats crudas por statId. Eso reemplaza (y
+supera) la validación contra liga vieja: mismo ruleset, matemática de ESPN.
+
+Reconstrucción exacta (fórmula: Σ raw[statId] × pts_override[posId]):
+| Jugador | ESPN | Motor | |
+|---|---|---|---|
+| Myles Garrett (DE) | 136.5 | 136.5 | ✅ |
+| Maxx Crosby (DE) | 143.5 | 143.5 | ✅ |
+| Jahmyr Gibbs (RB) | 370.0 | 370.0 | ✅ |
+| Puka Nacua (WR) | 380.0 | 380.0 | ✅ |
+
+## RESOLUCIONES P4 / P10 / P11
+- **P10 ✅**: "Total Tackles"(+1) y "Assisted"(+0.5) aplican AMBOS → tackle
+  solo = 1.0, asistido = 1.5 efectivo.
+- **P11 ✅**: el sack vive DENTRO de los crudos de tackle y stuff además de su
+  ítem propio → **sack ≈ 4 pts efectivos** (2 sack + 1 tackle + 1 stuff).
+  Garrett (23 sacks) hizo 136.5: los edge élite compiten con LB de volumen.
+  H4 queda INVERTIDA respecto al prompt.
+- **P4 ✅ (semántica de labels + crudos de Gibbs)**: bonos de TD apilan por
+  definición (50+ ⊂ 40+: un TD de 50+ paga 1+2=3); los umbrales de juego son
+  RANGOS DISJUNTOS (100-199 vs 200+): un juego de 210 yd paga SOLO +3 (no 2+3).
+  Cross-check final vs game-log nflverse en el candado masivo de Fase 1.
+- **CANDADO DE FASE 1 definido**: reconstruir el appliedTotal 2025 de TODOS
+  los jugadores relevantes (~top 400 + IDP) y exigir cuadre al decimal; luego
+  el mismo motor sobre stats nflverse debe reproducir los crudos de ESPN.
+- Liga vieja COLOMBIAN UNDERDOGS: ya NO necesaria para validación (reglas
+  distintas < validación con reglas exactas). Queda como opcional.
