@@ -1,0 +1,22 @@
+# ÚNICO archivo de parámetros de liga (prompt fundacional §2)
+liga:
+  plataforma: espn
+  temporada: 2026
+  equipos: 16
+  mi_pick_r1: 10
+draft:
+  fecha: 2026-09-07T19:00:00-05:00
+  formato: snake
+  segundos_por_pick: 45
+slots_titulares: [QB, RB, RB, WR, WR, TE, FLEX, OP, LB, DL, DB, DST, K]
+banca: null        # P7: pendiente de API
+ir: null           # P7: pendiente de API
+faab:
+  presupuesto: 9999
+  minimo: 1
+playoffs:
+  equipos: 8
+  semanas_por_ronda: 1
+  reseeding: false
+  desempate_siembra: total_points_for
+scoring_ruleset: null   # se llena con el dump validado (espn_2026)
