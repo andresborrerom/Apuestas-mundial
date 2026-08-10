@@ -87,3 +87,12 @@ Reconstrucción exacta (fórmula: Σ raw[statId] × pts_override[posId]):
   el mismo motor sobre stats nflverse debe reproducir los crudos de ESPN.
 - Liga vieja COLOMBIAN UNDERDOGS: ya NO necesaria para validación (reglas
   distintas < validación con reglas exactas). Queda como opcional.
+
+## CORRECCIÓN a P5 (11-ago, validada vs Texans D/ST 140.0)
+Los escalones de points-allowed (89-92, 121-125) existen en la config con
+puntos base PERO el override de la posición 16 los anula: **el D/ST paga
+SOLO eventos** (sack 1, INT 3, FR 3, safety 2, bloqueo 2, TD retorno 6).
+El prompt original tenía razón; mi lectura del dump del 10-ago aplicó los
+puntos base sin el override. Causa raíz: sintetizar sin correr el desglose
+por posición. Regla: todo reporte de scoring sale del DESGLOSE del motor
+validado, no de leer la tabla a ojo.

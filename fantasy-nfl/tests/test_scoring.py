@@ -33,8 +33,10 @@ def test_td_50_apila_con_40():
     # TD de 50+: raw trae 35 y 36 a la vez (validado en crudos de Gibbs)
     _e({'25':1,'35':1,'36':1}, 2, 9.0)   # 6 + 1 + 2
 
-def test_dst_shutout():
-    _e({'89':1}, 16, 20.0)
+def test_dst_points_allowed_paga_cero():
+    # VALIDADO vs Texans D/ST 2025 (140.0 = solo eventos): los escalones
+    # 89-92/121-125 tienen base>0 pero override 16 -> 0. D/ST = solo eventos.
+    _e({'89':1,'91':3,'92':5,'121':5}, 16, 0.0)
 
 def test_dst_sack_es_1_no_2():
     _e({'99':1}, 16, 1.0)

@@ -1,61 +1,52 @@
-"""Ingesta nflverse 2021-2025 -> DuckDB. Capa 1: hechos crudos."""
-import sys
+"""Ingesta nflverse 2021-2025 -> DuckDB. Parquet DIRECTO de nflverse-data
+(bypass de nfl_data_py para weekly/def/pbp: sus URLs internas 404ean)."""
 from pathlib import Path
-import duckdb
-import pandas as pd
+import duckdb, pandas as pd
 import nfl_data_py as nfl
 
 RAIZ=Path(__file__).resolve().parent.parent
 DB=str(RAIZ/'db'/'fantasy.duckdb')
 YEARS=list(range(2021,2026))
+NV='https://github.com/nflverse/nflverse-data/releases/download'
 con=duckdb.connect(DB)
 
-print('== schedules (dim_game con Vegas) ==')
+print('== dim_game (schedules + Vegas) ==', flush=True)
 sch=nfl.import_schedules(YEARS)
-con.execute("CREATE OR REPLACE TABLE dim_game AS SELECT * FROM sch")
-print(' dim_game:',len(sch))
+con.execute("CREATE OR REPLACE TABLE dim_game AS SELECT * FROM sch"); print(' ',len(sch))
 
-print('== weekly ofensivo ==')
-wk=nfl.import_weekly_data(YEARS)
-con.execute("CREATE OR REPLACE TABLE fact_player_week_off AS SELECT * FROM wk")
-print(' fact_player_week_off:',len(wk),'cols:',len(wk.columns))
+def carga(tabla, patron, años=YEARS):
+    dfs=[]
+    for y in años:
+        d=pd.read_parquet(f'{NV}/{patron}'.format(y=y))
+        dfs.append(d); print(f'  {y}: {len(d)}', flush=True)
+    dd=pd.concat(dfs, ignore_index=True)
+    con.execute(f"CREATE OR REPLACE TABLE {tabla} AS SELECT * FROM dd")
+    print(f' {tabla}: {len(dd)}')
+    return dd
 
-print('== snap counts ==')
-try:
-    sn=nfl.import_snap_counts(YEARS)
-    con.execute("CREATE OR REPLACE TABLE fact_snaps AS SELECT * FROM sn")
-    print(' fact_snaps:',len(sn))
-except Exception as e:
-    print(' snaps FALLO:',type(e).__name__,e)
+print('== fact_player_week_off ==', flush=True)
+carga('fact_player_week_off','player_stats/player_stats_{y}.parquet')
+print('== fact_player_week_def ==', flush=True)
+carga('fact_player_week_def','player_stats/player_stats_def_{y}.parquet')
+print('== fact_snaps ==', flush=True)
+carga('fact_snaps','snap_counts/snap_counts_{y}.parquet')
 
-print('== defensivo semanal (parquet nflverse directo) ==')
-defs=[]
-for y in YEARS:
-    try:
-        d=pd.read_parquet(f'https://github.com/nflverse/nflverse-data/releases/download/player_stats/player_stats_def_{y}.parquet')
-        defs.append(d); print(f' def {y}: {len(d)}')
-    except Exception as e:
-        print(f' def {y} FALLO: {type(e).__name__}')
-if defs:
-    dd=pd.concat(defs)
-    con.execute("CREATE OR REPLACE TABLE fact_player_week_def AS SELECT * FROM dd")
-    print(' fact_player_week_def:',len(dd))
-
-print('== pbp -> TDs por distancia (bonos 40+/50+) ==')
+print('== fact_td_plays (pbp -> distancias de TD) ==', flush=True)
 rows=[]
 for y in YEARS:
-    p=nfl.import_pbp_data([y],downcast=True,cache=False)
-    td=p[(p['touchdown']==1)&(p['play_type'].isin(['run','pass']))][
-        ['season','week','td_player_id','yards_gained','play_type','rusher_player_id','receiver_player_id']]
-    rows.append(td); print(f' pbp {y}: {len(td)} TDs')
+    p=pd.read_parquet(f'{NV}/pbp/play_by_play_{y}.parquet',
+        columns=['season','week','game_id','touchdown','play_type','yards_gained',
+                 'td_player_id','rusher_player_id','receiver_player_id','passer_player_id'])
+    td=p[(p['touchdown']==1)&(p['play_type'].isin(['run','pass']))]
+    rows.append(td); print(f'  {y}: {len(td)} TDs', flush=True)
     del p
-tds=pd.concat(rows)
+tds=pd.concat(rows, ignore_index=True)
 con.execute("CREATE OR REPLACE TABLE fact_td_plays AS SELECT * FROM tds")
 print(' fact_td_plays:',len(tds))
 
-print('== ids (crosswalk base) ==')
+print('== xwalk ids ==', flush=True)
 ids=nfl.import_ids()
 con.execute("CREATE OR REPLACE TABLE xwalk_ids_nflverse AS SELECT * FROM ids")
-print(' xwalk_ids_nflverse:',len(ids),'| tiene espn_id:',('espn_id' in ids.columns))
+print(' ids:',len(ids),'| espn_id presente:', 'espn_id' in ids.columns)
 con.close()
-print('\nINGESTA COMPLETA -> db/fantasy.duckdb')
+print('\nINGESTA COMPLETA')
