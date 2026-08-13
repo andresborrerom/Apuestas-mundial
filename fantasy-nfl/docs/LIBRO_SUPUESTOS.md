@@ -96,3 +96,20 @@ El prompt original tenía razón; mi lectura del dump del 10-ago aplicó los
 puntos base sin el override. Causa raíz: sintetizar sin correr el desglose
 por posición. Regla: todo reporte de scoring sale del DESGLOSE del motor
 validado, no de leer la tabla a ojo.
+
+## EVENTO MAYOR 12-ago: tripwire cazó re-configuración COMPLETA de la liga
+- **size 14→16 ✅** (D1 resuelta: los 16 están, payouts los nombra a todos)
+- **Scoring v1 (55 items) → v2 (75)**: first downs +0.2, INC −0.05, sacked −0.1,
+  2pt divididos, FG realista (60+ = +6, corto fallado −3), **Solo Tackle +1.5
+  ADEMÁS del Total +1 → solo=2.5 efectivo, asistido=1.5**; FF 2→1; sack IDP
+  sigue 2 (override); **D/ST v2: escalones de PA SÍ pagan (shutout +20, 46+ =
+  −6) + <100 yardas +5 + hay items de MARGEN DE VICTORIA (161-166, hasta +10)**
+  → verificar a quién acreditan (¿D/ST?) con box scores del corpus v2.
+- **Roster nuevo: QB/RB/RBWR×2/WR/TE/OP/DT/DE/LB/CB/S/DST/K + BE4 + IR** —
+  5 slots IDP por posición específica (DT es el cuello de botella: 16 titulares
+  interiores). Baselines VBD a rehacer por completo.
+- **Motor re-validado bajo v2: 1801/1801 al decimal.** Tripwire re-baselined.
+- ⚠️ DISCREPANCIA VIVA: draft = 27-ago según Andrés; el app dice 8-sep.
+  Gobierna la palabra de Andrés para el plan; tripwire vigila el campo.
+- Corrección de mi corrección: "D/ST solo eventos" era cierto en v1; v2 lo
+  cambió. Sin tripwire habríamos valuado D/ST con reglas muertas.
