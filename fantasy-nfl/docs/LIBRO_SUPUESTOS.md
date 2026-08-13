@@ -117,3 +117,26 @@ validado, no de leer la tabla a ojo.
 ## 13-ago: discrepancia de fecha RESUELTA
 27-ago = sorteo del ORDEN; draft = 7-sep (app tenía razón desde el inicio;
 ambas fuentes cuadran). Hito nuevo en el plan: 27-ago llega el pick.
+
+## 13-ago: S1 (baseline QB) CONFIRMADO por Andrés + cambio de tackles EN EL AIRE
+- **S1 resuelto ✅ (dato de Andrés):** la liga suele alinear ~30 QBs y los
+  managers prefieren gastar banca en QB suplente antes que alinear 1 solo.
+  Baseline QB30 pasa de ⚠️ SUPUESTO a dato del dueño de la liga. La
+  sensibilidad QB28/QB32 queda como colchón, ya no como incógnita central.
+
+SUPUESTO/INCÓGNITA #T1: regla de tackles POST-cambio del commish
+- QUÉ: en el chat de la liga preguntaron por el doble pago (Solo 1.5 + Total
+  1.0 = 2.5 por solitaria). Commish: "creo que toca quitar el total. es decir
+  solo 1 punto". La frase es AMBIGUA (3 lecturas):
+    A) quitar Total, queda Solo 1.5  → solitaria 1.5 / asistida 0
+    B) quitar Solo, queda Total 1.0  → toda tacleada 1.0
+    C) "Solo, 1 punto": quitar Total y bajar Solo a 1.0 → 1.0 / 0
+- POR QUÉ NO HAY INFO: decisión futura de un tercero → ❓ INCOGNOSCIBLE.
+- COSTO SI ESTÁ MAL: LB top pierde 37-59 pts de VBD según lectura (Cashman
+  390→209/239/159 proj). NO cambia el top-10 global (QB/RB/WR intactos) pero
+  mueve a los IDP 1-2 rondas más tarde y en C el DT1 pasa a ser el 1er IDP.
+- SENSIBILIDAD: corrida completa en scratchpad/escenarios_tackle.py (13-ago).
+  Veredicto: la decisión de las rondas 1-3 NO cambia; la estrategia IDP sí.
+- CADUCIDAD: cuando el commish edite la config, check_settings.py TRUENA →
+  ese día se re-acepta baseline, se re-valida el candado masivo y se regenera
+  vbd. NO draftear IDP con tabla vieja si el tripwire sonó.
