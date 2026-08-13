@@ -113,3 +113,7 @@ validado, no de leer la tabla a ojo.
   Gobierna la palabra de Andrés para el plan; tripwire vigila el campo.
 - Corrección de mi corrección: "D/ST solo eventos" era cierto en v1; v2 lo
   cambió. Sin tripwire habríamos valuado D/ST con reglas muertas.
+
+## 13-ago: discrepancia de fecha RESUELTA
+27-ago = sorteo del ORDEN; draft = 7-sep (app tenía razón desde el inicio;
+ambas fuentes cuadran). Hito nuevo en el plan: 27-ago llega el pick.

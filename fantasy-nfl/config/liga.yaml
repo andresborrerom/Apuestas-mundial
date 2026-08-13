@@ -1,7 +1,8 @@
 # Parámetros de liga — v2 (dump 12-ago validado + payouts oficiales)
 liga: {plataforma: espn, temporada: 2026, equipos: 16, buyin_usd: 650, pozo_usd: 10950}
 draft:
-  fecha_dicha_por_andres: 2026-08-27   # ⚠️ el app aún muestra 2026-09-08; tripwire vigila
+  fecha: 2026-09-07                    # confirmada: app y Andrés coinciden (13-ago)
+  sorteo_orden: 2026-08-27             # lotería del draft order
   formato: snake
   segundos_por_pick: 45
   mi_pick: null                        # pendiente (próxima semana)
