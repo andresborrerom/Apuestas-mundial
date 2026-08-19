@@ -185,11 +185,30 @@ P(Small Pot) de 37% a 56% con (1,2). Los flips de la Batalla salen gratis
 en la maratón. [Todo esto bajo el field model q~U(0.75,0.95); es supuesto,
 no dato.]
 
-**Decisión 2026:** alianza coordinada en ambos juegos. Survival: A marrano,
-B marrano-excluyendo-a-A (el `--usados` de `semana.py` maneja los dos
-inventarios). Pick'em: A favoritos + flip del coin-flip #1, B favoritos +
-flips de los coin-flips #2 y #3. Reparto de banca: acordar por escrito
-ANTES de la semana 1 (sugerido 50/50 sobre flujos netos de ambos juegos).
+**Decisión 2026 (criterio del usuario: máximo esperado neto PROPIO → se
+juega SOLO).** La alianza con banca reparte mejor el EV pero no lo sube; el
+esperado neto individual manda en ambos juegos:
+
+*Survival — tu neto individual según qué haga el amigo (θ=25):*
+
+| escenario | E[neto] tuyo |
+|---|---|
+| **solo (amigo juega como field)** | **+$0.67M** |
+| amigo COPIA tus picks (sin banca) | +$0.24M ← el peligro |
+| pacto sin banca: tú 1ª opción, él 2ª | +$0.66M |
+| alianza con banca coordinada | +$0.47M/cabeza |
+
+*Pick'em — tu neto individual:* Batalla con flips=2 solo: +$37k/semana (vs
++$34k/cabeza aliado). Pots solo con flips=1: Big +$1.67M, Smalls +$0.31M
+(vs ~$0.95M/cabeza aliado — la planilla del socio te canibaliza, porque tu
+P(1º) ya es alta). **Solo gana en los dos juegos.**
+
+**La condición para que "solo" sea óptimo: que el amigo NO copie tus
+picks.** Si copia (probable si compartes el modelo), tu Survival cae de
++$0.67M a +$0.24M. El seguro barato: pacto SIN banca donde tú tomas la 1ª
+opción y él la 2ª — tu EV queda intacto (+$0.66M) y él mejora vs copiarte.
+Regla práctica: los picks no se comparten antes del cierre, o se comparte
+el modelo CON el pacto de rutas.
 
 ## 9. Preguntas abiertas / siguientes pasos
 

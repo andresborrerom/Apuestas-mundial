@@ -50,18 +50,18 @@ curl -sSL -o nfl/datos/games.csv \
 python nfl/semana.py --usados KC,PHI   # equipos ya quemados en Survival
 ```
 
-## El pool real: N=14 + alianza de 2
+## El pool real: N=14, decisión = JUGAR SOLO
 
-Somos 14 en ambos juegos, con alianza de banca compartida con un amigo
-(análisis en `MODELO.md` §8; scripts `nfl/SURVIVAL/alianza.py` y
-`nfl/PICKEM/alianza.py`). El plan 2026:
+Somos 14 en ambos juegos. Se evaluó la alianza de 2 con banca compartida
+(`MODELO.md` §8; `nfl/SURVIVAL/alianza.py`, `nfl/PICKEM/alianza.py`):
+**reduce varianza pero baja el esperado neto por cabeza → se juega solo**
+(criterio del usuario). El plan 2026:
 
-- **Survival**: A juega marrano; B juega marrano excluyendo el pick de A
-  cada semana (rutas distintas). Coordinarse duplica el E[neto] por cabeza
-  y sube P(cobrar) de 32% a 51-62%.
-- **Pick'em**: A = favoritos + flip del coin-flip #1; B = favoritos + flips
-  de los coin-flips #2 y #3. La banca pasa de −$46k a +$68k esperados por
-  semana en la Batalla, sin costo en los pots.
+- **Survival**: heurística marrano, solo. E[neto] +$0.67M — CONDICIÓN: que
+  el amigo no copie los picks (si copia, cae a +$0.24M; el seguro es el
+  pacto sin banca: tú 1ª opción, él 2ª → tu EV queda en +$0.66M).
+- **Pick'em**: favoritos + voltear los 2 coin-flips de la semana (Batalla
+  +$37k/sem); si cerca de un corte vas puntero en un pot, bajar a 0-1 flips.
 
 ## Preguntas abiertas (operativas)
 
