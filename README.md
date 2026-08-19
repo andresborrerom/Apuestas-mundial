@@ -45,6 +45,7 @@ pollas/
   _plantilla/         # template showing how to define a pool's rules
   CSC/                # CLOSED: rules + experiments + decision log + entry sheet
   ...                 # other private pools built from the playbook
+nfl/                  # NFL 2026 league (Yahoo Pick'em + Survival) — separate project
 tests/                # verification of the math
 ```
 

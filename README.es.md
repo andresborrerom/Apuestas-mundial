@@ -48,6 +48,7 @@ pollas/
   COLFONDOS/          # por montar (incluye campeón/goleador)
   INGENIERO/          # por montar (incluye campeón/goleador)
   LEMAITRE/           # por montar
+nfl/                  # NFL 2026 — LIGA EL FULBITOL (Yahoo Pick'em + Survival), proyecto aparte
 tests/                # verificación de la matemática
 ```
 
