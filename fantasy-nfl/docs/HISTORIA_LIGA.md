@@ -61,12 +61,20 @@ nuestro board los sube; tomarlo ronda 11-13 ya es "temprano" para la sala.
 Rivales a respetar por resultados recientes: **Nicholas** (2º-3º-2º en
 2021-23), **Camilo**, **Luis Carlos**, **Kike**.
 
-## Pendiente (bloqueado por Andrés)
+## Mapeo managers viejos ↔ liga 2026 (confirmaciones de Andrés, 19-ago)
 
-Mapeo managers viejos ↔ 16 equipos ESPN 2026 (payouts nombra: Kike,
-Pocho, Raw, NK, Ferchos, Brian, James B, Sergio, Luis Ca, Diego, Jaime,
-Santi E, Acero, Gabriel, Steve, Amigo Steve). Hipótesis obvias:
-Pocho=Andres, Raw=Rodrigo (Raw Dawg), James B=Big Daddy James,
-Luis Ca=Luis Carlos, Santi E=Santiago E. Ojo: "Ferchos" era NOMBRE DE
-EQUIPO de Camilo en 2024 — no asumir que Ferchos=Fernando. NK, Jaime,
-Acero, Steve, Amigo Steve: sin match claro en la historia.
+✅ CONFIRMADOS: Pocho=Andres · NK=Nicholas (Kling; amenaza #1) ·
+Ferchos=Camilo Fernández (amenaza #2) · Raw=Rodrigo (Raw Dawg) ·
+James B=Big Daddy James · Luis Ca=Luis Carlos · Santi E=Santiago E ·
+Gabriel=Gabriel (rookie 2025, último) · Acero+Steve = el dúo campeón
+2025 (Victorious Secret) que en 2026 SE SEPARA en dos equipos ·
+Amigo Steve = totalmente nuevo (sin historia).
+
+⚠️ DISCREPANCIA ABIERTA: "Victorious Secret" existe desde 2018 bajo el
+manager "Santiago", pero Andrés dice que Acero y Steve eran rookies en
+2025. ¿Acero es ese Santiago histórico o entraron ambos al franchise en
+2025? Preguntado a Andrés.
+
+🔍 PENDIENTE: Jaime — candidato fuerte: JHJ (7 años, 2019-2025, nunca
+top-3, iniciales J; equipos: "Yo SI necesito QB", "White Trash"...).
+A confirmar por Andrés con los nombres de equipo.
