@@ -209,3 +209,19 @@ SUPUESTO/INCÓGNITA #T1: regla de tackles POST-cambio del commish
   cortes para nombres propios: eso sería overfitting con cara de favor.
 - Dato curioso auditado: hay DOS "Lamar Jackson" en el corpus (el QB y un
   DB retirado con applied=0); no era duplicado, son ids distintos.
+
+## 19-ago (3): capa de DISTRIBUCIONES (piso/techo) — CALIBRADA ✅
+- Diseño: centro del cono = mercado (pg × E[g] v2.1); ancho = historia:
+  G bootstrap de juegos reales de la celda + M forma de la dispersión
+  año-a-año del por-juego por (pos, tier), mediana normalizada a 1.
+- SUPUESTO S8: M ⊥ G (correlación lesión→rendimiento ignorada; sesgo
+  compensado por medir M contra predictor débil). Se valida por RESULTADO:
+- **CANDADO DE CALIBRACIÓN: p10-p90 cubre el 81.9% de los casos reales
+  2020-2025 (n=967) con celdas estimadas solo con 2011-2019.** Dentro del
+  objetivo 80±5. El script TRUENA y se niega a generar el CSV si se sale.
+- Salida: optimize/distribuciones.py → data/proyeccion_dist.csv (p10/p25/
+  p50/p75/p90 por jugador).
+- Lecturas clave: el PISO de Allen (p10=235) supera la MEDIANA de casi
+  todos los RB/WR → argumento cuantificado del QB temprano. Nix y Dart:
+  p10 de 84-87 (cola de banca visible). Los RB élite tienen conos anchos
+  (Gibbs p10=137 / p90=530): la ronda 1 RB es más lotería que la ronda 1 QB.

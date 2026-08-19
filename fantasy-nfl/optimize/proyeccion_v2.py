@@ -185,10 +185,20 @@ def proyectar_v2():
         else:
             # sin 2025 útil: celda B sana de su posición
             eg = eg_de(pos, 999, 999, 0, 'ok', (edad or 0) >= 29, EG)
+        # diagnóstico de celda (para la capa de distribuciones)
+        if pos == 'DST':
+            celda = 'dst'
+        elif g25 >= 8:
+            celda = ('fino', pos, _tier(pos, rk25_pg.get(p['id']), tkl25),
+                     'les' if g25 <= 13 else 'ok')
+        elif 1 <= g25 < 8 and pos in EG[3] and tot25 / g25 >= (15 if pos == 'QB' else 8):
+            celda = ('corto', pos)
+        else:
+            celda = ('fallback', pos)
         out.append(dict(nombre=p['fullName'], pos=pos, espn_id=p['id'], edad=edad,
                         proj_mercado=round(tot_mkt, 1), g_proj=g_proj,
                         pg=round(pg, 2), eg=round(eg, 1),
-                        total_v2=round(pg * eg, 1)))
+                        total_v2=round(pg * eg, 1), celda=celda))
     return out
 
 
