@@ -29,26 +29,31 @@ Descarga: [sports.yahoo.com/fantasy/mobile](https://sports.yahoo.com/fantasy/mob
 | Martes tras Monday Night Semana 9 | **Corte 1** Pick'em: Batalla Semanal (sem. 1-9) + Small Pot 1. |
 | Martes tras Monday Night Semana 18 | **Corte 2** Pick'em: Batalla Semanal (sem. 10-18) + Small Pot 2 + Big Pot. |
 
-## Qué se puede modelar (reúso del motor)
+## El modelo (montado y validado walk-forward 2011-2025)
 
-Es NFL, no fútbol: acá no hay marcadores exactos ni Poisson de goles. Lo que sí
-transfiere del `motor/` es la idea central: **cuotas → probabilidades sin margen**
-(`motor/cuotas.py` es agnóstico al deporte) y **suma cero: solo ganas si le ganas
-al participante promedio**.
+**Bitácora completa con números: [`MODELO.md`](MODELO.md).** Resumen:
 
-| Bloque | Cómo | Estado |
+| Bloque | Resultado | Estado |
 |---|---|---|
-| P(gana) por partido | Moneylines NFL de The Odds API (sport key `americanfootball_nfl`), consenso de casas, quitar margen | listo para montar |
-| Pick'em: picks base | 1 pt por acierto plano → el EV-máx individual es **el favorito en todo** | trivial |
-| Pick'em: Batalla Semanal (winner-take-all) | Con N jugadores todos en favoritos, empatas y el pozo acumula. Valor esperado de **diferenciarse** en los partidos más parejos (P≈50%) — misma lógica de decorrelación del PLAYBOOK | por modelar |
-| Survival: qué equipo quemar cada semana | Problema clásico de optimización: no repetir equipo + 2 vidas + cierre único el jueves. Greedy (mejor favorito de la semana) vs. planeación (guardar súper-favoritos para semanas flacas), DP/ILP sobre el calendario | por modelar |
-| Survival: valor de las 2 vidas | Simulación del pozo: cuándo conviene arriesgar sabiendo que la 1ª vida es amortiguador | por modelar |
+| P(gana) por partido | Moneyline de cierre de-vig (nflverse `games.csv`, 2010-2025) — Brier 0.2104, bien calibrado; Elo solo para proyectar futuro | ✅ validado |
+| Pick'em: pots | Favorito en todo (66.6% de acierto). P(1º Big Pot) 53-84% según field | ✅ validado |
+| Pick'em: Batalla Semanal | Favoritos puros: P(1º único) ~0%. **Voltear 1-2 coin-flips**: 3.5-15%, costo ~1 pt/temporada | ✅ validado |
+| Survival: estrategia | **Heurística marrano** (no-élite vs bottom-5, élites guardadas): 11.9 semanas medias vs 8.5 greedy; única E[ganancia]>0 bajo todo supuesto de field | ✅ validado |
+| Survival: el marrano | Pick "contra marrano" disponible el 100% de las semanas con p≈0.81; bien calibrado (82% real) | ✅ medido |
+
+## Uso cada semana (2026)
+
+```bash
+# refrescar líneas y pedir picks de la próxima semana
+curl -sSL -o nfl/datos/games.csv \
+    https://github.com/nflverse/nfldata/raw/master/data/games.csv
+python nfl/semana.py --usados KC,PHI   # equipos ya quemados en Survival
+```
 
 ## Preguntas abiertas (operativas)
 
-1. ¿Cuántos jugadores quedan inscritos en cada juego? (define pozos y el field
-   contra el que se compite).
-2. ¿The Odds API da moneylines NFL con la key actual? (sí en el plan gratis,
-   verificar cupo de requests para 18 semanas).
-3. Pick'em: ¿se ven los picks de los rivales antes del cierre? (cambia la
-   estrategia de la Batalla Semanal las últimas semanas de cada corte).
+1. **¿Cuántos inscritos** quedan en cada juego? (la sensibilidad al pool ya
+   está corrida; falta el N real).
+2. ¿Yahoo muestra la **distribución de picks del grupo** antes del cierre?
+   (volvería el anticrowd informado en vez de supuesto).
+3. Semanas finales del Survival mano a mano: juego head-to-head no modelado.
