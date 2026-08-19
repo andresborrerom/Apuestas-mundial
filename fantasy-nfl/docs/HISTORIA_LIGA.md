@@ -61,20 +61,34 @@ nuestro board los sube; tomarlo ronda 11-13 ya es "temprano" para la sala.
 Rivales a respetar por resultados recientes: **Nicholas** (2º-3º-2º en
 2021-23), **Camilo**, **Luis Carlos**, **Kike**.
 
-## Mapeo managers viejos ↔ liga 2026 (confirmaciones de Andrés, 19-ago)
+## Mapeo managers viejos ↔ liga 2026 — COMPLETO ✅ (Andrés, 19-ago)
 
-✅ CONFIRMADOS: Pocho=Andres · NK=Nicholas (Kling; amenaza #1) ·
-Ferchos=Camilo Fernández (amenaza #2) · Raw=Rodrigo (Raw Dawg) ·
-James B=Big Daddy James · Luis Ca=Luis Carlos · Santi E=Santiago E ·
-Gabriel=Gabriel (rookie 2025, último) · Acero+Steve = el dúo campeón
-2025 (Victorious Secret) que en 2026 SE SEPARA en dos equipos ·
-Amigo Steve = totalmente nuevo (sin historia).
+| Equipo 2026 | Manager histórico | Data disponible |
+|---|---|---|
+| Pocho | Andres | 2013-2025 · 🥇1 🥈2 |
+| NK | Nicholas (Kling) | 16 años · 🥇2 🥈3 🥉6 — **amenaza #1** |
+| Ferchos | Camilo Fernández | 2018-2025 · 🥇3 🥈1 — **amenaza #2** |
+| Kike | Kike | 2018-2025 · 🥇2 🥉1 |
+| Luis Ca | Luis Carlos | 16 años · 🥇1 🥈3 |
+| Raw | Rodrigo (Raw Dawg) | 2017-2025 · 🥇1 🥉1 |
+| Brian | Brian (saga LEONS/LOKO) | 16 años · 🥇1 🥈1 |
+| Sergio | Sergio (Bolivia) | 16 años · 🥉2 |
+| Diego | Diego | 2017-2025 · 🥉1 |
+| Santi E | Santiago E | 2019-2025 · 🥉2 |
+| Jaime | JHJ = Jaime Hoyos | 2019-2025 · nunca top-3 |
+| James B | Big Daddy James | 2024-2025 |
+| Acero | ½ del dúo "Santiago, Steve" 2025 | 1 año · 🥇 2025 |
+| Steve | ½ del dúo "Santiago, Steve" 2025 | 1 año · 🥇 2025 |
+| Gabriel | Gabriel | 1 año (2025, último) |
+| Amigo Steve | — nuevo | sin data → modelar como promedio |
 
-⚠️ DISCREPANCIA ABIERTA: "Victorious Secret" existe desde 2018 bajo el
-manager "Santiago", pero Andrés dice que Acero y Steve eran rookies en
-2025. ¿Acero es ese Santiago histórico o entraron ambos al franchise en
-2025? Preguntado a Andrés.
+Nota clave: "Victorious Secret" 2018-2024 era de Santiago "Tranny", que
+NO juega en 2026; Acero+Steve heredaron el spot y el nombre en 2025.
+Su historia pre-2025 NO se atribuye a Acero — Acero y Steve son
+efectivamente rookies con 1 título compartido, y al separarse en 2026
+sus tendencias individuales son incógnita (los picks 2025 del dúo son
+la única señal, sin saber de quién fue cada decisión).
 
-🔍 PENDIENTE: Jaime — candidato fuerte: JHJ (7 años, 2019-2025, nunca
-top-3, iniciales J; equipos: "Yo SI necesito QB", "White Trash"...).
-A confirmar por Andrés con los nombres de equipo.
+Cobertura del modelo de sala: 12/16 equipos con historial multi-año,
+3/16 con un año, 1/16 sin data. Ventaja informacional que ningún rival
+tiene.
