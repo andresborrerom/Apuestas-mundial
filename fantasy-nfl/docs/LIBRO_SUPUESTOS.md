@@ -163,3 +163,26 @@ SUPUESTO/INCÓGNITA #T1: regla de tackles POST-cambio del commish
   con todos los ítems); solo la anotación verbal era incompleta. Regla: toda
   descripción de reglas sale del desglose por ítem del motor, incluso en
   prosa de escenarios.
+
+## 19-ago: PROYECCIÓN v2 — overlay de partidos jugados (VALIDADO walk-forward)
+- **Sesgo del mercado MEDIDO ✅:** ~100% de jugadores relevantes proyectados
+  a 17 juegos (statId 210 = games played, verificado con Crosby 15/Cashman 13
+  reales 2025). Realidad 2022-2025: élite ~14, P(16+) ~50%.
+- **Factor VALIDADO 📊:** per-juego × E[g|pos,tier,edad] reduce MAE 21.9% vs
+  ×17 en walk-forward 2023/24/25 (n=675), mejora los 3 años sin excepción.
+- **Auditoría del propio modelo (III.12):** probé 2 variantes "mejores"
+  (tier por-juego; + flag lesión) contra el simple en comparación PAREADA
+  (n=585): M1 54.4 vs M3 54.6 vs M2 54.8 — indistinguibles. Se queda M1
+  (el validado). La intuición de que sobre-castigaba a élites lesionados
+  (Lamar/Burrow E[g]=9.6) NO sobrevivió la verificación → no se parchea.
+- SUPUESTO S4: eficiencia por-juego del mercado insesgada (no testeable sin
+  archivo de proyecciones históricas; solo corregimos el componente probado).
+- SUPUESTO S5: E[g] por grupo (pos, tier producción 2025 bajo nuestras
+  reglas, edad≥29); rookies QB por ronda draft (13.3/7.2/5.1), resto media
+  posicional. Élites con 2025 corto quedan en tier B: en la hoja de draft se
+  reportan con RANGO (E[g] tier B vs tier A), no punto único.
+- SUPUESTO S6: D/ST E[g]=17; K default 16 si falta data.
+- Fórmula: VBD2 = E[g] × (pg − pg_baseline) — un juego perdido cuesta la
+  ventaja sobre el reemplazo, no los puntos completos. Motor lineal → escalar
+  total por E[g]/g_proj es exacto.
+- Salida: optimize/proyeccion_v2.py → data/vbd_v2.csv (1,231 jugadores).
