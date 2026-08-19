@@ -140,3 +140,26 @@ SUPUESTO/INCÓGNITA #T1: regla de tackles POST-cambio del commish
 - CADUCIDAD: cuando el commish edite la config, check_settings.py TRUENA →
   ese día se re-acepta baseline, se re-valida el candado masivo y se regenera
   vbd. NO draftear IDP con tabla vieja si el tripwire sonó.
+
+## 19-ago: tres pendientes del reglamento v2 RESUELTOS (corpus + candado)
+- **Margen de victoria (161-166): INERTES ✅.** Configurados (+10…+1, DB
+  excluido) pero NINGÚN jugador/D/ST acumula esos statIds en todo el corpus
+  (2,000 jugadores, 2025 real y 2026 proyectado). Prueba fuerte: el candado
+  reproduce el appliedTotal de ESPN 1801/1801 sin que aporten un punto.
+  Residual: cross-check contra el boxscore real de la semana 1 (candado
+  semanal ya planeado).
+- **Semántica de tackles ✅ (107+108=109 exacto en Garrett/Crosby/Cashman):**
+  107 asistidas (+0.5) · 108 solitarias (+1.5) · 109 total (+1.0) →
+  solitaria 2.5, asistida 1.5 efectivas.
+- **Sack v2 ✅:** ítem 99 (+2 DL/LB) + solitaria arrastrada (2.5) = ~4.5
+  efectivo. El "stuff" ya no suma al sack de jugador: el ítem 97 solo lo
+  acumulan los D/ST (v1 pagaba 112; v2 lo eliminó).
+- **Tests reescritos a v2: 13/13** con fixtures = appliedTotal reales
+  (Garrett 183.0, Crosby 185.5, Cashman 284.0, Texans D/ST 211.0).
+- **Corrección a la ficha T1 (causa raíz + regla):** en la prosa de los
+  escenarios de tackles describí la asistida sin el ítem 107 (dije "asistida
+  0" en A/C; es 0.5, y en B quedaría 1.5 > solitaria 1.0 — lectura B luce
+  perversa e improbable). Los NÚMEROS de la tabla no cambian (el motor corrió
+  con todos los ítems); solo la anotación verbal era incompleta. Regla: toda
+  descripción de reglas sale del desglose por ítem del motor, incluso en
+  prosa de escenarios.
