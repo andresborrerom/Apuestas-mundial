@@ -50,10 +50,22 @@ curl -sSL -o nfl/datos/games.csv \
 python nfl/semana.py --usados KC,PHI   # equipos ya quemados en Survival
 ```
 
+## El pool real: N=14 + alianza de 2
+
+Somos 14 en ambos juegos, con alianza de banca compartida con un amigo
+(análisis en `MODELO.md` §8; scripts `nfl/SURVIVAL/alianza.py` y
+`nfl/PICKEM/alianza.py`). El plan 2026:
+
+- **Survival**: A juega marrano; B juega marrano excluyendo el pick de A
+  cada semana (rutas distintas). Coordinarse duplica el E[neto] por cabeza
+  y sube P(cobrar) de 32% a 51-62%.
+- **Pick'em**: A = favoritos + flip del coin-flip #1; B = favoritos + flips
+  de los coin-flips #2 y #3. La banca pasa de −$46k a +$68k esperados por
+  semana en la Batalla, sin costo en los pots.
+
 ## Preguntas abiertas (operativas)
 
-1. **¿Cuántos inscritos** quedan en cada juego? (la sensibilidad al pool ya
-   está corrida; falta el N real).
-2. ¿Yahoo muestra la **distribución de picks del grupo** antes del cierre?
+1. ¿Yahoo muestra la **distribución de picks del grupo** antes del cierre?
    (volvería el anticrowd informado en vez de supuesto).
-3. Semanas finales del Survival mano a mano: juego head-to-head no modelado.
+2. Semanas finales del Survival mano a mano: juego head-to-head no modelado.
+3. Si el N cambia antes del kickoff, re-correr `alianza.py`.

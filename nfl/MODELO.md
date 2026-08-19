@@ -144,14 +144,61 @@ pick del favorito con prob q_j ~ U(0.75, 0.95) (supuesto explícito).
 - Refrescar `games.csv` el día que se metan los picks (las líneas se mueven).
 - El cierre del Survival es ÚNICO (jueves): meter el pick miércoles.
 
-## 7. Preguntas abiertas / siguientes pasos
+## 8. N=14 y la alianza de 2 (dato del usuario, 2026)
 
-1. **N real de inscritos** en cada juego (define pozos y field; la
-   sensibilidad ya está corrida — solo falta el número).
-2. ¿Yahoo muestra la **distribución de picks** del grupo antes del cierre?
+Somos **14 en ambos juegos** y hay opción de **aliarse con un amigo** (banca
+compartida). Pozos reales: Survival $4.2M; Batalla Semanal $650k/semana al
+ganador único; Small Pots $1.3M; Big Pot $2.6M.
+
+**Survival** (`python nfl/SURVIVAL/alianza.py`): el punto fino es que dos
+jugadores marrano SIN coordinar toman el MISMO pick todas las semanas
+(rutas 100% correlacionadas — la "alianza" no diversifica nada). La
+coordinación = cada semana B toma su mejor opción excluyendo el pick de A.
+Resultado: rutas distintas en 14/15 temporadas, y por cabeza (field normal):
+
+| config | E[neto]/cabeza | P(la banca cobra) |
+|---|---|---|
+| solo (los otros 13 son field) | +$0.63M | 32% |
+| alianza descoordinada (mismos picks) | +$0.22M | 32% |
+| **alianza coordinada (rutas distintas)** | **+$0.47M** | **51%** |
+
+Lectura correcta: como el amigo juega de todas formas, la comparación real
+es descoordinada vs coordinada — **coordinarse duplica el E[neto] por
+cabeza y sube P(cobrar) de 32% a 51-62%**. La alianza es ante todo
+reducción de varianza; no crea EV de la nada (jugar solo sigue teniendo el
+mayor ROI individual: +$0.63M).
+
+**Pick'em, Batalla Semanal** (`python nfl/PICKEM/alianza.py`): con las dos
+planillas idénticas en favoritos la banca PIERDE (−$46k/semana esperados:
+un rival gana solo el 51% de las semanas, la banca el 0.8%). Con flips
+complementarios (A voltea el coin-flip #1; B los #2 y #3):
+
+| (A,B) flips | P(banca 1º única) | E[neto banca]/semana |
+|---|---|---|
+| (0,0) idénticos | 0.8% | −$46k |
+| (1,1) distintos | 11.6% | +$30k |
+| **(1,2) disjuntos** | **17.4%** | **+$68k** |
+
+**Pots acumulados:** la banca compara su MEJOR planilla contra el mejor
+rival — dos planillas descorrelacionadas suben P(Big Pot) de 75% a 82% y
+P(Small Pot) de 37% a 56% con (1,2). Los flips de la Batalla salen gratis
+en la maratón. [Todo esto bajo el field model q~U(0.75,0.95); es supuesto,
+no dato.]
+
+**Decisión 2026:** alianza coordinada en ambos juegos. Survival: A marrano,
+B marrano-excluyendo-a-A (el `--usados` de `semana.py` maneja los dos
+inventarios). Pick'em: A favoritos + flip del coin-flip #1, B favoritos +
+flips de los coin-flips #2 y #3. Reparto de banca: acordar por escrito
+ANTES de la semana 1 (sugerido 50/50 sobre flujos netos de ambos juegos).
+
+## 9. Preguntas abiertas / siguientes pasos
+
+1. ¿Yahoo muestra la **distribución de picks** del grupo antes del cierre?
    Si sí, el field model deja de ser supuesto y se puede esquivar el pick
    masivo con datos (anticrowd informado, no ciego).
-3. Semanas 15-18 del Survival: si sigues vivo contra 1-2 rivales, cambia a
-   juego head-to-head (bloquear/espejar picks) — no modelado aún.
-4. Falta de líneas en semanas futuras de 2026: hoy solo la semana 1 tiene
+2. Semanas 15-18 del Survival: si la banca sigue viva contra 1-2 rivales,
+   cambia a juego head-to-head (bloquear/espejar picks) — no modelado aún.
+3. Falta de líneas en semanas futuras de 2026: hoy solo la semana 1 tiene
    moneyline; el plan élite/marrano usa Elo hasta que se publiquen.
+4. Si el N real cambia (retiros antes del kickoff), re-correr `alianza.py`:
+   la sensibilidad al tamaño ya está en `backtest_survival.py`.
