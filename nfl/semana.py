@@ -15,6 +15,9 @@ Uso:
   python nfl/semana.py                # próxima semana pendiente
   python nfl/semana.py --week 3       # una semana específica de 2026
   python nfl/semana.py --usados KC,PHI  # equipos ya quemados en Survival
+
+Los equipos quemados también se leen de `nfl/SURVIVAL/usados_2026.txt`
+(uno por línea; ahí se anota el pick que de verdad se metió cada semana).
 """
 
 import argparse
@@ -37,6 +40,12 @@ def main():
                     help="equipos ya usados en Survival, ej: KC,PHI")
     args = ap.parse_args()
     usados = {e.strip().upper() for e in args.usados.split(",") if e.strip()}
+    ruta_usados = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                               "SURVIVAL", "usados_2026.txt")
+    if os.path.exists(ruta_usados):
+        with open(ruta_usados) as f:
+            usados |= {ln.strip().upper() for ln in f
+                       if ln.strip() and not ln.startswith("#")}
 
     jugados = datos.cargar_partidos()          # todo lo jugado, para Elo
     elo = prob.Elo()
@@ -60,7 +69,8 @@ def main():
     print(f"NFL {TEMPORADA} — SEMANA {w} ({len(juegos)} partidos con línea)")
 
     # ---------------- PICK'EM -------------------------------------------
-    print("\n== PICK'EM (favorito en todo; ★ = coin-flip candidato a flip)")
+    print("\n== PICK'EM (favorito en todo; ★ = los 3 coin-flips a voltear —"
+          "\n   política m3 validada en nfl/PICKEM/temporada.py)")
     filas = []
     for j in juegos:
         ph = prob.p_local_moneyline(j["ml_home"], j["ml_away"])
@@ -68,7 +78,7 @@ def main():
         filas.append((p, fav, j))
     filas.sort()
     for i, (p, fav, j) in enumerate(filas):
-        marca = " ★" if i < 2 else ""
+        marca = " ★ (pick al rival)" if i < 3 else ""
         print(f"  {j['away']:>3} @ {j['home']:<3} -> {fav:<3} "
               f"({100 * p:.0f}%){marca}")
 

@@ -210,7 +210,44 @@ opción y él la 2ª — tu EV queda intacto (+$0.66M) y él mejora vs copiarte.
 Regla práctica: los picks no se comparten antes del cierre, o se comparte
 el modelo CON el pacto de rutas.
 
-## 9. Preguntas abiertas / siguientes pasos
+## 9. Perfeccionamiento del juego en solitario (refinamientos probados)
+
+Cuatro ideas de mejora, cada una vuelta experimento. **Dos refutadas, una
+confirmada, una operativa** — se documentan todas (regla de honestidad):
+
+1. **Params del marrano por nested walk-forward** (elegidos por temporada
+   solo con el pasado) — `experimento_afinar_marrano.py`: **REFUTADO**
+   (11.1 sem. vs 11.9 del fijo; +$0.37M vs +$0.62M). El nested converge
+   solo a (0.70, bottom-5) desde 2015 → el default a priori no estaba
+   sobreajustado. El marrano se queda como está.
+2. **Consciente de vidas** (con 1 vida → cambiar a máxima p): **REFUTADO y
+   fuerte** (9.5 sem., E[neto] ≈ 0). Perder una vida y volver a la manada
+   es exactamente el error: el descuento estructural del marrano vale
+   también con la última vida.
+3. **Política de flips con la plata completa** — `PICKEM/temporada.py`
+   simula la temporada entera con las reglas reales de la Batalla
+   (acumulación tope 2, liquidación forzada en cortes) + Smalls + Big,
+   N=14, 300 sims × 15 temporadas × 3 semillas:
+
+   | política | E[batalla] | E[pots] | E[TOTAL]/temp. | P(total>0) |
+   |---|---|---|---|---|
+   | m0 (favoritos puros) | −$0.52M | +$2.69M | +$2.17M | 80% |
+   | m1 | +$0.80M | +$2.51M | +$3.32M | 84% |
+   | **m3** | **+$1.60M** | **+$2.14M** | **+$3.75M** | **87%** |
+   | m5 | +$1.76M | +$1.43M | +$3.20M | 84% |
+   | dinámica (según standing) | +$1.10M | +$2.18M | +$3.28M | 84% |
+
+   **Decisión: 3 flips fijos** (meseta m1-m3, pico estable en m3 con 3
+   semillas; desde m4 los pots sangran más de lo que la Batalla paga). La
+   política dinámica según standing **no mejora** las estáticas: refutada
+   (al menos esta versión; con datos reales de standing se puede revisar).
+4. **Operatividad** — Action `.github/workflows/nfl-semana.yml`: cada
+   miércoles 8am Colombia (sep-ene) refresca líneas y publica los picks en
+   un issue. Los equipos quemados del Survival viven en
+   `nfl/SURVIVAL/usados_2026.txt` (anotar ahí el pick real de cada semana;
+   `semana.py` lo lee solo).
+
+## 10. Preguntas abiertas / siguientes pasos
 
 1. ¿Yahoo muestra la **distribución de picks** del grupo antes del cierre?
    Si sí, el field model deja de ser supuesto y se puede esquivar el pick

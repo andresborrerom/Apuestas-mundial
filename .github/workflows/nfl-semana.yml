@@ -1,0 +1,62 @@
+name: NFL picks de la semana
+
+# Cada miércoles de la temporada NFL (sep-ene), refresca las líneas y
+# publica en un issue los picks recomendados: Pick'em (favoritos + 3
+# coin-flips a voltear) y Survival (heurística marrano).
+#
+# El estado de los equipos ya quemados en Survival vive en
+# nfl/SURVIVAL/usados_2026.txt (anotar ahí el pick real de cada semana).
+
+on:
+  schedule:
+    - cron: '0 13 * * 3'      # miércoles 13:00 UTC = 08:00 Colombia
+  workflow_dispatch:
+    inputs:
+      week:
+        description: "Forzar semana (vacío = próxima pendiente)"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  picks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet numpy scipy
+      - name: Refrescar líneas (nflverse games.csv)
+        run: |
+          curl -sSL -o nfl/datos/games.csv \
+            https://github.com/nflverse/nfldata/raw/master/data/games.csv
+      - name: Generar picks de la semana
+        run: |
+          WEEK="${{ github.event.inputs.week }}"
+          ARGS=""
+          if [ -n "$WEEK" ]; then ARGS="--week $WEEK"; fi
+          python nfl/semana.py $ARGS > salida.txt 2>&1
+          cat salida.txt
+      - name: Publicar issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # solo en temporada (sep-ene) para el cron; manual siempre corre
+          MES=$(TZ=America/Bogota date +%-m)
+          if [ "${{ github.event_name }}" = "schedule" ] && \
+             [ "$MES" -ge 2 ] && [ "$MES" -le 8 ]; then
+            echo "Fuera de temporada; no publico."; exit 0
+          fi
+          HOY=$(TZ=America/Bogota date +%F)
+          echo 'Picks recomendados (generado automático). Reglas: `nfl/MODELO.md`.' > body.md
+          echo '' >> body.md
+          echo '```' >> body.md
+          cat salida.txt >> body.md
+          echo '```' >> body.md
+          echo '' >> body.md
+          echo '**Al meter el pick de Survival en Yahoo, anotarlo en `nfl/SURVIVAL/usados_2026.txt`.**' >> body.md
+          gh issue create --title "🏈 NFL picks — $HOY" --body-file body.md

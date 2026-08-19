@@ -1,0 +1,3 @@
+# Equipos YA USADOS en el Survival 2026 — uno por línea.
+# Anotar acá el pick que DE VERDAD se metió en Yahoo cada semana
+# (semana.py los lee automáticamente y no los vuelve a ofrecer).

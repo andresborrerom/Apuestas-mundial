@@ -57,11 +57,16 @@ Somos 14 en ambos juegos. Se evaluó la alianza de 2 con banca compartida
 **reduce varianza pero baja el esperado neto por cabeza → se juega solo**
 (criterio del usuario). El plan 2026:
 
-- **Survival**: heurística marrano, solo. E[neto] +$0.67M — CONDICIÓN: que
-  el amigo no copie los picks (si copia, cae a +$0.24M; el seguro es el
-  pacto sin banca: tú 1ª opción, él 2ª → tu EV queda en +$0.66M).
-- **Pick'em**: favoritos + voltear los 2 coin-flips de la semana (Batalla
-  +$37k/sem); si cerca de un corte vas puntero en un pot, bajar a 0-1 flips.
+- **Survival**: heurística marrano tal cual (refinamientos probados y
+  refutados en `MODELO.md` §9). E[neto] +$0.67M — CONDICIÓN: que el amigo
+  no copie los picks (si copia, cae a +$0.24M; el seguro es el pacto sin
+  banca: tú 1ª opción, él 2ª → tu EV queda en +$0.66M). El pick real de
+  cada semana se anota en `nfl/SURVIVAL/usados_2026.txt`.
+- **Pick'em**: favoritos + voltear los **3** coin-flips de la semana
+  (política m3, validada con la plata completa de la temporada:
+  +$3.75M/temp. esperados vs +$2.17M de favoritos puros).
+- **Automático**: el Action `nfl-semana.yml` publica los picks en un issue
+  cada miércoles 8am (sep-ene); también corre manual con `--week`.
 
 ## Preguntas abiertas (operativas)
 
