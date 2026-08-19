@@ -1,28 +1,25 @@
-"""Proyección v2 — overlay de PARTIDOS JUGADOS sobre la base de mercado.
+"""Proyección v2.1 — overlay de PARTIDOS JUGADOS, historia 2010-2025.
 
-Sesgo del mercado MEDIDO (19-ago, corpus 2026): ~100% de los jugadores
-relevantes proyectados a 17 juegos (statId 210). Realidad 2021-2025
-(nflverse): élite ~14 juegos, P(16+) ~50%.
+Sesgo del mercado MEDIDO: ~100% de relevantes proyectados a 17 juegos.
+Factor VALIDADO walk-forward en 12 años de test (2014-2025, n=2,771):
+mejora +12% a +28% TODOS los años vs asumir temporada llena; estacionario
+(la ventana histórica no cambia el resultado: se usa toda la muestra).
 
-Factor VALIDADO por walk-forward (2023/24/25, n=675): predecir total con
-per-juego × E[g|pos,tier,edad] reduce el MAE 21.9% vs per-juego × 17,
-mejora consistente los 3 años.
+Modelo JERÁRQUICO (pedido de Andrés: "condicionado a quiénes se parecían
+a ellos"): celda fina (pos, tier POR-JUEGO, lesión previa) si n>=8;
+respaldo (pos, tier por total, edad); respaldo final: posición.
+Pareado 2014-2025 n=2,727: fino 55.7-55.8 vs grueso 56.0 MAE — no pierde
+en agregado y corrige los casos élite-lesionado (QB A+les: 13.7 juegos,
+n=21; vs B+les: 8.6, n=130 — la celda que contaminaba a Lamar/Burrow).
 
-Modelo de valor: mientras tu titular juega ganas su ventaja sobre el
-reemplazo; cuando falta, alineas reemplazo (neto ~0 vs baseline). →
-    VBD2 = E[g] × (pts_por_juego − pts_por_juego_del_baseline)
-Como el scoring es LINEAL en los crudos, pts_por_juego = total_mercado /
-g_proyectados, exacto.
+Pre-2021 la temporada era de 16: todo se estima como FRACCIÓN perdida y
+se re-escala a 17.
 
-SUPUESTOS DECLARADOS:
-- S4: eficiencia por-juego del mercado insesgada (sin archivo histórico de
-  proyecciones no es testeable; solo corregimos el componente PROBADO
-  sesgado: los juegos).
-- S5: E[g] por (posición, tier producción previa, edad≥29). Tier desde el
-  2025 REAL del corpus bajo NUESTRAS reglas. Rookies sin NFL 2025: QB por
-  ronda de draft (R1 13.3 / R2-3 7.2 / R4+ 5.1), resto media rookie de su
-  posición. Sin datos → tier B joven.
-- S6: D/ST sin ajuste (no se lesiona); K default 16 si no hay data.
+Modelo de valor: VBD2 = E[g] × (pg − pg_baseline). Motor lineal → exacto.
+
+SUPUESTOS: S4 eficiencia por-juego del mercado insesgada. S5 rookies QB
+por ronda draft (13.3/7.2/5.1), resto media rookie posicional; sin data →
+celda B sana. S6 D/ST E[g]=17; K sin celda → 16.
 """
 import json, sys
 from pathlib import Path
@@ -38,8 +35,7 @@ NVPOS = {'QB': 'QB', 'RB': 'RB', 'WR': 'WR', 'TE': 'TE', 'K': 'K', 'LB': 'LB',
 
 
 def tabla_eg(con):
-    """E[g] por (pos_nflverse, tier, edad) con TODO 2021-2025 (método ya
-    validado walk-forward; el modelo final usa la muestra completa)."""
+    """E[fracción perdida] jerárquico con 2010-2025 (transiciones 2011+)."""
     rows = con.execute("""
     with juegos as (
       select player_id, position, season, count(distinct week) g,
@@ -47,22 +43,50 @@ def tabla_eg(con):
              sum(coalesce(def_tackles_solo,0)+coalesce(def_tackle_assists,0)) tkl
       from fact_player_week where season_type='REG' group by 1,2,3),
     rel as (select *, lag(g) over w g_prev, lag(fp) over w fp_prev,
-                   lag(tkl) over w tkl_prev
+                   lag(tkl) over w tkl_prev, lag(season) over w s_prev
             from juegos window w as (partition by player_id order by season)),
-    t as (select r.*, rank() over (partition by r.position, r.season
-                                   order by r.fp_prev desc) rk_prev, x.birthdate
+    t as (select r.*,
+            rank() over (partition by r.position, r.season order by r.fp_prev desc) rk_tot,
+            rank() over (partition by r.position, r.season
+                         order by r.fp_prev/nullif(r.g_prev,0) desc) rk_pg,
+            x.birthdate
           from rel r left join xwalk_ids_nflverse x on r.player_id=x.gsis_id
-          where r.g_prev >= 8)
-    select position, g, rk_prev, tkl_prev,
+          where r.g_prev >= 8 and r.s_prev = r.season-1)
+    select position, season, g, g_prev, rk_tot, rk_pg, tkl_prev,
            case when birthdate is null then null
                 else season - year(birthdate::date) end edad
-    from t where season between 2022 and 2025
+    from t where season >= 2011
     """).fetchall()
     from collections import defaultdict
-    acc = defaultdict(list)
-    for pos, g, rk, tkl, edad in rows:
-        acc[(pos, _tier(pos, rk, tkl), 'v' if (edad or 0) >= 29 else 'j')].append(g)
-    return {k: sum(v) / len(v) for k, v in acc.items() if len(v) >= 8}
+    fino, grueso, porpos = defaultdict(list), defaultdict(list), defaultdict(list)
+    for pos, ss, g, gp, rkt, rkpg, tklp, edad in rows:
+        sg, sgp = (17 if ss >= 2021 else 16), (17 if ss - 1 >= 2021 else 16)
+        miss = 1 - g / sg
+        les = 'les' if gp <= sgp - 4 else 'ok'
+        v = 'v' if (edad or 0) >= 29 else 'j'
+        fino[(pos, _tier(pos, rkpg, tklp), les)].append(miss)
+        grueso[(pos, _tier(pos, rkt, tklp), v)].append(miss)
+        porpos[pos].append(miss)
+    # celda 'corto': jugó 1-7 juegos el año previo con per-juego de titular
+    # (QB>=15, resto >=8 ppr/j). Auditoría 19-ago: el fallback "sano" era
+    # demasiado generoso justo para la población más riesgosa.
+    corto_rows = con.execute("""
+    with juegos as (
+      select player_id, position, season, count(distinct week) g,
+             sum(coalesce(fantasy_points_ppr,0)) fp
+      from fact_player_week where season_type='REG' group by 1,2,3),
+    rel as (select *, lag(g) over w g_prev, lag(fp) over w fp_prev,
+                   lag(season) over w s_prev
+            from juegos window w as (partition by player_id order by season))
+    select position, season, g, fp_prev/g_prev pgp
+    from rel where s_prev=season-1 and g_prev between 1 and 7 and season>=2011
+    """).fetchall()
+    corto = defaultdict(list)
+    for pos, ss, g, pgp in corto_rows:
+        if pgp and pgp >= (15 if pos == 'QB' else 8):
+            corto[pos].append(1 - g / (17 if ss >= 2021 else 16))
+    prom = lambda d: {k: sum(v) / len(v) for k, v in d.items() if len(v) >= 8}
+    return prom(fino), prom(grueso), prom(porpos), prom(corto)
 
 
 def _tier(pos, rk, tkl):
@@ -78,17 +102,21 @@ def _tier(pos, rk, tkl):
 ROOKIE_QB = {1: 13.3, 2: 7.2, 3: 7.2}          # por ronda draft NFL; 4+: 5.1
 
 
-def eg_de(pos, tier, viejo, EG):
-    for p in ([pos] if isinstance(NVPOS.get(pos, pos), str) else NVPOS[pos]):
-        k = (p if isinstance(p, str) else p, tier, 'v' if viejo else 'j')
-        if k in EG:
-            return EG[k]
-    # fallback: mismo pos sin edad, luego default posicional
-    for p in ([pos] if isinstance(NVPOS.get(pos, pos), str) else NVPOS[pos]):
-        for e in ('j', 'v'):
-            if (p, tier, e) in EG:
-                return EG[(p, tier, e)]
-    return 16.0 if pos == 'K' else 14.0
+def eg_de(pos, rk_pg, rk_tot, tkl, les, viejo, EG):
+    FINO, GRUESO, POR, _ = EG
+    alias = NVPOS.get(pos, pos)
+    for p in ([alias] if isinstance(alias, str) else alias):
+        k = (p, _tier(p, rk_pg, tkl), les)
+        if k in FINO:
+            return 17 * (1 - FINO[k])
+    for p in ([alias] if isinstance(alias, str) else alias):
+        k = (p, _tier(p, rk_tot, tkl), 'v' if viejo else 'j')
+        if k in GRUESO:
+            return 17 * (1 - GRUESO[k])
+    for p in ([alias] if isinstance(alias, str) else alias):
+        if p in POR:
+            return 17 * (1 - POR[p])
+    return 16.0
 
 
 def proyectar_v2():
@@ -99,7 +127,7 @@ def proyectar_v2():
     xw = {int(e): (b, dy, dr) for e, b, dy, dr in con.execute(
         "select espn_id, birthdate, draft_year, draft_round from xwalk_ids_nflverse "
         "where espn_id is not null").fetchall()}
-    # rank 2025 real por posición bajo NUESTRAS reglas (para el tier)
+    # 2025 real por posición bajo NUESTRAS reglas: total, juegos, tacleadas
     prev = {}
     for pw in todos:
         p = pw['player']
@@ -107,18 +135,22 @@ def proyectar_v2():
             if (s.get('seasonId'), s.get('statSourceId'), s.get('statSplitTypeId')) == (2025, 0, 0):
                 raw = s.get('stats') or {}
                 g25 = raw.get('210', raw.get(210)) or 0
-                prev[p['id']] = (s.get('appliedTotal', 0), g25)
-    rk25 = {}
+                tkl25 = raw.get('109', raw.get(109)) or 0
+                prev[p['id']] = (s.get('appliedTotal', 0), g25, tkl25)
+    rk25_tot, rk25_pg = {}, {}
     from collections import defaultdict
     porpos = defaultdict(list)
     for pw in todos:
         p = pw['player']
         pos = POS.get(p.get('defaultPositionId'))
         if pos and p['id'] in prev:
-            porpos[pos].append((prev[p['id']][0], p['id']))
+            tot, g25, _ = prev[p['id']]
+            porpos[pos].append((tot, tot / g25 if g25 >= 8 else 0, p['id']))
     for pos, lst in porpos.items():
-        for i, (_, pid) in enumerate(sorted(lst, reverse=True)):
-            rk25[pid] = i + 1
+        for i, (_, _, pid) in enumerate(sorted(lst, key=lambda x: -x[0])):
+            rk25_tot[pid] = i + 1
+        for i, (_, _, pid) in enumerate(sorted(lst, key=lambda x: -x[1])):
+            rk25_pg[pid] = i + 1
     out = []
     for pw in todos:
         p = pw['player']
@@ -137,16 +169,22 @@ def proyectar_v2():
         pg = tot_mkt / g_proj
         bd, dy, dr = xw.get(p['id'], (None, None, None))
         edad = 2026 - int(str(bd)[:4]) if bd else None
+        CORTO = EG[3]
+        tot25, g25, tkl25 = prev.get(p['id'], (0, 0, 0))
         if pos == 'DST':
             eg = 17.0
-        elif p['id'] in prev and prev[p['id']][1] >= 8:
-            eg = eg_de(pos, _tier(pos, rk25.get(p['id']), None) if pos in
-                       ('QB', 'RB', 'WR', 'TE') else _tier(pos, None, prev[p['id']][0] / 2.5),
-                       (edad or 0) >= 29, EG)
+        elif g25 >= 8:
+            les = 'les' if g25 <= 13 else 'ok'
+            eg = eg_de(pos, rk25_pg.get(p['id']), rk25_tot.get(p['id']),
+                       tkl25, les, (edad or 0) >= 29, EG)
+        elif 1 <= g25 < 8 and pos in CORTO and \
+                tot25 / g25 >= (15 if pos == 'QB' else 8):
+            eg = 17 * (1 - CORTO[pos])       # jugó poco siendo titular: celda propia
         elif dy == 2026 and pos == 'QB':
             eg = ROOKIE_QB.get(dr or 9, 5.1)
         else:
-            eg = eg_de(pos, 'B', (edad or 0) >= 29, EG)
+            # sin 2025 útil: celda B sana de su posición
+            eg = eg_de(pos, 999, 999, 0, 'ok', (edad or 0) >= 29, EG)
         out.append(dict(nombre=p['fullName'], pos=pos, espn_id=p['id'], edad=edad,
                         proj_mercado=round(tot_mkt, 1), g_proj=g_proj,
                         pg=round(pg, 2), eg=round(eg, 1),

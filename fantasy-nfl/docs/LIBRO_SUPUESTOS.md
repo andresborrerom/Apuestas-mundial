@@ -186,3 +186,26 @@ SUPUESTO/INCÓGNITA #T1: regla de tackles POST-cambio del commish
   ventaja sobre el reemplazo, no los puntos completos. Motor lineal → escalar
   total por E[g]/g_proj es exacto.
 - Salida: optimize/proyeccion_v2.py → data/vbd_v2.csv (1,231 jugadores).
+
+## 19-ago (2): historia extendida a 2010-2025 + modelo jerárquico (pedido de Andrés)
+- Andrés: "el modelo tiene que ir mucho más allá de 2023" → ingesta extendida
+  a 287,184 jugador-semanas (16 temporadas, ingest/nflverse_extend.py).
+  Pre-2021 se normaliza por temporada de 16 juegos (fracción perdida).
+- **Estudio de ventana (pareado, test 2014-2025, n=2,771):** el factor es
+  ESTACIONARIO — mejora +12% a +28% los 12 años, y da igual entrenar con
+  toda la historia que con 3-5 años (MAE 56.2/56.0/56.0). Se usa TODA la
+  muestra: no cambia el agregado pero habilita celdas finas con n>=8.
+- **"Condicionado a quiénes se parecían a ellos" (Andrés):** con n grande,
+  el modelo fino (pos, tier POR-JUEGO, lesión 4+ previa) ya no pierde vs el
+  grueso (55.7-55.8 vs 56.0 pareado) y corrige los casos de decisión:
+  QB élite-pj lesionado (n=21): 13.7 juegos → Burrow 13.7, no 9.6.
+  QB mediocre-pj lesionado (n=130): 8.6 → esa celda contaminaba a los élite.
+- **Celda 'corto' nueva (auditoría propia):** jugó 1-7 juegos siendo titular
+  → QB 9.1 (n=24, mediana ≤7!), RB 10.1, WR 11.8, TE 11.7. Antes caían a un
+  fallback "sano" demasiado generoso (Daniels 7 juegos ahora E[g]=9.1).
+- **Casos frontera declarados (van con RANGO en la hoja de draft, no punto):**
+  Lamar (QB #16 por-juego 2025, a 4 puestos del tier A: 8.6 vs 13.7) y
+  Bo Nix (#13 por-juego, a 1 del tier A: 12.6 vs 14.9). No se doblan los
+  cortes para nombres propios: eso sería overfitting con cara de favor.
+- Dato curioso auditado: hay DOS "Lamar Jackson" en el corpus (el QB y un
+  DB retirado con applied=0); no era duplicado, son ids distintos.
