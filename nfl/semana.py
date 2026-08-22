@@ -2,10 +2,12 @@
 El comando de cada semana de la temporada 2026: picks recomendados.
 
 Imprime, para la próxima semana con líneas publicadas:
-  - PICK'EM: el favorito de cada partido (EV-máx para los pots) y los 1-2
-    coin-flips candidatos a voltear (la jugada de la Batalla Semanal).
+  - PICK'EM: el favorito de cada partido (EV-máx para los pots), los 3
+    coin-flips a voltear (política m3) y el PRONÓSTICO de la Batalla
+    Semanal: P(ganarla solo) contra 13 rivales, simulando los partidos
+    desde las probabilidades de mercado.
   - SURVIVAL: el pick de la heurística marrano (validada walk-forward
-    2011-2025) + las 3 mejores alternativas con su P(gana).
+    2011-2025) + alternativas, con P(pasar la semana).
 
 Antes de correr, refrescar los datos (las líneas se mueven):
   curl -sSL -o nfl/datos/games.csv \
@@ -82,6 +84,32 @@ def main():
         print(f"  {j['away']:>3} @ {j['home']:<3} -> {fav:<3} "
               f"({100 * p:.0f}%){marca}")
 
+    # pronóstico de la Batalla: partidos ~ Bernoulli(p mercado), field de
+    # 13 rivales que aciertan el pick del favorito con q_j ~ U(0.75, 0.95)
+    import numpy as np
+    rng = np.random.default_rng(5)
+    SIMS = 20_000
+    p_fav = np.array([p for p, _f, _j in filas])
+    flip = np.zeros(len(filas), dtype=bool)
+    flip[:3] = True                      # política m3: los 3 más parejos
+    fav_gana = rng.random((SIMS, len(filas))) < p_fav[None, :]
+    mios = np.where(flip[None, :], ~fav_gana, fav_gana).sum(axis=1)
+    q = rng.uniform(0.75, 0.95, size=(SIMS, 13))
+    pf = rng.random((SIMS, 13, len(filas))) < q[:, :, None]
+    hits = np.where(pf, fav_gana[:, None, :],
+                    ~fav_gana[:, None, :]).sum(axis=2)
+    mejor_riv = hits.max(axis=1)
+    unico_riv = (hits == mejor_riv[:, None]).sum(axis=1) == 1
+    gano = mios > mejor_riv
+    empate1 = mios == mejor_riv
+    neto = (13 * 50_000 * gano.mean()
+            - 50_000 * ((mejor_riv > mios) & unico_riv).mean())
+    print(f"\n  PRONÓSTICO Batalla (pool de 14): E[aciertos]="
+          f"{mios.mean():.1f}/{len(filas)}"
+          f"  P(1º único)={100 * gano.mean():.1f}%"
+          f"  P(empate 1º)={100 * empate1.mean():.1f}%"
+          f"  E[neto]=${neto / 1e3:+.0f}k")
+
     # ---------------- SURVIVAL ------------------------------------------
     jugados_2026 = [p for p in jugados if p["season"] == TEMPORADA]
     fuerza = fuerza_hasta_semana(jugados_2026, w) if w >= 4 else None
@@ -99,7 +127,8 @@ def main():
           f"{','.join(sorted(usados)) or 'ninguno'})")
     print(f"  marranos actuales: {', '.join(sorted(marranos))}")
     print(f"  élite (guardar):   {', '.join(sorted(elite))}")
-    print(f"  PICK: {pick}")
+    p_pick = next((p for eq, _r, p in ops if eq == pick), None)
+    print(f"  PICK: {pick}  ->  P(pasar la semana) = {100 * p_pick:.1f}%")
     print("  alternativas (p estricta, sin empate):")
     libres = sorted(((p, eq, riv) for eq, riv, p in ops
                      if eq not in usados), reverse=True)
