@@ -26,10 +26,19 @@ import numpy as np
 RAIZ = Path(__file__).resolve().parent.parent
 from optimize.proyeccion_v2 import _tier, proyectar_v2, vbd2
 
+# PRODUCCIÓN por grupo: nflverse solo calcula fantasy_points para OFENSIVA
+# (los IDP y K salen en 0). Usamos el driver real de cada grupo bajo nuestras
+# reglas: ofensiva = puntos PPR; IDP = tacleadas (2.5/1.5 por tacleada manda);
+# K = FG convertidos. Sin esto, TODAS las celdas IDP/K quedaban vacías y los
+# conos salían degenerados (piso = techo = "riesgo cero", falso).
 SQL = """
 with juegos as (
   select player_id, position, season, count(distinct week) g,
-         sum(coalesce(fantasy_points_ppr,0)) fp,
+         case when position in ('QB','RB','WR','TE')
+                then sum(coalesce(fantasy_points_ppr,0))
+              when position in ('K') then sum(coalesce(fg_made,0))
+              else sum(coalesce(def_tackles_solo,0)*2.5
+                       + coalesce(def_tackle_assists,0)*1.5) end fp,
          sum(coalesce(def_tackles_solo,0)+coalesce(def_tackle_assists,0)) tkl
   from fact_player_week where season_type='REG' group by 1,2,3),
 rel as (select *, lag(g) over w g_prev, lag(fp) over w fp_prev,
@@ -74,13 +83,23 @@ def simular(pg, celG, celM, G, M, rng, n=2000):
     return pg * m * g
 
 
-def calibracion(rows):
+def calibracion(rows, grupo=None):
     """Cobertura p10-p90 en 2020-2025 con celdas de 2011-2019."""
+    OFE = ('QB', 'RB', 'WR', 'TE')
     G, M = celdas(rows, hasta=2020)
     rng = np.random.default_rng(7)
     dentro = total = 0
     for pos, ss, g, gp, fp, fpp, rkpg, tklp in rows:
-        if ss < 2020 or not fpp or fpp <= 0 or (fpp / gp) < 8:
+        if ss < 2020 or not fpp or fpp <= 0:
+            continue
+        ofe = pos in OFE
+        if grupo == 'ofensiva' and not ofe:
+            continue
+        if grupo == 'idp' and (ofe or pos == 'K'):
+            continue
+        if ofe and (fpp / gp) < 8:          # ofensivos irrelevantes fuera
+            continue
+        if not ofe and (fpp / gp) < 5:      # IDP sin volumen de tackles fuera
             continue
         p = ALIAS.get(pos, pos)
         sgp = 17 if ss - 1 >= 2021 else 16
@@ -99,6 +118,9 @@ def calibracion(rows):
 def main():
     con = duckdb.connect(str(RAIZ / 'db' / 'fantasy.duckdb'), read_only=True)
     rows = con.execute(SQL).fetchall()
+    for g in ('ofensiva', 'idp'):
+        c, m = calibracion(rows, g)
+        print(f"  calibración {g:9}: {c*100:.1f}% (n={m})")
     cob, n = calibracion(rows)
     print(f"CALIBRACIÓN (candado): cobertura p10-p90 = {cob*100:.1f}% (n={n}, objetivo 80±5)")
     if not 0.75 <= cob <= 0.88:

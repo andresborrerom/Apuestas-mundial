@@ -1,6 +1,25 @@
 {
   "size": 16,
   "scoring_hash": "e487d6d17fd523ef",
-  "roster_hash": "12652bed7e54bfd2",
-  "draft_date": 1788825600000
+  "roster_hash": "140666704b15fd43",
+  "draft_date": 1788825600000,
+  "pick_order": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+  ],
+  "mi_pick": 9
 }

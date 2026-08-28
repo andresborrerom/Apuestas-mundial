@@ -225,3 +225,38 @@ SUPUESTO/INCÓGNITA #T1: regla de tackles POST-cambio del commish
   todos los RB/WR → argumento cuantificado del QB temprano. Nix y Dart:
   p10 de 84-87 (cola de banca visible). Los RB élite tienen conos anchos
   (Gibbs p10=137 / p90=530): la ronda 1 RB es más lotería que la ronda 1 QB.
+
+## 27-ago: SORTEO + 🚨 TRIPWIRE (roster v3) + simulador de sala
+### Orden del sorteo (por chat de Andrés) y ⚠️ DISCREPANCIA CON LA APP
+Orden dictado: 1 Ferchos · 2 Jaime · 3 Nich · 4 Luisca · **5 POCHO** · 6 Diego
+(+1000 waiver) · 7 Santi A · 8 Sergio · 9 Brian · 10 Rodrigo · 11 Gabriel ·
+12 SteveO · 13 Esguerra · 14 Kike · 15 James B · 16 Santi Gut.
+- ⚠️ **La app AÚN NO tiene ese orden**: `pickOrder` = ids 1..17 en orden
+  (default), lo que pone a 'No Team for Old Men' (id 10 = Pocho) en el
+  puesto **9**, no en el 5. El plan entero depende de esto.
+- BLOQUEO (V.18): antes del draft hay que VER en la app que Pocho está 5º.
+  El tripwire ya vigila `pickOrder` y `mi_pick` y truena cuando el commish
+  cargue el sorteo → ese día se re-corre el plan con el pick real.
+- ✅ verificado en la app: 18 rondas (288 picks), SNAKE, 45s, fecha
+  2026-09-07 19:00 COL, mi teamId = 10.
+
+### 🚨 TRIPWIRE SONÓ: roster v2 → v3 (el commish cambió la alineación)
+- **RB/WR flex 2 → 1 · WR 1 → 2** (scoring IDÉNTICO: 75 ítems, motor sigue
+  validado 1801/1801 y tests 13/13).
+- Consecuencia en baselines (titulares semanales de 16 equipos):
+  RB 35 → **26** · WR 29 → **38** (QB sigue 30 ✅ confirmado por Andrés).
+  Efecto: la WR se volvió MÁS valiosa y la RB menos. Tablero re-generado:
+  Nacua #2, Chase #5, JSN #9 suben; Gibbs #4, Bijan #8, McCaffrey #12 bajan.
+- Sin el tripwire habríamos llevado al draft un tablero con reglas muertas
+  (repetición exacta de la cicatriz #5 del Mundial). Snapshot re-aceptado.
+
+### BUG PROPIO detectado y corregido: conos degenerados en IDP/K
+- nflverse solo calcula `fantasy_points` para OFENSIVA; IDP y K salían en 0
+  → mi filtro `fp>0` descartaba TODAS sus filas → las celdas quedaban vacías
+  → los conos salían con piso = techo (Cashman "321/321": riesgo cero, falso).
+- Fix: métrica de producción POR GRUPO (ofensiva = PPR; IDP = tacleadas
+  ponderadas 2.5/1.5; K = FG convertidos). Calibración ahora por grupo:
+  ofensiva 82.6% (n=967) · IDP 79.1% (n=2043) · global 80.3% (n=3010).
+- El modelo de E[juegos] NO estaba afectado (no filtra por producción).
+- Regla nueva: toda métrica importada se verifica POR GRUPO de posición
+  antes de usarse como filtro — un 0 puede significar "no aplica", no "malo".
