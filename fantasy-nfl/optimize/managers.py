@@ -78,3 +78,45 @@ if __name__ == '__main__':
     print(f"{'#':>3} {'asiento':12}{'manager':18}{'w_QB':>7}{'w_IDP':>7}")
     for i, (nom, m) in enumerate(zip(ORDEN, ASIENTOS)):
         print(f"{i+1:>3} {nom:12}{str(m or '—'):18}{wq[i]:>7.2f}{wi[i]:>7.2f}")
+
+
+# ---------------------------------------------------------------------------
+# PERSONALIDAD medida contra el mercado (ECR superflex), temporadas con slot OP
+# (2021, 2022, 2023, 2025). Método: dentro de cada draft se numeran SOLO los
+# picks ofensivos 1..N (para no contaminar con K/DST/IDP, que el ECR no lista)
+# y se compara ese orden con el rank de mercado.
+#   sesgo  < 0  -> "reacher": toma jugadores ANTES que el mercado
+#   ruido       -> desviación estándar de esa diferencia (impredecibilidad)
+# Chequeo de sanidad: el sesgo GLOBAL da +0 (como debe ser tras normalizar) y
+# el ruido global 20 puestos — mi simulador usaba sigma=12 (~15): la sala real
+# es MÁS caótica de lo que modelaba.
+PERSONALIDAD = {          # manager: (sesgo, ruido, n_picks)
+    'JHJ':             (-21, 21, 51),   # el reacher claro de la sala
+    'Diego':            (-6, 23, 56),
+    'Brian':            (-4, 15, 52),
+    'Renzo':            (-2, 24, 40),
+    'Luis Carlos':      (-2, 17, 51),
+    'Nicholas':         (-1, 26, 54),   # el más impredecible
+    'Andres':            (0, 21, 66),
+    'Santiago':          (0, 18, 79),
+    'Sergio':            (0, 18, 53),
+    'Santiago E':       (+2, 18, 52),
+    'Kike':             (+2, 15, 50),
+    'Rodrigo':          (+5, 16, 50),
+    'Camilo':           (+6, 14, 51),   # el más disciplinado
+    'Santiago, Steve':   (0, 20, 0),    # sin muestra propia: global
+    'Big Daddy James':   (0, 20, 0),
+    'Gabriel':           (0, 20, 0),
+}
+SESGO_GLOBAL, RUIDO_GLOBAL = 0.0, 20.0
+
+
+def personalidades():
+    """(sesgo, ruido) por asiento 0..15, encogido hacia el global por muestra."""
+    out = []
+    for m in ASIENTOS:
+        s, r, n = PERSONALIDAD.get(m, (SESGO_GLOBAL, RUIDO_GLOBAL, 0))
+        k = n / (n + 30)                       # encogimiento
+        out.append((SESGO_GLOBAL + (s - SESGO_GLOBAL) * k,
+                    RUIDO_GLOBAL + (r - RUIDO_GLOBAL) * k))
+    return out
