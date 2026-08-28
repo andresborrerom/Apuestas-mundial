@@ -51,8 +51,11 @@ from model.posiciones import POSID, posiciones_desde_db
 from optimize.managers import personalidades
 
 RAIZ = Path(__file__).resolve().parent.parent
-ECR_PARQUET = ('/tmp/claude-0/-home-user-Apuestas-mundial/'
-               'd76ca134-7088-56fe-a905-16046e9d8c41/scratchpad/ecr.parquet')
+# Histórico de ECR de FantasyPros vía DynastyProcess. Si falta, regenerar:
+#   curl -L -o data/ecr_fpecr.parquet https://raw.githubusercontent.com/dynastyprocess/data/master/files/db_fpecr.parquet
+# (Auditoría 28-ago: antes apuntaba al scratchpad EFÍMERO de la sesión —
+# el backtest habría muerto con el contenedor.)
+ECR_PARQUET = str(RAIZ / 'data' / 'ecr_fpecr.parquet')
 PAGINA = '/nfl/rankings/ppr-superflex-cheatsheets.php'
 
 SEMANAS_REG = 14
@@ -118,9 +121,19 @@ class Config:
 
 CFG = Config()
 
+# Planilla REAL (docs/oficiales/Fantasy_Payouts_2026.xlsx, leída 28-ago por la
+# auditoría — el modelo anterior repartía $10,100 de un pozo de $10,950):
+#   buy-in 650×16 = 10,400 + multas de los últimos (550) = 10,950 repartidos.
 PREMIOS_STANDINGS = {1: 1610, 2: 900, 3: 700, 4: 550, 5: 400, 6: 325, 7: 275, 8: 200}
 PREMIOS_PLAYOFF = {1: 1200, 2: 600, 3: 350, 4: 250}
-POR_VICTORIA, HIGH_SCORE, DFL = 20, 50, -200
+POR_VICTORIA, HIGH_SCORE = 20, 50
+MAS_PF_TEMPORADA = 250        # Highest Scorer Reg Season
+MAS_PA_TEMPORADA = 50         # Highest points against (consuelo del salado)
+RACHA_INVICTA = 50            # Longest undefeated streak
+MAX_UNA_SEMANA = 50           # Highest points in 1 week
+LOSERS_BRACKET = 250          # campeón del bracket de perdedores (9º-16º)
+MULTAS_COLA = {16: -200, 15: -150, 14: -100, 13: -75}   # DFL, 2º, 3º, 4º DFL
+MULTA_MARGEN = -25            # Lowest margin loser
 
 
 def orden_snake(cfg=CFG):
@@ -287,8 +300,11 @@ def draftear(jug, val, politica, personas, rng, rank, cfg=CFG, antic=None):
 
     def elegibles(t, antic=1):
         """`antic` = con cuántas rondas de anticipación empieza este asiento a
-        cubrir sus casillas obligatorias. Medido por asiento, no inventado:
-        sale de la avidez de IDP de cada manager en sus drafts reales."""
+        cubrir sus casillas obligatorias. Hoy es CONSTANTE (1 para rivales,
+        0 para mí) — calibrado en agregado por el candado de calendario.
+        ⚠️ Auditoría 28-ago: una versión anterior de este docstring decía
+        "medido por asiento" y era falso; queda anotado como mejora posible
+        (la avidez de IDP por manager SÍ está medida en managers.pesos())."""
         faltan = sum(max(0, cfg.min_pos[p] - cnt[t][p]) for p in cfg.min_pos)
         quedan = cfg.rondas - len(rosters[t])
         forz = faltan >= quedan - antic
@@ -403,17 +419,48 @@ def temporada(rosters, pts, rng, cfg=CFG):
     vic = np.zeros(E)
     pf = sem[:, 1:SEMANAS_REG + 1].sum(axis=1)
     dinero = np.zeros(E)
+    pa = np.zeros(E)                      # puntos en contra
+    invicto = np.zeros(E); racha = np.zeros(E)
+    margen_min, margen_quien = 1e18, None
     for wk, jor in enumerate(jornadas[:SEMANAS_REG], 1):
         for a, b in jor:
-            if sem[a, wk] > sem[b, wk]: vic[a] += 1
-            elif sem[b, wk] > sem[a, wk]: vic[b] += 1
-            else: vic[a] += 0.5; vic[b] += 0.5
+            pa[a] += sem[b, wk]; pa[b] += sem[a, wk]
+            if sem[a, wk] > sem[b, wk]:
+                vic[a] += 1; racha[a] += 1; racha[b] = -1e9
+                if sem[a, wk] - sem[b, wk] < margen_min:
+                    margen_min, margen_quien = sem[a, wk] - sem[b, wk], b
+            elif sem[b, wk] > sem[a, wk]:
+                vic[b] += 1; racha[b] += 1; racha[a] = -1e9
+                if sem[b, wk] - sem[a, wk] < margen_min:
+                    margen_min, margen_quien = sem[b, wk] - sem[a, wk], a
+            else:
+                vic[a] += 0.5; vic[b] += 0.5
+            invicto[a] = max(invicto[a], racha[a])
+            invicto[b] = max(invicto[b], racha[b])
         dinero[int(np.argmax(sem[:, wk]))] += HIGH_SCORE
     dinero += vic * POR_VICTORIA
     orden = sorted(range(E), key=lambda t: (-vic[t], -pf[t]))
     for puesto, t in enumerate(orden, 1):
         dinero[t] += PREMIOS_STANDINGS.get(puesto, 0)
-    dinero[orden[-1]] += DFL
+        dinero[t] += MULTAS_COLA.get(puesto, 0)
+    # premios laterales de la planilla real
+    dinero[int(np.argmax(pf))] += MAS_PF_TEMPORADA
+    dinero[int(np.argmax(pa))] += MAS_PA_TEMPORADA
+    dinero[int(np.argmax(invicto))] += RACHA_INVICTA
+    dinero[int(np.argmax(sem[:, 1:SEMANAS_REG + 1].max(axis=1)))] += MAX_UNA_SEMANA
+    if margen_quien is not None:
+        dinero[margen_quien] += MULTA_MARGEN
+    # losers bracket (9º-16º, 3 rondas semanas 15-17, con re-siembra)
+    perd_v = orden[8:]
+    for wk in (SEMANAS_REG + 1, SEMANAS_REG + 2, SEMANAS_REG + 3):
+        if len(perd_v) == 1:
+            break
+        perd_v = sorted(perd_v, key=lambda t: orden.index(t))
+        perd_v = [(a if sem[a, wk] >= sem[b, wk] else b)
+                  for a, b in zip(perd_v[:len(perd_v) // 2],
+                                  reversed(perd_v[len(perd_v) // 2:]))]
+    if perd_v:
+        dinero[perd_v[0]] += LOSERS_BRACKET
     vivos = orden[:8]
     perdedores = []
     for wk in (SEMANAS_REG + 1, SEMANAS_REG + 2, SEMANAS_REG + 3):

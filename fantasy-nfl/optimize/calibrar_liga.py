@@ -44,7 +44,7 @@ CONF_REAL = {2021: (14, 16), 2022: (14, 16), 2023: (16, 17), 2025: (14, 17)}
 N_SIMS = 10
 
 
-def pol_greedy(el, vivos, val, cnt, roster, gp, mis, rank):
+def pol_greedy(el, vivos, val, cnt, roster, gp, mis, rank, **kw):
     return max(el, key=lambda k: val.get(k, 0))
 
 

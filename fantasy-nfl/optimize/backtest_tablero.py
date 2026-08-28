@@ -29,8 +29,11 @@ from model.scoring import cargar_reglas, puntos
 from model.scoring_nflverse import temporadas, POSID
 
 RAIZ = Path(__file__).resolve().parent.parent
-ECR_PARQUET = ('/tmp/claude-0/-home-user-Apuestas-mundial/'
-               'd76ca134-7088-56fe-a905-16046e9d8c41/scratchpad/ecr.parquet')
+# Histórico de ECR de FantasyPros vía DynastyProcess. Si falta, regenerar:
+#   curl -L -o data/ecr_fpecr.parquet https://raw.githubusercontent.com/dynastyprocess/data/master/files/db_fpecr.parquet
+# (Auditoría 28-ago: antes apuntaba al scratchpad EFÍMERO de la sesión —
+# el backtest habría muerto con el contenedor.)
+ECR_PARQUET = str(RAIZ / 'data' / 'ecr_fpecr.parquet')
 PAGINA = '/nfl/rankings/ppr-superflex-cheatsheets.php'
 OFE = ('QB', 'RB', 'WR', 'TE')
 
