@@ -342,3 +342,14 @@ se declara y se verifica la unicidad antes de usarla.
   es el más ávido de QB (w=1.39) — afecta quién sobrevive a mi pick 5.
   CADUCIDAD: preguntado a Andrés; si no responde, se verifica el día del
   draft con los primeros picks reales.
+
+## 28-ago (2): asientos 4 y 16 RESUELTOS ✅ — mapeo 16/16 cerrado
+Andrés confirma: "Amanecera y veremos" (asiento 4) = Luis Carlos, que solo
+renombró su equipo (era "The Nest" en 2025); "The Nest" (asiento 16) es Santi
+Gut, nuevo. El ASIENTOS de managers.py ya era correcto — no hay cambio de
+código. Queda como ejemplo de por qué se verifica en vez de asumir: la
+coincidencia de nombre de equipo era una pista FALSA (dos equipos distintos
+con el mismo nombre en años distintos).
+NO QUEDAN SUPUESTOS ABIERTOS sobre la estructura del draft. El único ítem
+vivo del reglamento es la ficha T1 (cambio de tackles del commish), vigilada
+por el tripwire.

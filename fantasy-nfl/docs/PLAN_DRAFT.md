@@ -20,10 +20,12 @@ contra la fuente. Tripwire re-aceptado; sigue vigilando por si lo cambian.
 Bolivia=Sergio, el l.ai.on=Brian, Raw Dawg=Rodrigo, Victorious Secret=
 Santi A, Back 2 Back=SteveO, EZWAR=Esguerra, KeepMyTeam...=Kike,
 Panamanian P!mps=James B, Ferchos=Ferchos, Injury Report=Gabriel).
-⚠️ **Dos por confirmar con Andrés**: el asiento 4 es *"Amanecera y veremos"*
-(yo esperaba a Luis Carlos, cuyo equipo 2025 se llamaba "The Nest") y el
-asiento 16 es *"The Nest"*. Importa: el asiento 4 pica JUSTO antes que yo y
-Luis Carlos es el más ávido de QB de la sala (w=1.39).
+✅ **16/16 cerrado (Andrés, 28-ago)**: el asiento 4 *"Amanecera y veremos"*
+ES Luis Carlos (solo renombró; su equipo 2025 se llamaba "The Nest") y el 16
+*"The Nest"* es Santi Gut (nuevo, sin historia → peso promedio). El mapeo del
+simulador ya era correcto. Dato operativo: **el asiento 4, justo antes del
+mío, es el más ávido de QB de la sala (w=1.39, primer QB en ronda 1 los 4
+años con OP)** — cuando llego al 5 es muy probable que acabe de irse un QB.
 
 ---
 
