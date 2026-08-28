@@ -247,7 +247,27 @@ confirmada, una operativa** — se documentan todas (regla de honestidad):
    `nfl/SURVIVAL/usados_2026.txt` (anotar ahí el pick real de cada semana;
    `semana.py` lo lee solo).
 
-## 10. Preguntas abiertas / siguientes pasos
+## 10. ESPN NFL Pick'em nacional — evaluado y DESCARTADO como fuente de plata
+
+Concurso gratis de ESPN (58 premios, US$102K, modos Standard/Spread/Pick 5/
+Confidence, hasta 10 entradas). Verificado 2026-08-22:
+
+- **Elegibilidad para premios: solo residentes legales de los 50 estados de
+  EE.UU. + DC y Canadá (sin Quebec), 18+.** Es el texto estándar de toda la
+  familia de sweepstakes de ESPN (confirmado en las reglas oficiales de
+  Pigskin Win Totals; el juego se puede *jugar* desde afuera, pero al
+  verificar al ganador piden residencia). **Desde Colombia no se puede
+  cobrar → EV = $0.**
+- Aun siendo elegible: pool nacional de cientos de miles de entradas. Con
+  nuestro edge (66.6% vs ~62-64% del público), P(1º) es de lotería —
+  E[premio] de centavos. La plata real está en pools chicos (N=14) donde
+  el edge por rival es grande. Confirma la regla de suma cero del PLAYBOOK.
+- Si algún día se juega por diversión: los modos donde el modelo aporta son
+  **Standard** (favoritos directo) y **Confidence** (rankear los 16 picks
+  por P calibrada — ventaja directa nuestra). **Spread y Pick 5 NO**: el
+  spread ES el mercado, cada pick es ~50/50 por diseño y no hay edge barato.
+
+## 11. Preguntas abiertas / siguientes pasos
 
 1. ¿Yahoo muestra la **distribución de picks** del grupo antes del cierre?
    Si sí, el field model deja de ser supuesto y se puede esquivar el pick
