@@ -35,7 +35,7 @@ from optimize.politicas import POLITICAS, pol_motor, informe
 from optimize.managers import personalidades
 
 POSICIONES = list(OFE) + list(IDP) + ['DST', 'K']
-CANDIDATAS = ['greedy', 'motor', 'regla', 'no-miope']
+CANDIDATAS = ['motor', 'motor2', 'regla', 'no-miope']
 
 
 def rasgos(el, vivos, val, cnt, roster, gp, mis, rank, cfg=CFG):
@@ -79,7 +79,7 @@ def recolectar(con, items, P, años, sims, cfg=CFG):
         for s in range(sims):
             estados = []
 
-            def espia(el, vivos, val_, cnt, roster, gp, mis, rank_):
+            def espia(el, vivos, val_, cnt, roster, gp, mis, rank_, **kw):
                 estados.append(rasgos(el, vivos, val_, cnt, roster, gp, mis,
                                       rank_, cfg))
                 return pol_motor(el, vivos, val_, cnt, roster, gp, mis, rank_)
