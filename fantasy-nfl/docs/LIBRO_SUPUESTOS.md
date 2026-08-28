@@ -477,3 +477,85 @@ errores del tablero, no su señal.
 3. Para el draft real: **la humildad es el hallazgo**. El tablero sirve para
    evitar errores grandes (no tomar al RB #40 en la ronda 2), no para exprimir
    ventajas de 5 puntos. Y perseguir el máximo del tablero es contraproducente.
+
+---
+
+## 28-ago (7): ⛏️ AUTOPSIA DEL "FRACASO" — eran DOS errores míos, no del método
+
+Andrés no entendió el reporte anterior y con razón: mezclé unidades y saqué
+la conclusión equivocada. Se rehizo la medición. Correcciones:
+
+### ❌ Error 1 — comparé peras con manzanas (unidades)
+Reporté "valor proyectado 787, puntos reales 1268" como si fueran la misma
+vara. No lo son:
+- **787 = VBD proyectado** (valor sobre el reemplazo, sumado sobre 7 slots).
+  Es una medida RELATIVA; su cero es arbitrario.
+- **1268 / 1400 = puntos reales** de temporada. Medida ABSOLUTA.
+Sumar VBD entre posiciones y compararlo contra puntos crudos produce una
+paradoja de Simpson: un QB con VBD 0 hace ~300 pts y un TE con VBD 0 hace
+~120. Por eso salía correlación NEGATIVA (−0.28). Medido manzana con manzana
+(VBD proyectado vs VBD real) el signo se corrige.
+
+### ✅ La hipótesis de Andrés era correcta: "787 será porque es solo ofensiva"
+Sí — y también el número de puntos. Medido sobre 2025 con nuestras reglas:
+
+| bloque | pts del equipo promedio, temporada completa |
+|---|---|
+| 7 slots ofensivos (QB/RB/RBWR×2/WR/TE/OP) | ~1847 |
+| 5 slots IDP (DT/DE/LB/CB/S) | ~743 |
+| **IDP como % de ofensiva+IDP** | **29%** |
+
+La simulación da ~1400 por equipo = 7 slots × 14 semanas. Escalado a 17
+semanas y sumando IDP+K+DST da ~2400, que cae dentro del PF real de la liga
+en 2025 (**2258 – 2585**, standings rescatados). **La simulación no está
+baja por un bug: le faltan slots a propósito.**
+
+⚠️ PENDIENTE DE CORROBORAR (no puedo yo): Andrés recuerda "~1400 puntos
+reales" el año pasado. El PF histórico de esta liga es 2100-2600 desde 2021.
+Solo rescatamos el top-3 de cada temporada, así que su PF 2025 no está en
+nuestros datos. **Necesito que confirme de dónde sale ese 1400** (¿otra app?
+¿otra métrica?) antes de usarlo para calibrar nada.
+
+### 🚨 Error 2 — EL HALLAZGO DE VERDAD: mi tablero proxy es el eslabón malo
+Al medir cada tablero por separado sobre el universo de 260 jugadores que se
+draftean, contra puntos reales:
+
+| tablero | jugador r | rho | ROSTER r |
+|---|---|---|---|
+| **ESPN pretemporada + nuestras reglas** (2025) | **+0.750** | **+0.745** | **+0.335** |
+| mercado ECR condicionado a nuestras reglas | +0.706 | +0.702 | +0.280 |
+| mi proxy histórico (ppg año anterior × E[juegos]) | +0.639 | +0.643 | +0.040 |
+
+Y no es un año suelto — el mercado le gana a mi proxy en **5 de 5**
+temporadas (rho: 2021 .721/.609 · 2022 .711/.623 · 2023 .606/.503 ·
+2024 .725/.615 · 2025 .702/.643).
+
+**Entonces "ningún tablero predice" era FALSO.** El mercado sí predice
+(+0.28 a nivel roster) y ESPN+nuestras reglas predice más (+0.335). Lo que
+no predice es el proxy que yo construí para el backtest.
+
+### 🔁 CORRECCIÓN DE LA FASE A (me equivoqué y lo reporto yo)
+En la Fase A concluí "mi tablero le gana al mercado (rho 0.768 vs 0.730)".
+**Está mal.** Ese número salió de un universo distinto (todo el ECR con datos
+reales, ~500 jugadores) y de "puntos capturados en el top-K", métricas que
+premian acertar en la cola. Sobre los 260 que de verdad se draftean, el
+mercado gana siempre. Causa raíz: mi proxy solo sabe puntos-por-juego del año
+pasado — es ciego a novatos, cambios de equipo, lesiones, entrenadores y
+línea ofensiva; el consenso los incorpora. Regla nueva: **medir siempre sobre
+el universo que se va a draftear, no sobre todo el corpus.**
+
+### ✅ Lo que NO se contamina: el tablero del 7-sep
+`optimize/vbd.py` ya construye el tablero como proyección **ESPN de
+pretemporada re-puntuada con nuestras reglas** — justo el que mide mejor. El
+proxy defectuoso solo existe dentro del backtest, porque no hay proyecciones
+ESPN archivadas de 2021-2024 (motivo exacto por el que nació `ingest/archivo.py`).
+
+Candado sobre esa proyección ESPN 2025 (¿estará actualizada en vivo y por eso
+mide tan bien?): **corr(juegos proyectados, juegos reales) = 0.204**. Si ESPN
+la hubiera refrescado durante la temporada sería ~1.0. ✅ Es de pretemporada.
+
+### Cambios aplicados
+- `backtest_liga.py`: default de `--tableros` pasa de `hibrido` a `mercado`.
+- Encabezado del archivo documenta el sesgo de unidades y la tabla de arriba.
+- El párrafo anterior "🚨 ningún tablero predice" queda **superado**: valía
+  para el proxy, no para el sistema real.

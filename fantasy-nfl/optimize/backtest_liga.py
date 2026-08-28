@@ -22,6 +22,26 @@ más partidos gane".
 ⚠️ SESGO DECLARADO: sin IDP/K/DST los puntajes semanales son más bajos y
 parejos que en la liga real, así que las victorias tienen más azar. Si las
 políticas salen indistinguibles, puede ser esto y no la verdad.
+   Medido (28-ago): los 7 slots ofensivos son ~71% de los puntos de la liga
+   y los 5 IDP ~29%. Los ~1400 pts/equipo de esta simulación (7 slots, 14
+   semanas) reconcilian con los 2258-2585 de PF real 2025 al agregar IDP+K+
+   DST y las 17 semanas. La simulación NO está baja por un bug: le faltan
+   slots a propósito.
+
+🚨 CORRECCIÓN 28-ago — QUÉ TABLERO USAR. Medido sobre el universo de 260
+jugadores que de verdad se draftean, contra puntos reales (2021-2025):
+
+    tablero                        jugador r     ROSTER r
+    ESPN pretemporada + reglas       +0.750       +0.335   (solo 2025)
+    mercado ECR (curva condicionada) +0.706       +0.280
+    mío (proxy: ppg del año pasado)  +0.639       +0.040
+
+El tablero `mio`/`hibrido` de este archivo es un PROXY reconstruido (puntos
+por juego del año anterior × E[juegos]) porque no existen proyecciones ESPN
+archivadas de 2021-2024. Ese proxy NO predice el resultado de un roster.
+El default pasa a `mercado`. El tablero real del 7-sep (optimize/vbd.py) usa
+proyección ESPN de pretemporada re-puntuada con nuestras reglas — el que
+mide mejor — y por eso este defecto NO contamina el draft.
 """
 import argparse, csv, json, re, sys
 from collections import defaultdict
@@ -351,7 +371,7 @@ if __name__ == '__main__':
     ap = argparse.ArgumentParser()
     ap.add_argument('--sims', type=int, default=100)
     ap.add_argument('--anios', default='2021,2022,2023,2024,2025')
-    ap.add_argument('--tableros', default='hibrido')
+    ap.add_argument('--tableros', default='mercado')   # ver 🚨 del encabezado
     ap.add_argument('--politicas', default='greedy,motor,regla,no-miope')
     a = ap.parse_args()
     con = duckdb.connect(str(RAIZ / 'db' / 'fantasy.duckdb'), read_only=True)
