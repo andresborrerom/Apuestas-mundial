@@ -16,6 +16,7 @@ from espn_auth import credenciales
 
 RAIZ = Path(__file__).resolve().parent.parent
 SNAP = RAIZ / "config" / "settings_hash.json"
+MI_TEAM_ID = 10          # 'No Team for Old Men' (Pocho) — verificado 19-ago
 
 def estado():
     lid, s2, swid = credenciales()
@@ -28,11 +29,18 @@ def estado():
     scoring = sorted((it["statId"], it.get("points"), tuple(sorted((it.get("pointsOverrides") or {}).items())))
                      for it in st["scoringSettings"]["scoringItems"])
     roster = sorted(st["rosterSettings"]["lineupSlotCounts"].items())
+    ds = st.get("draftSettings") or {}
+    orden = list(ds.get("pickOrder") or [])
     return {
         "size": st.get("size"),
         "scoring_hash": hashlib.sha256(json.dumps(scoring).encode()).hexdigest()[:16],
         "roster_hash": hashlib.sha256(json.dumps(roster).encode()).hexdigest()[:16],
-        "draft_date": (st.get("draftSettings") or {}).get("date"),
+        "draft_date": ds.get("date"),
+        # ORDEN DEL DRAFT: el plan entero depende de mi posición. El sorteo del
+        # 27-ago dio Pocho=5 por chat, pero la app manda. Cuando el commish lo
+        # cargue, esto TRUENA y hay que re-correr el plan con el pick real.
+        "pick_order": orden,
+        "mi_pick": (orden.index(MI_TEAM_ID) + 1) if MI_TEAM_ID in orden else None,
     }
 
 def main():
@@ -51,8 +59,12 @@ def main():
         print("   (candado kona) y re-calcular baselines. Luego --accept.")
         if antes.get("size") != ahora.get("size"):
             print(f"   ⚠️ D1: tamaño {antes.get('size')}→{ahora.get('size')} — si es 16, era lo ESPERADO: baselines nuevos.")
+        if antes.get("mi_pick") != ahora.get("mi_pick"):
+            print(f"   🎯 MI PICK cambió: {antes.get('mi_pick')} → {ahora.get('mi_pick')}."
+                  f" Re-correr optimize/escenarios_draft.py con MI_PICK={ahora.get('mi_pick')}.")
         return 1
-    print(f"✅ settings sin cambios (size={ahora['size']}, scoring y roster intactos)")
+    print(f"✅ settings sin cambios (size={ahora['size']}, scoring y roster intactos,"
+          f" mi_pick={ahora.get('mi_pick')})")
     return 0
 
 if __name__ == "__main__":

@@ -17,8 +17,14 @@ from model.scoring import cargar_reglas, puntos
 
 RAIZ = Path(__file__).resolve().parent.parent
 POS = {1:'QB',2:'RB',3:'WR',4:'TE',5:'K',9:'DT',10:'DE',11:'LB',12:'CB',13:'S',14:'DB',16:'DST'}
-# baselines base (S1/S2); DT/DE/LB/CB/S/TE/K/DST = 16 titulares + margen bye/lesión
-BASE = {'QB':30,'RB':35,'WR':29,'TE':17,'K':17,'DST':17,'DT':17,'DE':17,'LB':17,'CB':17,'S':17}
+# Baselines = TITULARES SEMANALES en la liga (16 equipos), roster v3 (19-ago):
+#   QB/RB/WR/TE/DT/DE/LB/CB/S/DST/K ×1 + WR ×1 extra (2 en total) + 1 flex
+#   RB/WR + 1 OP (superflex).
+#   QB = 16 + OP×~0.9 = 30 (✅ confirmado por Andrés: "la liga alinea ~30")
+#   RB = 16 + flex×0.6 = 26   |   WR = 32 + flex×0.4 = 38
+# ⚠️ CAMBIO v2→v3: el flex RB/WR bajó de 2 a 1 y WR subió de 1 a 2 → la WR se
+# volvió MÁS profunda (baseline peor ⇒ más valor) y la RB más superficial.
+BASE = {'QB':30,'RB':26,'WR':38,'TE':17,'K':17,'DST':17,'DT':17,'DE':17,'LB':17,'CB':17,'S':17}
 
 def proyecciones():
     todos = json.load(open(RAIZ/'data'/'espn_applied_2025.json'))
