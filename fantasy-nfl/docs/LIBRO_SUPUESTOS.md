@@ -353,3 +353,22 @@ con el mismo nombre en años distintos).
 NO QUEDAN SUPUESTOS ABIERTOS sobre la estructura del draft. El único ítem
 vivo del reglamento es la ficha T1 (cambio de tackles del commish), vigilada
 por el tripwire.
+
+## 28-ago (3): AUDITORÍA COMPLETA DEL REGLAMENTO (pedido de Andrés)
+Andrés: "revisa qué reglas locales tiene nuestra liga; recuerda que los TD de
+QB valen 6 así sean de pase". ✅ Confirmado (statId 4 = 6.0) y auditados los
+75 ítems, identificando cada uno EMPÍRICAMENTE. Doc: docs/REGLAMENTO.md.
+- 🔴 **HALLAZGO NUEVO — el FG de 50+ paga DOBLE**: los ítems 74 ("FG 50+",
+  5 pts) y 198 ("FG 50-59", 5 pts) SE SUMAN → un FG de 50-59 vale **10 pts**;
+  uno de 60+ vale 74(5)+201(6) = **11 pts**. Verificado con Aubrey: 113 de
+  sus 235 puntos de 2025 salieron solo de FG de 50+. El motor ya lo aplicaba
+  (por eso el candado cuadraba), pero NADIE lo había leído: el pateador de
+  pierna larga vale mucho más de lo que dice cualquier ranking público.
+- Peso de las reglas NO estándar sobre los puntos reales de 2025:
+  LB 47% · DT 46% · S 44% · CB 40% · DE 40% · **QB 33%** · K 19% ·
+  RB 9% · WR 8% · TE 6%. Ahí vive el edge aritmético de la tesis.
+- Mapeo de kickers resuelto: 80=FG 0-39 · 77=40-49 · 198=50-59 · 201=60+ ·
+  74=50+ (acumulativo) · 86=PAT · 76/79/82/200/203=fallos por tramo.
+- Confirmado además: TD de pase 6 (estándar 4) · INT lanzada −3 (estándar −2)
+  · completos +0.1 / incompletos −0.05 · primeros downs +0.2 (las tres, muy
+  raras) · sack recibido −0.1.
