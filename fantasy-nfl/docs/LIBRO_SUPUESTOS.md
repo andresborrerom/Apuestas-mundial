@@ -559,3 +559,107 @@ la hubiera refrescado durante la temporada sería ~1.0. ✅ Es de pretemporada.
 - Encabezado del archivo documenta el sesgo de unidades y la tabla de arriba.
 - El párrafo anterior "🚨 ningún tablero predice" queda **superado**: valía
   para el proxy, no para el sistema real.
+
+---
+
+## 28-ago (8): SIMULADOR DE LIGA COMPLETA — y los tres errores que lo frenaron
+
+Andrés: *"olvida los puntos que te dije, los tuyos son mejores. Es que yo solo
+hablaba de temporada regular. Pero confía en lo que tú ves en la historia de
+la liga. Nada mejor que eso para comparar."*
+
+Ficha del "1400" → **CERRADA**: era temporada regular y no contradice nada.
+La fuente para calibrar pasa a ser la historia de la liga.
+
+### Lo que se construyó
+- `model/posiciones.py` — la posición la manda ESPN, no nflverse.
+- `model/scoring_kdst.py` + `model/validar_kdst.py` — K y D/ST desde nflverse.
+- `optimize/liga.py` — 16 equipos, **14 titulares**, 18 rondas, `Config`
+  parametrizable para reproducir también la liga de NFL.com.
+- `optimize/drafts_reales.py` — los drafts REALES puntuados con nuestras reglas.
+- `optimize/calibrar_liga.py` — el candado de liga.
+- `optimize/politicas.py` y `optimize/meta_politica.py`.
+
+### 🚨 Error A — el mapeo de posiciones (silencioso y grande)
+nflverse etiqueta a los safeties como `SAF`; el mapeo viejo buscaba `S`/`FS`/
+`SS`. La posición S salía con **n=6 en vez de 161**. Y no es solo eso: sobre
+los 1.485 jugadores con tacleadas de 2025, nflverse dice `LB` donde ESPN dice
+`DE` en **85 casos** y `DE` donde ESPN dice `DT` en **42**. La liga da un slot
+a cada una, así que clasificar mal a un edge rusher corre la línea base de dos
+posiciones a la vez. Regla: **la posición la manda ESPN**, vía crosswalk.
+
+### 🚨 Error B — el pateador cobra tacleadas
+El candado contra el appliedTotal real daba un sesgo NEGATIVO en todos los
+pateadores. Riley Patterson: −9.0 exacto = 3 solos (4.5) + 1 asistida (0.5) +
+4 totales (4.0). Además ESPN cuenta el **FG bloqueado como fallado** y nflverse
+lo lleva en columna aparte. Con las dos correcciones: **MAE 0.35 · mediana 0.00
+· 93% dentro de ±1**.
+
+### 🚨 Error C — los rivales estaban usando NUESTRO tablero
+El más caro de los tres. En el simulador los 15 rivales picaban por nuestro
+VBD, y salían **25 QB y dos pateadores dentro de los primeros 112 picks**. La
+sala real toma K en la ronda 13.4 y los IDP en la 14-15: **no usan VBD**. Ahora
+van por el ECR ofensivo y sólo cubren las casillas defensivas cuando la
+aritmética los obliga.
+
+**Esto no es un detalle de implementación: es de dónde sale nuestra ventaja.**
+Si la sala ignora a los IDP hasta el final y bajo nuestras reglas un LB del
+montón vale ~270 puntos de temporada, tomarlos antes tiene precio medible.
+
+Efecto de la corrección sobre el candado de nivel: de **−16.4% a −1.2%**.
+
+### ✅ CANDADO DE LIGA — cómo quedó
+Comparación contra los **drafts reales** de la sala (98-99% de los picks
+ofensivos emparejados por nombre+posición), puntuados con nuestro reglamento,
+contra simulaciones de la MISMA configuración de cada año:
+
+| candado | resultado | veredicto |
+|---|---|---|
+| NIVEL (media del bloque ofensivo) | −1.2% (rango −4% a +3%) | ✅ |
+| DISPERSIÓN (1º/3º, adimensional) | conserva el 138% de la real | ✅ |
+| CALENDARIO ofensivo | desvío 0.50 rondas | ✅ |
+| ESTRUCTURA (slots obligatorios) | 0/640 sin llenar | ✅ |
+
+**Dos comparaciones que probé antes y eran INVÁLIDAS** (quedan escritas):
+1. Contra el PF de `historia_standings.csv` → +40%. Ese PF es de NFL.com con
+   el reglamento de NFL.com. Dos varas distintas.
+2. Contra un "equipo del medio" armado con el 8º mejor de cada posición según
+   los appliedTotal reales → −13%. Eso es un **oráculo**: nadie draftea al que
+   RESULTÓ ser el 8º.
+
+### 📊 HALLAZGO CON CONSECUENCIA DIRECTA EN EL DRAFT
+Estabilidad año-a-año (rho entre los puntos de Y−1 y los de Y, mismos
+jugadores, bajo nuestras reglas, promedio de 2022-2025):
+
+| pos | rho | | pos | rho |
+|---|---|---|---|---|
+| WR | 0.69 | | LB | 0.58 |
+| TE | 0.67 | | CB | 0.53 |
+| RB | 0.65 | | DT | 0.52 |
+| QB | 0.61 | | DE | 0.50 |
+| | | | S | 0.46 |
+| | | | **K** | **0.27** |
+| | | | **D/ST** | **0.18** |
+
+- La ofensiva es MÁS predecible que el IDP, no menos.
+- **El pateador y la defensa son casi ruido puro.** El año anterior no dice
+  nada de ellos. Se toman al final porque no hay forma de saber — y por eso
+  gastar un pick temprano ahí es tirarlo.
+
+### ⚠️ SUPUESTO S-IDP (vivo)
+- QUÉ: en el backtest, el tablero de IDP/K/DST es "puntos del año anterior
+  bajo nuestras reglas". No existe ECR ni ADP público de IDP.
+- POR QUÉ NO HAY INFO: se buscó (FantasyPros no publica IDP superflex
+  histórico; FFC no tiene IDP).
+- COSTO SI ESTÁ MAL: el backtest subestima lo que un buen tablero de IDP
+  puede dar, porque el insumo tiene rho 0.5 y no 0.75.
+- SENSIBILIDAD: sesga **en contra** de las políticas que toman IDP temprano.
+  Es el lado conservador.
+- CADUCIDAD: el 7-sep tendremos la proyección ESPN 2026 de IDP, que sí
+  incorpora noticias. Verificar entonces cuánto mejora.
+
+### ⚠️ SESGO DECLARADO (vivo)
+El simulador se queda con el roster del draft: no hay waivers, ni cambios, ni
+streaming. En la liga real se ficha toda la temporada. Consecuencia: las
+diferencias entre POLÍTICAS se ven más chicas de lo que serían de verdad.
+Sesga hacia "empatan" — el lado conservador.
