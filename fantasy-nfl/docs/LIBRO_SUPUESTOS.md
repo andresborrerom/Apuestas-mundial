@@ -372,3 +372,27 @@ QB valen 6 así sean de pase". ✅ Confirmado (statId 4 = 6.0) y auditados los
 - Confirmado además: TD de pase 6 (estándar 4) · INT lanzada −3 (estándar −2)
   · completos +0.1 / incompletos −0.05 · primeros downs +0.2 (las tres, muy
   raras) · sack recibido −0.1.
+
+## 28-ago (4): ARCHIVO PROPIO iniciado + corrección sobre ADP superflex
+- ⚠️ **CORRECCIÓN a Andrés (asumió que teníamos ADP superflex histórico):**
+  NO EXISTE. Verificado: FFC solo tiene standard/ppr/half-ppr/**2qb**/dynasty
+  (`format=superflex` → HTTP 400); FantasyPros redirige sus URLs de ADP
+  superflex al ADP general (302). Lo único superflex histórico es **ECR**
+  (ranking de expertos, no mercado), 2021-2025, vía DynastyProcess.
+  → Ventana de validación: ECR superflex 2021-2025 como tablero de mercado;
+  ADP 2QB 2014-2025 como chequeo de robustez, declarado como PROXY.
+- Novatos: el hueco NO es del mercado (su ADP/ECR sí los incluye) sino de MI
+  proyección, que se construye del año anterior y por tanto no puede rankear
+  a un novato. Solución acordada: tablero híbrido (mi proyección donde hay
+  datos + ranking de mercado para novatos).
+- **ARCHIVO ARRANCADO** (ingest/archivo.py): snapshot fechado y hasheado de
+  ESPN (1,403 proyecciones + rankings + ADP + crudos), FantasyPros ECR
+  superflex (14,492 filas) y FFC ADP 2QB (246). Primer corte: 2026-08-28.
+  Motivo: no existe archivo público auditable de proyecciones históricas;
+  en dos temporadas tendremos el track record que nadie publica.
+- Triangulación 2026 (tres fuentes independientes del mercado superflex):
+  diferencia mediana ESPN vs FantasyPros = 10 puestos en el top-80.
+  FantasyPros adelanta a los QB de segunda línea (Caleb #8 vs ESPN #38,
+  Herbert #10 vs #39, Goff #30 vs #79) — **y NUESTRO tablero coincide con
+  FantasyPros, no con ESPN** (Caleb #20, Herbert #17, Goff #19). Dos rutas
+  independientes llegando a lo mismo.
