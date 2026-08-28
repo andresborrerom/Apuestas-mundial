@@ -389,7 +389,42 @@ blanda (vapor 57-59%, Elo-vs-apertura 54.3%). Viento-under = candidato
 +7.7% ROI en paper trading. Nada de plata real hasta que el paper trading
 de una temporada confirme — y aún así, las casas limitan ganadores.
 
-## 14. Preguntas abiertas / siguientes pasos
+## 14. E4 — Anatomía del vapor (`nfl/EDGE/vapor_profundo.py`, K=8)
+
+Qué más hay en el movimiento apertura→cierre (SBRO 2013-2020, split-half
+estable 56.7%/57.2%):
+
+- **V1 dosis-respuesta:** movimientos de medio punto son RUIDO (cubren
+  46.6% — ni seguirlos); el vapor real arranca en 1+ punto y satura:
+  1.5-2.5 → 57.9%, 2.5+ → 59.5%.
+- **V3 números clave (la joya):** cuando el movimiento CRUZA el 3 o el 7
+  cubre **62.6%** (n=190, ±3.6) vs 55.9% si no cruza. Pagar el costo de
+  cruzar un número clave = el mercado está seguro.
+- **V2 asimetría:** vapor hacia el underdog 58.1% vs hacia el favorito
+  55.8% (dirección esperada — el sharp va al dog — pero no concluyente).
+- **V4 totales:** el vapor también funciona en totales (mov ≥2 → 58.3%,
+  n=714).
+- **V5 (la conclusión operativa):** contra el CIERRE el vapor cubre
+  **50.4%** — el cierre absorbe TODO. No existe "seguir el vapor tarde":
+  el juego entero es ser temprano.
+- **V6 overshoot:** 48.4% vs cierre en movimientos grandes — insinúa
+  contra-valor pero dentro del ruido. No accionable.
+- **V7 estación: REFUTADA** — el vapor de semanas 1-4 cubre MENOS (54.7%
+  vs 57.6%); las aperturas tempranas no son más blandas.
+- **V8 vapor×Elo (el hallazgo):** cuando el Elo y el movimiento COINCIDEN
+  el lado cubre la apertura **60.4%** (n=384, ±2.6). Cuando chocan: 50/50
+  — el dinero informado neutraliza al modelo. Ojo: 60.4% condiciona en
+  observar el movimiento (futuro al momento de apostar la apertura); la
+  versión implementable necesita líneas INTRA-semana.
+
+**Infraestructura nueva:** `nfl/EDGE/snapshot_odds.py` + Action
+`nfl-snapshot-lineas.yml` — 2 snapshots diarios de spread/total/ML de
+todas las casas (The Odds API, ~60 req/mes del free tier), apilados en
+`nfl/datos/snapshots/`. Desde la semana 1 de 2026 construimos NUESTRO
+dataset intra-semana: el insumo del pronosticador de vapor v2 (¿a qué
+hora del día se mueve?, ¿qué casa mueve primero?, reverse line movement).
+
+## 15. Preguntas abiertas / siguientes pasos
 
 1. ¿Yahoo muestra la **distribución de picks** del grupo antes del cierre?
    Si sí, el field model deja de ser supuesto y se puede esquivar el pick

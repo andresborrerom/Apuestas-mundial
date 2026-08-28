@@ -1,0 +1,48 @@
+name: NFL snapshot de líneas (2x/día)
+
+# Construye nuestro dataset intra-semana de líneas NFL: 2 snapshots
+# diarios (mañana y noche) de spread/total/moneyline de todas las casas
+# de The Odds API, apilados en nfl/datos/snapshots/lineas_nfl.csv y
+# commiteados al repo. Es el insumo del pronosticador de vapor v2
+# (ver nfl/MODELO.md §13-14).
+#
+# REQUISITO: secreto ODDS_API_KEY (ya existe para las pollas del Mundial).
+# Presupuesto: ~2 requests/día ≈ 60/mes (el plan free da 500/mes).
+
+on:
+  schedule:
+    - cron: '0 14 * * *'      # 14:00 UTC = 9am Colombia/Panamá
+    - cron: '0 2 * * *'       # 02:00 UTC = 9pm Colombia/Panamá
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Capturar snapshot
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: |
+          MES=$(date +%-m)
+          # solo temporada NFL (ago-feb) para no gastar requests
+          if [ "$MES" -ge 3 ] && [ "$MES" -le 7 ]; then
+            echo "fuera de temporada"; exit 0
+          fi
+          python nfl/EDGE/snapshot_odds.py
+      - name: Commit del snapshot
+        run: |
+          if git diff --quiet -- nfl/datos/snapshots/; then
+            echo "sin cambios"; exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add nfl/datos/snapshots/
+          git commit -m "snapshot lineas NFL $(date -u +%F_%H:%M)"
+          git push
