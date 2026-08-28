@@ -847,3 +847,45 @@ Protocolo ejecutado completo:
   público se equivoca MENOS en IDP ahora; nuestra ventaja se concentra en
   QB (TD de pase a 6, completos, primeros downs) y el pateador de pierna
   larga (FG 50-59 = 10 pts sigue intacto).
+
+---
+
+## 28-ago (12): BACKTEST BAJO REGLAS POST-T1 — el veredicto se MATIZA
+
+Re-corrida completa con: reglas vivas (T1), premios COMPLETOS de la planilla,
+tablero de IDP/K/DST por ECR real, tope de 1 IDP por posición (regla de
+Andrés) y los fixes de la auditoría. Candado de liga: ✅ 4/4 (nivel −1%,
+dispersión ok, calendario 0.49 rondas, 0/640 sin llenar).
+
+| política | E[$] | p50 | peor año | DFL | sin $ | top8 | campeón |
+|---|--:|--:|--:|--:|--:|--:|--:|
+| greedy | 831 | 660 | 646 | 1.4% | 32% | 68% | 5.4% |
+| motor | 1106 | 900 | **625** | 1.5% | 30% | 70% | 12.5% |
+| **motor2** | 1233 | 1050 | **943** | 1.0% | 26% | 74% | 13.8% |
+| regla | 1191 | 900 | 534 | 2.2% | 32% | 68% | **17.8%** |
+| **no-miope** | **1268** | **1130** | **975** | **1.0%** | **21%** | **79%** | 10.7% |
+
+Año por año vs motor: motor2 {−30, +104, +14, +419} · no-miope {−63, +166,
++46, +498} — ambos ganan 3 de 4, con 2025 dominando el promedio.
+
+**Lectura honesta (con el ajuste de la auditoría por clustering de año):**
+con 4 temporadas, t≈1.3 para ambos → motor, motor2 y no-miope siguen
+estadísticamente EMPATADOS en Δ$. Pero el PISO ya no empata: el peor año de
+motor2 (943) y no-miope (975) es ~50% mejor que el de motor (625), y son
+consistentes en dirección con dos mecanismos DISTINTOS. El "motor y punto"
+del backtest pre-T1 queda matizado: **motor sigue siendo válido, pero
+no-miope/motor2 dejaron de ser peores y probablemente son algo mejores.**
+
+### 🔍 Hallazgo abierto para los mocks: la forma del roster
+Post-T1 + premios completos, las dos políticas con mejor piso construyen
+**WR-pesado** (4.9 WR · 2 TE · 1.3 RB: alinean QB+1RB+4WR+TE usando flex y
+OP en WR), mientras motor/regla construyen RB-pesado (3.5 RB · 3.1 WR).
+greedy también es WR-pesado y PIERDE → la forma no basta, importa el timing.
+Coherente con el roster v3 (2 slots WR + flex + OP). **Se resuelve en los
+mocks cronometrados con el tablero 2026 real** — no desde el backtest.
+
+### Decisión operativa para el 7-sep (sin cambio de herramienta)
+El asistente en vivo ya usa ganancia marginal con simulación DESDE EL ESTADO
+REAL (espíritu motor2) + regla validada en los 2 primeros picks. Cambio que
+SÍ queda: en los mocks, ensayar también la variante WR-pesada (dejar que OP
+sea WR en vez de 2º QB temprano si el tablero lo dice).
