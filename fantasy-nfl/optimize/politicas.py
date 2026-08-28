@@ -55,11 +55,11 @@ def _mejor_por_pos(el, vivos, val):
     return d
 
 
-def pol_greedy(el, vivos, val, cnt, roster, gp, mis, rank):
+def pol_greedy(el, vivos, val, cnt, roster, gp, mis, rank, **kw):
     return max(el, key=lambda k: val.get(k, 0))
 
 
-def pol_motor(el, vivos, val, cnt, roster, gp, mis, rank):
+def pol_motor(el, vivos, val, cnt, roster, gp, mis, rank, **kw):
     sig = next((p for p in mis if p > gp), None)
     if sig is None:
         return pol_greedy(el, vivos, val, cnt, roster, gp, mis, rank)
@@ -78,7 +78,7 @@ def pol_motor(el, vivos, val, cnt, roster, gp, mis, rank):
     return mejor
 
 
-def pol_regla(el, vivos, val, cnt, roster, gp, mis, rank):
+def pol_regla(el, vivos, val, cnt, roster, gp, mis, rank, **kw):
     k_turno = len([1 for p in mis if p < gp])
     d = _mejor_por_pos(el, vivos, val)
     if k_turno == 0 and d.get('WR'):
@@ -93,7 +93,7 @@ def pol_regla(el, vivos, val, cnt, roster, gp, mis, rank):
 
 
 def pol_nomiope(el, vivos, val, cnt, roster, gp, mis, rank,
-                rollouts=6, cand=4, cfg=CFG):
+                rollouts=6, cand=4, cfg=CFG, **kw):
     """⚠️ La CONTINUACIÓN de cada simulación usa el MOTOR, no greedy: un
     rollout vale lo que valga su política de continuación."""
     if not [p for p in mis if p > gp]:
@@ -152,8 +152,49 @@ def pol_nomiope(el, vivos, val, cnt, roster, gp, mis, rank,
     return mejor
 
 
+def pol_motor2(el, vivos, val, cnt, roster, gp, mis, rank, cfg=CFG,
+               estado=None, **kw):
+    """MOTOR v2 — corrige el punto ciego del motor con los IDP/K/DST.
+
+    El motor v1 estima la supervivencia sólo con el rank de mercado. Como los
+    no ofensivos tienen rank 10.000+, les asigna supervivencia 1.0 SIEMPRE: es
+    decir, cree que el mejor LB va a seguir ahí en la ronda 18. Falso. Con 5
+    slots IDP × 16 equipos hay 80 picks defensivos obligatorios; cuando la sala
+    entra en modo forzado, los buenos IDP vuelan en dos rondas.
+
+    Aquí la supervivencia del no ofensivo se estima de la ARITMÉTICA de la
+    sala: cuántos rivales pican antes de mi próximo turno y cuántos de ellos ya
+    están obligados a cubrir casilla. Es la misma cuenta que hace que la sala
+    los tome tarde — pero usada para saber CUÁNDO dejan de estar disponibles.
+    """
+    sig = next((p for p in mis if p > gp), None)
+    if sig is None or estado is None:
+        return pol_motor(el, vivos, val, cnt, roster, gp, mis, rank)
+    forzados, huecos = estado          # picks forzados antes de mi turno y
+    #                                    cuántos de esos van a cada posición
+    d = _mejor_por_pos(el, vivos, val)
+    mejor, mejor_g = None, -1e18
+    for p, ks in d.items():
+        ahora = val.get(ks[0], 0)
+        if p in OFE:
+            luego, q = 0.0, 1.0
+            for k in ks[:25]:
+                s = _surv(rank[k], sig)
+                luego += val.get(k, 0) * s * q
+                q *= (1 - s)
+                if q < 1e-3:
+                    break
+        else:
+            # se van los `n` mejores de esa posición antes de mi turno
+            n = int(round(huecos.get(p, 0.0)))
+            luego = val.get(ks[n], 0) if n < len(ks) else 0.0
+        if ahora - luego > mejor_g:
+            mejor, mejor_g = ks[0], ahora - luego
+    return mejor
+
+
 POLITICAS = {'greedy': pol_greedy, 'motor': pol_motor, 'regla': pol_regla,
-             'no-miope': pol_nomiope}
+             'no-miope': pol_nomiope, 'motor2': pol_motor2}
 
 
 def correr(con, items, P, años, pols, sims, cfg=CFG, guardar=None):

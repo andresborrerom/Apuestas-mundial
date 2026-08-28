@@ -297,7 +297,8 @@ def draftear(jug, val, politica, personas, rng, rank, cfg=CFG, antic=None):
         if not el:
             break
         if t == cfg.mi_asiento:
-            k = politica(el, vivos, val, cnt[t], rosters[t], gp, mis, rank)
+            k = politica(el, vivos, val, cnt[t], rosters[t], gp, mis, rank,
+                         estado=estado_sala(sec, gp, mis, cnt, rosters, cfg))
         else:
             sesgo, ruido = personas[t]
             k = min(el, key=lambda k: rank[k] + sesgo + rng.normal(0, ruido))
@@ -305,6 +306,38 @@ def draftear(jug, val, politica, personas, rng, rank, cfg=CFG, antic=None):
         rosters[t].append((k, pos)); cnt[t][pos] += 1
         del vivos[k]
     return rosters
+
+
+def estado_sala(sec, gp, mis, cnt, rosters, cfg):
+    """(picks forzados antes de mi próximo turno, cuántos van a cada posición).
+
+    La sala no toma IDP por gusto: los toma cuando le quedan tantas casillas
+    obligatorias como picks. Esta cuenta dice cuántos de esos picks forzados
+    van a caer ANTES de mi próximo turno y sobre qué posiciones — que es lo
+    que de verdad determina si el buen LB sigue vivo cuando me toque.
+    """
+    sig = next((p for p in mis if p > gp), None)
+    if sig is None:
+        return 0, {}
+    huecos = defaultdict(float)
+    forzados = 0
+    hechos = defaultdict(int)
+    for pk in range(gp + 1, sig):
+        t = sec[pk]
+        if t == cfg.mi_asiento:
+            continue
+        faltan = sum(max(0, cfg.min_pos[p] - cnt[t][p]) for p in cfg.min_pos)
+        quedan = cfg.rondas - len(rosters[t]) - hechos[t]
+        hechos[t] += 1
+        if faltan < quedan - 1:
+            continue                       # todavía elige libremente
+        forzados += 1
+        pend = [p for p in cfg.min_pos if cnt[t][p] < cfg.min_pos[p]]
+        if not pend:
+            continue
+        for p in pend:                     # se reparte entre lo que le falta
+            huecos[p] += 1.0 / len(pend)
+    return forzados, dict(huecos)
 
 
 def alinear(jugadores, val, cfg=CFG):
