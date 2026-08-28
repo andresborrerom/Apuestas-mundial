@@ -289,7 +289,62 @@ Confidence, hasta 10 entradas). Verificado 2026-08-22:
   por P calibrada — ventaja directa nuestra). **Spread y Pick 5 NO**: el
   spread ES el mercado, cada pick es ~50/50 por diseño y no hay edge barato.
 
-## 11. Preguntas abiertas / siguientes pasos
+## 11. La caza de edge REAL contra la línea de cierre (sprint completo)
+
+Mandato del usuario: dejar de asumir eficiencia y buscar edge con datos de
+verdad (clima, estilos, QB vs DL, viajes...). Se corrieron 3 baterías con
+protocolo anti-multiplicidad (hipótesis declaradas antes de mirar, K
+explícito, split-half 2002-13 vs 2014-25, walk-forward para candidatos).
+
+**Batería 1 — situacionales** (`nfl/EDGE/buscar_edge.py`, K=15, n=6.208
+partidos 2002-2025): home dogs, dogs divisionales, bye, semana corta,
+jueves, viento 15/20mph, frío vs equipos de domo/ciudad cálida, viajes de
+2+ husos horarios (mapa de 32 equipos), primetime, diciembre outdoor.
+**Resultado: CERO candidatos** (todo |z|<1.5).
+
+**Batería 2-3 — QBs y matchups de estilo** (`nfl/EDGE/matchups.py`, K=7,
+con EPA por pase/carrera de nflverse stats_team_week 2003-2025, perfiles
+walk-forward con shrinkage a la temporada previa): QB titular nuevo, aire
+vs muro aéreo, tierra élite vs colador, cazadores de sacks vs O-line
+comilona, shootouts. **Resultado: CERO candidatos.**
+
+**G5, la prueba reina:** logística walk-forward logit(p) ~ mercado + 4
+features de matchup EPA + QB nuevo, entrenada en temporadas previas,
+testeada 2011-2025: **mejora media −0.0006 de log-loss — agregar EPA
+EMPEORA fuera de muestra. La línea de cierre ya digirió el EPA público.**
+
+Migajas consistentes en ambas mitades pero NO significativas (se anotan,
+no se usan): dog divisional sobre-preciado (−0.024), viento castiga
+favoritos (−0.021), QB nuevo sobre-preciado (−0.019), y favoritos grandes
+p≥0.80 infra-preciados (+0.011) — esta última **respalda al marrano** (los
+picks ~0.80 valen si acaso más de lo que dice el de-vig).
+
+**Conclusión (documentada, no maquillada):** con datos públicos no hay
+edge explotable contra el cierre de Vegas. El edge real de este proyecto
+es ESTRUCTURAL y ya está montado: (1) ganarle al field, no a Vegas
+(marrano, flips, ranking calibrado); (2) cobertura de colas con volumen.
+
+## 12. El ejército (≈50 personas elegibles en USA, 10 entradas c/u)
+
+`nfl/ESPN/ejercito.py` — entradas = favoritos + combos de flips sobre los
+12 partidos más parejos, ordenadas por P(patrón), ground truth 2011-2025:
+
+| entradas | P(alguna semana 15+/16) | P(alguna PERFECTA 16/16) |
+|---|---|---|
+| 20 | 12.6% | 3.9% |
+| 100 | 30.3% | 10.0% |
+| **500** | **55.4%** | **27.7%** |
+
+Con 500 entradas, una semana perfecta cae más de 1 de cada 4 semanas: eso
+es cobertura sistemática de caminos de upsets que el público no cubre —
+el "camino aleatorio donde no vemos edge" del usuario, pero guiado por
+P(patrón). Confidence no necesita ejército (1 entrada óptima por persona
+es el tope; el resto del cupo va a Standard). Operativa: cada persona real
+maneja SU cuenta (límite de ESPN: 10 entradas/persona) y nosotros
+mandamos la hoja semanal por correo. Pendiente: tiebreaker del premio
+semanal y tabla de premios por modo (verlos en la app).
+
+## 13. Preguntas abiertas / siguientes pasos
 
 1. ¿Yahoo muestra la **distribución de picks** del grupo antes del cierre?
    Si sí, el field model deja de ser supuesto y se puede esquivar el pick
