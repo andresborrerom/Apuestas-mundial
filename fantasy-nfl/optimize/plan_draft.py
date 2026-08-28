@@ -16,7 +16,7 @@ from collections import defaultdict
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import numpy as np
-from optimize.sala import (EQUIPOS, RONDAS, MI_PICK, ORDEN, MAX_UTIL, OBLIG,
+from optimize.sala import (EQUIPOS, RONDAS, MI_PICK, ORDEN, MAX_UTIL, MAX_UTIL_MIO, OBLIG,
                            OFE, OFE_MIN, cargar, score_sala, orden_snake,
                            valor_roster)
 
@@ -85,12 +85,14 @@ class Draft:
     def candidatos(self, t, ronda, forzado, limite=110):
         cnt = self.cnt[t]
         gaps, extra_ofe = self.faltantes(t)
+        # 🔒 mis topes son más estrictos que los de la sala: un IDP por posición
+        tope = MAX_UTIL_MIO if t == MI_PICK - 1 else MAX_UTIL
         out = []
         for i in range(self.n):
             if not self.alive[i]:
                 continue
             p = self.pos[i]
-            if cnt[p] >= MAX_UTIL.get(p, 3):
+            if cnt[p] >= tope.get(p, 3):
                 continue
             if forzado and not (gaps.get(p, 0) > 0 or (extra_ofe > 0 and p in OFE)):
                 continue

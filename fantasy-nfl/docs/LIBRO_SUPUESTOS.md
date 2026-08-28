@@ -754,3 +754,41 @@ DENTRO del draft, decidiendo en cada uno de mis 18 turnos:
 
 **−$97 de media y pierde en las 4 temporadas.** Mismo veredicto que el test
 grueso, con el diseño correcto. ✅ Cerrado: política fija = **motor**.
+
+---
+
+## 28-ago (10): 🔒 REGLA DE ANDRÉS — un IDP por posición, cero IDP en banca
+
+> *"Regla: un idp por posicion. No quiero idp en mi banca nunca."*
+
+Es una restricción DURA sobre mi equipo, no una preferencia del motor. Los
+rivales siguen con sus topes de siempre (hasta 2 por posición IDP): la regla
+es mía, no de la sala.
+
+**No va contra los datos, va con ellos.** El backtest de 4 temporadas × 300
+simulaciones ya había mostrado que las políticas ganadoras toman exactamente
+1.0 de cada IDP y meten la profundidad en RB/WR, y que la que se llena de IDP
+es la peor de todas por lejos:
+
+| política | DT | DE | LB | CB | S | E[$] |
+|---|--:|--:|--:|--:|--:|--:|
+| motor | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 967 |
+| regla | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 | 1035 |
+| motor2 | 1.2 | 1.3 | 1.4 | 1.4 | 1.1 | 1013 |
+| greedy | 1.7 | 1.6 | 2.0 | 1.8 | 1.9 | **498** |
+
+### Dónde quedó escrita (en código, no en intención)
+- `optimize/sala.py` → `MAX_UTIL_MIO` (lo usan las herramientas de producción)
+- `optimize/plan_draft.py` → mis topes sólo para mi asiento
+- `optimize/live_draft.py` → el asistente del 7-sep
+- `optimize/liga.py` → `MAX_POS_MIO` y `Config.topes(t)` en el simulador
+- `optimize/politicas.py` → también dentro de los rollouts de no-miope, que
+  simulan MIS picks futuros
+
+### Candado
+`rosters míos que violan la regla: 0/50` (5 políticas × 10 semillas).
+
+### Consecuencia lateral que hay que vigilar
+Con el tope en 1, `motor2` pierde su única palanca (tomaba 1.2-1.4 IDP). Es
+decir: **la regla de Andrés vuelve a motor2 idéntico al motor en la práctica**.
+Queda medido en la corrida siguiente.

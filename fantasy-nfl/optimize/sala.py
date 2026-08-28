@@ -32,8 +32,17 @@ ORDEN = ['Ferchos', 'Jaime', 'Nich', 'Luisca', 'POCHO', 'Diego', 'Santi A',
          'Sergio', 'Brian', 'Rodrigo', 'Gabriel', 'SteveO', 'Esguerra',
          'Kike', 'James B', 'Santi Gut']
 # cuántos de cada posición son ÚTILES para un equipo (titulares + banca sana)
+# Cuántos de cada posición son ÚTILES *para la sala* (titulares + banca sana).
 MAX_UTIL = {'QB': 3, 'RB': 5, 'WR': 5, 'TE': 2, 'DT': 2, 'DE': 2, 'LB': 2,
             'CB': 2, 'S': 2, 'DST': 1, 'K': 1}
+# 🔒 REGLA DE ANDRÉS (28-ago): "un IDP por posición. No quiero IDP en mi banca
+# nunca." Vale para MI equipo, no para los rivales — ellos siguen haciendo lo
+# que hacen. No es una preferencia contra los datos: el backtest de 4
+# temporadas × 300 simulaciones mostró que las políticas que ganan toman
+# exactamente 1.0 de cada IDP y meten la profundidad en RB/WR, y que la que se
+# llena de IDP (greedy, 1.7-2.0 por posición) es la peor de todas por lejos
+# (−$469 por temporada, t = −16.8). La regla y la medición coinciden.
+MAX_UTIL_MIO = dict(MAX_UTIL, DT=1, DE=1, LB=1, CB=1, S=1)
 # ✅ VERIFICADO en eligibleSlots: el slot 7 (OP) admite QB/RB/WR/TE — NO es un
 # superflex que obligue a un 2º QB. Mínimos duros por posición + un mínimo de
 # 7 ofensivos totales (QB, RB, WR×2, TE, flex RB/WR y OP).

@@ -133,7 +133,7 @@ def pol_nomiope(el, vivos, val, cnt, roster, gp, mis, rank,
                     faltan = sum(max(0, cfg.min_pos[p] - cc[p]) for p in cfg.min_pos)
                     quedan = cfg.rondas - len(mi)
                     ok = [k for k in vv
-                          if cc[vv[k][1]] < cfg.max_pos.get(vv[k][1], 0)
+                          if cc[vv[k][1]] < cfg.max_pos_mio.get(vv[k][1], 0)
                           and (faltan < quedan or cc[vv[k][1]] < cfg.min_pos.get(vv[k][1], 0))]
                     if not ok:
                         continue

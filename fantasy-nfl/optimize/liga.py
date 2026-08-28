@@ -78,18 +78,27 @@ MAX_POS = {'QB': 3, 'RB': 5, 'WR': 5, 'TE': 2, 'DT': 2, 'DE': 2, 'LB': 2,
            'CB': 2, 'S': 2, 'DST': 1, 'K': 1}
 MIN_POS = {'QB': 1, 'RB': 1, 'WR': 2, 'TE': 1, 'DT': 1, 'DE': 1, 'LB': 1,
            'CB': 1, 'S': 1, 'DST': 1, 'K': 1}
+# 🔒 REGLA DE ANDRÉS (28-ago): "un IDP por posición. No quiero IDP en mi banca
+# nunca." Sólo para MI asiento; los rivales siguen con MAX_POS.
+MAX_POS_MIO = dict(MAX_POS, DT=1, DE=1, LB=1, CB=1, S=1)
 
 
 class Config:
     """Configuración de UNA liga. Por defecto, la nuestra de 2026."""
 
     def __init__(self, equipos=16, rondas=18, mi_asiento=4, slots=None,
-                 min_pos=None, max_pos=None, base=None):
+                 min_pos=None, max_pos=None, base=None, max_pos_mio=None):
         self.equipos, self.rondas, self.mi_asiento = equipos, rondas, mi_asiento
         self.slots = slots or SLOTS_2026
         self.min_pos = dict(min_pos or MIN_POS)
         self.max_pos = dict(max_pos or MAX_POS)
+        # tope propio: por defecto la regla de Andrés (1 IDP por posición)
+        self.max_pos_mio = dict(max_pos_mio or MAX_POS_MIO)
         self.base = dict(base or BASE)
+
+    def topes(self, t):
+        """Los topes por posición que aplican al asiento `t`."""
+        return self.max_pos_mio if t == self.mi_asiento else self.max_pos
 
     @staticmethod
     def nflcom(equipos, rondas):
@@ -100,6 +109,9 @@ class Config:
                       max_pos={'QB': 3, 'RB': 6, 'WR': 6, 'TE': 2, 'DT': 2,
                                'DE': 2, 'LB': 2, 'CB': 2, 'S': 2, 'DST': 1,
                                'K': 1},
+                      max_pos_mio={'QB': 3, 'RB': 6, 'WR': 6, 'TE': 2, 'DT': 1,
+                                   'DE': 1, 'LB': 1, 'CB': 1, 'S': 1, 'DST': 1,
+                                   'K': 1},
                       base=dict(BASE, QB=int(equipos*1.9), RB=int(equipos*2.2),
                                 WR=int(equipos*2.4), TE=equipos + 1))
 
@@ -280,16 +292,17 @@ def draftear(jug, val, politica, personas, rng, rank, cfg=CFG, antic=None):
         faltan = sum(max(0, cfg.min_pos[p] - cnt[t][p]) for p in cfg.min_pos)
         quedan = cfg.rondas - len(rosters[t])
         forz = faltan >= quedan - antic
+        tope = cfg.topes(t)
         out = []
         for k, (nom, pos) in vivos.items():
-            if cnt[t][pos] >= cfg.max_pos.get(pos, 0):
+            if cnt[t][pos] >= tope.get(pos, 0):
                 continue
             if forz and cnt[t][pos] >= cfg.min_pos.get(pos, 0):
                 continue
             out.append(k)
         if not out:      # nada respeta la restricción: relajarla
             out = [k for k, (nom, pos) in vivos.items()
-                   if cnt[t][pos] < cfg.max_pos.get(pos, 0)]
+                   if cnt[t][pos] < tope.get(pos, 0)]
         return out
 
     for gp, t in enumerate(sec):

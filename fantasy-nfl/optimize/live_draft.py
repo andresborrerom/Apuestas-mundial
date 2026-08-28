@@ -26,7 +26,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import numpy as np
 import requests
 from ingest.espn_auth import credenciales
-from optimize.sala import (EQUIPOS, RONDAS, MI_PICK, MAX_UTIL, OBLIG, OFE,
+from optimize.sala import (EQUIPOS, RONDAS, MI_PICK, MAX_UTIL, MAX_UTIL_MIO, OBLIG, OFE,
                            OFE_MIN, cargar, score_sala, orden_snake)
 from optimize.plan_draft import Draft, calibrar, e_mejor, preparar
 
@@ -110,7 +110,8 @@ class Estado:
         quedan = RONDAS - len(self.mis)
         forzado = sum(gaps.values()) + extra_ofe >= quedan
         elegibles = [i for i in range(len(self.pool)) if vivos[i]
-                     and cnt[self.pool[i]['pos']] < MAX_UTIL.get(self.pool[i]['pos'], 3)
+                     # 🔒 mis topes, no los de la sala: un IDP por posición
+                     and cnt[self.pool[i]['pos']] < MAX_UTIL_MIO.get(self.pool[i]['pos'], 3)
                      and (not forzado or gaps.get(self.pool[i]['pos'], 0) > 0
                           or (extra_ofe > 0 and self.pool[i]['pos'] in OFE))]
         if sig is None:
