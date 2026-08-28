@@ -58,6 +58,23 @@ RAIZ = Path(__file__).resolve().parent.parent
 ECR_PARQUET = str(RAIZ / 'data' / 'ecr_fpecr.parquet')
 PAGINA = '/nfl/rankings/ppr-superflex-cheatsheets.php'
 
+EQUIPO_ABREV = {
+    'Arizona Cardinals': 'ARI', 'Atlanta Falcons': 'ATL', 'Baltimore Ravens': 'BAL',
+    'Buffalo Bills': 'BUF', 'Carolina Panthers': 'CAR', 'Chicago Bears': 'CHI',
+    'Cincinnati Bengals': 'CIN', 'Cleveland Browns': 'CLE', 'Dallas Cowboys': 'DAL',
+    'Denver Broncos': 'DEN', 'Detroit Lions': 'DET', 'Green Bay Packers': 'GB',
+    'Houston Texans': 'HOU', 'Indianapolis Colts': 'IND', 'Jacksonville Jaguars': 'JAX',
+    'Kansas City Chiefs': 'KC', 'Las Vegas Raiders': 'LV',
+    'Los Angeles Chargers': 'LAC', 'Los Angeles Rams': 'LA',
+    'Miami Dolphins': 'MIA', 'Minnesota Vikings': 'MIN',
+    'New England Patriots': 'NE', 'New Orleans Saints': 'NO',
+    'New York Giants': 'NYG', 'New York Jets': 'NYJ', 'Philadelphia Eagles': 'PHI',
+    'Pittsburgh Steelers': 'PIT', 'San Francisco 49ers': 'SF',
+    'Seattle Seahawks': 'SEA', 'Tampa Bay Buccaneers': 'TB',
+    'Tennessee Titans': 'TEN', 'Washington Commanders': 'WAS',
+    'Washington Football Team': 'WAS',
+}
+
 SEMANAS_REG = 14
 OFE = ('QB', 'RB', 'WR', 'TE')
 IDP = ('DT', 'DE', 'LB', 'CB', 'S')
@@ -243,22 +260,59 @@ def universo(con, año, items, pts_por_año, n_ofe=200, cfg=CFG):
             if faltantes[pos] <= 0:
                 del faltantes[pos]
 
-    # --- IDP / K / D/ST: no hay mercado público. Único insumo: el año anterior.
-    #     ⚠️ SUPUESTO S-IDP. Estabilidad medida: IDP ~0.5, K 0.27, D/ST 0.18.
+    # --- IDP / K / D/ST: ECR REAL de FantasyPros (hallazgo de la auditoría,
+    # 28-ago, a instancias de Andrés: "busca ECR para IDP, en algún lado
+    # encontrarás" — estaba en el MISMO parquet que ya usábamos, en las
+    # páginas idp/k/dst-cheatsheets, con snapshots de pretemporada 2021-2026).
+    # ✅ Cierra el SUPUESTO S-IDP: el tablero defensivo ya no es "puntos del
+    # año anterior" (rho 0.5) sino el consenso de expertos de ESE año, que sí
+    # ve novatos, cambios de equipo y noticias. El año anterior queda solo de
+    # RELLENO para los que el ECR no lista.
+    ecr_extra = {}
+    for pagina in ('/nfl/rankings/idp-cheatsheets.php',
+                   '/nfl/rankings/k-cheatsheets.php'):
+        for g, r in con.execute(f"""
+            select x.gsis_id, e.ecr
+            from read_parquet('{ECR_PARQUET}') e
+            join xwalk_ids_nflverse x on cast(e.id as double) = x.fantasypros_id
+            where e.fp_page='{pagina}' and x.gsis_id is not null
+              and e.scrape_date=(select max(scrape_date) from read_parquet('{ECR_PARQUET}')
+                  where fp_page='{pagina}' and year(cast(scrape_date as date))={año}
+                    and cast(scrape_date as date) < date '{año}-09-10')
+        """).fetchall():
+            if g not in ecr_extra:
+                ecr_extra[g] = r
+    dst_ecr = {}          # el ECR de D/ST viene por franquicia; clave = sigla
+    for nombre, r in con.execute(f"""
+        select e.player, e.ecr from read_parquet('{ECR_PARQUET}') e
+        where e.fp_page='/nfl/rankings/dst-cheatsheets.php'
+          and e.scrape_date=(select max(scrape_date) from read_parquet('{ECR_PARQUET}')
+              where fp_page='/nfl/rankings/dst-cheatsheets.php'
+                and year(cast(scrape_date as date))={año}
+                and cast(scrape_date as date) < date '{año}-09-10')
+    """).fetchall():
+        ab = EQUIPO_ABREV.get(nombre)
+        if ab:
+            dst_ecr[ab] = r
+    prev_pts = {}
     if prev:
         pprev, mprev = prev
-        for pos in IDP + ('DST', 'K'):
-            cands = [(sum(v.values()), k) for k, v in pprev.items()
-                     if mprev[k][1] == pos and k in pts]
-            cands.sort(reverse=True)
-            cupo = ({'DST': 20, 'K': 20}.get(pos, 34)
-                    if cfg.equipos <= 16 else 40)
-            c = curva.get(pos, [0])
-            for i, (_, k) in enumerate(cands[:cupo]):
-                if k in vistos:
-                    continue
-                valor[k] = c[min(i, len(c) - 1)]
-                jug.append((k, meta[k][0], pos)); vistos.add(k)
+        prev_pts = {k: sum(v.values()) for k, v in pprev.items()}
+    for pos in IDP + ('DST', 'K'):
+        cands = [k for k in pts
+                 if meta[k][1] == pos and (k in ecr_extra or k in dst_ecr
+                                           or k in prev_pts)]
+        cands.sort(key=lambda k: (0, ecr_extra.get(k, dst_ecr.get(k)))
+                   if (k in ecr_extra or k in dst_ecr)
+                   else (1, -prev_pts.get(k, 0)))
+        cupo = ({'DST': 20, 'K': 20}.get(pos, 34)
+                if cfg.equipos <= 16 else 40)
+        c = curva.get(pos, [0])
+        for i, k in enumerate(cands[:cupo]):
+            if k in vistos:
+                continue
+            valor[k] = c[min(i, len(c) - 1)]
+            jug.append((k, meta[k][0], pos)); vistos.add(k)
 
     # --- NUESTRO tablero: a VBD con las líneas base de la estructura real
     pp = defaultdict(list)

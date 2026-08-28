@@ -14,7 +14,12 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from model.scoring import cargar_reglas, puntos
 
-ITEMS = cargar_reglas()
+# ⚠️ T1 (28-ago): el commish quitó el ítem 109 y bajó el 108 a 1.0. Los
+# fixtures de este archivo son appliedTotals REALES de 2025, pagados bajo las
+# reglas PRE-T1 — se validan contra ese config, que queda congelado. Las
+# reglas vivas (post-T1) tienen sus propios tests abajo.
+ITEMS = cargar_reglas('espn_settings_2026_v3_pre_t1')
+VIVAS = cargar_reglas()
 
 def _e(raw, pos, esperado):
     assert abs(puntos(raw, pos, ITEMS) - esperado) < 0.01, \
@@ -81,3 +86,15 @@ def test_int_lanzada_menos3():
 if __name__ == '__main__':
     import pytest
     raise SystemExit(pytest.main([__file__, '-q']))
+
+
+# ---------------------------------------------------------------- POST-T1
+def test_t1_solitaria_ahora_1_0():
+    # estructura viva: 108=1.0 y el 109 NO existe
+    assert abs(puntos({'108': 1, '109': 1}, 11, VIVAS) - 1.0) < 1e-9
+
+def test_t1_asistida_ahora_0_5():
+    assert abs(puntos({'107': 1, '109': 1}, 11, VIVAS) - 0.5) < 1e-9
+
+def test_t1_item_109_eliminado():
+    assert not any(it['statId'] == 109 for it in VIVAS)

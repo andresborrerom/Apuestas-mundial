@@ -222,7 +222,7 @@ def main():
                 print('   ambiguo/no encontrado:', i if i else 'sin match')
                 continue
             equipo = MI_TEAM_ID if est.secuencia[len(hechos)] == MI_PICK - 1 else -1
-            est.marcar(i, equipo)
+            est.marcar(i, equipo, len(hechos) + 1)
             hechos.append((len(hechos) + 1, equipo, pool[i].get('espn_id')))
             print(f"   ✓ {pool[i]['nombre']} ({pool[i]['pos']})"
                   f"{'  <<< MÍO' if equipo == MI_TEAM_ID else ''}")
@@ -235,7 +235,11 @@ def main():
             print('API:', type(e).__name__, e); time.sleep(args.intervalo); continue
         for gp, team, pid in hechos:
             i = est.por_id.get(pid)
-            est.marcar(i, team)
+            # 🚨 FIX auditoría 28-ago: sin `pick=gp`, por_pick quedaba vacío y
+            # la simulación de supervivencia arrancaba con la sala SIN los
+            # picks ya hechos (los tomados "resucitaban" y absorbían picks de
+            # los rivales → supervivencia inflada).
+            est.marcar(i, team, gp)
         if len(hechos) != ultimo:
             ultimo = len(hechos)
             nuevos = hechos[-3:]

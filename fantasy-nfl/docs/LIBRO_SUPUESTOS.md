@@ -792,3 +792,58 @@ es la peor de todas por lejos:
 Con el tope en 1, `motor2` pierde su única palanca (tomaba 1.2-1.4 IDP). Es
 decir: **la regla de Andrés vuelve a motor2 idéntico al motor en la práctica**.
 Queda medido en la corrida siguiente.
+
+---
+
+## 28-ago (11): ✅ FICHAS CERRADAS (Brian, Santi Gut, S-IDP) + 🚨🎯 T1 SONÓ
+
+### Fichas cerradas por Andrés
+- Asiento 9 ("el l.ai.on", cuenta de Heejin Lee) **ES Brian** → su
+  personalidad medida (−4, 15) aplica. Asiento 16 ("The Nest") = **Santi
+  Gut**, manager nuevo sin historia → personalidad global. `managers.py`
+  documentado.
+- El "1400" de puntos: era solo temporada regular; sin contradicción.
+
+### ✅ S-IDP CERRADO — el ECR de IDP SÍ existía (Andrés: "busca, en algún
+lado encontrarás"). Estaba en NUESTRO propio parquet de DynastyProcess:
+páginas `idp/dl/lb/db/k/dst-cheatsheets` con snapshots de pretemporada
+2021-2026 (IDP: 186-268 jugadores/año con cruce a gsis; K: 29-48; DST: 32).
+`universo()` ya no usa "puntos del año anterior" (rho 0.5) sino el consenso
+de expertos de ESE año. El año anterior queda solo de relleno.
+
+### 🚨🎯 EL TRIPWIRE T1 SONÓ — el mismo día en que montamos el candado HTML
+El candado de arranque de `tablero_vivo.py` detectó el descuadre y
+`check_settings.py` lo confirmó (`scoring_hash e487…→c529…`). El commish:
+- **ELIMINÓ** el ítem "tacleada total" (statId 109, 1.0)
+- **BAJÓ** la solitaria (statId 108) de 1.5 a **1.0**
+
+Solitaria efectiva 2.5→**1.0** (−60%) · asistida 1.5→**0.5** (−67%) · sack
+~4.5→~3.0. **"Solo 1 punto" era literal — Andrés lo leyó bien desde el
+principio y el análisis inicial lo subestimó.**
+
+Protocolo ejecutado completo:
+1. Settings vivos archivados con hash (`data/archivo/2026-08-28/espn_settings_post_t1.json`).
+2. Config actualizado; el pre-T1 queda congelado en
+   `config/espn_settings_2026_v3_pre_t1.json` (es la vara contra la que se
+   validó el corpus 2025 — los tests de fixtures apuntan ahí, 16/16 verdes,
+   y hay tests nuevos de las reglas vivas).
+3. Impacto medido (2025 re-puntuado, titular medio top-16):
+   **LB −59% · S −58% · DT −55% · CB −53% · DE −48% · ofensiva −1%.**
+   VBD del #1: RB 213 · QB 211 · TE 196 · WR 175 · **LB 42 · DT 39 · DE 33 ·
+   CB 21 · S 20.**
+4. Tableros 2026 regenerados (proyeccion_v2 → distribuciones → vbd → notas).
+   Candado: top IDP nuevo = Cashman vbd 30 (era ~208). Ofensiva intacta.
+5. REGLAMENTO y PLAN_DRAFT actualizados; backtest de políticas y candado de
+   liga re-lanzados bajo reglas vivas.
+
+### Consecuencias estratégicas (las grandes)
+- **Muere el IDP como ventaja**: el mejor IDP de la liga vale lo que un WR
+  del montón. La idea del DT temprano queda enterrada con datos.
+- La regla de Andrés (1 IDP por posición, 0 en banca) pasa de correcta a
+  trivialmente obvia.
+- El draft es ahora ~90% ofensiva: WR R1 / QB R2 condicional siguen; los
+  picks 3-11 son ofensiva casi pura; IDP+K+DST = rondas 12-18.
+- El peso de reglas locales de LB/DT/S/CB/DE se desploma → el consenso
+  público se equivoca MENOS en IDP ahora; nuestra ventaja se concentra en
+  QB (TD de pase a 6, completos, primeros downs) y el pateador de pierna
+  larga (FG 50-59 = 10 pts sigue intacto).

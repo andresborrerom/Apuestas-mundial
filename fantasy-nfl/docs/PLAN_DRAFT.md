@@ -1,3 +1,11 @@
+> 🚨 **ACTUALIZACIÓN 28-AGO (T1)**: el commish cambió las tacleadas
+> (solitaria 2.5→1.0, asistida 1.5→0.5). **Todo lo que este plan dice de IDP
+> quedó OBSOLETO**: ya no hay LB en R5 ni DT en R7 — el mejor IDP de la liga
+> vale ahora ~30-42 VBD (un WR del montón). IDP: rondas 12-16, uno por
+> posición, cero en banca (regla de Andrés). La parte OFENSIVA del plan
+> (WR R1, QB R2 condicional, ~20 QBs en R1-R3) sigue vigente: la ofensiva no
+> cambió ni un punto. Tablero regenerado: `data/proyeccion_dist.csv` post-T1.
+
 # PLAN DE DRAFT — Peace and Love 2026
 **7-sep 19:00 COL · snake 16 equipos · 18 rondas · 45s por pick · Pocho = pick 5**
 

@@ -82,21 +82,39 @@ Aubrey 2025: **113 de sus 235 puntos** salieron solo de FG de 50+. Por eso
 los pateadores de pierna larga valen mucho más aquí que en cualquier
 ranking público. (Verificado: el motor reproduce su 235.2 exacto.)
 
-## IDP 🔴 — donde la liga es más rara
+## IDP — 🚨 REGLA CAMBIADA EL 28-AGO (tripwire T1)
 
-| regla | puntos efectivos |
+**El 28-ago-2026 el candado de arranque detectó el cambio en la liga viva y
+el tripwire lo confirmó** (`scoring_hash e487…→c529…`): el commish ELIMINÓ el
+ítem "total" (statId 109) y bajó la solitaria (108) de 1.5 a 1.0. "Solo 1
+punto" era literal — como lo leyó Andrés desde el principio.
+
+| regla | ANTES (pre-T1) | **AHORA** |
+|---|--:|--:|
+| Tacleada solitaria | 2.5 | **1.0** (−60%) |
+| Tacleada asistida | 1.5 | **0.5** (−67%) |
+| Captura (sack) | ~4.5 | **~3.0** |
+
+Impacto medido (temporada 2025 re-puntuada, titular medio top-16):
+LB −59% · S −58% · DT −55% · CB −53% · DE −48% · ofensiva sin cambio.
+**VBD del #1 de cada posición ahora**: RB 213 · QB 211 · TE 196 · WR 175 ·
+**LB 42 · DT 39 · DE 33 · CB 21 · S 20**. El IDP dejó de ser fuente de
+ventaja: se llena tarde (rondas 12-16), uno por posición y cero en banca.
+La tabla de abajo queda como REGISTRO HISTÓRICO pre-T1.
+
+| regla (pre-T1) | puntos efectivos |
 |---|--:|
-| **Tacleada solitaria** | **2.5** 🔴 (paga "solitaria" 1.5 **+** "total" 1.0) |
-| **Tacleada asistida** | **1.5** 🔴 (paga "asistida" 0.5 **+** "total" 1.0) |
+| Tacleada solitaria | 2.5 (pagaba "solitaria" 1.5 + "total" 1.0) |
+| Tacleada asistida | 1.5 (pagaba "asistida" 0.5 + "total" 1.0) |
 | Captura (sack) | +2 (y arrastra la tacleada → ~4.5) |
 | Intercepción | +3 |
 | Balón forzado / recuperado | +1 / +3 |
 | Pase defendido | +1 |
 | TD defensivo **o de retorno** | +6 |
 
-⚠️ **Ficha T1 abierta**: el commish propuso quitar el ítem "total". Si lo
-hace, la tacleada solitaria baja de 2.5 a 1.5 y los LB pierden ~40% de su
-valor. El tripwire lo vigila.
+✅ **Ficha T1 CERRADA (28-ago)**: el commish lo hizo — y más duro de lo
+anunciado (también bajó la solitaria a 1.0). El tripwire lo cazó el día
+exacto, antes de que contaminara un solo número del draft.
 
 ✅ **El TD de retorno se lo lleva EL JUGADOR** (no la defensa), contra lo que
 se jugaba en la app de NFL.com. Verificado al decimal: el total real de

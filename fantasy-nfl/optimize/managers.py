@@ -17,7 +17,11 @@ from pathlib import Path
 RAIZ = Path(__file__).resolve().parent.parent
 OP_ANOS = (2021, 2022, 2023, 2025)
 
-# Asiento del sorteo (27-ago) -> manager histórico. None = sin historia.
+# Asiento del sorteo -> manager histórico. None = sin historia.
+# ✅ VALIDADO contra el pickOrder REAL de la app (28-ago, auditoría) y
+# confirmado por Andrés: asiento 9 = "el l.ai.on" ES Brian (la cuenta ESPN
+# figura a nombre de Heejin Lee); asiento 16 = "The Nest" es Santi Gut
+# (aún sin dueño en la app — manager nuevo, personalidad global).
 ASIENTOS = ['Camilo', 'JHJ', 'Nicholas', 'Luis Carlos', None,          # 1-5 (5=yo)
             'Diego', 'Santiago, Steve', 'Sergio', 'Brian', 'Rodrigo',  # 6-10
             'Gabriel', 'Santiago, Steve', 'Santiago E', 'Kike',        # 11-14
