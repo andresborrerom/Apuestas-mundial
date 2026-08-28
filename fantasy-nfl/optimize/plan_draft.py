@@ -42,6 +42,10 @@ def preparar(alpha=0.55):
 
 
 IDP = ('DT', 'DE', 'LB', 'CB', 'S')
+# Pesos por asiento medidos en las temporadas con slot OP (managers.py).
+# Se aplican POR DEFECTO en todo el simulador: cada rival juega como él.
+from optimize.managers import pesos as _pesos
+W_QB, W_IDP = _pesos()
 
 
 class Draft:
@@ -49,11 +53,20 @@ class Draft:
     la sala los ignora) son los DOS supuestos vivos del modelo de sala.
     Se calibran contra el comportamiento medido en la historia 2023-2025."""
 
-    def __init__(self, pool, rng, sigma=12.0, qb_bonus=0.0, idp_pen=0.0):
+    def __init__(self, pool, rng, sigma=12.0, qb_bonus=0.0, idp_pen=0.0,
+                 w_qb=None, w_idp=None):
         self.p = pool
         self.n = len(pool)
-        self.s = np.array([j['s'] - (qb_bonus if j['pos'] == 'QB' else 0)
-                           + (idp_pen if j['pos'] in IDP else 0) for j in pool])
+        base = np.array([j['s'] for j in pool])
+        es_qb = np.array([j['pos'] == 'QB' for j in pool])
+        es_idp = np.array([j['pos'] in IDP for j in pool])
+        # Score POR ASIENTO: cada rival tiene su avidez medida (managers.py).
+        # Sin pesos -> todos iguales (comportamiento anterior).
+        wq = w_qb if w_qb is not None else W_QB
+        wi = w_idp if w_idp is not None else W_IDP
+        self.s_eq = [base - qb_bonus * wq[t] * es_qb + idp_pen * wi[t] * es_idp
+                     for t in range(EQUIPOS)]
+        self.s = self.s_eq[0]
         self.pos = [j['pos'] for j in pool]
         self.vbd = np.array([j['vbd'] for j in pool])
         self.alive = np.ones(self.n, bool)
@@ -97,7 +110,7 @@ class Draft:
         if not cand:
             cand = [i for i in range(self.n) if self.alive[i]][:40]
         c = np.array(cand)
-        sc = self.s[c] + self.rng.gumbel(0, self.sigma, size=len(c))
+        sc = self.s_eq[t][c] + self.rng.gumbel(0, self.sigma, size=len(c))
         return int(c[np.argmin(sc)])
 
     def tomar(self, t, i):
