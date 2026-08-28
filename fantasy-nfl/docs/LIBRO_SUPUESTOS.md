@@ -396,3 +396,43 @@ QB valen 6 así sean de pase". ✅ Confirmado (statId 4 = 6.0) y auditados los
   Herbert #10 vs #39, Goff #30 vs #79) — **y NUESTRO tablero coincide con
   FantasyPros, no con ESPN** (Caleb #20, Herbert #17, Goff #19). Dos rutas
   independientes llegando a lo mismo.
+
+## 28-ago (5): FASE A DEL BACKTEST — resultados, con malas noticias propias
+### ✅ La tesis fundacional SE VALIDA (2025, prueba directa)
+Re-puntuar las proyecciones crudas de ESPN con NUESTRAS reglas vs el ECR
+superflex del mercado, calificado contra los puntos REALES de 2025:
+  mercado ECR ......... rho 0.730 · top24 7,121 · top48 13,947
+  ESPN re-puntuada .... rho 0.768 · top24 7,827 (+9.9%) · top48 14,674 (+5.2%)
+El edge aritmético es REAL y medible. Primera vez que se prueba.
+
+### 🚨 MALA NOTICIA: nuestra corrección de juegos EMPEORA el ordenamiento
+  + corrección de juegos ... rho 0.760 · top24 7,369 (−458) · top48 13,640 (−1,034)
+Causa raíz: la validamos con la métrica EQUIVOCADA. El walk-forward midió
+MAE del TOTAL de puntos (−21.9%, cierto), pero para draftear lo que importa
+es el ORDEN, no el nivel. Un recorte que mejora el nivel puede empeorar el
+orden si el recorte varía por celda con ruido. Regla nueva: **validar cada
+capa contra la métrica de la DECISIÓN, no contra una métrica cómoda.**
+
+### 🚨 Y mi métrica también estaba sesgada (auto-auditoría)
+"Puntos capturados en el top-K" premia a los tableros que cargan de QB. El
+tablero re-puntuado sin corrección pone **24 QBs en su top-24** — captura
+mucho VBD (3,973 vs 3,169 del mercado) pero sería un desastre en un draft
+real, donde solo se alinean 1-2 QB. El top-24 REAL por VBD tuvo 14 QB / 5 RB
+/ 4 WR / 1 TE. → Ninguna métrica sin restricción de roster decide esto:
+**solo la Fase B (simular drafts con roster real y calificar con puntos
+reales) resuelve qué tablero y qué política sirven.**
+
+### ⚠️ CONSECUENCIA GRAVE: la recomendación WR-primero queda EN DUDA
+La regla WR-cond110 se eligió simulando con NUESTRO tablero (el corregido).
+Si la corrección de juegos deshinfla a los QB de más, la función de valor de
+esa simulación estaba sesgada y la conclusión puede darse vuelta. NO se
+draftea con la regla actual hasta que la Fase B se pronuncie.
+
+### Backtest proxy 5 temporadas (2021-2025, tablero del año anterior)
+  mercado ECR .. rho 0.739 · top24 37,856 · top48 67,775 · top96 115,839
+  mío .......... rho 0.705 · top24 38,778 · top48 66,120 · top96 109,387
+  híbrido ...... rho 0.718 · top24 39,303 · top48 66,058 · top96 111,299
+Patrón: nuestro tablero gana en la ÉLITE (top-24: +3.8% el híbrido) y pierde
+en PROFUNDIDAD (el mercado ve novatos, lesiones y cambios de equipo).
+Bug propio corregido en el camino: el híbrido mandaba a los novatos al final
+en vez de intercalarlos en su puesto de mercado.
