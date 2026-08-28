@@ -100,3 +100,72 @@ def render(pool, est, info, idx_reco, n=10, ancho_noticia=96):
         if m is not None and m != idx_reco:
             print(f" (el motor miope preferiría {pool[m]['nombre']})")
     print('=' * 100)
+
+
+def menu_futuro(est, pool, hechos, sims=200, seed=3):
+    """Lo que Andrés pidió: no 'jugador vs reemplazo gratis', sino QUÉ TENGO
+    EN CADA POSICIÓN EN MIS PRÓXIMOS TURNOS.
+
+    Simula la sala hacia adelante (yo tomando greedy en mis turnos, para que
+    el pool se agote de forma realista) y devuelve, por posición, el MEJOR VBD
+    esperado en el turno actual y en los dos siguientes.
+    """
+    import numpy as np
+    from optimize.sala import EQUIPOS, RONDAS
+    n = len(hechos)
+    mios = [p for p in est.mis_picks if p > n]
+    if not mios:
+        return {}, []
+    horizontes = mios[:3]
+    acc = {h: defaultdict(list) for h in horizontes}
+    for s in range(sims):
+        rng = np.random.default_rng(seed + s)
+        d = est.cargar_estado(rng)
+        for gp in range(n + 1, min(horizontes[-1] + 1, EQUIPOS * RONDAS + 1)):
+            t = est.secuencia[gp - 1]
+            ronda = (gp - 1) // EQUIPOS + 1
+            if gp in acc:                       # es turno mío: fotografía
+                mejor = defaultdict(float)
+                for i in range(len(pool)):
+                    if d.alive[i]:
+                        p = d.pos[i]
+                        if d.vbd[i] > mejor[p]:
+                            mejor[p] = d.vbd[i]
+                for p, v in mejor.items():
+                    acc[gp][p].append(v)
+            if t == est.mis_picks[0] - 1 or gp in acc:
+                cand = d.candidatos(est.secuencia[gp - 1], ronda,
+                                    d.forzado(est.secuencia[gp - 1]), limite=200)
+                i = int(max(cand, key=lambda i: d.vbd[i])) if cand else None
+            else:
+                i = d.pick_rival(t, ronda)
+            if i is not None:
+                d.tomar(t, i)
+    salida = {}
+    for p in ('QB', 'RB', 'WR', 'TE', 'DT', 'DE', 'LB', 'CB', 'S', 'DST', 'K'):
+        fila = []
+        for h in horizontes:
+            v = acc[h].get(p)
+            fila.append(sum(v) / len(v) if v else 0.0)
+        if any(fila):
+            salida[p] = fila
+    return salida, horizontes
+
+
+def render_menu(salida, horizontes):
+    print(f"\n QUÉ TENGO EN CADA POSICIÓN, TURNO POR TURNO (mejor VBD esperado)")
+    print(f" {'pos':>4}" + ''.join(f"{'pick '+str(h):>12}" for h in horizontes)
+          + f"{'caída 1º→2º':>14}{'lectura':>0}")
+    orden = sorted(salida.items(), key=lambda kv: -(kv[1][0] - (kv[1][1] if len(kv[1]) > 1 else 0)))
+    for p, fila in orden:
+        caida = fila[0] - fila[1] if len(fila) > 1 else 0
+        if caida > 40:
+            lec = '  ⬅️ AQUÍ SE DECIDE: se desploma'
+        elif caida > 15:
+            lec = '  cae fuerte'
+        elif caida < 5:
+            lec = '  intacta: puedes esperar'
+        else:
+            lec = ''
+        print(f" {p:>4}" + ''.join(f"{v:>12.0f}" for v in fila)
+              + f"{caida:>14.0f}{lec}")

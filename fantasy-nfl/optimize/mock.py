@@ -58,10 +58,12 @@ def avanzar(st, pool, est):
 
 
 def tablero(pool, est, st, gp, n=10):
-    from optimize.tablero import render
+    from optimize.tablero import render, menu_futuro, render_menu
     hechos = [(g, 0, None) for g, _ in st['picks']]
     idx_motor, info = est.recomendar(hechos, sims=250)
     render(pool, est, info, idx_motor, n=n)
+    sal, hor = menu_futuro(est, pool, hechos, sims=150)
+    render_menu(sal, hor)
     return idx_motor, info
 
 
