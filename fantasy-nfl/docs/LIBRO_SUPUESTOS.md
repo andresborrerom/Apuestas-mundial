@@ -739,3 +739,18 @@ forma de recomendar condicionado a lo que quede. Basta con una política fija.**
 3. Sólo 4 temporadas. Los intervalos por año son de ±$40-70 sobre medias de
    ~$1.000: alcanzan para descartar a greedy y a no-miope, no para separar a
    motor / motor2 / regla.
+
+### Verificación del verificador: la meta-política RIGUROSA también pierde
+El primer test evaluaba un voto de mayoría por temporada — que mide "elegir
+UNA política por año", no lo que Andrés preguntó. Se rehizo metiendo el bosque
+DENTRO del draft, decidiendo en cada uno de mis 18 turnos:
+
+| año | meta | motor | Δ | mejor fija de ese año |
+|---|--:|--:|--:|---|
+| 2021 | 1043 | 1190 | −147 ± 89 | regla $1749 |
+| 2022 | 1424 | 1434 | −10 ± 79 | no-miope $1793 |
+| 2023 | 458 | 575 | −117 ± 53 | motor $575 |
+| 2025 | 597 | 710 | −113 ± 77 | motor2 $836 |
+
+**−$97 de media y pierde en las 4 temporadas.** Mismo veredicto que el test
+grueso, con el diseño correcto. ✅ Cerrado: política fija = **motor**.
