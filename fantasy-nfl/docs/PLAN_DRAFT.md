@@ -27,12 +27,16 @@ pick real (el plan cambia bastante entre el 5 y el 9).
 
 Rendimiento (E[VBD del titular], 100 drafts simulados por escenario):
 
-| estrategia | A sala-1QB | B base | C voraz | D voraz+IDP | media | peor |
+| estrategia | A conserv. (16 QB) | **B MEDIDO (20)** | C alto (26) | D medido+IDP | media | peor |
 |---|--:|--:|--:|--:|--:|--:|
-| **WR + condicional 110** | **717** | **728** | **795** | **785** | **756** | **717** |
-| WR-WR fijo | 666 | 728 | 795 | 785 | 744 | 666 |
-| WR-QB fijo | 717 | 627 | 688 | 661 | 673 | 627 |
-| QB-RB | 604 | 571 | 708 | 736 | 655 | 571 |
+| **WR + condicional 110** | **717** | **668** | **741** | **704** | **708** | **668** |
+| WR-WR fijo | 666 | 668 | 741 | 704 | 695 | 666 |
+| WR-QB fijo | 717 | 624 | 622 | 673 | 659 | 622 |
+
+Grilla **calibrada contra la conducta real de ESTA sala** con slot OP
+(ver abajo). En el escenario medido la condicional no se dispara (ningún QB
+con VBD≥110 sobrevive al pick 28) y equivale a WR-WR; en el conservador
+gana +50. Es una opción gratis: nunca peor, a veces mucho mejor.
 
 La condicional **nunca pierde** contra WR-WR y gana el 92% de los drafts
 cuando la corrida de QBs no ocurre. QB temprano es la PEOR opción salvo en
@@ -43,9 +47,13 @@ ese mundo.
 1. **El OP no es un superflex de QB.** ✅ Verificado en `eligibleSlots`: el
    slot 7 admite QB/RB/WR/TE — Nacua es elegible. **No estás obligado a un
    2º QB**: puedes poner un WR élite ahí. Refuta la premisa de H1.
-2. **La sala sobrepaga QBs** (medido: 17 QBs en R1-R3 de 2025 siendo liga de
-   1 QB; 7 en la primera ronda). Que ellos gasten picks 1-3 en QBs nos deja
-   los WR/RB élite.
+2. **La sala sobrepaga QBs — medido con el slot OP ya presente.** ✅ En los
+   settings rescatados: 2023 y 2025 YA tenían el slot QB/RB/WR/TE; 2024 no.
+   QBs en R1-R3: **2023 = 21/16 eq (1.31)** · **2025 = 17/14 eq (1.21)** ·
+   2024 sin OP = 5/16 (0.31). El "año anómalo" no era anomalía: era el año
+   sin OP — la sala responde a la regla. Centro 2026 (16 eq) ≈ **20 QBs en
+   R1-R3**; la grilla cubre 16-26. Que ellos gasten picks tempranos en QBs
+   nos deja los WR élite.
 3. **El roster v3 volvió la WR profunda**: 2 slots dedicados × 16 equipos =
    32 titulares + flex → baseline WR38. El WR élite tiene ahora la mayor
    ventaja sobre su reemplazo de todo el tablero.

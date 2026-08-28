@@ -13,8 +13,8 @@ from optimize.plan_draft import preparar, calibrar, correr, survival
 from optimize.sala import orden_snake, MI_PICK
 
 RAIZ = Path(__file__).resolve().parent.parent
-ESC = {'A sala-1QB': (16, 10), 'B base': (24, 10),
-       'C voraz': (30, 10), 'D voraz+IDP': (30, 5)}
+ESC = {'A conservador (16)': (16, 10), 'B MEDIDO (20)': (20, 10),
+       'C alto (26)': (26, 10), 'D medido + IDP-aware': (20, 5)}
 FINALISTAS = {'lookahead': None, 'wr-qb': ['WR', 'QB'], 'rb-rb': ['RB', 'RB'],
               'qb-rb': ['QB', 'RB'], 'wr-wr': ['WR', 'WR']}
 SIMS = 100

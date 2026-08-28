@@ -289,3 +289,35 @@ se declara y se verifica la unicidad antes de usarla.
   del tablero en todas; la decisión del pick 5 no depende del supuesto.
 - 🚨 BLOQUEO ACTIVO: la app aún muestra el orden default (Pocho 9º). No se
   draftea sin confirmar el pick 5 en la app; el tripwire vigila pickOrder.
+
+## 27-ago (3): CORRECCIÓN de Andrés — la liga vieja YA era superflex
+- Andrés: "los 17 QBs es porque era liga con superflex, hasta 2 QBs".
+  ✅ VERIFICADO en los settings rescatados (fuente, no memoria):
+    2023: "Quarterback / Running Back / Wide Receiver / Tight End: 1" → SÍ
+    2024: sin ese slot → NO
+    2025: SÍ
+  QBs en R1-R3: 2023 = 21/16 eq (1.31/eq) · 2025 = 17/14 (1.21) · 2024 = 5/16
+  (0.31). **El "año anómalo 2024" que yo había marcado NO era anomalía: era
+  el año sin OP.** La conducta de la sala sigue la regla con precisión —
+  validación fuerte del modelo de sala.
+- Consecuencia: mi grilla de escenarios estaba MAL CENTRADA (yo asumí que el
+  centro era 24-30 QBs). El centro medido para 2026 (16 eq) es ~20.
+  Nueva grilla: 16 / **20 (medido)** / 26 / 20+IDP-aware.
+- **La recomendación NO cambió** al recalibrar: wr-cond110 sigue ganando
+  (media 708, peor 668) e iguala a WR-WR salvo en el conservador (+50).
+- Nota metodológica: el error no cambió la decisión porque la regla es
+  CONDICIONAL — se adapta al estado real de la sala en vez de apostar a un
+  escenario. Esa es la razón de preferir reglas condicionales a fijas.
+
+## Cómo se usa el ADP (y por qué su sesgo 1QB no contamina)
+- El ADP de ESPN es de su población general (12 eq, 1 QB, sin IDP). **NO
+  entra en nuestra valuación** (VBD sale 100% de stats crudas × motor
+  validado × baselines del roster real).
+- Se usa SOLO para modelar el tablero del RIVAL: score = 0.55×rank_ADP +
+  0.45×rank_proyección (lo que la app les muestra puntuado con las reglas).
+- El sesgo 1QB se corrige con `qb_bonus`, que desplaza el BLOQUE de QBs de
+  forma uniforme (preserva su orden relativo, que el ADP sí acierta) hasta
+  reproducir la conducta MEDIDA de esta sala (~20 QBs en R1-R3). Es mejor
+  ancla que un ADP superflex genérico: es ESTA sala, no la población.
+- Los IDP no tienen ADP útil → entran por proyección + `idp_pen` calibrado
+  al "primer IDP en ronda 10" medido en 2023-2025.

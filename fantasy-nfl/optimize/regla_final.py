@@ -18,8 +18,13 @@ import numpy as np
 from optimize.plan_draft import preparar, calibrar, correr, survival
 from optimize.sala import orden_snake, MI_PICK
 
-ESC = {'A sala-1QB': (16, 10), 'B base': (24, 10),
-       'C voraz': (30, 10), 'D voraz+IDP': (30, 5)}
+# Grilla CALIBRADA contra la conducta REAL de esta sala con slot OP
+# (verificado en settings 2023/2025: el OP ya existía; 2024 no lo tenía y
+# solo salieron 5 QBs en R1-R3 — la sala responde a la regla, no al azar).
+#   2023: 21 QB / 16 eq = 1.31   ·   2025: 17 QB / 14 eq = 1.21
+#   -> centro 2026 (16 eq) = ~20 QBs en R1-R3. Rango 16-26 por prudencia.
+ESC = {'A conservador (16)': (16, 10), 'B MEDIDO (20)': (20, 10),
+       'C alto (26)': (26, 10), 'D medido + IDP-aware': (20, 5)}
 
 
 def cond(umbral):
