@@ -260,3 +260,32 @@ Orden dictado: 1 Ferchos · 2 Jaime · 3 Nich · 4 Luisca · **5 POCHO** · 6 Di
 - El modelo de E[juegos] NO estaba afectado (no filtra por producción).
 - Regla nueva: toda métrica importada se verifica POR GRUPO de posición
   antes de usarse como filtro — un 0 puede significar "no aplica", no "malo".
+
+## 27-ago (2): H1 REFUTADA + bug de homónimos + regla de draft validada
+### ✅ HALLAZGO MAYOR: el slot OP NO es superflex de QB
+`eligibleSlots` de Puka Nacua (WR) incluye el slot **7 (OP)**; también RB y
+TE. El OP admite CUALQUIER ofensivo → **no hay obligación de tener 2 QBs**.
+- Refuta la premisa de H1 del prompt fundacional ("el QB manda porque el OP
+  obliga a un segundo QB"). El QB sigue siendo la posición de más puntos,
+  pero la liga solo EXIGE uno; el 2º QB es opcional y compite con un WR.
+- El baseline QB30 SIGUE válido: mide cuántos QB se alinean de hecho
+  (Andrés: "~30"), que es conducta de la sala, no obligación del roster.
+- Mi simulador forzaba 2 QBs por equipo (OBLIG QB=2). Corregido a mínimos
+  por posición (12) + mínimo de 7 ofensivos totales = 14 titulares.
+
+### BUG: unión por NOMBRE con 8 homónimos en el corpus
+`adp[fullName]` hacía que el homónimo sobreescribiera al bueno:
+**Justin Jefferson WR ADP 12.2 → 170.5 (un LB)**, Lamar Jackson QB 39.2 →
+169.6 (un CB), Chris Jones, Byron Young, etc. La sala simulada los ignoraba
+por completo → curvas de disponibilidad falsas. Fix: unir SIEMPRE por
+espn_id. Regla nueva: ninguna unión por nombre entre fuentes; si no hay id,
+se declara y se verifica la unicidad antes de usarla.
+
+### REGLA FINAL DEL DRAFT (validada pareada, 100 drafts × 4 escenarios)
+> pick 5 = mejor WR · pick 28 = QB si sobrevive uno con VBD ≥ 110, si no WR.
+- media 756 · peor escenario 717 (vs WR-WR fijo 744/666; QB-RB 655/571).
+- Nunca pierde contra WR-WR y gana 92% pareado cuando no hay corrida de QB.
+- Sensibilidad del split de flex (60/40, 50/50, 80/20, 100/0): Nacua es #2
+  del tablero en todas; la decisión del pick 5 no depende del supuesto.
+- 🚨 BLOQUEO ACTIVO: la app aún muestra el orden default (Pocho 9º). No se
+  draftea sin confirmar el pick 5 en la app; el tripwire vigila pickOrder.

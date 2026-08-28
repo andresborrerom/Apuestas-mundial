@@ -17,7 +17,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import numpy as np
 from optimize.sala import (EQUIPOS, RONDAS, MI_PICK, ORDEN, MAX_UTIL, OBLIG,
-                           cargar, score_sala, orden_snake, valor_roster)
+                           OFE, OFE_MIN, cargar, score_sala, orden_snake,
+                           valor_roster)
 
 RAIZ = Path(__file__).resolve().parent.parent
 POOL = 420                      # jugadores que realmente entran en juego
@@ -61,8 +62,16 @@ class Draft:
         self.cnt = [defaultdict(int) for _ in range(EQUIPOS)]
         self.roster = [[] for _ in range(EQUIPOS)]
 
+    def faltantes(self, t):
+        """(gaps por posición, ofensivos extra que aún exige el roster)."""
+        cnt = self.cnt[t]
+        gaps = {p: max(0, k - cnt[p]) for p, k in OBLIG.items()}
+        ofe = sum(cnt[p] for p in OFE) + sum(gaps[p] for p in OFE)
+        return gaps, max(0, OFE_MIN - ofe)
+
     def candidatos(self, t, ronda, forzado, limite=110):
         cnt = self.cnt[t]
+        gaps, extra_ofe = self.faltantes(t)
         out = []
         for i in range(self.n):
             if not self.alive[i]:
@@ -70,7 +79,7 @@ class Draft:
             p = self.pos[i]
             if cnt[p] >= MAX_UTIL.get(p, 3):
                 continue
-            if forzado and cnt[p] >= OBLIG.get(p, 0):
+            if forzado and not (gaps.get(p, 0) > 0 or (extra_ofe > 0 and p in OFE)):
                 continue
             if p in ('K', 'DST') and ronda < 11 and not forzado:
                 continue
@@ -80,9 +89,8 @@ class Draft:
         return out
 
     def forzado(self, t):
-        cnt = self.cnt[t]
-        faltan = sum(max(0, OBLIG[p] - cnt[p]) for p in OBLIG)
-        return faltan >= RONDAS - len(self.roster[t])
+        gaps, extra_ofe = self.faltantes(t)
+        return sum(gaps.values()) + extra_ofe >= RONDAS - len(self.roster[t])
 
     def pick_rival(self, t, ronda):
         cand = self.candidatos(t, ronda, self.forzado(t))
@@ -182,6 +190,8 @@ def politica_lookahead(d, yo, ronda, k, mis_picks, SURV, forzar=None):
     cand = d.candidatos(yo, ronda, d.forzado(yo), limite=250)
     if not cand:
         return None
+    if callable(forzar):
+        forzar = forzar(d, cand)
     if forzar:
         c2 = [i for i in cand if d.pos[i] == forzar]
         if c2:

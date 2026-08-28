@@ -34,8 +34,13 @@ ORDEN = ['Ferchos', 'Jaime', 'Nich', 'Luisca', 'POCHO', 'Diego', 'Santi A',
 # cuántos de cada posición son ÚTILES para un equipo (titulares + banca sana)
 MAX_UTIL = {'QB': 3, 'RB': 5, 'WR': 5, 'TE': 2, 'DT': 2, 'DE': 2, 'LB': 2,
             'CB': 2, 'S': 2, 'DST': 1, 'K': 1}
-OBLIG = {'QB': 2, 'RB': 2, 'WR': 2, 'TE': 1, 'DT': 1, 'DE': 1, 'LB': 1,
-         'CB': 1, 'S': 1, 'DST': 1, 'K': 1}    # QB2 = el slot OP
+# ✅ VERIFICADO en eligibleSlots: el slot 7 (OP) admite QB/RB/WR/TE — NO es un
+# superflex que obligue a un 2º QB. Mínimos duros por posición + un mínimo de
+# 7 ofensivos totales (QB, RB, WR×2, TE, flex RB/WR y OP).
+OBLIG = {'QB': 1, 'RB': 1, 'WR': 2, 'TE': 1, 'DT': 1, 'DE': 1, 'LB': 1,
+         'CB': 1, 'S': 1, 'DST': 1, 'K': 1}
+OFE = ('QB', 'RB', 'WR', 'TE')
+OFE_MIN = 7
 
 
 def orden_snake():
@@ -49,23 +54,27 @@ def orden_snake():
 
 
 def cargar():
-    dist = {r['nombre']: r for r in csv.DictReader(open(RAIZ / 'data' / 'proyeccion_dist.csv'))}
+    """⚠️ Se une por espn_id, NUNCA por nombre: el corpus tiene 8 homónimos
+    (Justin Jefferson WR/LB, Lamar Jackson QB/CB, Chris Jones DT/CB...) y
+    indexar por nombre sobreescribía el ADP del bueno con el del homónimo
+    (Jefferson 12.2 -> 170.5), volviéndolos invisibles para la sala."""
+    dist = list(csv.DictReader(open(RAIZ / 'data' / 'proyeccion_dist.csv')))
     todos = json.load(open(RAIZ / 'data' / 'espn_applied_2025.json'))
     adp = {}
     for pw in todos:
         p = pw['player']
-        o = p.get('ownership') or {}
-        a = o.get('averageDraftPosition')
+        a = (p.get('ownership') or {}).get('averageDraftPosition')
         if a and a > 0:
-            adp[p['fullName']] = a
+            adp[p['id']] = a
     jug = []
-    for n, r in dist.items():
+    for r in dist:
         if r['pos'] == 'DB':
             continue
-        jug.append(dict(nombre=n, pos=r['pos'], vbd=float(r['vbd2']),
+        pid = int(r['espn_id'])
+        jug.append(dict(nombre=r['nombre'], pos=r['pos'], vbd=float(r['vbd2']),
                         proj=float(r['total_v2']), p10=float(r['p10']),
                         p50=float(r['p50']), p90=float(r['p90']),
-                        adp=adp.get(n)))
+                        espn_id=pid, adp=adp.get(pid)))
     # tablero de la sala: rank por ADP donde existe; los demás por proyección
     con_adp = sorted([j for j in jug if j['adp']], key=lambda j: j['adp'])
     for i, j in enumerate(con_adp):
