@@ -436,3 +436,44 @@ Patrón: nuestro tablero gana en la ÉLITE (top-24: +3.8% el híbrido) y pierde
 en PROFUNDIDAD (el mercado ve novatos, lesiones y cambios de equipo).
 Bug propio corregido en el camino: el híbrido mandaba a los novatos al final
 en vez de intercalarlos en su puesto de mercado.
+
+## 28-ago (6): 🚨 HALLAZGO MAYOR — a nivel ROSTER, ningún tablero predice
+Andrés pidió dar valor a la banca. Al intentar CALIBRARLO (no inventarlo)
+apareció algo mucho más grande.
+
+### La maquinaria está bien: prueba del oráculo
+Usando como tablero los PUNTOS REALES de la temporada, la correlación entre
+valor proyectado del roster y puntos reales es **0.93** (2023, 2024, 2025).
+El simulador de liga funciona.
+
+### Pero los tableros no predicen el resultado de un ROSTER
+Correlación (192 rosters por año) entre valor proyectado y puntos reales:
+| tablero | 2023 | 2024 | 2025 |
+|---|---|---|---|
+| oráculo | +0.94 | +0.93 | +0.94 |
+| mercado (ECR condicionado a nuestras reglas) | +0.21 | +0.17 | +0.10 |
+| proxy (año anterior) | +0.21 | **−0.22** | +0.08 |
+| **NUESTRO SISTEMA REAL (ESPN re-puntuada)** | — | — | **+0.16** |
+
+R² ≈ 0.02-0.04: el tablero explica entre el 2% y el 4% de la variación del
+resultado de un equipo. Coherente con la evidencia externa (proyecciones
+explican 14-26% a nivel JUGADOR; al agregar 7 titulares y repartir el talento
+entre 16 equipos, casi todo se cancela).
+
+### 🚨 Y peor: optimizar duro sobre un tablero ruidoso HACE DAÑO
+En el draft 2024 examinado, mi equipo (política motor) tenía el valor
+proyectado MÁS ALTO de los 16 (787 vs media ~350) y terminó **por debajo del
+promedio** en puntos reales. Es sobreajuste al ruido: la política explota los
+errores del tablero, no su señal.
+
+### Consecuencias que hay que asumir
+1. La calibración de δ (valor de la banca) NO se puede hacer con esta señal:
+   con correlaciones de 0.1-0.2 el óptimo es indistinguible de 0. Queda
+   ⚠️ ABIERTO. (Además había un bug: con VBD la banca suele ser negativa, así
+   que sumarla con δ>0 restaba; hay que pisar en 0 antes de ponderar.)
+2. Las diferencias entre POLÍTICAS van a ser pequeñas frente al ruido. La
+   comparación pareada sigue siendo válida, pero hay que reportar intervalos,
+   no puntos, y aceptar que el resultado puede ser "empatan".
+3. Para el draft real: **la humildad es el hallazgo**. El tablero sirve para
+   evitar errores grandes (no tomar al RB #40 en la ronda 2), no para exprimir
+   ventajas de 5 puntos. Y perseguir el máximo del tablero es contraproducente.

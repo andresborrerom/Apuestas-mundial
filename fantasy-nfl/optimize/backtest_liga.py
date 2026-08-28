@@ -392,3 +392,51 @@ if __name__ == '__main__':
               f"{np.mean(d['puesto']):>8.1f}{np.mean([p<=8 for p in d['puesto']])*100:>6.0f}%"
               f"{np.mean(d['campeon'])*100:>8.0f}%"
               f"{np.percentile(d['dinero'],10):>8.0f}{np.percentile(d['dinero'],90):>8.0f}")
+
+
+def valor_roster(jugadores, val, delta=0.0):
+    """Valor de un roster = ALINEACIÓN TITULAR + delta × la banca.
+
+    Corrección de Andrés (28-ago): "no pienses solo en titular, dale un valor
+    a la banca que te puede dar trades, lesiones, bye weeks y demás". Un
+    tercer QB vale cero para la alineación proyectada y sin embargo cubre el
+    bye y la lesión del titular — sin este término las políticas construían
+    rosters sin profundidad. `delta` NO se inventa: se calibra midiendo qué
+    peso predice mejor los puntos REALES (ver calibrar_delta)."""
+    disp = sorted(jugadores, key=lambda j: -val.get(j[0], 0))
+    usados, tot = set(), 0.0
+    for slot in SLOTS:
+        for g, pos in disp:
+            if g not in usados and pos in slot:
+                usados.add(g); tot += val.get(g, 0); break
+    banca = sum(val.get(g, 0) for g, pos in jugadores if g not in usados)
+    return tot + delta * banca
+
+
+def puntos_reales_roster(ros, pts_sem, semanas_reg=SEMANAS_REG):
+    """Puntos REALES de un roster: cada semana su mejor alineación posible."""
+    tot = 0.0
+    for wk in range(1, semanas_reg + 1):
+        v = {g: pts_sem[g].get(wk, 0.0) for g, p in ros}
+        tot += valor_alineacion(ros, v)
+    return tot
+
+
+def calibrar_delta(univ, pts_sem, val, personas, ecr_rank, n=60, deltas=None):
+    """¿Cuánto vale la banca? Se mide: se generan rosters variados, se calcula
+    su valor proyectado con distintos deltas y se ve cuál correlaciona mejor
+    con los PUNTOS REALES que produjeron."""
+    deltas = deltas or [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.7, 1.0]
+    rosters = []
+    for s in range(n):
+        rng = np.random.default_rng(9000 + s)
+        pol = POLITICAS[['greedy', 'motor', 'regla'][s % 3]]
+        rs = draftear(univ, val, pol, personas, rng, ecr_rank)
+        for t in range(EQUIPOS):
+            rosters.append(rs[t])
+    reales = np.array([puntos_reales_roster(r, pts_sem) for r in rosters])
+    out = {}
+    for d in deltas:
+        proy = np.array([valor_roster(r, val, d) for r in rosters])
+        out[d] = float(np.corrcoef(proy, reales)[0, 1])
+    return out, len(rosters)
