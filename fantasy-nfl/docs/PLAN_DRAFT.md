@@ -6,16 +6,24 @@ Mis picks globales: **5, 28, 37, 60, 69, 92, 101, 124, 133, 156, 165, 188,
 
 ---
 
-## 🚨 BLOQUEO ANTES DE DRAFTEAR (regla V.18)
+## ✅ BLOQUEO LEVANTADO (28-ago) — pick 5 verificado en la app
 
-La app **todavía no tiene cargado el sorteo**: su `pickOrder` es el default
-(equipos por id), que pone a *No Team for Old Men* (Pocho, teamId 10) en el
-puesto **9**, no en el 5. Todo este plan asume el 5.
+El commish cargó el sorteo. `pickOrder` = [13, 7, 1, 17, 10, 2, 15, 4, 16,
+3, 11, 8, 14, 12, 9, 5] → **teamId 10 ('No Team for Old Men' = Pocho) en la
+posición 5** ✅. `draftDetail` confirma mis picks globales exactamente como
+los tenía el plan: 5, 28, 37, 60, 69, 92, 101, 124, 133, 156, 165, 188, 197,
+220, 229, 252, 261, 284 — validación cruzada de mi implementación del snake
+contra la fuente. Tripwire re-aceptado; sigue vigilando por si lo cambian.
 
-**No se draftea sin ver en la app que Pocho está 5º.** El tripwire
-(`ingest/check_settings.py`) ya vigila `pickOrder`/`mi_pick` y truena cuando
-el commish lo cargue → ese día se re-corre `optimize/regla_final.py` con el
-pick real (el plan cambia bastante entre el 5 y el 9).
+### Asientos verificados contra los nombres de equipo de la app
+14 de 16 cuadran solos (WTrash=Jaime/JHJ, ComNich=Nich, Ayayay=Diego,
+Bolivia=Sergio, el l.ai.on=Brian, Raw Dawg=Rodrigo, Victorious Secret=
+Santi A, Back 2 Back=SteveO, EZWAR=Esguerra, KeepMyTeam...=Kike,
+Panamanian P!mps=James B, Ferchos=Ferchos, Injury Report=Gabriel).
+⚠️ **Dos por confirmar con Andrés**: el asiento 4 es *"Amanecera y veremos"*
+(yo esperaba a Luis Carlos, cuyo equipo 2025 se llamaba "The Nest") y el
+asiento 16 es *"The Nest"*. Importa: el asiento 4 pica JUSTO antes que yo y
+Luis Carlos es el más ávido de QB de la sala (w=1.39).
 
 ---
 

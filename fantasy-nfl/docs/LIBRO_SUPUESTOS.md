@@ -321,3 +321,24 @@ se declara y se verifica la unicidad antes de usarla.
   ancla que un ADP superflex genérico: es ESTA sala, no la población.
 - Los IDP no tienen ADP útil → entran por proyección + `idp_pen` calibrado
   al "primer IDP en ronda 10" medido en 2023-2025.
+
+## 28-ago: ✅ BLOQUEO LEVANTADO — orden cargado y verificado en la app
+- `pickOrder` = [13,7,1,17,10,2,15,4,16,3,11,8,14,12,9,5]; teamId 10 (Pocho)
+  en posición **5** ✅. `draftDetail` da mis 18 picks globales idénticos a los
+  que calculaba mi snake → validación cruzada de la implementación.
+- **Modelo de sala POR ASIENTO** (pedido de Andrés: "¿usas la historia de cada
+  uno?"). Antes los 15 rivales eran clones. Ahora cada asiento lleva su avidez
+  medida de QB/IDP en las temporadas COMPARABLES (con slot OP: 2021, 2022,
+  2023, 2025 — 2024 no lo tenía). Pesos normalizados a media 1: redistribuyen,
+  no inflan la calibración agregada (19-20 QBs en R1-R3).
+  Extremos: Luis Carlos 1.39 (1er QB siempre en R1) · Brian 0.66 (R4.8).
+- **Regla revalidada con perfiles individuales: NO cambia.** wr-cond110 media
+  707, peor 673 (vs wr-wr 693/665, wr-qb 664/628). Tercera vez que la
+  recomendación sobrevive un cambio del modelo — por ser condicional.
+- ⚠️ SUPUESTO NUEVO (asientos 4 y 16): 14/16 asientos se auto-verifican con
+  los nombres de equipo de la app. Faltan dos: el asiento 4 es "Amanecera y
+  veremos" (esperaba a Luis Carlos = "The Nest" en 2025) y el 16 es "The
+  Nest". COSTO SI ESTÁ MAL: el asiento 4 pica justo antes de mí y Luis Carlos
+  es el más ávido de QB (w=1.39) — afecta quién sobrevive a mi pick 5.
+  CADUCIDAD: preguntado a Andrés; si no responde, se verifica el día del
+  draft con los primeros picks reales.
