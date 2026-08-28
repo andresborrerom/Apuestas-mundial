@@ -57,7 +57,15 @@ def avanzar(st, pool, est):
     return gp
 
 
-def tablero(pool, est, st, gp, n=12):
+def tablero(pool, est, st, gp, n=10):
+    from optimize.tablero import render
+    hechos = [(g, 0, None) for g, _ in st['picks']]
+    idx_motor, info = est.recomendar(hechos, sims=250)
+    render(pool, est, info, idx_motor, n=n)
+    return idx_motor, info
+
+
+def tablero_viejo(pool, est, st, gp, n=12):
     hechos = [(g, 0, None) for g, _ in st['picks']]
     idx_motor, info = est.recomendar(hechos, sims=250)
     ronda = (gp - 1) // EQUIPOS + 1
