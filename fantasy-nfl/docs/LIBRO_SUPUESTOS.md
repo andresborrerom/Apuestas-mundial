@@ -663,3 +663,79 @@ El simulador se queda con el roster del draft: no hay waivers, ni cambios, ni
 streaming. En la liga real se ficha toda la temporada. Consecuencia: las
 diferencias entre POLÍTICAS se ven más chicas de lo que serían de verdad.
 Sesga hacia "empatan" — el lado conservador.
+
+---
+
+## 28-ago (9): RESULTADO DEL BACKTEST DE POLÍTICAS — el motor aguanta
+
+4 temporadas (2021, 2022, 2023, 2025) × 300 simulaciones × 5 políticas, sobre
+el simulador de liga completa ya calibrado. Comparación PAREADA: misma
+semilla ⇒ mismo comportamiento de los 15 rivales y mismo calendario, así que
+la única diferencia es mi decisión.
+
+### Distribución completa del dinero (1.200 temporadas por política)
+| política | E[$] | p10 | p50 | p90 | último | sin premio | top-8 | campeón |
+|---|--:|--:|--:|--:|--:|--:|--:|--:|
+| greedy | 498 | 80 | 170 | 1430 | 6.5% | 60% | 40% | 2.2% |
+| **motor** | **967** | 100 | 780 | 2300 | 2.8% | 32% | 68% | 9.5% |
+| motor2 | 1013 | 100 | 830 | 2320 | 2.9% | 32% | 68% | 10.2% |
+| regla | 1035 | 100 | 835 | 2350 | 3.0% | 34% | 66% | **14.9%** |
+| no-miope | 848 | 80 | 505 | 2260 | 5.0% | 44% | 56% | 9.2% |
+
+### 🚨 El agregado MIENTE — año por año contra el motor (Δ$ ± error)
+| vs motor | 2021 | 2022 | 2023 | 2025 |
+|---|--:|--:|--:|--:|
+| motor2 | −306±48 | +402±50 | −57±40 | +147±47 |
+| regla | **+454±67** | +44±60 | −136±41 | −91±51 |
+| no-miope | −538±65 | +406±64 | −208±47 | −134±51 |
+
+`regla` sale +$68 en el agregado **solo por 2021**; pierde en 2023 y 2025.
+`motor2` gana 2 años y pierde 2. Es la regla IV.14 en acción: el promedio
+escondía al caso que mata.
+
+**El motor tiene además el mejor PISO**: su peor año es $610 (regla $475,
+motor2 $553, no-miope $403). Con dinero real, el piso pesa.
+
+### Qué roster construye cada una (media)
+| | QB | RB | WR | TE | DT | DE | LB | CB | S |
+|---|--:|--:|--:|--:|--:|--:|--:|--:|--:|
+| motor | 3.0 | 3.5 | 3.1 | 1.4 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 |
+| regla | 3.0 | 3.2 | 3.5 | 1.4 | 1.0 | 1.0 | 1.0 | 1.0 | 1.0 |
+| motor2 | 3.0 | 2.7 | 2.7 | 1.3 | 1.2 | 1.3 | 1.4 | 1.4 | 1.1 |
+| greedy | 2.9 | 1.0 | 2.0 | 1.0 | 1.7 | 1.6 | 2.0 | 1.8 | 1.9 |
+
+Las que ganan toman **el mínimo de cada IDP** y meten la profundidad en
+RB/WR. La que se llena de IDP es la peor por lejos.
+
+### ❌ "Mirar hasta el final" (no-miope) HACE DAÑO
+Pierde $118 contra el motor (t = −3.9) y en 3 de 4 temporadas. Construye
+rosters de QB 1.9 / RB 1.2 llenos de IDP: sobreajusta al ruido del tablero.
+Ya nos había pasado en la fase anterior; ahora está medido con dinero.
+
+### ❌ El BOSQUE ALEATORIO no sirve — y la razón importa
+Validación cruzada dejando una temporada fuera: **acierto 19% con 4 clases**,
+por DEBAJO del azar (25%), y −$375 contra la mejor política fija.
+
+Causa raíz medida: qué política gana es una propiedad de la TEMPORADA, no del
+estado del tablero.
+
+| año | motor | motor2 | regla | no-miope |
+|---|--:|--:|--:|--:|
+| 2021 | 25% | 13% | **51%** | 11% |
+| 2022 | 14% | 34% | 15% | **37%** |
+| 2023 | **32%** | 24% | 24% | 20% |
+| 2025 | 25% | **35%** | 19% | 21% |
+
+Entrenar en tres años y probar en el cuarto falla porque la distribución del
+ganador se mueve entre años. **Respuesta a la pregunta de Andrés: no, no hay
+forma de recomendar condicionado a lo que quede. Basta con una política fija.**
+
+### ⚠️ Lo que este backtest NO prueba (declarado)
+1. El tablero de IDP es "puntos del año anterior" (rho 0.50). Sesga EN CONTRA
+   de tomar IDP temprano. El 7-sep tendremos la proyección ESPN 2026 de IDP,
+   que sí incorpora noticias: hay que rehacer esta medición ese día.
+2. No hay waivers, cambios ni streaming: las diferencias entre políticas se
+   ven más chicas de lo que serían de verdad.
+3. Sólo 4 temporadas. Los intervalos por año son de ±$40-70 sobre medias de
+   ~$1.000: alcanzan para descartar a greedy y a no-miope, no para separar a
+   motor / motor2 / regla.

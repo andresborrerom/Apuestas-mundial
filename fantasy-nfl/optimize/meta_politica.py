@@ -141,6 +141,74 @@ def entrenar_y_evaluar(filas, años):
     return np.mean(mejoras)
 
 
+def por_anio_quien_gana(filas, años):
+    """¿Qué política gana en cada semilla? Si la respuesta cambia por año y no
+    por estado, ninguna meta-política condicionada al tablero puede servir."""
+    from collections import Counter
+    print("\n" + "=" * 78)
+    print("¿QUÉ POLÍTICA GANA EN CADA SEMILLA? (% de semillas del año)")
+    print("=" * 78)
+    print(f"  {'año':6}" + ''.join(f"{c:>11}" for c in CANDIDATAS))
+    for a in años:
+        sem = {}
+        for f in filas:
+            if f[0] == a:
+                sem[f[1]] = max(f[4], key=f[4].get)
+        c = Counter(sem.values())
+        print(f"  {a:<6}" + ''.join(f"{c.get(n,0)/max(1,len(sem))*100:>10.0f}%"
+                                   for n in CANDIDATAS))
+
+
+def meta_de_verdad(con, items, P, filas, años, sims, cfg=CFG):
+    """El test RIGUROSO: no un voto de mayoría por temporada sino una política
+    que CAMBIA TURNO A TURNO según lo que el bosque ve en el tablero.
+
+    El voto de mayoría que evalúa `entrenar_y_evaluar` mide otra cosa: elegir
+    UNA política por temporada. Aquí el bosque decide en cada uno de mis 18
+    turnos, que es lo que Andrés preguntó de verdad.
+    """
+    from sklearn.ensemble import RandomForestClassifier
+    personas = personalidades()
+    print("\n" + "=" * 78)
+    print("META-POLÍTICA DE VERDAD — el bosque decide en CADA turno")
+    print("=" * 78)
+    difs = []
+    for prueba in años:
+        tr = [f for f in filas if f[0] != prueba]
+        rf = RandomForestClassifier(n_estimators=300, min_samples_leaf=20,
+                                    random_state=0, n_jobs=-1)
+        rf.fit(np.array([f[3] for f in tr]),
+               np.array([max(f[4], key=f[4].get) for f in tr]))
+        jug, val, rank, pts = universo(con, prueba, items, P, cfg=cfg)
+
+        def pol_meta(el, vivos, v, cnt, roster, gp, mis, rk, **kw):
+            x = np.array([rasgos(el, vivos, v, cnt, roster, gp, mis, rk, cfg)])
+            nom = rf.predict(x)[0]
+            return POLITICAS[nom](el, vivos, v, cnt, roster, gp, mis, rk, **kw)
+
+        meta_d, fijas = [], defaultdict(list)
+        for s in range(sims):
+            ros = draftear(jug, val, pol_meta, personas,
+                           np.random.default_rng(1000 + s), rank, cfg=cfg)
+            d, _, _, _, _ = temporada(ros, pts, np.random.default_rng(5000 + s),
+                                      cfg=cfg)
+            meta_d.append(d[cfg.mi_asiento])
+        for f in filas:
+            if f[0] == prueba and f[2] == 0:
+                for n in CANDIDATAS:
+                    fijas[n].append(f[4][n])
+        mejor = max(CANDIDATAS, key=lambda n: np.mean(fijas[n]))
+        n = min(len(meta_d), len(fijas['motor']))
+        d = np.array(meta_d[:n]) - np.array(fijas['motor'][:n])
+        se = d.std(ddof=1) / np.sqrt(n)
+        print(f"  {prueba}: meta ${np.mean(meta_d):>6.0f} · motor "
+              f"${np.mean(fijas['motor']):>6.0f} (Δ{d.mean():>+6.0f} ± {se:.0f})"
+              f" · mejor fija del año: {mejor} ${np.mean(fijas[mejor]):>6.0f}")
+        difs.append(d.mean())
+    print(f"\n  ganancia media de la meta sobre el motor: {np.mean(difs):+.0f} $")
+    print(f"  VEREDICTO: {'✅ aporta' if np.mean(difs) > 0 else '❌ NO aporta'}")
+
+
 if __name__ == '__main__':
     ap = argparse.ArgumentParser()
     ap.add_argument('--sims', type=int, default=120)
@@ -152,3 +220,5 @@ if __name__ == '__main__':
     filas = recolectar(con, items, P, años, a.sims)
     print(f"\n{len(filas)} decisiones recolectadas")
     entrenar_y_evaluar(filas, años)
+    por_anio_quien_gana(filas, años)
+    meta_de_verdad(con, items, P, filas, años, a.sims)
