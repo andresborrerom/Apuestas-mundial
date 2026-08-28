@@ -344,7 +344,52 @@ maneja SU cuenta (límite de ESPN: 10 entradas/persona) y nosotros
 mandamos la hoja semanal por correo. Pendiente: tiebreaker del premio
 semanal y tabla de premios por modo (verlos en la app).
 
-## 13. Preguntas abiertas / siguientes pasos
+## 13. Apuestas reales (investigación E1-E3) — los primeros candidatos VIVOS
+
+Contexto: el usuario (vive en Panamá) explora apostar vía su hermano en
+Seattle. **Regla de cumplimiento primero:** las casas de EE.UU. exigen que
+quien apuesta esté en el estado licenciado; el *proxy betting* (operar la
+cuenta de otro) viola términos y arriesga confiscación. El camino limpio:
+el hermano apuesta su cuenta con su decisión; la investigación se comparte.
+
+**E1 — VIENTO vs TOTALES (`nfl/EDGE/viento_totales.py`)** — primer
+candidato real de toda la cacería. Con cuotas de CIERRE 2010-2025 (n=977
+partidos outdoor, viento >=10 mph): el under pega 56.2% con viento 10-15
+(z=+3.18), el efecto muere en 20+ (las casas sí castigan el viento
+extremo, descuentan de menos el moderado). **ROI under viento>=10: +7.7%
+tras vig, 2.51σ sobre cero, 12/16 temporadas positivas.** Implementable:
+los totales se apuestan hasta minutos antes del kickoff, cuando el viento
+del estadio ya es ~conocido (nuestro dato es viento observado ≈ apostable
+tarde). Estado: **candidato a paper trading 2026** — registrar cada
+apuesta hipotética antes del kickoff y medir un año antes de plata real.
+
+**E2 — APERTURA vs CIERRE (`nfl/EDGE/apertura_cierre.py`)**, SBRO
+2013-2020 (n=2.129, mirror en `nfl/datos/sbro/`; aussportsbetting y el
+sitio original bloqueados por proxy/reestructura):
+  - El cierre predice mejor que la apertura (MAE 10.02 vs 10.11) — la
+    información fluye toda la semana. Contra el CIERRE no hay nada (§11);
+    contra la APERTURA sí hay juego.
+  - **Seguir el vapor cubre la apertura 56.9% (mov>=1) a 59.2% (mov>=2,
+    n=645)** — muy sobre el break-even 52.4%. El edge vive en saber ANTES
+    hacia dónde se mueve la línea.
+  - Viento: el mercado lo mete casi todo desde la apertura (el total solo
+    baja 0.5-0.8 más en semana); el under ventoso rinde ~igual contra
+    apertura (59.1% a 10-15) que contra cierre.
+
+**E3 — ¿PRONOSTICAMOS el vapor? (`nfl/EDGE/predecir_vapor.py`)**: nuestro
+Elo (puro resultados, walk-forward, pendiente ajustada solo con
+2002-2012) vs la apertura 2013-2020: la línea se mueve hacia el lado del
+Elo 55-59% de las veces, y ese lado cubre la apertura **54.3%** (gap>=0.2,
+n=1115, ROI≈+3.7% a -110). Fino pero positivo — con el modelo MÁS tosco
+posible. El programa de investigación: mejorar el pronosticador de vapor
+(cierres de la semana pasada + lesiones con timestamps + QB) y re-testear.
+
+**Tablero honesto:** cierre = muro (22 hipótesis muertas, §11). Apertura =
+blanda (vapor 57-59%, Elo-vs-apertura 54.3%). Viento-under = candidato
++7.7% ROI en paper trading. Nada de plata real hasta que el paper trading
+de una temporada confirme — y aún así, las casas limitan ganadores.
+
+## 14. Preguntas abiertas / siguientes pasos
 
 1. ¿Yahoo muestra la **distribución de picks** del grupo antes del cierre?
    Si sí, el field model deja de ser supuesto y se puede esquivar el pick
