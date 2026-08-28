@@ -247,7 +247,29 @@ confirmada, una operativa** — se documentan todas (regla de honestidad):
    `nfl/SURVIVAL/usados_2026.txt` (anotar ahí el pick real de cada semana;
    `semana.py` lo lee solo).
 
-## 10. ESPN NFL Pick'em nacional — evaluado y DESCARTADO como fuente de plata
+## 10. ESPN NFL Pick'em nacional — vía hermano/sobrino en Seattle
+
+**Actualización:** el usuario tiene hermano y sobrino en Seattle
+(residentes elegibles; el sobrino debe ser 18+). Con eso el concurso pasa
+de descartado a jugable con 20 entradas (10 por persona). Análisis en
+`nfl/ESPN/backtest_espn.py`, entradas semanales en `nfl/ESPN/entradas.py`:
+
+- **Confidence es el modo a entrenar** (edge por rival +24.2 pts sobre 50%
+  vs +18.8 de Standard, 260 semanas): rankear los 16 partidos por P
+  calibrada es el óptimo teórico y el público ordena "a ojo" (nuestro
+  score 72.2% del máximo vs 64.0% del público). Score casi continuo →
+  menos empates → la habilidad se ve. Una entrada pura por persona.
+- **Standard**: sin habilidad de ordenar, solo colas. Con 20 entradas
+  descorrelacionadas (favoritos + 1-3 flips escalonados en los más
+  parejos), alguna entrada pega semana 15+/16 en **15.4%** de las semanas
+  (vs 2.3% con una) — la máquina de tiquetes para premios semanales.
+- Spread y Pick 5: sin edge (el spread ES el mercado); se llenan con el
+  pick de Vegas tal cual solo para habilitar el bono de $5K por completar
+  los 4 modos.
+- Pendiente (lo ven ellos en la app): la tabla exacta de premios por modo
+  (semanal vs temporada) y el tiebreaker del semanal.
+
+Notas del análisis original (siguen vigentes):
 
 Concurso gratis de ESPN (58 premios, US$102K, modos Standard/Spread/Pick 5/
 Confidence, hasta 10 entradas). Verificado 2026-08-22:
