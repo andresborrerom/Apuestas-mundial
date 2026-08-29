@@ -13,6 +13,13 @@ probabilidad de cada posición). Este módulo solo le pone la cara HTML.
 
     python optimize/tablero_vivo.py            # en vivo → http://localhost:8787
     python optimize/tablero_vivo.py --demo     # ensayo HOY con sala simulada
+    python optimize/tablero_vivo.py --sleeper <draft_id> --mi-slot 5
+        # mock REAL en Sleeper (crea el mock en sleeper.com, copia el id del
+        # URL). API pública sin login; cruce sleeper_id→espn_id por el
+        # crosswalk (93% del pool 2026 cubierto).
+        # ⚠️ NO probado extremo a extremo hasta el primer mock: los candados
+        # de mapeo gritan si un pick no cruza, pero la primera corrida es
+        # ensayo, no confianza.
 
 La página se refresca sola cada 10 s y con ctrl+shift+R al instante.
 
@@ -297,6 +304,9 @@ def main():
     global CANDADOS, NOTAS
     ap = argparse.ArgumentParser()
     ap.add_argument('--demo', action='store_true')
+    ap.add_argument('--sleeper', help='draft_id de un mock de Sleeper')
+    ap.add_argument('--mi-slot', type=int, default=MI_PICK,
+                    help='mi asiento en el mock de Sleeper (default: 5)')
     ap.add_argument('--puerto', type=int, default=PUERTO)
     ap.add_argument('--intervalo', type=float, default=4.0)
     ap.add_argument('--sims', type=int, default=200)
@@ -342,6 +352,37 @@ def main():
                 time.sleep(2.0 if t != MI_PICK - 1 else 6.0)
         threading.Thread(target=avanzar, daemon=True).start()
         fuente = lambda: list(demo_estado['hechos'])
+    elif args.sleeper:
+        import duckdb
+        con = duckdb.connect(str(RAIZ / 'db' / 'fantasy.duckdb'), read_only=True)
+        s2e = {str(int(sl)): int(e) for e, sl in con.execute(
+            "select espn_id, sleeper_id from xwalk_ids_nflverse "
+            "where espn_id is not null and sleeper_id is not null").fetchall()}
+        con.close()
+        sin_cruce = set()
+
+        def fuente_sleeper():
+            r = requests.get(f'https://api.sleeper.app/v1/draft/{args.sleeper}/picks',
+                             timeout=15)
+            r.raise_for_status()
+            out = []
+            for pk in r.json():
+                eid = s2e.get(str(pk.get('player_id')))
+                if eid is None and pk.get('player_id') not in sin_cruce:
+                    sin_cruce.add(pk.get('player_id'))
+                    m = pk.get('metadata') or {}
+                    print(f"  ⚠️ sin cruce sleeper→espn: {m.get('first_name','')} "
+                          f"{m.get('last_name','')} (sleeper {pk.get('player_id')})")
+                team = (MI_TEAM_ID if pk.get('draft_slot') == args.mi_slot else
+                        -int(pk.get('draft_slot') or 0))
+                out.append((pk['pick_no'], team, eid))
+            return sorted(out)
+        fuente = fuente_sleeper
+        # en Sleeper mi asiento puede NO ser el 5: reindexar mis turnos
+        if args.mi_slot != MI_PICK:
+            est.mis_picks = [gp for gp, t in enumerate(est.secuencia, 1)
+                             if t == args.mi_slot - 1]
+            print(f'⚠️ asiento Sleeper {args.mi_slot}: mis picks {est.mis_picks}')
     else:
         fuente = lambda: api_picks()[0]
 
