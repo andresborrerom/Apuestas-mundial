@@ -42,10 +42,20 @@ def api_picks():
                      cookies={'espn_s2': s2, 'SWID': swid}, timeout=20)
     r.raise_for_status()
     d = r.json()
+    # 🚨 FIX 28-ago (lo cazó la pregunta de Andrés "¿puedes conectarte al
+    # draft real?"): ESPN pre-publica la grilla completa del snake con
+    # playerId = -1 ANTES del draft. El filtro viejo `if playerId` dejaba
+    # pasar los -1 (truthy) → la herramienta habría visto "288 picks hechos"
+    # y dado el draft por terminado antes de empezar. Solo playerId > 0 es
+    # un pick real.
     hechos = [(p['overallPickNumber'], p['teamId'], p.get('playerId'))
-              for p in d['draftDetail']['picks'] if p.get('playerId')]
+              for p in d['draftDetail']['picks']
+              if (p.get('playerId') or 0) > 0]
+    # la grilla (con o sin jugador) sirve de candado: el snake REAL de ESPN
+    grilla = [(p['overallPickNumber'], p['teamId'])
+              for p in d['draftDetail']['picks']]
     orden = [t['id'] for t in sorted(d.get('teams', []), key=lambda t: t['id'])]
-    return sorted(hechos), d['draftDetail'].get('drafted'), orden
+    return sorted(hechos), d['draftDetail'].get('drafted'), sorted(grilla)
 
 
 class Estado:

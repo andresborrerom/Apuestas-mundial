@@ -94,6 +94,23 @@ def candados_arranque():
             quien = ', '.join(dueños.get(o, o) for o in t.get('owners', []))
     out.append((f'teamId {MI_TEAM_ID} es mío', 'Andres' in quien,
                 f'owner: {quien or "?"}'))
+    # 4. la GRILLA real del snake (ESPN la pre-publica con playerId=-1) debe
+    #    coincidir con la secuencia que calcula la herramienta — así el orden
+    #    de turnos queda verificado contra la fuente, no contra nuestra cuenta.
+    try:
+        from optimize.live_draft import api_picks
+        from optimize.sala import orden_snake
+        _, _, grilla = api_picks()
+        pickorder = d['settings'].get('draftSettings', {}).get('pickOrder') or []
+        esp = {gp: pickorder[t] if t < len(pickorder) else None
+               for gp, t in enumerate(orden_snake(), 1)}
+        malos = [gp for gp, tid in grilla if esp.get(gp) != tid]
+        out.append(('grilla snake de ESPN == mi secuencia', not malos,
+                    f'{len(grilla)} slots comparados'
+                    + ('' if not malos else f' · difieren {len(malos)}: {malos[:5]}')))
+    except Exception as e:
+        out.append(('grilla snake de ESPN == mi secuencia', False,
+                    f'{type(e).__name__}: {e}'))
     return out
 
 
