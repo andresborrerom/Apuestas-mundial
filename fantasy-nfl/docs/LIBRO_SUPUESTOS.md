@@ -913,3 +913,38 @@ la API, nunca la pantalla.
 
 La prueba del canal en vivo queda pendiente de llenar la liga de prueba
 (4/4 reclamados) o de la media hora previa al draft real.
+
+---
+
+## 31-ago (2): ✅ VEREDICTO DEL CANAL EN VIVO — medido con un draft REAL de ESPN
+
+Andrés se metió a una liga pública de ESPN (10 equipos, PPR) y drafteó de
+verdad mientras yo seguía la API. Resultado medido de punta a punta:
+
+1. **`inProgress` se enciende EN VIVO** al arrancar el draft. ✅
+2. **Los picks NO se publican durante el draft**: la API mostró 0 picks
+   durante ~100 minutos de draft en curso.
+3. **Al CIERRE, todo aparece en bloque** (23:27:34 UTC exacto): 150 picks de
+   golpe, `drafted: True`. El candado de última milla funciona perfecto — el
+   roster final de Andrés salió de la API pick por pick, con ronda y todo.
+
+### Protocolo definitivo del 7-sep (consecuencia directa)
+- **Canal en vivo**: el puente del navegador (leer los picks del DOM de la
+  sala, que sí los tiene al segundo) — POR CONSTRUIR esta semana — con
+  respaldo de pantallazos+escaleras (probado en combate hoy: funcionó
+  durante 15 rondas) y entrada manual en live_draft.
+- **La API queda para lo que SÍ hace bien**: candados de arranque (T1,
+  pickOrder, dueño, grilla, liga llena) + `inProgress` + **recibo final
+  completo al cierre** (candado de los $4.56M, automático).
+- `tablero_vivo` con poll de API NO sirve mid-draft en ESPN: su fuente de
+  picks debe ser el puente o el teclado.
+
+### Lecciones del ensayo de hoy (mock + Vegas)
+- Pantallazos con zoom + carril derecho = legibles al 100%; letra chica = huecos.
+- Registro maestro con huecos DECLARADOS y confirmación del humano — funcionó.
+- Mi conocimiento de roles/depth charts está congelado en ene-2026: **ningún
+  nombre entra a una escalera sin verificación** (lista de ESPN a la vista o
+  búsqueda web). Los dos fallos que Andrés cazó (Kaleb Johnson RB3, "RJ
+  Harvey rookie") nacieron de memoria vieja.
+- El robot de noticias (agente web + injuryStatus de la API) llegó a tiempo
+  al draft y cazó a Jacobs/LaPorta/Mahomes. Queda como pieza fija del 7-sep.
