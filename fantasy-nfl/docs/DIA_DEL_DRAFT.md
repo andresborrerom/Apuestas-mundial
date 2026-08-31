@@ -12,6 +12,16 @@ python optimize/tablero_vivo.py --demo             # ensayo: http://localhost:87
 tres candados verdes — ese es el recibo. (Regla de los $4.56M: nada está
 "listo" hasta verificar el recibo del receptor.)
 
+## 🚨 CANDADO NUEVO (31-ago, descubierto por la liga de prueba de Andrés)
+**Regla documentada de ESPN**: una liga que no tenga TODOS sus cupos
+reclamados 60 minutos antes del draft ve su draft RESETEADO y hay que
+reagendarlo (support.espn.com, "Draft Schedule Issues"). Peace and Love está
+**15/16** — falta que Santi Gut reclame "The Nest".
+- ACCIÓN YA: avisar al commish para que Santi Gut entre ANTES del 7-sep.
+- CANDADO del día: a las **5:30 pm** verificar por API `teamsJoined == 16`.
+  Si a las 5:45 no está lleno, ESCALAR al commish — a las 6:00 pm ESPN
+  borra el draft y el caos es total.
+
 ## El día del draft (en orden)
 1. `git pull` (por si hubo correcciones de última hora).
 2. `python ingest/check_settings.py` — si truena: NO draftear con el tablero

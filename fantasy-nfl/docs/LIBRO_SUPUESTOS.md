@@ -889,3 +889,27 @@ El asistente en vivo ya usa ganancia marginal con simulación DESDE EL ESTADO
 REAL (espíritu motor2) + regla validada en los 2 primeros picks. Cambio que
 SÍ queda: en los mocks, ensayar también la variante WR-pesada (dejar que OP
 sea WR en vez de 2º QB temprano si el tablero lo dice).
+
+---
+
+## 31-ago: 🚨 LA LIGA DE PRUEBA DESCUBRIÓ UN RIESGO REAL PARA EL 7-SEP
+
+Andrés montó una liga de laboratorio (prueba1, 4 equipos, solo él) para
+probar el canal en vivo. ESPN le borró la fecha del draft DOS veces — la
+segunda ya confirmada por API y borrada ~al minuto 60 antes del draft.
+Hipótesis de Andrés: "es porque estoy solo". ✅ CONFIRMADA en la
+documentación oficial de ESPN: *"Leagues that do not have all slots filled
+sixty (60) minutes before the scheduled draft time will be reset."*
+
+**Consecuencia para la liga real**: Peace and Love está **15/16** (falta
+Santi Gut / "The Nest"). Si sigue así el 7-sep a las 6:00 pm, **ESPN
+resetea el draft de la liga de $10,950**. Acción: avisar al commish ya;
+candado agregado al checklist del día (verificar teamsJoined=16 a las 5:30).
+
+Además quedó registrado el anti-patrón de ESPN: la UI muestra la fecha como
+aceptada y el servidor la descarta en silencio (una vez ni la grabó — la API
+decía `date: None` mientras la pantalla decía 4:30). El candado del día lee
+la API, nunca la pantalla.
+
+La prueba del canal en vivo queda pendiente de llenar la liga de prueba
+(4/4 reclamados) o de la media hora previa al draft real.
