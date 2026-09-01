@@ -92,6 +92,27 @@ def cargar():
                         p50=float(r['p50']), p90=float(r['p90']),
                         espn_id=pid, adp=adp.get(pid),
                         bye=byes.get(r['nombre'], 0)))
+    # 🚑 RECORTE POR LESIÓN VIVA (1-sep, lo cazó Andrés con Charbonnet: OUT
+    # en la API y aun así el motor lo tomaba de titular R7). El estado viene
+    # de data/injury_vivo.json (ingest/lesiones.py — refrescar antes de usar).
+    # Factores = fracción esperada de temporada disponible; ⚠️ SUPUESTO con
+    # ficha en el Libro (rango declarado, sensibilidad abajo):
+    #   OUT (PUP/semanas)  ×0.55 · INJURY_RESERVE ×0.30 · SUSPENSION ×0.65
+    #   DOUBTFUL ×0.90 · QUESTIONABLE/DAY_TO_DAY sin recorte (ruido de agosto)
+    REC = {'OUT': 0.55, 'INJURY_RESERVE': 0.30, 'SUSPENSION': 0.65,
+           'DOUBTFUL': 0.90}
+    try:
+        inj = json.load(open(RAIZ / 'data' / 'injury_vivo.json'))
+    except Exception:
+        inj = {}
+    for j in jug:
+        st = (inj.get(str(j['espn_id'])) or {}).get('inj')
+        f = REC.get(st)
+        if f:
+            j['vbd'] -= j['proj'] * (1 - f)     # vbd cae lo que caen los puntos
+            for c in ('proj', 'p10', 'p50', 'p90'):
+                j[c] *= f
+            j['inj'] = st
     # tablero de la sala: rank por ADP donde existe; los demás por proyección
     con_adp = sorted([j for j in jug if j['adp']], key=lambda j: j['adp'])
     for i, j in enumerate(con_adp):

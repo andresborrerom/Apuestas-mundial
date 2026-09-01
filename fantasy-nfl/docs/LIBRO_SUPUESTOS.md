@@ -998,3 +998,44 @@ para TE, ronda/pick de novatos. Etiquetas de lo que alimenta `optimize/contexto.
 - 📊 Cancelación de la base verificada (pregunta de Andrés): motor-VBD vs
   motor-PUNTOS brutos, pareado 400 temporadas reales: 76% rosters idénticos,
   ΔE[$] +9 (t=0.56). El motor ya maximiza puntos con reemplazo dinámico.
+
+## 1-sep (3) — Recorte por lesión viva (lo cazó Andrés: "¿Charbonnet no está lesionado?")
+
+**El bug:** data/injury_vivo.json TENÍA a Charbonnet OUT y la hoja le ponía
+el chip 🚑 — pero ni el pool del motor ni las simulaciones CONSUMÍAN el
+estado. El motor lo tomaba de titular R7. Regla vieja confirmada: un dato
+que se muestra pero no entra a la decisión es decoración.
+
+**El fix:** `ingest/lesiones.py` refresca injury_vivo desde kona_player_info;
+`sala.cargar()` y la hoja aplican el MISMO recorte al proyectado/VBD.
+
+```
+SUPUESTO S-LESION: factores de temporada disponible por estado al draft
+  OUT ×0.55 · INJURY_RESERVE ×0.30 · SUSPENSION ×0.65 · DOUBTFUL ×0.90
+  (QUESTIONABLE/DAY_TO_DAY sin recorte: en agosto es ruido de práctica)
+- POR QUÉ: ESPN no publica semanas-fuera; la noticia por jugador sí existe
+  pero no hay fuente tabulada para ~190 lesionados. Caso ancla verificado:
+  Charbonnet 🔍 reserve/PUP 30-ago (≥4 juegos fuera, retorno prob. sem 7-11
+  → disponible 0.41-0.65 de la temporada; 0.55 es el centro).
+- COSTO SI ESTÁ MAL: un OUT que vuelve en sem 2 queda subvalorado ~40%
+  (pierdo un valor); un IR de temporada completa sobrevalorado 0.30 (pick
+  de banca quemado). En ambos extremos el error es de UN pick tardío.
+- SENSIBILIDAD: con OUT en 0.4-0.7 Charbonnet queda RB40-52 — nunca vuelve
+  a ser pick de titular. La decisión no cambia en el rango.
+- CADUCIDAD: el día del draft el robot de noticias verifica por nombre a
+  todo OUT/IR/SUSP del top-200 (retorno real vs factor).
+```
+
+**Verificación del pushback de la banca (mismo mensaje de Andrés):** los
+slots IDP de la liga se re-verificaron EN VIVO contra mSettings (1-sep):
+DT×1 DE×1 LB×1 CB×1 S×1 — CINCO casillas individuales, no 3. El recuerdo
+de "3 IDP" corresponde a la era NFL.com (DL/LB/DB). Sin corrección.
+
+**Sala 5 (duda grande de Andrés, respondida):** el build de 1 QB salía #1
+porque el titular solo alinea QB+OP, el OP lo llenaba un RB elite (~210-247)
+y el excedente WR/RB compensaba; PERO el modelo de temporada no tiene
+lesiones por jugador, así que un roster con UN QB no paga su fragilidad
+real (Geno out = casilla QB en 0 sin reemplazo). Tras el recorte de
+lesiones el motor tomó QB2 (Brissett) en las 5 salas — el caso desapareció
+solo, y queda la lección: E[PF] del modelo subestima el riesgo de builds
+delgados en QB. Guardarraíl propuesto (pendiente de OK): mínimo 2 QB.
