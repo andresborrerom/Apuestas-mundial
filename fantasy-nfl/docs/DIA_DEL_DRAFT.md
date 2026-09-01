@@ -39,3 +39,27 @@ reagendarlo (support.espn.com, "Draft Schedule Issues"). Peace and Love está
 - IDP/DST/K: rondas 12-18. Nunca antes (post-T1 valen 20-42 VBD).
 - K: priorizar pierna larga (FG 50-59 = 10 pts sigue vivo).
 - La banca es RB/WR (+3er QB si el tablero lo pide).
+
+## El puente del navegador (fuente EN VIVO — construido 1-sep)
+
+La API no publica picks mid-draft (medido 28-ago); el DOM del draft room sí.
+El puente son 2 piezas ya probadas de punta a punta en local:
+
+1. **Tablero**: `python optimize/tablero_vivo.py --puente`
+2. **Snippet**: con el draft room abierto, F12 → Console → pegar TODO
+   `optimize/puente.js` → Enter. Aparece un badge "🌉 N picks · último: …"
+   en la esquina. Ese badge ES el candado visual: si el número no coincide
+   con los picks reales, se ajusta el parser (avisar a Claude, ~1 min).
+3. El tablero resuelve nombres (sufijos, tildes, apóstrofes, D/ST probados;
+   homónimos por posición). Un nombre sin resolver GRITA en consola y se
+   corrige al momento. Si el puente calla >20s, el tablero avisa.
+
+CALIBRACIÓN OBLIGATORIA (task #8): entrar a un mock de ESPN días antes,
+pegar el snippet y verificar badge + overall del "R#, P#" (chequear que
+"R2, P1" = pick 17). Los selectores exactos del draft room no son
+verificables sin una sala abierta — por diseño el parser es genérico y el
+badge existe para calibrarlo en minutos.
+
+Cadena del 7-sep: puente (primario) → pantallazos+escaleras (respaldo
+probado 15 rondas) → --manual (teclado). API: candados de arranque,
+inProgress y RECIBO final.

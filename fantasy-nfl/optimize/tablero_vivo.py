@@ -281,7 +281,27 @@ sola cada 10 s · ctrl+shift+R fuerza</div>
 
 
 # ------------------------------------------------------------------ SERVIDOR
+# ---- PUENTE DEL NAVEGADOR (1-sep): la pestaña del draft room POSTea aquí
+# el Pick History que ve en el DOM. Es la fuente EN VIVO del 7-sep (medido
+# 28-ago: la API de ESPN no publica picks hasta el cierre).
+PUENTE = {'picks': [], 'ts': 0.0, 'sin_resolver': []}
+
+
 class Handler(BaseHTTPRequestHandler):
+    def do_POST(self):
+        if self.path != '/puente':
+            self.send_response(404); self.end_headers(); return
+        try:
+            n = int(self.headers.get('Content-Length') or 0)
+            datos = json.loads(self.rfile.read(n).decode('utf-8', 'replace'))
+            PUENTE['picks'] = datos.get('picks', [])
+            PUENTE['ts'] = time.time()
+        except Exception as e:
+            print('puente: cuerpo inválido:', type(e).__name__, e)
+        self.send_response(204)
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.end_headers()
+
     def do_GET(self):
         cuerpo = PAGINA_HTML or b'<meta http-equiv=refresh content=2>arrancando...'
         self.send_response(200)
@@ -322,6 +342,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--demo', action='store_true')
     ap.add_argument('--sleeper', help='draft_id de un mock de Sleeper')
+    ap.add_argument('--puente', action='store_true',
+                    help='fuente = POST /puente desde optimize/puente.js en la pestaña del draft')
     ap.add_argument('--mi-slot', type=int, default=MI_PICK,
                     help='mi asiento en el mock de Sleeper (default: 5)')
     ap.add_argument('--puerto', type=int, default=PUERTO)
@@ -400,6 +422,64 @@ def main():
             est.mis_picks = [gp for gp, t in enumerate(est.secuencia, 1)
                              if t == args.mi_slot - 1]
             print(f'⚠️ asiento Sleeper {args.mi_slot}: mis picks {est.mis_picks}')
+    elif args.puente:
+        import unicodedata
+
+        def norm(s):
+            s = unicodedata.normalize('NFKD', s or '').encode('ascii', 'ignore').decode()
+            return ' '.join(s.lower().replace('.', ' ').replace("'", '').split())
+
+        SUF = {'jr', 'sr', 'ii', 'iii', 'iv', 'v'}
+        por_nombre = {}
+        for i, j in enumerate(pool):
+            por_nombre.setdefault((norm(j['nombre']), j['pos']), i)
+            base = ' '.join(w for w in norm(j['nombre']).split() if w not in SUF)
+            por_nombre.setdefault((base, j['pos']), i)
+        por_apellido = {}
+        for i, j in enumerate(pool):
+            ap_ = [w for w in norm(j['nombre']).split() if w not in SUF]
+            if ap_:
+                por_apellido.setdefault((ap_[-1], j['pos']), []).append(i)
+
+        avisados = set()
+
+        def resolver(nombre, pos):
+            pos = {'D/ST': 'DST', 'DST': 'DST'}.get(pos, pos)
+            n = norm(nombre)
+            base = ' '.join(w for w in n.split() if w not in SUF)
+            i = por_nombre.get((n, pos)) or por_nombre.get((base, pos))
+            if i is not None:
+                return i
+            if pos == 'DST':      # el DOM dice "Steelers D/ST" o "Pittsburgh"
+                c = [k for k, j in enumerate(pool) if j['pos'] == 'DST'
+                     and (norm(j['nombre']).split()[0] in n or n.split()[0] in norm(j['nombre']))]
+                return c[0] if len(c) == 1 else None
+            c = por_apellido.get((base.split()[-1] if base else '', pos), [])
+            return c[0] if len(c) == 1 else None
+
+        def fuente_puente():
+            out, sin = [], []
+            for p in sorted(PUENTE['picks'], key=lambda x: x.get('n', 0)):
+                gp = int(p.get('n') or 0)
+                if not gp:
+                    continue
+                i = resolver(p.get('nombre', ''), p.get('pos', ''))
+                asiento = est.secuencia[gp - 1] if gp <= len(est.secuencia) else -1
+                team = MI_TEAM_ID if asiento == MI_PICK - 1 else -(asiento + 1)
+                if i is None:
+                    sin.append(f"pick {gp}: {p.get('nombre')} ({p.get('pos')})")
+                    if (gp, p.get('nombre')) not in avisados:
+                        avisados.add((gp, p.get('nombre')))
+                        print(f"  🚨 puente SIN RESOLVER pick {gp}: "
+                              f"{p.get('nombre')!r} ({p.get('pos')}) — corrígelo o dime")
+                    continue
+                out.append((gp, team, pool[i].get('espn_id')))
+            PUENTE['sin_resolver'] = sin
+            edad = time.time() - PUENTE['ts'] if PUENTE['ts'] else None
+            if edad is not None and edad > 20:
+                print(f"  ⚠️ puente sin señal hace {edad:.0f}s — ¿la pestaña sigue viva?")
+            return sorted(out)
+        fuente = fuente_puente
     else:
         fuente = lambda: api_picks()[0]
 
