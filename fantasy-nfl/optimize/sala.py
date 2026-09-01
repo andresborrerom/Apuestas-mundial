@@ -48,6 +48,12 @@ MAX_UTIL_MIO = dict(MAX_UTIL, DT=1, DE=1, LB=1, CB=1, S=1)
 # 7 ofensivos totales (QB, RB, WR×2, TE, flex RB/WR y OP).
 OBLIG = {'QB': 1, 'RB': 1, 'WR': 2, 'TE': 1, 'DT': 1, 'DE': 1, 'LB': 1,
          'CB': 1, 'S': 1, 'DST': 1, 'K': 1}
+# 🔒 GUARDARRAÍL QB≥2 (1-sep, OK de Andrés: "sano para el piso"): en superflex
+# un roster con UN QB tiene margen ~0 si ese QB cae y el modelo de temporada
+# no cobra ese riesgo. Solo para MI asiento; entra a la aritmética de forzado
+# como cualquier casilla obligatoria (el motor lo toma por valor cuando
+# quiere; esto solo garantiza que nunca salga con 1).
+OBLIG_MIO = dict(OBLIG, QB=2)
 OFE = ('QB', 'RB', 'WR', 'TE')
 OFE_MIN = 7
 

@@ -26,7 +26,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import numpy as np
 import requests
 from ingest.espn_auth import credenciales
-from optimize.sala import (EQUIPOS, RONDAS, MI_PICK, MAX_UTIL, MAX_UTIL_MIO, OBLIG, OFE,
+from optimize.sala import (EQUIPOS, RONDAS, MI_PICK, MAX_UTIL, MAX_UTIL_MIO, OBLIG, OBLIG_MIO, OFE,
                            OFE_MIN, cargar, score_sala, orden_snake)
 from optimize.plan_draft import Draft, UMBRAL_BYE, calibrar, e_mejor, preparar
 
@@ -114,7 +114,8 @@ class Estado:
         cnt = defaultdict(int)
         for i in self.mis:
             cnt[self.pool[i]['pos']] += 1
-        gaps = {p: max(0, k - cnt[p]) for p, k in OBLIG.items()}
+        # 🔒 guardarraíl QB>=2 (1-sep): mi segundo QB es obligatorio
+        gaps = {p: max(0, k - cnt[p]) for p, k in OBLIG_MIO.items()}
         ofe = sum(cnt[p] for p in OFE) + sum(gaps[p] for p in OFE)
         extra_ofe = max(0, OFE_MIN - ofe)
         quedan = RONDAS - len(self.mis)

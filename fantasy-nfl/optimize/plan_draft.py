@@ -16,7 +16,7 @@ from collections import defaultdict
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import numpy as np
-from optimize.sala import (EQUIPOS, RONDAS, MI_PICK, ORDEN, MAX_UTIL, MAX_UTIL_MIO, OBLIG,
+from optimize.sala import (EQUIPOS, RONDAS, MI_PICK, ORDEN, MAX_UTIL, MAX_UTIL_MIO, OBLIG, OBLIG_MIO,
                            OFE, OFE_MIN, cargar, score_sala, orden_snake,
                            valor_roster)
 
@@ -79,7 +79,9 @@ class Draft:
     def faltantes(self, t):
         """(gaps por posición, ofensivos extra que aún exige el roster)."""
         cnt = self.cnt[t]
-        gaps = {p: max(0, k - cnt[p]) for p, k in OBLIG.items()}
+        # 🔒 guardarraíl QB>=2: mis obligatorios incluyen el segundo QB
+        oblig = OBLIG_MIO if t == MI_PICK - 1 else OBLIG
+        gaps = {p: max(0, k - cnt[p]) for p, k in oblig.items()}
         ofe = sum(cnt[p] for p in OFE) + sum(gaps[p] for p in OFE)
         return gaps, max(0, OFE_MIN - ofe)
 

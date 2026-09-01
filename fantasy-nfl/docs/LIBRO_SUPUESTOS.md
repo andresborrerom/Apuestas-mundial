@@ -1039,3 +1039,17 @@ real (Geno out = casilla QB en 0 sin reemplazo). Tras el recorte de
 lesiones el motor tomó QB2 (Brissett) en las 5 salas — el caso desapareció
 solo, y queda la lección: E[PF] del modelo subestima el riesgo de builds
 delgados en QB. Guardarraíl propuesto (pendiente de OK): mínimo 2 QB.
+
+## 1-sep (4) — Guardarraíl QB≥2 (OK de Andrés: "sano para el piso")
+
+`OBLIG_MIO = OBLIG + {QB: 2}` en sala.py, usado por la aritmética de forzado
+de MI asiento en plan_draft (faltantes) y live_draft (recomendar). Medido:
+- Costo pareado en 20 salas (mundo actual, con recorte de lesiones y
+  desempate de byes): **Δ VBD = 0.00 — nunca actuó** (el motor ya toma 2-3
+  QBs por valor). Es seguro gratis.
+- Candado inverso: en las condiciones exactas del build 1-QB (semilla 904
+  sin recorte ni desempate) SÍ dispara: mete a Brissett QB2 y el VBD
+  titular queda idéntico (604) — cambia banca por seguro, no titulares.
+- Ejercicio 5 salas con las TRES adiciones (byes + lesiones + guardarraíl):
+  #1 esperado en las 5; puesto medio 5.0-6.1; top8 72-81%; multa 6-11%.
+  Rosters idénticos con/sin guardarraíl en las 5 (no vinculante).
