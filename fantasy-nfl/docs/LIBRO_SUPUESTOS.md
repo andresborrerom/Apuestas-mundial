@@ -975,3 +975,26 @@ para TE, ronda/pick de novatos. Etiquetas de lo que alimenta `optimize/contexto.
   estándar de industria.
 - Bug corregido en el camino: apellidos con sufijo (110 jugadores: "James
   Cook III" salía como "III") — `apellido()` recorta Jr./Sr./II/III/IV/V.
+
+## 1-sep (2) — Desempate por byes en el motor + modelo de temporada simulada
+
+- **Desempate por byes** (pedido de Andrés: "que existan buenos reemplazos es
+  clave"): en `politica_lookahead` (plan_draft) y en `Estado.recomendar`
+  (live_draft, el del 7-sep): entre opciones a ≤5 pts VBD de la mejor
+  ganancia marginal, se evita apilar un TERCER titular ofensivo en el mismo
+  bye (un 2-stack lo cubre la banca; el 3/4-stack regala una semana).
+  ✅ Validado pareado, 20 salas: ΔVBD titular +2.6 (no cuesta), salas con
+  apilado 3+ bajan de 15/20 a 11/20 (reduce, no elimina: solo actúa cuando
+  hay empate real). `bye` entra al pool desde FFC (ofensiva; IDP/K/DST sin
+  bye ⇒ el desempate no les aplica).
+- **Modelo de temporada 2026** (salas_simuladas, artifact): total por jugador
+  ~ split-normal(p10/p50/p90) truncada en 0; media semanal = total/16, cero
+  en bye con banca cubriendo; ruido semanal por titular = ratio·media con
+  ratio ✅ MEDIDO de la historia 2021-25 (QB .48 RB .67 WR .70 TE .72
+  DST .73); calendario round-robin barajado 14 sem. ⚠️ Sin lesiones por
+  jugador, waivers ni pickups — declarado en la página. Resultado 5 salas
+  (semillas 900-904): mi asiento #1 esperado en las 5 (puesto medio 5.2-6.4,
+  top-8 69-77%).
+- 📊 Cancelación de la base verificada (pregunta de Andrés): motor-VBD vs
+  motor-PUNTOS brutos, pareado 400 temporadas reales: 76% rosters idénticos,
+  ΔE[$] +9 (t=0.56). El motor ya maximiza puntos con reemplazo dinámico.

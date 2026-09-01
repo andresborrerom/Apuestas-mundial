@@ -22,6 +22,7 @@ from optimize.sala import (EQUIPOS, RONDAS, MI_PICK, ORDEN, MAX_UTIL, MAX_UTIL_M
 
 RAIZ = Path(__file__).resolve().parent.parent
 POOL = 420                      # jugadores que realmente entran en juego
+UMBRAL_BYE = 5.0                # pts de VBD que vale sacrificar por no apilar byes
 
 
 def preparar(alpha=0.55):
@@ -216,19 +217,39 @@ def politica_lookahead(d, yo, ronda, k, mis_picks, SURV, forzar=None):
     porpos = defaultdict(list)
     for i in cand:
         porpos[d.pos[i]].append(i)
-    mejor, mejor_g = None, -1e18
+    opciones = []                 # (g, i) — finalistas entre posiciones
     for p, idxs in porpos.items():
-        ahora_i = max(idxs, key=lambda i: d.vbd[i])
-        ahora = d.vbd[ahora_i]
+        idxs.sort(key=lambda i: -d.vbd[i])
+        ahora = d.vbd[idxs[0]]
         idx = np.array(idxs)
         # supervivencia al PRÓXIMO turno mío, condicionada a que sigan vivos
         sv = SURV[k + 1][idx] / np.maximum(SURV[k][idx], 1e-6)
         sv = np.clip(sv * d.alive[idx], 0, 1)
         luego = e_mejor(d.vbd[idx], sv)
-        g = ahora - luego
-        if g > mejor_g:
-            mejor, mejor_g = ahora_i, g
-    return mejor
+        opciones.append((ahora - luego, idxs[0]))
+        # alternativa de la MISMA posición casi empatada (mismo `luego`):
+        # entra al desempate por byes con su ganancia ajustada
+        if len(idxs) > 1 and ahora - d.vbd[idxs[1]] <= UMBRAL_BYE:
+            opciones.append((ahora - luego - (ahora - d.vbd[idxs[1]]), idxs[1]))
+    # 🔄 DESEMPATE POR BYES (pedido de Andrés, 1-sep): entre opciones a ≤5 pts
+    # de la mejor ganancia marginal, evitar apilar un TERCER titular ofensivo
+    # en la misma semana de bye (medido: un 2-stack lo cubre la banca; el
+    # 3/4-stack tipo "4 titulares bye 11" es el que regala una semana).
+    g_max = max(g for g, i in opciones)
+    finalistas = [(g, i) for g, i in opciones if g >= g_max - UMBRAL_BYE]
+    if len(finalistas) > 1:
+        mis_byes = defaultdict(int)
+        for j in d.roster[yo]:
+            if j['pos'] in OFE and j.get('bye'):
+                mis_byes[j['bye']] += 1
+
+        def llave(gi):
+            g, i = gi
+            b = d.p[i].get('bye') if d.pos[i] in OFE else 0
+            apila = max(0, mis_byes.get(b, 0) - 1) if b else 0
+            return (apila, -g)
+        return min(finalistas, key=llave)[1]
+    return finalistas[0][1]
 
 
 ESTRATEGIAS = {

@@ -28,7 +28,7 @@ import requests
 from ingest.espn_auth import credenciales
 from optimize.sala import (EQUIPOS, RONDAS, MI_PICK, MAX_UTIL, MAX_UTIL_MIO, OBLIG, OFE,
                            OFE_MIN, cargar, score_sala, orden_snake)
-from optimize.plan_draft import Draft, calibrar, e_mejor, preparar
+from optimize.plan_draft import Draft, UMBRAL_BYE, calibrar, e_mejor, preparar
 
 MI_TEAM_ID = 10                      # 'No Team for Old Men' — verificado
 QB_BONUS_DEF, IDP_PEN_DEF = None, None   # se calibran al arrancar
@@ -144,15 +144,44 @@ class Estado:
         for i in elegibles:
             porpos[self.pool[i]['pos']].append(i)
         filas = []
+        opciones = []            # (g, i) — incluye al 2º de cada posición si empata
         for p, idxs in porpos.items():
-            ahora_i = max(idxs, key=lambda i: self.pool[i]['vbd'])
+            idxs.sort(key=lambda i: -self.pool[i]['vbd'])
+            ahora_i = idxs[0]
             ahora = self.pool[ahora_i]['vbd']
             arr = np.array([self.pool[i]['vbd'] for i in idxs])
             luego = e_mejor(arr, surv[np.array(idxs)])
             filas.append((ahora - luego, p, ahora_i, ahora, luego,
                           surv[ahora_i]))
+            opciones.append((ahora - luego, ahora_i))
+            if len(idxs) > 1 and ahora - self.pool[idxs[1]]['vbd'] <= UMBRAL_BYE:
+                opciones.append((ahora - luego - (ahora - self.pool[idxs[1]]['vbd']),
+                                 idxs[1]))
         filas.sort(reverse=True)
-        elegido, regla = filas[0][2], None
+        elegido, regla, desempate = filas[0][2], None, None
+        # 🔄 DESEMPATE POR BYES (1-sep, validado pareado en 20 salas: −VBD 0,
+        # menos semanas con 3+ titulares ofensivos en bye): entre opciones a
+        # ≤5 pts de la mejor ganancia, evitar apilar un TERCER bye ofensivo.
+        g_max = max(g for g, i in opciones)
+        finalistas = [(g, i) for g, i in opciones if g >= g_max - UMBRAL_BYE]
+        if len(finalistas) > 1:
+            mis_byes = defaultdict(int)
+            for i in self.mis:
+                j = self.pool[i]
+                if j['pos'] in OFE and j.get('bye'):
+                    mis_byes[j['bye']] += 1
+
+            def llave(gi):
+                g, i = gi
+                b = self.pool[i].get('bye') if self.pool[i]['pos'] in OFE else 0
+                return (max(0, mis_byes.get(b, 0) - 1) if b else 0, -g)
+            alt = min(finalistas, key=llave)[1]
+            if alt != elegido:
+                desempate = (f"desempate por byes: {self.pool[alt]['nombre']} "
+                             f"sobre {self.pool[elegido]['nombre']} (evita 3er "
+                             f"bye sem {self.pool[elegido].get('bye')}, "
+                             f"cuesta ≤{UMBRAL_BYE:.0f} pts)")
+                elegido = alt
         # REGLA VALIDADA (pareada, 4 escenarios) para mis DOS primeros picks:
         # el motor de ganancia marginal es MIOPE (mira un turno adelante) y en
         # la comparación perdió contra la apertura fija. Del pick 3 en adelante
@@ -172,7 +201,8 @@ class Estado:
                 regla = 'R2: ningún QB ≥ 110 vivo → mejor WR (regla validada)'
         return elegido, {'tabla': filas, 'surv': surv, 'mi_pick': mi_pick,
                          'sig': sig, 'gaps': gaps, 'extra_ofe': extra_ofe,
-                         'regla': regla, 'motor': filas[0][2]}
+                         'regla': regla, 'motor': filas[0][2],
+                         'desempate': desempate}
 
 
 def pinta(est, idx, info, hechos):

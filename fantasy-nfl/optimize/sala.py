@@ -75,6 +75,13 @@ def cargar():
         a = (p.get('ownership') or {}).get('averageDraftPosition')
         if a and a > 0:
             adp[p['id']] = a
+    # semana de bye por nombre (FFC; ofensiva — IDP/K/DST quedan en 0 y el
+    # desempate de byes simplemente no les aplica)
+    byes = {}
+    for r in csv.DictReader(open(RAIZ / 'data' / 'archivo' / '2026-08-28' /
+                                 'ffc_2qb_adp.csv')):
+        if r.get('bye'):
+            byes[r['name']] = int(r['bye'])
     jug = []
     for r in dist:
         if r['pos'] == 'DB':
@@ -83,7 +90,8 @@ def cargar():
         jug.append(dict(nombre=r['nombre'], pos=r['pos'], vbd=float(r['vbd2']),
                         proj=float(r['total_v2']), p10=float(r['p10']),
                         p50=float(r['p50']), p90=float(r['p90']),
-                        espn_id=pid, adp=adp.get(pid)))
+                        espn_id=pid, adp=adp.get(pid),
+                        bye=byes.get(r['nombre'], 0)))
     # tablero de la sala: rank por ADP donde existe; los demás por proyección
     con_adp = sorted([j for j in jug if j['adp']], key=lambda j: j['adp'])
     for i, j in enumerate(con_adp):
