@@ -92,23 +92,30 @@
     document.body.appendChild(badge);
   }
 
-  let ultimoEnvio = '';
+  let ultimoEnvio = '', tablero = '?';
   async function tick() {
+    let picks = [];
     try {
-      const picks = PARSEAR(contenedor().innerText || '');
-      const cuerpo = JSON.stringify({ picks, t: Date.now() });
-      badge.textContent = `🌉 ${picks.length} picks · último: ` +
-        (picks.length ? `${picks[picks.length - 1].n} ${picks[picks.length - 1].nombre}` : '—');
-      badge.style.color = picks.length ? '#7fdc9a' : '#e0b040';
-      if (cuerpo !== ultimoEnvio) {
-        ultimoEnvio = cuerpo;
+      picks = PARSEAR(contenedor().innerText || '');
+    } catch (e) {
+      badge.textContent = '🌉 ERROR parser: ' + e.message;
+      badge.style.color = '#e05555';
+      return;
+    }
+    // el badge SIEMPRE refleja lo leído — sirve para calibrar en un mock
+    // aunque el tablero no esté corriendo todavía
+    badge.textContent = `🌉 ${picks.length} picks · último: ` +
+      (picks.length ? `${picks[picks.length - 1].n} ${picks[picks.length - 1].nombre}` : '—') +
+      `  [tablero ${tablero}]`;
+    badge.style.color = picks.length ? '#7fdc9a' : '#e0b040';
+    const cuerpo = JSON.stringify({ picks, t: Date.now() });
+    if (cuerpo !== ultimoEnvio) {
+      try {
         await fetch(URL_TABLERO, { method: 'POST', mode: 'no-cors',
                                    headers: { 'Content-Type': 'text/plain' },
                                    body: cuerpo });
-      }
-    } catch (e) {
-      badge.textContent = '🌉 ERROR: ' + e.message;
-      badge.style.color = '#e05555';
+        ultimoEnvio = cuerpo; tablero = '✓';
+      } catch (e) { tablero = 'sin conexión'; }
     }
   }
   if (window.__puente) clearInterval(window.__puente);
