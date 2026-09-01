@@ -948,3 +948,30 @@ verdad mientras yo seguía la API. Resultado medido de punta a punta:
   Harvey rookie") nacieron de memoria vieja.
 - El robot de noticias (agente web + injuryStatus de la API) llegó a tiempo
   al draft y cazó a Jacobs/LaPorta/Mahomes. Queda como pieza fija del 7-sep.
+
+---
+
+## 1-sep — Contexto rico por jugador (hoja maestra, pestaña GENERAL)
+
+Pedido de Andrés: armas del QB, QB + orden de targets para WR/TE,
+bellcow/comité + backfield + O-line para RB, orden de recepción + zona roja
+para TE, ronda/pick de novatos. Etiquetas de lo que alimenta `optimize/contexto.py`:
+
+- ✅ Jerarquías de equipo (targets 58, acarreos 23, intentos 0): crudos de la
+  MISMA proyección ESPN archivada con hash el 28-ago. Cero memoria.
+- ✅ Novatos 2026 (ronda/pick): crosswalk nflverse.
+- 🔍 **O-line 2026** (`data/oline_2026.json`): PFF 12-ago (leído 1-sep vía
+  agente web), las 32 unidades. DEN 1 · PHI 2 · TB 3 … CLE 31 · WAS 32.
+  Contraste Sharp (30-jun, PRE-lesiones de agosto) anotado en la nota cuando
+  difieren ≥7 puestos (KC 8vs23, CAR 26vs12, JAX 30vs17, WAS 32vs22, CIN,
+  IND, PIT, LV). En esos equipos la OL se lee como RANGO, no como punto.
+  Caveat declarado: PFF llegó vía fetch resumido, no HTML crudo; orden
+  consistente con el titular verificado (top-3 DEN/PHI/TB).
+- ⚠️ **Zona roja de TE**: NO tenemos targets RZ. Se usa TDs de recepción
+  proyectados (statId 43) como PROXY, declarado en cada línea de la hoja.
+  CADUCIDAD: si aparece fuente de targets RZ 2025 por jugador, reemplazar.
+- 📊 Umbrales bellcow: ≥62% de acarreos del comité proyectado = BELLCOW,
+  ≥45% = comité en punta. Son cortes nuestros sobre datos validados, no
+  estándar de industria.
+- Bug corregido en el camino: apellidos con sufijo (110 jugadores: "James
+  Cook III" salía como "III") — `apellido()` recorta Jr./Sr./II/III/IV/V.

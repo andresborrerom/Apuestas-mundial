@@ -1,0 +1,135 @@
+{
+ "fuente": "PFF — 2026 NFL Offensive Line Rankings (pff.com/news/nfl-offensive-line-rankings-2026), publicado ~12-ago-2026; contraste Sharp Football (30-jun) anotado en notas donde difieren >=7 puestos",
+ "fecha_lectura": "2026-09-01",
+ "etiqueta": "INVESTIGADO — agente web; caveat: PFF leído vía fetch resumido, orden consistente con titular verificado (DEN/PHI/TB top-3)",
+ "equipos": {
+  "DEN": {
+   "rank": 1,
+   "nota": "Los cinco titulares regresan del mejor quinteto 2025"
+  },
+  "PHI": {
+   "rank": 2,
+   "nota": "Quinteto intacto; Lane Johnson sigue élite en pase"
+  },
+  "TB": {
+   "rank": 3,
+   "nota": "Wirfs en nivel carrera; Goedeke sin sacks permitidos"
+  },
+  "IND": {
+   "rank": 4,
+   "nota": "Nelson y Raimann élite; Sharp (jun) los tenía 11º"
+  },
+  "CHI": {
+   "rank": 5,
+   "nota": "Thuney y Wright top; perdió al centro Dalman"
+  },
+  "BUF": {
+   "rank": 6,
+   "nota": "Dawkins-Brown, dúo de tackles élite; perdió un guardia"
+  },
+  "LAC": {
+   "rank": 7,
+   "nota": "Slater y Alt élite si se mantienen sanos"
+  },
+  "KC": {
+   "rank": 8,
+   "nota": "Humphrey, mejor centro NFL; Sharp (jun): 23º, gran discrepancia"
+  },
+  "ATL": {
+   "rank": 9,
+   "nota": "Lindstrom dominante en carrera; sumó a Jawaan Taylor"
+  },
+  "SF": {
+   "rank": 10,
+   "nota": "Trent Williams sigue dominante a los 37 años"
+  },
+  "LAR": {
+   "rank": 11,
+   "nota": "Avila-Dotson, único dúo de guardias 75+; continuidad total"
+  },
+  "MIN": {
+   "rank": 12,
+   "nota": "Depende de la salud de Darrisaw; guardia joven en desarrollo"
+  },
+  "NE": {
+   "rank": 13,
+   "nota": "Campbell irregular de novato; llegó Vera-Tucker"
+  },
+  "PIT": {
+   "rank": 14,
+   "nota": "Frazier estrella al centro; Sharp (jun) los tenía 21º"
+  },
+  "SEA": {
+   "rank": 15,
+   "nota": "Zabel mejoró al cierre; Bradford es el eslabón débil"
+  },
+  "NO": {
+   "rank": 16,
+   "nota": "Banks Jr., mejor novato 2025; unidad joven en ascenso"
+  },
+  "DAL": {
+   "rank": 17,
+   "nota": "Interior quizá el mejor; los tackles son la duda"
+  },
+  "LV": {
+   "rank": 18,
+   "nota": "Linderbaum, centro mejor pagado; Sharp (jun): 25º"
+  },
+  "DET": {
+   "rank": 19,
+   "nota": "Sewell cambia a tackle izquierdo; novato en la derecha"
+  },
+  "CIN": {
+   "rank": 20,
+   "nota": "Mims y Fairchild emergen; Sharp (jun) los tenía 28º"
+  },
+  "NYJ": {
+   "rank": 21,
+   "nota": "Fashanu-Membou, tackles prometedores; guardias con dudas"
+  },
+  "ARI": {
+   "rank": 22,
+   "nota": "Lado izquierdo sólido; guardia derecho Adams sigue flojo"
+  },
+  "NYG": {
+   "rank": 23,
+   "nota": "Thomas élite pero frágil; Mauigoa refuerza vía draft"
+  },
+  "BAL": {
+   "rank": 24,
+   "nota": "Guardias muy débiles; perdió a Linderbaum al centro"
+  },
+  "MIA": {
+   "rank": 25,
+   "nota": "Brewer sobresale al centro; guardia novato con expectativas moderadas"
+  },
+  "CAR": {
+   "rank": 26,
+   "nota": "Sin Ekwonu ni Moton por lesión; Sharp (jun, pre-lesiones): 12º"
+  },
+  "HOU": {
+   "rank": 27,
+   "nota": "Ersery promete; unidad joven, aún problemática para Stroud"
+  },
+  "GB": {
+   "rank": 28,
+   "nota": "Solo un titular confiable; cuatro puestos con interrogantes"
+  },
+  "TEN": {
+   "rank": 29,
+   "nota": "Skoronski élite en guardia; dudas en los otros cuatro puestos"
+  },
+  "JAX": {
+   "rank": 30,
+   "nota": "Interior muy débil; Sharp (jun) los tenía 17º"
+  },
+  "CLE": {
+   "rank": 31,
+   "nota": "Cuatro titulares nuevos; novato Fano protege el lado ciego"
+  },
+  "WAS": {
+   "rank": 32,
+   "nota": "Lesión de Tunsil los hunde; Sharp (jun, pre-lesión): 22º"
+  }
+ }
+}
