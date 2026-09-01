@@ -1053,3 +1053,26 @@ de MI asiento en plan_draft (faltantes) y live_draft (recomendar). Medido:
 - Ejercicio 5 salas con las TRES adiciones (byes + lesiones + guardarraíl):
   #1 esperado en las 5; puesto medio 5.0-6.1; top8 72-81%; multa 6-11%.
   Rosters idénticos con/sin guardarraíl en las 5 (no vinculante).
+
+## 1-sep (5) — Fork "Fantasy Cheap-Sheet" (liga 1643420925) + hallazgos
+
+Liga leída ENTERA de la API (config/espn_settings_cheapsheet_2026.json):
+14 equipos · 1 QB (sin OP) · half-PPR (rec 0.5) · SIN IDP · QB/RB×2/WR×2/TE/
+RB-WR/FLEX/D/ST/K + 4 banca = 14 rondas · 45s · mi teamId=1 "Remember the
+Titan" · 🚨 draft SIN FECHA en el servidor y pickOrder placeholder [1..14].
+
+- ✅ **Proyección** = appliedTotal FRESCO puntuado POR ESPN bajo las reglas
+  de esa liga (kona de la liga, 595 jugadores). Candado cruzado con nuestro
+  motor + crudos 28-ago: mediana Δ1.15 → motor perfecto.
+- 🚨 **La liga da 0 puntos a TODAS las D/ST** — verificado doble (overrides
+  '16':0.0 en settings Y applied 0.0 en las 32). Slot muerto: cualquiera, R14.
+- 📊 VBD con baselines de SU estructura (QB 14 · RB 43 · WR 39 · TE 16 ·
+  K 14; splits de flex 60/40 y 45/40/15 ⚠️ declarados). El tablero se
+  voltea: RBs dominan (Gibbs #1, 206), Allen QB1 cae a 86.
+- ⚠️ p10/p90 = forma del cono de nuestra liga escalada por ratio de totales.
+- Recorte S-LESION solo si ESPN aún no descontó (fresco ≥ 0.9 × motor).
+- Hoja publicada (ámbar, para no confundir con la verde de P&L).
+
+**TRIPWIRE NUEVO (task #15): ESPN MOVIÓ proyecciones post-28-ago** — Jacobs
+255→151, Tyson −50%, Sanders +50%. El tablero P&L corre con crudos del
+28-ago: refrescar antes del 7-sep + chequeo diario de deriva >15% en top-150.
