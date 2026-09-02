@@ -48,6 +48,9 @@ from optimize.plan_draft import calibrar, preparar
 from optimize.live_draft import MI_TEAM_ID, Estado, api_picks
 
 RAIZ = Path(__file__).resolve().parent.parent
+from optimize.sala import LIGA as _L
+NOMBRE_LIGA = ('FANTASY CHEAP-SHEET · 14eq · 1QB · halfPPR' if _L == 'cs'
+               else 'Peace and Love 2026')
 PUERTO = 8787
 ORDEN_POS = ('QB', 'RB', 'WR', 'TE', 'DT', 'DE', 'LB', 'CB', 'S', 'DST', 'K')
 
@@ -259,9 +262,9 @@ def render(est, hechos, idx, info, N, demo=False):
                      for nom, ok, det in CANDADOS if not ok)
 
     return f"""<!doctype html><html><head><meta charset=utf-8>
-<meta http-equiv=refresh content=10><title>Draft en vivo — Peace and Love</title>
+<meta http-equiv=refresh content=10><title>Draft en vivo — {NOMBRE_LIGA}</title>
 <style>{CSS}</style></head><body>
-<h1>Peace and Love 2026 — tablero en vivo {'· <span class=warn>DEMO</span>' if demo else ''}</h1>
+<h1>{NOMBRE_LIGA} — tablero en vivo {'· <span class=warn>DEMO</span>' if demo else ''}</h1>
 <div class=dim>pick {n + 1} · ronda {ronda} · pica: <b>{H.escape(str(turno))}</b>
  · mi próximo turno: <b class=acc>{prox or '—'}</b>
  (faltan {prox - n - 1 if prox else '—'} picks) · {ahora} · {cand}</div>
