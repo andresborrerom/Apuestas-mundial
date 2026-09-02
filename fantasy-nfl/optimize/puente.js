@@ -47,39 +47,37 @@
 
   // --- parsear texto → [{n, nombre, pos}] --------------------------------
   // El historial de ESPN lista, por pick: "R1, P5" (o "1.5"), nombre, "POS - EQ".
+  // Calibrado 2-sep con el Practice Draft real: la tabla central va
+  // PICK · PLAYER · TEAM · 2025 PTS · PROJ · RK. La columna RK también es un
+  // entero suelto y el carril derecho "Picks" repite nombres → regla de
+  // ADYACENCIA: un número solo cuenta si la línea SIGUIENTE es un nombre; y
+  // se deduplica por número de pick (gana la primera aparición = tabla).
+  function esNombre(ln) {
+    return /^[A-Z][\w.'-]+(\s+[A-Z][\w.'-]+)+/.test(ln) || /D\/ST$/.test(ln);
+  }
+  function limpiaNombre(ln) {
+    return ln.replace(/\b(QB|RB|WR|TE|DT|DE|LB|CB|K)\b.*$/, '')
+             .replace(/\s+(Q|O|D|IR|SSPD)$/, '').trim();
+  }
   function PARSEAR(texto) {
     const lineas = texto.split('\n').map(s => s.trim()).filter(Boolean);
-    const picks = [];
-    let n = null, ronda = null, enRonda = null;
-    for (const ln of lineas) {
-      let m;
-      if ((m = ln.match(/^R(?:ound)?\s*(\d+)\s*[,·]?\s*P(?:ick)?\s*(\d+)$/i))) {
-        ronda = +m[1]; enRonda = +m[2];
-        // "P" cuenta el ORDEN CRONOLÓGICO dentro de la ronda (el snake ya
-        // está aplicado por ESPN) → overall directo. ⚠️ VERIFICAR en el mock
-        // con el badge: el "último" debe coincidir con el pick real.
-        n = (ronda - 1) * EQUIPOS + enRonda;
-        continue;
+    const porN = new Map();
+    for (let i = 0; i < lineas.length - 1; i++) {
+      const ln = lineas[i], sig = lineas[i + 1];
+      let n = null, m;
+      if ((m = ln.match(/^R(?:ound)?\s*(\d+)\s*[,\u00b7]?\s*P(?:ick)?\s*(\d+)$/i))) {
+        n = (+m[1] - 1) * EQUIPOS + (+m[2]);
+      } else if ((m = ln.match(/^(\d{1,3})(?:\.|:)?$/))) {
+        n = +m[1];
       }
-      if ((m = ln.match(/^(\d{1,3})(?:\.|:)?$/)) && +m[1] >= 1 && +m[1] <= EQUIPOS * 20) {
-        n = +m[1];                                   // número overall directo
-        continue;
-      }
-      const pm = ln.match(/^(QB|RB|WR|TE|DT|DE|LB|CB|S|D\/ST|K)\b/);
-      if (pm && picks.length && picks[picks.length - 1].pos === null) {
-        picks[picks.length - 1].pos = pm[1];
-        continue;
-      }
-      // nombre: 2+ palabras con mayúscula inicial, o "XXX D/ST"
-      if (n !== null &&
-          (/^[A-Z][\w.'-]+(\s+[A-Z][\w.'-]+)+/.test(ln) || /D\/ST$/.test(ln))) {
-        const pos = (ln.match(/\b(QB|RB|WR|TE|DT|DE|LB|CB|S|D\/ST|K)\b/) || [])[1] || null;
-        const nombre = ln.replace(/\b(QB|RB|WR|TE|DT|DE|LB|CB|S|K)\b.*$/, '').trim();
-        picks.push({ n, nombre, pos });
-        n = null;
-      }
+      if (n === null || n < 1 || n > EQUIPOS * 20 || !esNombre(sig)) continue;
+      if (porN.has(n)) continue;                  // dedupe: manda la tabla
+      const linPos = (sig + ' ' + (lineas[i + 2] || ''));
+      const pos = (linPos.match(/\b(QB|RB|WR|TE|DT|DE|LB|CB|S|D\/ST|K)\b/) || [])[1] || null;
+      porN.set(n, { n, nombre: limpiaNombre(sig), pos });
+      i++;                                        // el nombre ya se consumió
     }
-    return picks.filter(p => p.nombre && p.n >= 1 && p.n <= EQUIPOS * 20);
+    return [...porN.values()].sort((a, b) => a.n - b.n);
   }
 
   // --- badge de verificación ---------------------------------------------
