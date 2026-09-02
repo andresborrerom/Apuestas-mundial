@@ -32,7 +32,9 @@ LIGA = os.environ.get('LIGA', 'pl')
 if LIGA == 'cs':
     EQUIPOS = 14
     RONDAS = 14                 # 10 titulares + 4 banca
-    MI_PICK = int(os.environ.get('LIGA_PICK', '1'))   # pickOrder: team 1 = yo
+    # ✅ VERIFICADO 2-sep 9:50am contra grilla + UI: orden MANUAL
+    # [10,11,6,4,2,9,7,12,13,14,8,1,5,3] → teamId 1 pickea DE 12º.
+    MI_PICK = int(os.environ.get('LIGA_PICK', '12'))
 else:
     EQUIPOS = 16
     RONDAS = 18                 # 14 titulares + 4 banca (IR no se draftea)
