@@ -196,6 +196,11 @@ class Estado:
         # la comparación perdió contra la apertura fija. Del pick 3 en adelante
         # no hay regla fija validada y manda el motor.
         n_mios = len(self.mis)
+        # ⚠️ Las reglas fijas R1/R2 se validaron pareadas PARA PEACE & LOVE
+        # (superflex). En cualquier otra liga manda el motor puro — sin esto,
+        # el pick 1 de Cheap-Sheet salía "mejor WR" (Nacua) en vez de Gibbs.
+        if _LIGA != 'pl':
+            n_mios = -1
         if n_mios == 0:
             elegido = max(porpos.get('WR', elegibles), key=lambda i: self.pool[i]['vbd'])
             regla = 'R1: mejor WR (regla validada)'
