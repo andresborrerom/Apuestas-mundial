@@ -133,10 +133,13 @@ class Estado:
         elegibles = [i for i in range(len(self.pool)) if vivos[i]
                      # 🔒 mis topes, no los de la sala: un IDP por posición
                      and cnt[self.pool[i]['pos']] < MAX_UTIL_MIO.get(self.pool[i]['pos'], 3)
-                     # K/DST jamás antes de la ronda 10 salvo forzado (practice
-                     # 2: un D/ST con ganancia 0 se colaba de 4ª opción)
+                     # K/DST solo al final. OJO: en cs `forzado` es True desde
+                     # el pick 1 (14 necesidades en 14 rondas) — la compuerta
+                     # cede únicamente cuando las rondas que quedan son las de
+                     # K/DST (+1 de holgura), no por el forzado genérico.
                      and (self.pool[i]['pos'] not in ('K', 'DST')
-                          or ronda_mia >= RONDAS - 4 or forzado)
+                          or ronda_mia >= (10 if _LIGA == 'pl' else RONDAS - 4)
+                          or quedan <= gaps.get('K', 0) + gaps.get('DST', 0) + 1)
                      and (not forzado or gaps.get(self.pool[i]['pos'], 0) > 0
                           or (extra_ofe > 0 and self.pool[i]['pos'] in OFE))]
         if not elegibles:      # topes+gates sin salida: relajar el gate

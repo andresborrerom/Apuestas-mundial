@@ -104,8 +104,18 @@ class Draft:
                 continue
             if forzado and not (gaps.get(p, 0) > 0 or (extra_ofe > 0 and p in OFE)):
                 continue
-            if p in ('K', 'DST') and ronda < 11 and not forzado:
-                continue
+            if p in ('K', 'DST'):
+                if t != MI_PICK - 1:
+                    # rivales: regla original validada (backtest P&L intacto)
+                    if ronda < 11 and not forzado:
+                        continue
+                # mi asiento: en cs `forzado` es True desde el pick 1 (14
+                # necesidades en 14 rondas) y anulaba la compuerta → esta
+                # cede solo cuando las rondas restantes son las de K/DST
+                elif ronda < (11 if LIGA == 'pl' else RONDAS - 3) and \
+                        (RONDAS - len(self.roster[t])) > (gaps.get('K', 0)
+                                                          + gaps.get('DST', 0) + 1):
+                    continue
             out.append(i)
             if len(out) >= limite:
                 break
