@@ -46,7 +46,12 @@ IDP = ('DT', 'DE', 'LB', 'CB', 'S')
 # Pesos por asiento medidos en las temporadas con slot OP (managers.py).
 # Se aplican POR DEFECTO en todo el simulador: cada rival juega como él.
 from optimize.managers import pesos as _pesos
-W_QB, W_IDP = _pesos()
+from optimize.sala import LIGA
+if LIGA == 'cs':      # rivales de OTRA liga: sin historia → pesos neutros
+    W_QB = [1.0] * EQUIPOS
+    W_IDP = [1.0] * EQUIPOS
+else:
+    W_QB, W_IDP = _pesos()
 
 
 class Draft:

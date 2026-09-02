@@ -25,9 +25,18 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import numpy as np
 
 RAIZ = Path(__file__).resolve().parent.parent
-EQUIPOS = 16
-RONDAS = 18                     # 14 titulares + 4 banca (IR no se draftea)
-MI_PICK = 5                     # sorteo 27-ago: Pocho = 5
+import os
+# ── SELECTOR DE LIGA (1-sep): LIGA=cs → Fantasy Cheap-Sheet (draft 2-sep).
+# Default: Peace and Love. El pick propio en cs se pasa por env LIGA_PICK.
+LIGA = os.environ.get('LIGA', 'pl')
+if LIGA == 'cs':
+    EQUIPOS = 14
+    RONDAS = 14                 # 10 titulares + 4 banca
+    MI_PICK = int(os.environ.get('LIGA_PICK', '1'))   # pickOrder: team 1 = yo
+else:
+    EQUIPOS = 16
+    RONDAS = 18                 # 14 titulares + 4 banca (IR no se draftea)
+    MI_PICK = 5                 # sorteo 27-ago: Pocho = 5
 ORDEN = ['Ferchos', 'Jaime', 'Nich', 'Luisca', 'POCHO', 'Diego', 'Santi A',
          'Sergio', 'Brian', 'Rodrigo', 'Gabriel', 'SteveO', 'Esguerra',
          'Kike', 'James B', 'Santi Gut']
@@ -43,6 +52,9 @@ MAX_UTIL = {'QB': 3, 'RB': 5, 'WR': 5, 'TE': 2, 'DT': 2, 'DE': 2, 'LB': 2,
 # llena de IDP (greedy, 1.7-2.0 por posición) es la peor de todas por lejos
 # (−$469 por temporada, t = −16.8). La regla y la medición coinciden.
 MAX_UTIL_MIO = dict(MAX_UTIL, DT=1, DE=1, LB=1, CB=1, S=1)
+if LIGA == 'cs':                # sin IDP; banca ofensiva
+    MAX_UTIL = {'QB': 2, 'RB': 7, 'WR': 7, 'TE': 2, 'DST': 1, 'K': 1}
+    MAX_UTIL_MIO = dict(MAX_UTIL)
 # ✅ VERIFICADO en eligibleSlots: el slot 7 (OP) admite QB/RB/WR/TE — NO es un
 # superflex que obligue a un 2º QB. Mínimos duros por posición + un mínimo de
 # 7 ofensivos totales (QB, RB, WR×2, TE, flex RB/WR y OP).
@@ -56,6 +68,10 @@ OBLIG = {'QB': 1, 'RB': 1, 'WR': 2, 'TE': 1, 'DT': 1, 'DE': 1, 'LB': 1,
 OBLIG_MIO = dict(OBLIG, QB=2)
 OFE = ('QB', 'RB', 'WR', 'TE')
 OFE_MIN = 7
+if LIGA == 'cs':
+    OBLIG = {'QB': 1, 'RB': 2, 'WR': 2, 'TE': 1, 'DST': 1, 'K': 1}
+    OBLIG_MIO = dict(OBLIG, QB=2)       # guardarraíl QB>=2 también aquí
+    OFE_MIN = 12                        # 14 rondas − DST − K
 
 
 def orden_snake():
@@ -68,7 +84,49 @@ def orden_snake():
     return out
 
 
+def cargar_cs():
+    """Pool Cheap-Sheet: proyección FRESCA puntuada por ESPN bajo SUS reglas
+    (optimize/cheapsheet.py). Lesión ya aplicada allí; DST vale 0 (real)."""
+    byes = {}
+    for r in csv.DictReader(open(RAIZ / 'data' / 'archivo' / '2026-08-28' /
+                                 'ffc_2qb_adp.csv')):
+        if r.get('bye'):
+            byes[r['name']] = int(r['bye'])
+    adp = {}
+    for pw in json.load(open(RAIZ / 'data' / 'espn_applied_2025.json')):
+        p = pw['player']
+        a = (p.get('ownership') or {}).get('averageDraftPosition')
+        if a and a > 0:
+            adp[p['id']] = a
+    jug = []
+    for r in csv.DictReader(open(RAIZ / 'data' / 'cheapsheet_tablero.csv')):
+        pid = int(r['espn_id'])
+        pr = float(r['proj'])
+        jug.append(dict(nombre=r['nombre'], pos=r['pos'], vbd=float(r['vbd']),
+                        proj=pr, p10=float(r['p10']) if r['p10'] else pr * .6,
+                        p50=pr, p90=float(r['p90']) if r['p90'] else pr * 1.4,
+                        espn_id=pid, adp=adp.get(pid),
+                        bye=byes.get(r['nombre'], 0)))
+    con_adp = sorted([j for j in jug if j['adp']], key=lambda j: j['adp'])
+    for i, j in enumerate(con_adp):
+        j['rk_adp'] = i + 1
+    for j in jug:
+        j.setdefault('rk_adp', None)
+    porpos = {}
+    for j in jug:
+        porpos.setdefault(j['pos'], []).append(j)
+    for lst in porpos.values():
+        lst.sort(key=lambda j: -j['proj'])
+        for i, j in enumerate(lst):
+            j['rk_pos_proj'] = i + 1
+    for i, j in enumerate(sorted(jug, key=lambda j: -j['proj'])):
+        j['rk_proj'] = i + 1
+    return jug
+
+
 def cargar():
+    if LIGA == 'cs':
+        return cargar_cs()
     """⚠️ Se une por espn_id, NUNCA por nombre: el corpus tiene 8 homónimos
     (Justin Jefferson WR/LB, Lamar Jackson QB/CB, Chris Jones DT/CB...) y
     indexar por nombre sobreescribía el ADP del bueno con el del homónimo
@@ -205,7 +263,29 @@ def slots_libres(roster):
     return need, flex, cnt
 
 
+def valor_roster_cs(roster, campo='vbd'):
+    porpos = {}
+    for j in roster.values():
+        porpos.setdefault(j['pos'], []).append(j)
+    for v in porpos.values():
+        v.sort(key=lambda j: -j[campo])
+    tot, usados = 0.0, set()
+    for p, k in (('QB', 1), ('RB', 2), ('WR', 2), ('TE', 1), ('DST', 1), ('K', 1)):
+        for j in porpos.get(p, [])[:k]:
+            tot += j[campo]; usados.add(j['nombre'])
+    def libres(poss):
+        return sorted((j for p in poss for j in porpos.get(p, [])
+                       if j['nombre'] not in usados), key=lambda j: -j[campo])
+    for j in libres(('RB', 'WR'))[:1]:                    # flex RB/WR
+        tot += j[campo]; usados.add(j['nombre'])
+    for j in libres(('RB', 'WR', 'TE'))[:1]:              # FLEX RB/WR/TE
+        tot += j[campo]; usados.add(j['nombre'])
+    return tot
+
+
 def valor_roster(roster, campo='vbd'):
+    if LIGA == 'cs':
+        return valor_roster_cs(roster, campo)
     """Σ del mejor titular posible (14 slots). Asignación por JUGADOR (no por
     valor: los empates rompían la exclusión). Slots dedicados → OP (pool
     QB/RB/WR/TE, el mayor) → 2 flex RB/WR; greedy del pool mayor al menor es

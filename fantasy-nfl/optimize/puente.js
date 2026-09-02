@@ -20,6 +20,7 @@
  */
 (() => {
   const URL_TABLERO = 'http://localhost:8787/puente';
+  const EQUIPOS = 14;   // ⚠️ HOY 2-sep: Cheap-Sheet=14. Para P&L (7-sep): 16.
   const POSICIONES = ['QB', 'RB', 'WR', 'TE', 'DT', 'DE', 'LB', 'CB', 'S', 'D/ST', 'K'];
 
   // --- localizar el contenedor del historial (varias estrategias) ---------
@@ -57,10 +58,10 @@
         // "P" cuenta el ORDEN CRONOLÓGICO dentro de la ronda (el snake ya
         // está aplicado por ESPN) → overall directo. ⚠️ VERIFICAR en el mock
         // con el badge: el "último" debe coincidir con el pick real.
-        n = (ronda - 1) * 16 + enRonda;
+        n = (ronda - 1) * EQUIPOS + enRonda;
         continue;
       }
-      if ((m = ln.match(/^(\d{1,3})(?:\.|:)?$/)) && +m[1] >= 1 && +m[1] <= 288) {
+      if ((m = ln.match(/^(\d{1,3})(?:\.|:)?$/)) && +m[1] >= 1 && +m[1] <= EQUIPOS * 20) {
         n = +m[1];                                   // número overall directo
         continue;
       }
@@ -78,7 +79,7 @@
         n = null;
       }
     }
-    return picks.filter(p => p.nombre && p.n >= 1 && p.n <= 288);
+    return picks.filter(p => p.nombre && p.n >= 1 && p.n <= EQUIPOS * 20);
   }
 
   // --- badge de verificación ---------------------------------------------

@@ -60,6 +60,9 @@ def candados_arranque():
     """Los tres candados. Devuelve lista de (nombre, ok, detalle)."""
     out = []
     lid, s2, swid = credenciales()
+    from optimize.sala import LIGA
+    from optimize.live_draft import LIGA_IDS
+    lid = LIGA_IDS.get(LIGA) or lid
     u = (f"https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons/2026"
          f"/segments/0/leagues/{lid}")
     r = requests.get(u, params={'view': ['mSettings', 'mTeam']},
@@ -67,7 +70,9 @@ def candados_arranque():
     r.raise_for_status()
     d = r.json()
     # 1. TRIPWIRE de scoring (la ficha T1 vive aquí)
-    local = json.load(open(RAIZ / 'config' / 'espn_settings_2026.json'))
+    archivo_cfg = ('espn_settings_cheapsheet_2026.json' if LIGA == 'cs'
+                   else 'espn_settings_2026.json')
+    local = json.load(open(RAIZ / 'config' / archivo_cfg))
     canon = lambda items: sorted(
         (it['statId'], it.get('points'), tuple(sorted((it.get('pointsOverrides')
                                                        or {}).items())))

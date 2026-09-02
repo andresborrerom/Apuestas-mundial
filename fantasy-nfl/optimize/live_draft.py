@@ -30,12 +30,20 @@ from optimize.sala import (EQUIPOS, RONDAS, MI_PICK, MAX_UTIL, MAX_UTIL_MIO, OBL
                            OFE_MIN, cargar, score_sala, orden_snake)
 from optimize.plan_draft import Draft, UMBRAL_BYE, calibrar, e_mejor, preparar
 
-MI_TEAM_ID = 10                      # 'No Team for Old Men' — verificado
+from optimize.sala import LIGA as _LIGA
+# teamId propio POR LIGA (ambos verificados contra mTeam):
+#   pl: 10 'No Team for Old Men' · cs: 1 'Remember the Titan'
+MI_TEAM_ID = 1 if _LIGA == 'cs' else 10
 QB_BONUS_DEF, IDP_PEN_DEF = None, None   # se calibran al arrancar
+
+
+LIGA_IDS = {'pl': None, 'cs': 1643420925}      # None → la del .env
 
 
 def api_picks():
     lid, s2, swid = credenciales()
+    from optimize.sala import LIGA
+    lid = LIGA_IDS.get(LIGA) or lid
     u = (f"https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons/2026"
          f"/segments/0/leagues/{lid}")
     r = requests.get(u, params={'view': ['mDraftDetail', 'mTeam']},
