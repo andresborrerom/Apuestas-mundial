@@ -31,8 +31,7 @@ def construir():
     contra nuestro motor: mediana Δ1.15 en 235 ofensivos; las diferencias
     grandes son ACTUALIZACIONES de proyección post-28-ago, p.ej. Jacobs
     255→151). Recorte S-LESION solo si ESPN aún NO descontó (fresco ≥ 0.9 ×
-    motor con crudos viejos). DST: la liga puntúa CERO a las 32 (verificado
-    settings + applied) → proj 0, pick muerto de última ronda."""
+    motor con crudos viejos). DST: puntúa desde el cambio del 2-sep (el comish lo encendió)."""
     items = cargar_reglas('espn_settings_cheapsheet_2026')
     todos = json.load(open(RAIZ / 'data' / 'espn_applied_2025.json'))
     fresco = json.load(open(RAIZ / 'data' / 'cheapsheet_applied.json'))
@@ -52,9 +51,9 @@ def construir():
             continue
         mio = puntos(ent[0].get('stats') or {}, p.get('defaultPositionId'), items)
         pts = fresco.get(str(p['id']), mio)   # fresco manda; motor de respaldo
-        if pos == 'DST':
-            pts = 0.0
-        if pts <= 0 and pos != 'DST':
+        # (2-sep 10am: el comish ENCENDIÓ el scoring de D/ST a pedido de la
+        # liga — verificado item por item; ya no se fuerza a 0)
+        if pts <= 0:
             continue
         st = (inj.get(str(p['id'])) or {}).get('inj')
         f = REC.get(st, 1.0)
