@@ -17,7 +17,9 @@ def credenciales():
     lid = os.getenv("ESPN_LEAGUE_ID"); s2 = os.getenv("ESPN_S2"); swid = os.getenv("ESPN_SWID")
     faltan = [k for k, v in [("ESPN_LEAGUE_ID", lid), ("ESPN_S2", s2), ("ESPN_SWID", swid)] if not v]
     if faltan:
-        raise SystemExit(f"❌ Faltan en .env: {', '.join(faltan)}. Ver instrucciones en docs/CREDENCIALES.md")
+        # RuntimeError (no SystemExit): los llamadores que pueden vivir sin
+        # API —el tablero en modo --puente (2-sep)— la capturan y siguen.
+        raise RuntimeError(f"❌ Faltan en .env: {', '.join(faltan)}. Ver instrucciones en docs/CREDENCIALES.md")
     if not swid.startswith("{"):
         swid = "{" + swid.strip("{}") + "}"   # el swid VA con llaves
     return int(lid), s2, swid
