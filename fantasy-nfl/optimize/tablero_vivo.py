@@ -292,7 +292,7 @@ sola cada 10 s · ctrl+shift+R fuerza</div>
 # ---- PUENTE DEL NAVEGADOR (1-sep): la pestaña del draft room POSTea aquí
 # el Pick History que ve en el DOM. Es la fuente EN VIVO del 7-sep (medido
 # 28-ago: la API de ESPN no publica picks hasta el cierre).
-PUENTE = {'picks': [], 'ts': 0.0, 'sin_resolver': []}
+PUENTE = {'picks': [], 'ts': 0.0, 'sin_resolver': [], 'acum': {}}
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -302,7 +302,13 @@ class Handler(BaseHTTPRequestHandler):
         try:
             n = int(self.headers.get('Content-Length') or 0)
             datos = json.loads(self.rfile.read(n).decode('utf-8', 'replace'))
-            PUENTE['picks'] = datos.get('picks', [])
+            # 🔧 2-sep (practice 2): ESPN VIRTUALIZA el Pick History — cada
+            # POST trae solo las filas visibles. Se ACUMULA por número de
+            # pick (lo último visto gana) en vez de reemplazar.
+            for p in datos.get('picks', []):
+                if p.get('n'):
+                    PUENTE['acum'][int(p['n'])] = p
+            PUENTE['picks'] = [PUENTE['acum'][k] for k in sorted(PUENTE['acum'])]
             PUENTE['ts'] = time.time()
         except Exception as e:
             print('puente: cuerpo inválido:', type(e).__name__, e)
@@ -334,11 +340,13 @@ def bucle(est, args, fuente_picks):
             continue
         for gp, team, pid in hechos:
             est.marcar(est.por_id.get(pid), team, gp)
-        if len(hechos) != ultimo:
-            ultimo = len(hechos)
+        firma = hash(tuple(hechos))
+        if firma != ultimo:
+            ultimo = firma
             t0 = time.time()
             idx, info = est.recomendar(hechos, sims=args.sims)
-            print(f'  pick {ultimo}: recomputado en {time.time()-t0:.1f}s → '
+            hechos_n = max((h[0] for h in hechos), default=0)
+            print(f'  {hechos_n} picks: recomputado en {time.time()-t0:.1f}s → '
                   f'{est.pool[idx]["nombre"] if idx is not None else "—"}')
         PAGINA_HTML = render(est, hechos, idx, info, args.filas,
                              demo=args.demo).encode()

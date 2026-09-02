@@ -59,9 +59,14 @@
     return ln.replace(/\b(QB|RB|WR|TE|DT|DE|LB|CB|K)\b.*$/, '')
              .replace(/\s+(Q|O|D|IR|SSPD)$/, '').trim();
   }
+  // v3 (practice 2): ESPN VIRTUALIZA la tabla — solo las filas visibles
+  // existen en el DOM. El puente ACUMULA todo lo que haya visto (cada pick
+  // pasa por la vista cuando ocurre) y también lee el carril derecho
+  // "Picks" (nombre y luego "R#, P# - equipo").
+  const ACUM = (window.__puente_acum = window.__puente_acum || new Map());
   function PARSEAR(texto) {
     const lineas = texto.split('\n').map(s => s.trim()).filter(Boolean);
-    const porN = new Map();
+    const porN = ACUM;
     for (let i = 0; i < lineas.length - 1; i++) {
       const ln = lineas[i], sig = lineas[i + 1];
       let n = null, m;
@@ -69,6 +74,19 @@
         n = (+m[1] - 1) * EQUIPOS + (+m[2]);
       } else if ((m = ln.match(/^(\d{1,3})(?:\.|:)?$/))) {
         n = +m[1];
+      }
+      // carril derecho: NOMBRE y luego "R8, P4 - Equipo"
+      if (n === null && esNombre(ln)) {
+        const mr = sig.match(/^R(\d+),?\s*P(\d+)\s*[-\u2014]/i);
+        if (mr) {
+          const nn = (+mr[1] - 1) * EQUIPOS + (+mr[2]);
+          if (nn >= 1 && nn <= EQUIPOS * 20 && !porN.has(nn)) {
+            const pos2 = (ln.match(/\b(QB|RB|WR|TE|DT|DE|LB|CB|S|D\/ST|K)\b/) || [])[1] || null;
+            porN.set(nn, { n: nn, nombre: limpiaNombre(ln), pos: pos2 });
+          }
+          i++;
+          continue;
+        }
       }
       if (n === null || n < 1 || n > EQUIPOS * 20 || !esNombre(sig)) continue;
       if (porN.has(n)) continue;                  // dedupe: manda la tabla

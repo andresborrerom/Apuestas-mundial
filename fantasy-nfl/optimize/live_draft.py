@@ -95,7 +95,8 @@ class Estado:
         return cands[0] if len(cands) == 1 else (cands if cands else None)
 
     def proximo_mio(self, hechos):
-        n = len(hechos)
+        # max(n), no len(): con el panel virtualizado puede haber huecos
+        n = max((h[0] for h in hechos), default=0)
         return next((p for p in self.mis_picks if p > n), None)
 
     def cargar_estado(self, rng):
@@ -110,7 +111,7 @@ class Estado:
 
     def recomendar(self, hechos, sims=250, seed=7):
         """Simula desde el estado real hasta mi próximo turno y decide."""
-        hechos_n = len(hechos)
+        hechos_n = max((h[0] for h in hechos), default=0)
         mi_pick = next((p for p in self.mis_picks if p > hechos_n), None)
         if mi_pick is None:
             return None, {}
@@ -128,11 +129,19 @@ class Estado:
         extra_ofe = max(0, OFE_MIN - ofe)
         quedan = RONDAS - len(self.mis)
         forzado = sum(gaps.values()) + extra_ofe >= quedan
+        ronda_mia = (mi_pick - 1) // EQUIPOS + 1
         elegibles = [i for i in range(len(self.pool)) if vivos[i]
                      # 🔒 mis topes, no los de la sala: un IDP por posición
                      and cnt[self.pool[i]['pos']] < MAX_UTIL_MIO.get(self.pool[i]['pos'], 3)
+                     # K/DST jamás antes de la ronda 10 salvo forzado (practice
+                     # 2: un D/ST con ganancia 0 se colaba de 4ª opción)
+                     and (self.pool[i]['pos'] not in ('K', 'DST')
+                          or ronda_mia >= RONDAS - 4 or forzado)
                      and (not forzado or gaps.get(self.pool[i]['pos'], 0) > 0
                           or (extra_ofe > 0 and self.pool[i]['pos'] in OFE))]
+        if not elegibles:      # topes+gates sin salida: relajar el gate
+            elegibles = [i for i in range(len(self.pool)) if vivos[i]
+                         and cnt[self.pool[i]['pos']] < MAX_UTIL_MIO.get(self.pool[i]['pos'], 3)]
         if sig is None:
             mejor = max(elegibles, key=lambda i: self.pool[i]['vbd'])
             return mejor, {'motivo': 'último turno: mejor VBD disponible'}
@@ -166,7 +175,7 @@ class Estado:
             if len(idxs) > 1 and ahora - self.pool[idxs[1]]['vbd'] <= UMBRAL_BYE:
                 opciones.append((ahora - luego - (ahora - self.pool[idxs[1]]['vbd']),
                                  idxs[1]))
-        filas.sort(reverse=True)
+        filas.sort(key=lambda f: (f[0], f[3]), reverse=True)  # empate de g → más VBD
         elegido, regla, desempate = filas[0][2], None, None
         # 🔄 DESEMPATE POR BYES (1-sep, validado pareado en 20 salas: −VBD 0,
         # menos semanas con 3+ titulares ofensivos en bye): entre opciones a
