@@ -76,6 +76,16 @@ if LIGA == 'cs':
     OFE_MIN = 12                        # 14 rondas − DST − K
 
 
+def abrir_applied():
+    """data/espn_applied_2025.json, o el .gz que es lo que viaja en git
+    (la máquina de Andrés solo tiene el .gz — 2-sep)."""
+    p = RAIZ / 'data' / 'espn_applied_2025.json'
+    if p.exists():
+        return json.load(open(p))
+    import gzip
+    return json.load(gzip.open(str(p) + '.gz', 'rt'))
+
+
 def orden_snake():
     """Lista de (pick_global, indice_equipo)."""
     out = []
@@ -95,7 +105,7 @@ def cargar_cs():
         if r.get('bye'):
             byes[r['name']] = int(r['bye'])
     adp = {}
-    for pw in json.load(open(RAIZ / 'data' / 'espn_applied_2025.json')):
+    for pw in abrir_applied():
         p = pw['player']
         a = (p.get('ownership') or {}).get('averageDraftPosition')
         if a and a > 0:
@@ -134,7 +144,7 @@ def cargar():
     indexar por nombre sobreescribía el ADP del bueno con el del homónimo
     (Jefferson 12.2 -> 170.5), volviéndolos invisibles para la sala."""
     dist = list(csv.DictReader(open(RAIZ / 'data' / 'proyeccion_dist.csv')))
-    todos = json.load(open(RAIZ / 'data' / 'espn_applied_2025.json'))
+    todos = abrir_applied()
     adp = {}
     for pw in todos:
         p = pw['player']

@@ -35,7 +35,8 @@ def frase_clave(txt):
 
 
 def construir():
-    todos = json.load(open(RAIZ / 'data' / 'espn_applied_2025.json'))
+    from optimize.sala import abrir_applied
+    todos = abrir_applied()
     P26, P25, equipo, pos_de, outlook = {}, {}, {}, {}, {}
     for pw in todos:
         p = pw['player']
