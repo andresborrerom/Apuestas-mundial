@@ -32,9 +32,10 @@ LIGA = os.environ.get('LIGA', 'pl')
 if LIGA == 'cs':
     EQUIPOS = 14
     RONDAS = 14                 # 10 titulares + 4 banca
-    # ✅ VERIFICADO 2-sep 9:50am contra grilla + UI: orden MANUAL
-    # [10,11,6,4,2,9,7,12,13,14,8,1,5,3] → teamId 1 pickea DE 12º.
-    MI_PICK = int(os.environ.get('LIGA_PICK', '12'))
+    # ✅ VERIFICADO 2-sep 8:42pm (el comish lo movió DOS veces hoy):
+    # [9,10,3,2,14,6,12,1,8,5,4,11,7,13] → teamId 1 pickea DE 8º.
+    # El candado de arranque verifica pickOrder[MI_PICK-1]==1 contra la API.
+    MI_PICK = int(os.environ.get('LIGA_PICK', '8'))
 else:
     EQUIPOS = 16
     RONDAS = 18                 # 14 titulares + 4 banca (IR no se draftea)
