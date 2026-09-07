@@ -187,7 +187,13 @@ def render(est, hechos, idx, info, N, demo=False):
             p = P[i]['pos']
             if cnt[p] >= MAX_UTIL_MIO.get(p, 3):
                 continue                      # regla: 1 IDP por posición, etc.
-            g = P[i]['vbd'] - luego_pos.get(p, 0.0)
+            # 🚨 FIX 7-sep (en vivo): una posición SIN fila en la tabla del
+            # motor está compuerteada (K/DST antes de tiempo) — el viejo
+            # default 0.0 les regalaba ganancia = VBD completo y Aubrey/DSTs
+            # se colaban al top de la escalera.
+            if p not in luego_pos:
+                continue
+            g = P[i]['vbd'] - luego_pos[p]
             top.append((g, i, surv[i]))
         top.sort(reverse=True)
 
