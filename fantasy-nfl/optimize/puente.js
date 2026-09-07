@@ -20,7 +20,7 @@
  */
 (() => {
   const URL_TABLERO = 'http://localhost:8787/puente';
-  const EQUIPOS = 14;   // ⚠️ HOY 2-sep: Cheap-Sheet=14. Para P&L (7-sep): 16.
+  const EQUIPOS = 16;   // ✅ 7-sep: PEACE AND LOVE = 16 equipos.
   const POSICIONES = ['QB', 'RB', 'WR', 'TE', 'DT', 'DE', 'LB', 'CB', 'S', 'D/ST', 'K'];
 
   // --- localizar el contenedor del historial (varias estrategias) ---------
