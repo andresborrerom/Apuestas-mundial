@@ -1103,3 +1103,20 @@ completos". Tenía razón.
   filtro por signo sobre IDs de terceros es una suposición sobre su esquema;
   el candado correcto es el valor centinela, y la prueba tiene que correr
   contra el corpus real, no contra mi idea del corpus.
+
+### 10-sep (cont.) — Recibo re-leído con el filtro arreglado
+
+288/288 picks (antes 271), **17 IDs negativos recuperados** = las 16 D/ST
+drafteadas + una segunda que tomó un equipo. Candado: **ningún equipo sin
+D/ST**. Archivado en `data/draft_2026_recibo.csv` (pick, ronda, equipo,
+jugador, pos) — el draft real de la liga no estaba guardado en ninguna
+parte; `historia_drafts.csv` cubre 2010-2025 y tenía cero filas de 2026.
+
+**Ranking real (VBD titular, rosters completos):** el.ai.on 586 · **NOSOTROS
+549 (#2 de 16)** · Team 18 530 · Back 2 Back 519 … EZWAR 348.
+El bug no cambió nuestra posición (#2 antes y después): 526 + 23 del Ravens
+D/ST = 549 exacto. El #1 tiene Rams D/ST (22.8), casi idéntico — las
+defensas no movieron la parte alta de la tabla.
+
+⚠️ Un pick sin match en el tablero: James Conner (286) — está en IR, por eso
+no entró a la proyección. Sin efecto.
