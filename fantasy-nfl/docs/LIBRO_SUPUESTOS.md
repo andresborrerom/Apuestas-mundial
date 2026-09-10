@@ -1108,9 +1108,18 @@ completos". Tenía razón.
 
 288/288 picks (antes 271), **17 IDs negativos recuperados** = las 16 D/ST
 drafteadas + una segunda que tomó un equipo. Candado: **ningún equipo sin
-D/ST**. Archivado en `data/draft_2026_recibo.csv` (pick, ronda, equipo,
-jugador, pos) — el draft real de la liga no estaba guardado en ninguna
-parte; `historia_drafts.csv` cubre 2010-2025 y tenía cero filas de 2026.
+D/ST**. ⚠️ **El orden de picks de `draftDetail` NO es el orden real del draft.**
+Hubo un fallo en la sala y el comisionado re-ingresó el draft a mano
+respetando los equipos finales (confirmado por Andrés, 10-sep). ESPN quedó
+asociando cada jugador al **slot de alineación** (QB, RB, RB/WR, WR, WR, TE,
+OP, DT…, BANCA), no a la ronda en que se tomó: nuestro pick 28 aparece como
+Breece Hall cuando en vivo fue CeeDee Lamb. Lo cazó el cruce contra la
+ronda 1 que Andrés pegó esa noche (3 de 10 nombres no cuadraban).
+**Consecuencia:** el ROSTER por equipo es autoritativo; la atribución
+pick→jugador no. Archivado como `data/rosters_2026_postdraft.csv` (equipo,
+jugador, pos, slot final) — sin columna de ronda, para no inducir a error.
+Cualquier análisis de "cuándo se fue cada jugador" con este archivo es
+inválido; `historia_drafts.csv` (2010-2025) no puede extenderse con 2026.
 
 **Ranking real (VBD titular, rosters completos):** el.ai.on 586 · **NOSOTROS
 549 (#2 de 16)** · Team 18 530 · Back 2 Back 519 … EZWAR 348.
