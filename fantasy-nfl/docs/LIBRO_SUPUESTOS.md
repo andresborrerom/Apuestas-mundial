@@ -1161,3 +1161,44 @@ produce a tarifa de titular cuando Jacobs no esté.
 posicional (Maye QB en superflex); por puntos crudos éramos #5. Son
 preguntas distintas — el VBD era la métrica de DECISIÓN en el draft, los
 puntos de temporada son los que de verdad se anotan.
+
+## 10-sep — MARCADOR SEMANAL: el desacuerdo con FantasyPros se mide, no se discute
+
+Andrés: "me sorprende mucho mi resultado. FantasyPros dice que no llego ni a
+playoffs." Nuestro modelo lo pone entre #1 y #5; su app le da 37% (#10/16).
+
+**Forense de la discrepancia (medido, no opinado):**
+- 🔍 Las dos pantallas de FantasyPros se contradicen entre sí: el.ai.on es su
+  #2 en playoff odds (81%) y no aparece en el top-9 de su propio ranking ROS.
+  Team 18 recibe 88 en ROS teniendo la PEOR ofensiva de la liga según el ECR
+  superflex de la propia FantasyPros (suma 575/16); No Team for Old Men tiene
+  la MEJOR (343) y recibe el mismo 88.
+- 📊 corr(ROS de FantasyPros, fuerza del bloque IDP) = **−0.41**: sus favoritos
+  son justo los equipos con peor defensa (Guru Vibes #16 en IDP → su #3;
+  EZWAR #13 → su #4). corr con el bloque ofensivo = +0.12 (nula).
+  En esta liga el bloque IDP+D/ST+K son 7 de 14 titulares y ~640 pts (28%
+  del total), con el cambio T1 de tacleadas del 28-ago. Señal fuerte de que
+  su modelo no tiene cargada la mitad defensiva.
+- ⚠️ NUESTRO punto ciego, declarado: Jacobs. Sensibilidad medida — con su ECR
+  pre-escándalo (64) nuestra ofensiva es #1 de la liga; con ECR 180+ cae a
+  #13. Heredamos la proyección optimista de ESPN (219 pts, 13.5 juegos) sobre
+  un caso judicial abierto, y encima le sumamos el bono del handcuff.
+- ⚠️ El ECR archivado es del 21-ago, ANTERIOR a la lista de exentos del 30-ago.
+  Cualquier lectura que lo use como "consenso de hoy" está viciada.
+
+**Lo construido:** `optimize/marcador_semanal.py` + `tests/test_marcador.py`.
+Lee los puntos REALES de la API (view mMatchupScore — la fuente que reparte
+las consecuencias) y mide con correlación de rangos cuál de los cuatro
+órdenes (nuestro VBD, nuestros puntos de temporada, el ROS de FantasyPros,
+sus playoff odds) anticipa mejor lo que de verdad se anota.
+
+Candados: 16 equipos y 14×8 partidos; **una semana entra SOLO si los 16
+jugaron** (una semana a medias produce correlaciones basura); los snapshots
+de FantasyPros cubren 9-11 de 16 equipos y la correlación se calcula sobre la
+intersección reportando el n — nunca se rellenan huecos.
+
+⚠️ CADUCIDAD: **con menos de 4 semanas completas el script se niega a
+concluir** y lo dice en pantalla. Hoy (semana 1 en curso) no concluye nada,
+que es lo correcto. Snapshot de FantasyPros congelado en
+`data/fantasypros_snapshot.json` con fecha y con los valores ilegibles
+marcados como faltantes, no inventados.
