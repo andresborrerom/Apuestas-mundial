@@ -1,0 +1,289 @@
+team_id,equipo,espn_id,jugador,pos,slot_final,orden_espn
+13,Ferchos,3918298,Josh Allen,QB,QB,1
+7,Good Boy Tua,4432577,C.J. Stroud,QB,QB,2
+1,ComNich,3915511,Joe Burrow,QB,QB,3
+17,Guru Vibes Only,4040715,Jalen Hurts,QB,QB,4
+10,No Team for Old Men,4431452,Drake Maye,QB,QB,5
+2,Ayayay,3916387,Lamar Jackson,QB,QB,6
+15,Victorious Secret,3052587,Baker Mayfield,QB,QB,7
+4,Bolivia,4426348,Jayden Daniels,QB,QB,8
+16,el.ai.on,4361741,Brock Purdy,QB,QB,9
+3,Raw Dawg,4689114,Jaxson Dart,QB,QB,10
+11,Injury Report ,2577417,Dak Prescott,QB,QB,11
+8,Back 2 Back,12483,Matthew Stafford,QB,QB,12
+14,EZWAR,4431611,Caleb Williams,QB,QB,13
+12,KeepMyTeamNameOuttaYoFMouth,4360310,Trevor Lawrence,QB,QB,14
+9,Panamanian P!mps,3912547,Sam Darnold,QB,QB,15
+18,Team 18,4038941,Justin Herbert,QB,QB,16
+18,Team 18,4239996,Travis Etienne Jr.,RB,RB,17
+9,Panamanian P!mps,4242335,Jonathan Taylor,RB,RB,18
+12,KeepMyTeamNameOuttaYoFMouth,4870808,Jeremiyah Love,RB,RB,19
+14,EZWAR,4379399,James Cook III,RB,RB,20
+8,Back 2 Back,3043078,Derrick Henry,RB,RB,21
+11,Injury Report ,4429160,De'Von Achane,RB,RB,22
+3,Raw Dawg,4696981,Cam Skattebo,RB,RB,23
+16,el.ai.on,4890973,Ashton Jeanty,RB,RB,24
+4,Bolivia,4685702,Quinshon Judkins,RB,RB,25
+15,Victorious Secret,4430807,Bijan Robinson,RB,RB,26
+2,Ayayay,4567048,Kenneth Walker III,RB,RB,27
+10,No Team for Old Men,4427366,Breece Hall,RB,RB,28
+17,Guru Vibes Only,3916148,Tony Pollard,RB,RB,29
+1,ComNich,4685512,Jadarian Price,RB,RB,30
+7,Good Boy Tua,4429795,Jahmyr Gibbs,RB,RB,31
+13,Ferchos,4430737,Kyren Williams,RB,RB,32
+13,Ferchos,4362238,Chase Brown,RB,RB/WR,33
+7,Good Boy Tua,4569173,Rhamondre Stevenson,RB,RB/WR,34
+1,ComNich,4685382,Omarion Hampton,RB,RB/WR,35
+17,Guru Vibes Only,4241478,DeVonta Smith,WR,RB/WR,36
+10,No Team for Old Men,4429023,MarShawn Lloyd,RB,RB/WR,37
+2,Ayayay,4882093,Bhayshul Tuten,RB,RB/WR,38
+15,Victorious Secret,3929630,Saquon Barkley,RB,RB/WR,39
+4,Bolivia,4047650,DK Metcalf,WR,RB/WR,40
+16,el.ai.on,4035687,Michael Pittman Jr.,WR,RB/WR,41
+3,Raw Dawg,4432708,Marvin Harrison Jr.,WR,RB/WR,42
+11,Injury Report ,4038815,Rico Dowdle,RB,RB/WR,43
+8,Back 2 Back,4361579,Javonte Williams,RB,RB/WR,44
+14,EZWAR,4259545,D'Andre Swift,RB,RB/WR,45
+12,KeepMyTeamNameOuttaYoFMouth,4695883,Jalen Coker,WR,RB/WR,46
+9,Panamanian P!mps,3117251,Christian McCaffrey,RB,RB/WR,47
+18,Team 18,4596448,Bucky Irving,RB,RB/WR,48
+18,Team 18,4362628,Ja'Marr Chase,WR,WR,49
+9,Panamanian P!mps,16800,Davante Adams,WR,WR,50
+12,KeepMyTeamNameOuttaYoFMouth,4374302,Amon-Ra St. Brown,WR,WR,51
+14,EZWAR,4361370,Chris Olave,WR,WR,52
+8,Back 2 Back,4685278,Luther Burden III,WR,WR,53
+11,Injury Report ,4428331,Rashee Rice,WR,WR,54
+3,Raw Dawg,4430878,Jaxon Smith-Njigba,WR,WR,55
+16,el.ai.on,4426515,Puka Nacua,WR,WR,56
+4,Bolivia,4262921,Justin Jefferson,WR,WR,57
+15,Victorious Secret,4429615,Zay Flowers,WR,WR,58
+2,Ayayay,4372016,Jaylen Waddle,WR,WR,59
+10,No Team for Old Men,4241389,CeeDee Lamb,WR,WR,60
+17,Guru Vibes Only,4047646,A.J. Brown,WR,WR,61
+1,ComNich,4612826,Ladd McConkey,WR,WR,62
+7,Good Boy Tua,4258173,Nico Collins,WR,WR,63
+13,Ferchos,4569618,Garrett Wilson,WR,WR,64
+13,Ferchos,4871023,Carnell Tate,WR,WR,65
+7,Good Boy Tua,3121422,Terry McLaurin,WR,WR,66
+1,ComNich,4239993,Tee Higgins,WR,WR,67
+17,Guru Vibes Only,3915416,DJ Moore,WR,WR,68
+10,No Team for Old Men,4567750,Emeka Egbuka,WR,WR,69
+2,Ayayay,16737,Mike Evans,WR,WR,70
+15,Victorious Secret,4685472,Tetairoa McMillan,WR,WR,71
+4,Bolivia,4595348,Malik Nabers,WR,WR,72
+16,el.ai.on,4701936,Matthew Golden,WR,WR,73
+3,Raw Dawg,4426502,Drake London,WR,WR,74
+11,Injury Report ,4426354,George Pickens,WR,WR,75
+8,Back 2 Back,4432773,Brian Thomas Jr.,WR,WR,76
+14,EZWAR,4248528,Christian Watson,WR,WR,77
+12,KeepMyTeamNameOuttaYoFMouth,4431299,Rome Odunze,WR,WR,78
+9,Panamanian P!mps,3128429,Courtland Sutton,WR,WR,79
+18,Team 18,4426388,Jameson Williams,WR,WR,80
+18,Team 18,3116365,Mark Andrews,TE,TE,81
+9,Panamanian P!mps,3040151,George Kittle,TE,TE,82
+12,KeepMyTeamNameOuttaYoFMouth,4572680,Tucker Kraft,TE,TE,83
+14,EZWAR,4385690,Dalton Kincaid,TE,TE,84
+8,Back 2 Back,4360248,Kyle Pitts Sr.,TE,TE,85
+11,Injury Report ,5083076,Harold Fannin Jr.,TE,TE,86
+3,Raw Dawg,4361307,Trey McBride,TE,TE,87
+16,el.ai.on,4431459,Tyler Warren,TE,TE,88
+4,Bolivia,3929645,Juwan Johnson,TE,TE,89
+15,Victorious Secret,3121023,Dallas Goedert,TE,TE,90
+2,Ayayay,4723086,Colston Loveland,TE,TE,91
+10,No Team for Old Men,4432665,Brock Bowers,TE,TE,92
+17,Guru Vibes Only,4361050,Isaiah Likely,TE,TE,93
+1,ComNich,4430027,Sam LaPorta,TE,TE,94
+7,Good Boy Tua,4242355,Jake Ferguson,TE,TE,95
+13,Ferchos,15847,Travis Kelce,TE,TE,96
+13,Ferchos,4036378,Jordan Love,QB,OP,97
+7,Good Boy Tua,4035538,David Montgomery,RB,OP,98
+1,ComNich,3046779,Jared Goff,QB,OP,99
+17,Guru Vibes Only,3917315,Kyler Murray,QB,OP,100
+10,No Team for Old Men,14880,Kirk Cousins,QB,OP,101
+2,Ayayay,3139477,Patrick Mahomes,QB,OP,102
+15,Victorious Secret,2578570,Jacoby Brissett,QB,OP,103
+4,Bolivia,3917792,Daniel Jones,QB,OP,104
+16,el.ai.on,4360689,Tyler Shough,QB,OP,105
+3,Raw Dawg,4241985,J.K. Dobbins,RB,OP,106
+11,Injury Report ,8439,Aaron Rodgers,QB,OP,107
+8,Back 2 Back,4426338,Bo Nix,QB,OP,108
+14,EZWAR,4685720,Bryce Young,QB,OP,109
+12,KeepMyTeamNameOuttaYoFMouth,4242512,Malik Willis,QB,OP,110
+9,Panamanian P!mps,4688380,Cam Ward,QB,OP,111
+18,Team 18,15864,Geno Smith,QB,OP,112
+18,Team 18,4035369,Jeffery Simmons,DT,DT,113
+9,Panamanian P!mps,2971282,DeForest Buckner,DT,DT,114
+12,KeepMyTeamNameOuttaYoFMouth,4035495,Derrick Brown,DT,DT,115
+14,EZWAR,4239699,Milton Williams,DT,DT,116
+8,Back 2 Back,4361366,Tommy Togiai,DT,DT,117
+11,Injury Report ,4039303,Ed Oliver,DT,DT,118
+3,Raw Dawg,4426694,Keeanu Benton,DT,DT,119
+16,el.ai.on,4360277,Jalen Redmond,DT,DT,120
+4,Bolivia,4381558,Jordan Davis,DT,DT,121
+15,Victorious Secret,4570040,Byron Murphy II,DT,DT,122
+2,Ayayay,4040982,Quinnen Williams,DT,DT,123
+10,No Team for Old Men,3044859,Chris Jones,DT,DT,124
+17,Guru Vibes Only,4685759,Jalen Carter,DT,DT,125
+1,ComNich,2971622,Leonard Williams,DT,DT,126
+7,Good Boy Tua,4039064,Malcolm Roach,DT,DT,127
+13,Ferchos,13977,Cameron Heyward,DT,DT,128
+13,Ferchos,4426473,Laiatu Latu,DE,DE,129
+7,Good Boy Tua,4875196,Byron Young,DE,DE,130
+1,ComNich,3045282,T.J. Watt,DE,DE,131
+17,Guru Vibes Only,4372099,Aidan Hutchinson,DE,DE,132
+10,No Team for Old Men,4037333,Alex Highsmith,DE,DE,133
+2,Ayayay,2976560,Danielle Hunter,DE,DE,134
+15,Victorious Secret,3052743,Trey Hendrickson,DE,DE,135
+4,Bolivia,4565190,Dallas Turner,DE,DE,136
+16,el.ai.on,4040605,Nick Bosa,DE,DE,137
+3,Raw Dawg,4431442,Tuli Tuipulotu,DE,DE,138
+11,Injury Report ,4685724,Will Anderson Jr.,DE,DE,139
+8,Back 2 Back,3122132,Myles Garrett,DE,DE,140
+14,EZWAR,3133487,Andrew Van Ginkel,DE,DE,141
+12,KeepMyTeamNameOuttaYoFMouth,3916655,Maxx Crosby,DE,DE,142
+9,Panamanian P!mps,4241986,Chase Young,DE,DE,143
+18,Team 18,4035631,Brian Burns,DE,DE,144
+18,Team 18,3138826,Fred Warner,LB,LB,145
+9,Panamanian P!mps,4429834,Cedric Gray,LB,LB,146
+12,KeepMyTeamNameOuttaYoFMouth,3728281,Blake Cashman,LB,LB,147
+14,EZWAR,3915189,Roquan Smith,LB,LB,148
+8,Back 2 Back,4876017,Carson Schwesinger,LB,LB,149
+11,Injury Report ,4043130,Jordyn Brooks,LB,LB,150
+3,Raw Dawg,4426340,Nakobe Dean,LB,LB,151
+16,el.ai.on,4362759,Nick Bolton,LB,LB,152
+4,Bolivia,4362851,Ernest Jones IV,LB,LB,153
+15,Victorious Secret,3050073,Foyesade Oluokun,LB,LB,154
+2,Ayayay,3919117,Azeez Al-Shaair,LB,LB,155
+10,No Team for Old Men,4379416,Quay Walker,LB,LB,156
+17,Guru Vibes Only,3917657,Zack Baun,LB,LB,157
+1,ComNich,4243181,Nate Landman,LB,LB,158
+7,Good Boy Tua,3129446,Robert Spillane,LB,LB,159
+13,Ferchos,4569465,Jack Campbell,LB,LB,160
+13,Ferchos,4431321,Dru Phillips,CB,CB,161
+7,Good Boy Tua,4248911,DaRon Bland,CB,CB,162
+1,ComNich,4682618,Cooper DeJean,CB,CB,163
+17,Guru Vibes Only,4360853,Talanoa Hufanga,S,S,164
+10,No Team for Old Men,4426405,Trent McDuffie,CB,CB,165
+2,Ayayay,3126356,Marlon Humphrey,CB,CB,166
+15,Victorious Secret,4575431,Devon Witherspoon,CB,CB,167
+4,Bolivia,4249128,Quentin Lake,CB,CB,168
+16,el.ai.on,4685415,Travis Hunter,WR,CB,169
+3,Raw Dawg,4242547,Paulson Adebo,CB,CB,170
+11,Injury Report ,4241223,Jalen Pitre,CB,CB,171
+8,Back 2 Back,4379397,Tyson Campbell,CB,CB,172
+14,EZWAR,4369835,Alontae Taylor,CB,CB,173
+12,KeepMyTeamNameOuttaYoFMouth,4869523,Nick Emmanwori,CB,CB,174
+9,Panamanian P!mps,4686772,Christian Gonzalez,CB,CB,175
+18,Team 18,4602699,Kamari Lassiter,CB,CB,176
+18,Team 18,4428522,Tykee Smith,S,S,177
+9,Panamanian P!mps,3925345,Minkah Fitzpatrick,S,S,178
+12,KeepMyTeamNameOuttaYoFMouth,4575517,Kyle Hamilton,S,S,179
+14,EZWAR,3919512,Jessie Bates III,S,S,180
+8,Back 2 Back,4567098,Jordan Battle,S,S,181
+11,Injury Report ,3691739,Derwin James Jr.,S,S,182
+3,Raw Dawg,4361964,Chamarri Conner,S,S,183
+16,el.ai.on,3127287,Budda Baker,S,S,184
+4,Bolivia,4043169,Jeremy Chinn,S,S,185
+15,Victorious Secret,4241470,Xavier McKinney,S,S,186
+2,Ayayay,4046537,Joshua Metellus,S,S,187
+10,No Team for Old Men,4034790,Antoine Winfield Jr.,S,S,188
+17,Guru Vibes Only,-16021,Eagles D/ST,DST,DST,189
+1,ComNich,4242154,Kam Curl,S,S,190
+7,Good Boy Tua,4043089,Jalen Thompson,S,S,191
+13,Ferchos,4426403,Nick Cross,S,S,192
+13,Ferchos,-16016,Vikings D/ST,DST,DST,193
+7,Good Boy Tua,-16007,Broncos D/ST,DST,DST,194
+1,ComNich,-16030,Jaguars D/ST,DST,DST,195
+17,Guru Vibes Only,17372,Chris Boswell,K,K,196
+10,No Team for Old Men,-16033,Ravens D/ST,DST,DST,197
+2,Ayayay,-16024,Chargers D/ST,DST,DST,198
+15,Victorious Secret,-16026,Seahawks D/ST,DST,DST,199
+4,Bolivia,-16005,Browns D/ST,DST,DST,200
+16,el.ai.on,-16023,Steelers D/ST,DST,DST,201
+3,Raw Dawg,-16012,Chiefs D/ST,DST,DST,202
+11,Injury Report ,-16009,Packers D/ST,DST,DST,203
+8,Back 2 Back,-16034,Texans D/ST,DST,DST,204
+14,EZWAR,-16017,Patriots D/ST,DST,DST,205
+12,KeepMyTeamNameOuttaYoFMouth,-16010,Titans D/ST,DST,DST,206
+9,Panamanian P!mps,-16014,Rams D/ST,DST,DST,207
+18,Team 18,-16008,Lions D/ST,DST,DST,208
+18,Team 18,3055899,Harrison Butker,K,K,209
+9,Panamanian P!mps,4571557,Spencer Shrader,K,K,210
+12,KeepMyTeamNameOuttaYoFMouth,3150744,Chase McLaughlin,K,K,211
+14,EZWAR,4360234,Evan McPherson,K,K,212
+8,Back 2 Back,4686361,Cam Little,K,K,213
+11,Injury Report ,2473037,Jason Myers,K,K,214
+3,Raw Dawg,17427,Cairo Santos,K,K,215
+16,el.ai.on,4362081,Cameron Dicker,K,K,216
+4,Bolivia,4567104,Will Reichard,K,K,217
+15,Victorious Secret,2971573,Ka'imi Fairbairn,K,K,218
+2,Ayayay,4689936,Jake Bates,K,K,219
+10,No Team for Old Men,4574716,Harrison Mevis,K,K,220
+17,Guru Vibes Only,4432620,Parker Washington,WR,BANCA,221
+1,ComNich,3953687,Brandon Aubrey,K,K,222
+7,Good Boy Tua,4034949,Eddy Pineiro,K,K,223
+13,Ferchos,4697745,Tyler Loop,K,K,224
+13,Ferchos,4371733,Kenny Gainwell,RB,BANCA,225
+7,Good Boy Tua,4360761,Michael Wilson,WR,BANCA,226
+1,ComNich,4710714,De'Zhaun Stribling,WR,BANCA,227
+17,Guru Vibes Only,4429096,Blake Corum,RB,BANCA,228
+10,No Team for Old Men,4837248,Fernando Mendoza,QB,BANCA,229
+2,Ayayay,4429205,Jordan Addison,WR,BANCA,230
+15,Victorious Secret,2976212,Stefon Diggs,WR,BANCA,231
+4,Bolivia,4569987,Jaylen Warren,RB,BANCA,232
+16,el.ai.on,4432762,Shedeur Sanders,QB,BANCA,233
+3,Raw Dawg,4360078,Alec Pierce,WR,BANCA,234
+11,Injury Report ,3126486,Deebo Samuel Sr.,WR,BANCA,235
+8,Back 2 Back,4429025,Quentin Johnston,WR,BANCA,236
+14,EZWAR,3116165,Chris Godwin Jr.,WR,BANCA,237
+12,KeepMyTeamNameOuttaYoFMouth,4432710,TreVeyon Henderson,RB,BANCA,238
+9,Panamanian P!mps,4241416,Chuba Hubbard,RB,BANCA,239
+18,Team 18,4429022,Kayshon Boutte,WR,BANCA,240
+18,Team 18,4361331,Jamien Sherwood,LB,BANCA,241
+9,Panamanian P!mps,3042519,Aaron Jones Sr.,RB,BANCA,242
+12,KeepMyTeamNameOuttaYoFMouth,4241463,Jerry Jeudy,WR,BANCA,243
+14,EZWAR,4575131,Jacory Croskey-Merritt,RB,BANCA,244
+8,Back 2 Back,5081397,Dylan Sampson,RB,BANCA,245
+11,Injury Report ,4429059,Woody Marks,RB,BANCA,246
+3,Raw Dawg,3916433,Jakobi Meyers,WR,BANCA,247
+16,el.ai.on,4241474,Brian Robinson Jr.,RB,BANCA,248
+4,Bolivia,4678008,Jonathon Brooks,RB,BANCA,249
+15,Victorious Secret,4428557,Tyjae Spears,RB,BANCA,250
+2,Ayayay,4870653,KC Concepcion,WR,BANCA,251
+10,No Team for Old Men,4047365,Josh Jacobs,RB,BANCA,252
+17,Guru Vibes Only,4688813,Josh Downs,WR,BANCA,253
+1,ComNich,4568490,RJ Harvey,RB,BANCA,254
+7,Good Boy Tua,4360569,Jordan Mason,RB,BANCA,255
+13,Ferchos,4697815,Rachaad White,RB,BANCA,256
+13,Ferchos,4608686,Kyle Monangai,RB,BANCA,257
+7,Good Boy Tua,4430539,Brenton Strange,TE,BANCA,258
+1,ComNich,4870795,Makai Lemon,WR,BANCA,259
+17,Guru Vibes Only,4428850,Dontayvion Wicks,WR,BANCA,260
+10,No Team for Old Men,4569587,Wan'Dale Robinson,WR,BANCA,261
+2,Ayayay,4373626,Tyler Allgeier,RB,BANCA,262
+15,Victorious Secret,3122840,Deshaun Watson,QB,BANCA,263
+4,Bolivia,4683062,Xavier Worthy,WR,BANCA,264
+16,el.ai.on,4361411,Pat Freiermuth,TE,BANCA,265
+3,Raw Dawg,4373678,Khalil Shakir,WR,BANCA,266
+11,Injury Report ,4686658,Mike Washington Jr.,RB,BANCA,267
+8,Back 2 Back,4570037,Terrance Ferguson,TE,BANCA,268
+14,EZWAR,4832800,Denzel Boston,WR,BANCA,269
+12,KeepMyTeamNameOuttaYoFMouth,4696044,Kaelon Black,RB,BANCA,270
+9,Panamanian P!mps,4032473,Rashid Shaheed,WR,BANCA,271
+18,Team 18,4038441,Justice Hill,RB,BANCA,272
+18,Team 18,4361423,Micah Parsons,DE,BANCA,273
+9,Panamanian P!mps,4360423,Michael Penix Jr.,QB,BANCA,274
+12,KeepMyTeamNameOuttaYoFMouth,4426385,Zach Charbonnet,RB,BANCA,275
+14,EZWAR,4880281,Jordyn Tyson,WR,BANCA,276
+8,Back 2 Back,4428718,Tre Tucker,WR,BANCA,277
+11,Injury Report ,-16004,Bengals D/ST,DST,BANCA,278
+3,Raw Dawg,3046439,Hunter Henry,TE,BANCA,279
+16,el.ai.on,4239995,A.J. Terrell Jr.,CB,BANCA,280
+4,Bolivia,4362249,Jayden Reed,WR,BANCA,281
+15,Victorious Secret,4241457,Najee Harris,RB,BANCA,282
+2,Ayayay,4036133,T.J. Hockenson,TE,BANCA,283
+10,No Team for Old Men,15818,Keenan Allen,WR,BANCA,284
+17,Guru Vibes Only,4832955,Emmett Johnson,RB,BANCA,285
+1,ComNich,3045147,James Conner,RB,BANCA,286
+7,Good Boy Tua,4241479,Tua Tagovailoa,QB,BANCA,287
+13,Ferchos,4361432,Romeo Doubs,WR,BANCA,288

@@ -1,0 +1,43 @@
+{
+  "fuente": "FantasyPros app (Pro) — pantallazos enviados por Andrés",
+  "fecha": "2026-09-10",
+  "etiqueta": "INVESTIGADO — transcrito de imagen; solo se registran los valores legibles sin ambiguedad",
+  "liga": "Peace and Love (2107128204)",
+  "playoff_teams": 8,
+  "pantalla_league_analyzer": {
+    "descripcion": "Proj record + Playoff odds",
+    "equipos": {
+      "Ferchos": {"rank": 1, "proj_record": "9-5", "playoff_odds": 83},
+      "el.ai.on": {"rank": 2, "proj_record": "8-6", "playoff_odds": 81},
+      "Ayayay": {"rank": 3, "proj_record": "8-6", "playoff_odds": 79},
+      "Victorious Secret": {"rank": 4, "proj_record": "8-6", "playoff_odds": 76},
+      "EZWAR": {"rank": 5, "proj_record": "8-6", "playoff_odds": 73},
+      "ComNich": {"rank": 6, "proj_record": "8-6", "playoff_odds": 72},
+      "KeepMyTeamNameOuttaYoFMouth": {"rank": 7, "proj_record": "7-7", "playoff_odds": 57},
+      "Guru Vibes Only": {"rank": 8, "proj_record": "7-7", "playoff_odds": 55},
+      "Panamanian P!mps": {"rank": 9, "proj_record": "7-7", "playoff_odds": 42},
+      "No Team for Old Men": {"rank": 10, "proj_record": "6-8", "playoff_odds": 37},
+      "Team 18": {"rank": 11, "proj_record": "6-8", "playoff_odds": null},
+      "Back 2 Back": {"rank": 13, "proj_record": "6-8", "playoff_odds": 29}
+    },
+    "faltan_por_ilegibles": ["Injury Report", "Bolivia", "Good Boy Tua", "Raw Dawg"]
+  },
+  "pantalla_rankings_ros": {
+    "descripcion": "Rankings > Overall > ROS (score 0-100)",
+    "equipos": {
+      "Ferchos": {"rank": 1, "score": 100},
+      "ComNich": {"rank": 2, "score": 100},
+      "Guru Vibes Only": {"rank": 3, "score": 94},
+      "EZWAR": {"rank": 4, "score": 92},
+      "Injury Report": {"rank": 5, "score": 92},
+      "Ayayay": {"rank": 6, "score": 89},
+      "KeepMyTeamNameOuttaYoFMouth": {"rank": 7, "score": 89},
+      "Team 18": {"rank": 8, "score": 88},
+      "No Team for Old Men": {"rank": 9, "score": 88},
+      "Back 2 Back": {"rank": 10, "score": null}
+    },
+    "faltan_por_ilegibles": ["el.ai.on", "Victorious Secret", "Panamanian P!mps",
+                             "Bolivia", "Good Boy Tua", "Raw Dawg"]
+  },
+  "contradiccion_interna_detectada": "el.ai.on aparece #2 en playoff odds (81%) pero fuera del top-9 en el ranking ROS de la misma app; Team 18 (#8 ROS, 88) tiene la PEOR ofensiva de la liga segun el propio ECR superflex de FantasyPros del 21-ago (suma 575 de 16), mientras No Team for Old Men tiene la mejor (343) y recibe el mismo 88."
+}
