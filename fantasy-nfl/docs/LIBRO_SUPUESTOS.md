@@ -1076,3 +1076,30 @@ Titan" · 🚨 draft SIN FECHA en el servidor y pickOrder placeholder [1..14].
 **TRIPWIRE NUEVO (task #15): ESPN MOVIÓ proyecciones post-28-ago** — Jacobs
 255→151, Tyson −50%, Sanders +50%. El tablero P&L corre con crudos del
 28-ago: refrescar antes del 7-sep + chequeo diario de deriva >15% en top-150.
+
+## 10-sep — 🚨 BUG DEL RECIBO: el ranking post-draft salió sin ninguna D/ST
+
+**Lo cazó Andrés** leyendo el recibo: "todos teníamos defensa y equipos
+completos". Tenía razón.
+
+- **Causa raíz (verificada, no inferida):** `api_picks()` filtraba los picks
+  reales con `playerId > 0` para descartar el placeholder de la grilla que
+  ESPN pre-publica. Pero **las D/ST tienen ID NEGATIVO** (-16034 Texans,
+  -16007 Broncos; los K son positivos). El filtro botó las 16 defensas
+  drafteadas: 271 picks leídos de 288.
+- **Consecuencia:** el ranking de los 16 equipos del 7-sep se calculó con
+  TODOS los rosters sin su D/ST (no solo el mío). La comparación era
+  estructuralmente pareja, pero el spread de D/ST en el tablero (Texans 32
+  … Lions 10, ~22 pts de VBD) es mayor que varias de las brechas entre
+  equipos vecinos → **ese orden no es concluyente y hay que rehacerlo**.
+- **Daño secundario:** le dije a Andrés que le faltaba la defensa y que
+  fichara una en agencia libre. Falso: la tenía (pick 197). Si actuó, pudo
+  soltar un jugador por nada.
+- **Fix:** el placeholder es EXACTAMENTE -1 → excluir ese valor, no el
+  signo. Candado nuevo en `tests/test_recibo.py`: (1) el -1 se descarta y
+  una D/ST negativa entra; (2) contra el corpus real, todas las D/ST son
+  negativas, todos los K positivos y ninguna colisiona con -1.
+- **Lección repetida:** ya me había pasado en agosto con el mismo campo. Un
+  filtro por signo sobre IDs de terceros es una suposición sobre su esquema;
+  el candado correcto es el valor centinela, y la prueba tiene que correr
+  contra el corpus real, no contra mi idea del corpus.

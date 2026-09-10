@@ -54,11 +54,17 @@ def api_picks():
     # draft real?"): ESPN pre-publica la grilla completa del snake con
     # playerId = -1 ANTES del draft. El filtro viejo `if playerId` dejaba
     # pasar los -1 (truthy) → la herramienta habría visto "288 picks hechos"
-    # y dado el draft por terminado antes de empezar. Solo playerId > 0 es
-    # un pick real.
-    hechos = [(p['overallPickNumber'], p['teamId'], p.get('playerId'))
+    # y dado el draft por terminado antes de empezar.
+    # 🚨 FIX 10-sep (lo cazó Andrés al leer el recibo: "todos teníamos
+    # defensa"): el filtro de agosto era `> 0` y las D/ST de ESPN tienen ID
+    # NEGATIVO (-16034 Texans, -16007 Broncos; los K son positivos) → el
+    # recibo perdía las 16 defensas del draft y el ranking salió con todos
+    # los equipos sin D/ST. El placeholder es EXACTAMENTE -1: excluir ese
+    # valor, no el signo.
+    PLACEHOLDER = -1
+    hechos = [(p['overallPickNumber'], p['teamId'], p['playerId'])
               for p in d['draftDetail']['picks']
-              if (p.get('playerId') or 0) > 0]
+              if p.get('playerId') not in (None, 0, PLACEHOLDER)]
     # la grilla (con o sin jugador) sirve de candado: el snake REAL de ESPN
     grilla = [(p['overallPickNumber'], p['teamId'])
               for p in d['draftDetail']['picks']]
