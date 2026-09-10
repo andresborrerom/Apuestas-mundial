@@ -1129,3 +1129,35 @@ defensas no movieron la parte alta de la tabla.
 
 ⚠️ Un pick sin match en el tablero: James Conner (286) — está en IR, por eso
 no entró a la proyección. Sin efecto.
+
+## 10-sep — Ranking por PUNTOS DE TEMPORADA con roles compartidos
+
+Andrés: "Cousins va de titular el primer partido... Jacobs está bajo por su
+problema legal, pero tengo a Lloyd por eso. Recalcula el ranking de lo que
+será puntos totales del season."
+
+**El modelo que faltaba:** quien tiene las dos mitades de un rol mutuamente
+excluyente alinea cada semana al que juegue, o sea captura el ROL COMPLETO.
+`valor_roster` no lo veía (mete a uno de titular y el otro queda en banca).
+`optimize/ranking_temporada.py` lo implementa con tres escenarios declarados
+(crudo / conservador / central-con-tope-del-rol).
+
+En los 16 rosters hay 4 pares mismo-equipo-NFL + misma-posición y **los 2
+mutuamente excluyentes son nuestros**: Jacobs+Lloyd (GB RB) y
+Mendoza+Cousins (LV QB). Los otros 2 son WR del mismo equipo (Olave+Tyson,
+DeVonta+Wicks): juegan a la vez, NO se fusionan.
+
+| escenario | Jacobs+Lloyd | Mendoza+Cousins | nuestro puesto |
+|---|---|---|---|
+| crudo | 219 | 209 | #5 · 2313 |
+| conservador | 249 | 224 | #3 · 2343 |
+| central (tope del rol) | 277 | 243 | **#1 · 2454** |
+
+⚠️ El puesto va de #1 a #5 según cuánto del handcuff se materialice: es el
+supuesto MÁS sensible de todo el post-draft. La palanca concreta es si Lloyd
+produce a tarifa de titular cuando Jacobs no esté.
+
+📊 Ojo con la métrica: por VBD éramos #2 (549) porque premia la escasez
+posicional (Maye QB en superflex); por puntos crudos éramos #5. Son
+preguntas distintas — el VBD era la métrica de DECISIÓN en el draft, los
+puntos de temporada son los que de verdad se anotan.
