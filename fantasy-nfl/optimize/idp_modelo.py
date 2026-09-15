@@ -84,6 +84,45 @@ def tabla(con):
       window w as (partition by opponent_team order by season, week
                    rows between unbounded preceding and 1 preceding)""")
 
+    # SNAPS: el driver fisico. Se une por nombre normalizado (sin puntos,
+    # apostrofes ni sufijos Jr/II/III) porque el crudo dejaba fuera al 6.6% —
+    # y los que dejaba fuera eran titulares con sufijo, o sea sesgo, no ruido.
+    # Respaldo por apellido+equipo para los apodos (Pat/Patrick Surtain).
+    con.execute(f"""
+      create or replace table snp as
+      with k as (
+        select season, week, team, snaps_def, pct_def,
+               regexp_replace(regexp_replace(lower(player), '[.''`\\-]', '', 'g'),
+                              ' (jr|sr|ii|iii|iv|v)$', '', 'g') nk,
+               regexp_replace(lower(split_part(player, ' ', -1)), '[.''`\\-]', '', 'g') ap
+        from read_parquet('{D}/snaps_*.parquet')),
+      p as (
+        select season, week, player_id, nombre, team,
+               regexp_replace(regexp_replace(lower(nombre), '[.''`\\-]', '', 'g'),
+                              ' (jr|sr|ii|iii|iv|v)$', '', 'g') nk,
+               regexp_replace(lower(split_part(nombre, ' ', -1)), '[.''`\\-]', '', 'g') ap
+        from semanal where grupo is not null)
+      select p.season, p.week, p.player_id,
+             coalesce(k1.snaps_def, k2.snaps_def) snaps_def,
+             coalesce(k1.pct_def,  k2.pct_def)  pct_def
+      from p
+      left join k k1 on (p.season,p.week,p.team,p.nk)=(k1.season,k1.week,k1.team,k1.nk)
+      left join k k2 on (p.season,p.week,p.team,p.ap)=(k2.season,k2.week,k2.team,k2.ap)""")
+
+    # medias ACUMULADAS de snaps, estrictamente anteriores
+    con.execute(f"""
+      create or replace table snpw as
+      select season, week, player_id,
+             avg(pct_def)   over v17 s_pct,
+             avg(pct_def)   over v3  s_pct3,
+             avg(snaps_def) over v17 s_snaps,
+             count(*)       over v17 s_n
+      from snp
+      window v17 as (partition by player_id order by season, week
+                     rows between {VENTANA_JUGADOR} preceding and 1 preceding),
+             v3  as (partition by player_id order by season, week
+                     rows between 3 preceding and 1 preceding)""")
+
     # puntos IDP que cada ofensiva concede a cada grupo, acumulado previo
     con.execute("""
       create or replace table conc as
@@ -110,6 +149,8 @@ def tabla(con):
              r.o_epa_pase, r.o_epa_carrera,
              c.o_fp_concede,
              d.d_jugadas_enfrenta,
+             k.s_pct, k.s_pct3, k.s_pct3 - k.s_pct s_tendencia,
+             case when k.s_snaps > 0 then pj.p_tasa / k.s_snaps else null end fp_por_snap,
              case when g.home_team = pj.team then 1 else 0 end es_local,
              -- spread DESDE EL LADO DEL DEFENSOR: + = su equipo es underdog
              case when g.home_team = pj.team then -g.spread_line
@@ -121,6 +162,8 @@ def tabla(con):
       join conc c on (pj.season,pj.week,pj.rival,pj.grupo)
                    =(c.season,c.week,c.rival,c.grupo)
       join def_prop d on (pj.season,pj.week,pj.team)=(d.season,d.week,d.equipo)
+      left join snpw k on (pj.season,pj.week,pj.player_id)
+                        =(k.season,k.week,k.player_id)
       join jg g on pj.season=g.season and pj.week=g.week
                  and (g.home_team=pj.team or g.away_team=pj.team)
       where pj.p_n >= {MIN_HIST} and pj.p_tasa is not null
@@ -128,9 +171,10 @@ def tabla(con):
     return con.execute("select count(*) from X").fetchone()[0]
 
 
+SNAPS = ['s_pct', 's_pct3', 's_tendencia', 'fp_por_snap']
 FEATS = ['p_tasa', 'o_jugadas', 'o_carreras', 'o_pases', 'o_sacks',
          'o_epa_pase', 'o_epa_carrera', 'o_fp_concede', 'd_jugadas_enfrenta',
-         'es_local', 'spread_def', 'total_line', 'div_game', 'descanso']
+         'es_local', 'spread_def', 'total_line', 'div_game', 'descanso'] + SNAPS
 
 
 def datos(con, grupo=None):
