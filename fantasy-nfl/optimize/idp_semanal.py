@@ -27,6 +27,23 @@ regala un 20% más de lo normal a esa posición.
 CANDADO ANTI-FUGA: el multiplicador de la semana W se calcula SOLO con semanas
 < W. Nunca se usa información del futuro. Sin esto, cualquier ajuste "funciona".
 
+VENTANAS (barrido medido el 15-sep sobre 2021-2026, misma muestra en todas):
+  Del RIVAL — entre mas corta, PEOR, y de forma perfectamente monotona:
+      ultima 1 semana  -10.6% DL / -10.4% LB / -12.4% DB
+      ultimas 4        -2.3%  / -2.6%  / -3.1%
+      acumulada        -0.09% / -0.45% / -0.35%
+  Eso no es señal diluida por el historico: es RUIDO. Si hubiera efecto de
+  forma reciente, la ventana corta ayudaria. Ayuda menos entre menos datos.
+
+  Del JUGADOR — misma direccion, y aqui si cambia la decision:
+      MAE con la ultima semana sola : 2.403
+      MAE con las ultimas 17        : 1.923   (24% mejor)
+  Optimo en 12-17 jornadas y plano de ahi en adelante. Por eso VENTANA_JUGADOR
+  = 17 y SIN ponderar por recencia.
+
+CONCLUSION QUE ATRAVIESA TODO: en IDP la recencia es ruido. La "forma" no
+predice; el rol acumulado si.
+
     python optimize/idp_semanal.py            # backtest: ¿ayuda o no?
 """
 import sys
@@ -47,6 +64,7 @@ POS_DT = ("DT", "NT")
 GRUPOS = {'DL': ('DT', 'NT', 'DE', 'EDGE'), 'LB': ('LB', 'OLB', 'ILB', 'MLB'),
           'DB': ('CB', 'S', 'FS', 'SS', 'DB')}
 MIN_JUEGOS = 3          # historia mínima del jugador para predecirlo
+VENTANA_JUGADOR = 17    # jornadas de historia propia. Medido, no elegido: ver VENTANAS.
 MIN_OBS_RIVAL = 3       # partidos mínimos del rival para creerle su multiplicador
 
 
@@ -200,13 +218,18 @@ def waiver():
                        timeout=30).json()['status']['latestScoringPeriod']
     con = duckdb.connect()
     base(con)
-    # tasa propia: ponderada 2 a 1 a favor de la temporada en curso
-    tasa = {r[0]: (r[1], r[2], r[3]) for r in con.execute("""
-        select nombre,
-               sum(fp * case when season=2026 then 2.0 else 1.0 end)
-                 / sum(case when season=2026 then 2.0 else 1.0 end) tasa,
-               count(*) jg, sum(case when season=2026 then 1 else 0 end) jg26
-        from semanal where season>=2025 and grupo is not null group by 1""").fetchall()}
+    # Tasa propia sobre las ÚLTIMAS 17 jornadas, SIN ponderar por recencia.
+    # Antes esto pesaba 2 a 1 a favor de 2026 y estaba al revés: el barrido de
+    # ventana (ver VENTANAS abajo) muestra que en IDP la recencia es ruido, no
+    # señal — predecir con la última semana es 24% PEOR que con 17.
+    tasa = {r[0]: (r[1], r[2], r[3]) for r in con.execute(f"""
+        with u as (
+          select nombre, fp, season,
+                 row_number() over (partition by nombre order by season desc, week desc) rn
+          from semanal where grupo is not null)
+        select nombre, avg(fp) tasa, count(*) jg,
+               sum(case when season=2026 then 1 else 0 end) jg26
+        from u where rn <= {VENTANA_JUGADOR} group by 1""").fetchall()}
     SLOT = {8: 'DT', 9: 'DE', 10: 'LB', 12: 'CB', 13: 'S'}
     for slot, et in SLOT.items():
         filt = {"players": {"filterSlotIds": {"value": [slot]},
