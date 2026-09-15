@@ -439,7 +439,42 @@ todas las casas (The Odds API, ~60 req/mes del free tier), apilados en
 dataset intra-semana: el insumo del pronosticador de vapor v2 (¿a qué
 hora del día se mueve?, ¿qué casa mueve primero?, reverse line movement).
 
-## 15. Preguntas abiertas / siguientes pasos
+## 15. Semana 1 de 2026 — autopsia y qué se aprendió (y qué NO)
+
+Resultado: Survival LAC (80.9%) perdió vs ARI → vida 1 quemada. Pick'em
+11/16 (flips 1/3; favoritos puros habrían hecho 12).
+
+**Lo que NO se aprendió (disciplina de n=1):** perder un pick de 81% es el
+evento del 19% — pasa 1 de cada 5 semanas y el backtest ya lo tenía
+contado (la ruta media ganadora de 11.9 semanas incluye perder una vida).
+Ajustar el modelo por el dolor de una semana es sobreajustar al ruido. La
+hipótesis falsable que la derrota sí sugería — "¿la semana 1 es más
+traicionera de lo que dice el mercado?" — se corrió (2011-2025): los
+favoritos grandes (p>=0.72) de la semana 1 rinden +2.9pp SOBRE lo
+implícito (n=45, z=+0.47). **Refutada: la línea de la semana 1 no está
+rota; LAC fue varianza.**
+
+**Nota de vigilancia (no-regla):** los favoritos de las semanas 2-3 (todos,
+no solo grandes) rinden −3.9pp bajo lo implícito (n=478, z=−1.84). No
+alcanza el estándar (|z|>=2 + mitades) y en la zona survival es 0.0pp; se
+anota para revisar con más temporadas, no se actúa.
+
+**Lo que SÍ se aprendió (operativo):**
+1. Nuestros 3 snapshots pre-kickoff mostraron deriva ADVERSA sostenida en
+   el pick: LAC 82.4% (19-ago) → 81.9% (22-ago) → 80.9% (2-sep). Con lo
+   que ya sabemos del vapor (E2-E4: el movimiento es información), una
+   regla candidata es: entre picks casi empatados, preferir el de p
+   estable/subiendo y desconfiar de deriva adversa >=1.5pp. NO es
+   backtesteable sin líneas intra-semana → por eso importa el punto 2.
+2. **El Action de snapshots nunca corrió**: los workflows con cron solo
+   corren desde la rama DEFAULT y esta rama no está mergeada. Cada semana
+   sin mergear perdemos el dataset intra-semana que permitiría convertir
+   la regla candidata del punto 1 en experimento. Acción: mergear la rama.
+3. Pick'em salió según libreto: los flips son coin-flips (1/3 ≈ 50% c/u)
+   y el flip de NYJ dio un punto que los favoritos puros no tienen. Sin
+   cambios.
+
+## 16. Preguntas abiertas / siguientes pasos
 
 1. ¿Yahoo muestra la **distribución de picks** del grupo antes del cierre?
    Si sí, el field model deja de ser supuesto y se puede esquivar el pick
