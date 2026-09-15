@@ -4,6 +4,10 @@
   "etiqueta": "INVESTIGADO — transcrito de imagen; solo se registran los valores legibles sin ambiguedad",
   "liga": "Peace and Love (2107128204)",
   "playoff_teams": 8,
+  "alias": {
+    "_nota": "los managers pueden renombrar su equipo en cualquier momento (Team Names = 'Never Locks'). Sin este mapa el equipo se cae en silencio de TODA correlacion y nadie se entera. Verificado el 15-sep: 'Team 18' era el unico nombre del snapshot ausente de la liga y 'SGB' el unico nombre de la liga ausente del snapshot, aparte de los 4 ya marcados como ilegibles.",
+    "Team 18": "SGB"
+  },
   "pantalla_league_analyzer": {
     "descripcion": "Proj record + Playoff odds",
     "equipos": {

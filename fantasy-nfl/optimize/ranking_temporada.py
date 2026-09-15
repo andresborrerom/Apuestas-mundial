@@ -44,6 +44,8 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
+import requests
+
 RAIZ = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RAIZ))
 
@@ -59,6 +61,28 @@ SLOTS = [('QB', 1), ('RB', 1), ('WR', 2), ('TE', 1), ('DT', 1), ('DE', 1),
          ('LB', 1), ('CB', 1), ('S', 1), ('DST', 1), ('K', 1)]
 
 
+def nombres_vivos():
+    """{team_id: nombre ACTUAL} desde la API.
+
+    El CSV post-draft guarda el nombre que cada equipo tenía el 7-sep, pero
+    "Team Names" es un setting que ESPN marca 'Never Locks': cualquiera lo
+    cambia cuando quiere. Unir por nombre hace que un equipo renombrado se
+    caiga en silencio de toda comparación — pasó con 'Team 18' -> 'SGB'. El
+    team_id sí es estable, así que el nombre se usa solo para mostrar.
+    Si la API no responde, se devuelve vacío y se cae al nombre del CSV.
+    """
+    try:
+        from ingest.espn_auth import credenciales
+        lid, s2, swid = credenciales()
+        u = (f"https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons"
+             f"/2026/segments/0/leagues/{lid}")
+        d = requests.get(u, params={'view': 'mTeam'},
+                         cookies={'espn_s2': s2, 'SWID': swid}, timeout=30).json()
+        return {str(t['id']): (t.get('name') or '').strip() for t in d['teams']}
+    except Exception:
+        return {}
+
+
 def cargar():
     todos = json.load(gzip.open(RAIZ / 'data' / 'espn_applied_2025.json.gz', 'rt'))
     nfl = {p['player']['id']: EQ.get(p['player'].get('proTeamId'), '?')
@@ -67,8 +91,11 @@ def cargar():
             csv.DictReader(open(RAIZ / 'data' / 'proyeccion_dist.csv'))}
     rosters = defaultdict(list)
     equipos = {}
+    vivos = nombres_vivos()
     for r in csv.DictReader(open(RAIZ / 'data' / 'rosters_2026_postdraft.csv')):
-        equipos[r['team_id']] = r['equipo']
+        # .strip() no es cosmético: 'Injury Report ' con espacio al final ya
+        # había sacado a ese equipo de las correlaciones sin avisar.
+        equipos[r['team_id']] = vivos.get(r['team_id']) or r['equipo'].strip()
         pid = int(r['espn_id'])
         x = proy.get(pid)
         if not x:

@@ -118,11 +118,21 @@ def predictores():
                for j in jug if j['nombre'] in proy}
         vbd[equipos[t]] = valor_roster(ros, 'vbd')
     fp = json.load(open(RAIZ / 'data' / 'fantasypros_snapshot.json'))
-    ros_fp = {k: v['score'] for k, v in
+    # Los managers renombran su equipo cuando quieren. Sin resolver el alias, el
+    # equipo renombrado no cruza con nada y desaparece de la correlacion SIN
+    # avisar — que es peor que un error visible.
+    alias = {k: v for k, v in (fp.get('alias') or {}).items() if not k.startswith('_')}
+    nom = lambda k: alias.get(k, k)
+    ros_fp = {nom(k): v['score'] for k, v in
               fp['pantalla_rankings_ros']['equipos'].items() if v.get('score')}
-    odds = {k: v['playoff_odds'] for k, v in
+    odds = {nom(k): v['playoff_odds'] for k, v in
             fp['pantalla_league_analyzer']['equipos'].items()
             if v.get('playoff_odds')}
+    huerfanos = sorted(set(ros_fp) | set(odds))
+    faltan = [e for e in huerfanos if e not in temporada]
+    if faltan:
+        print(f"🚨 nombres del snapshot que no cruzan con la liga: {faltan}\n"
+              f"   (¿alguien renombró su equipo? añádelo a 'alias' en el snapshot)")
     return {'📊 vbd': vbd, '📊 temporada': temporada,
             '🔍 fp_ros': ros_fp, '🔍 fp_odds': odds}, fp['fecha']
 
