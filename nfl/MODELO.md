@@ -130,9 +130,24 @@ pick del favorito con prob q_j ~ U(0.75, 0.95) (supuesto explícito).
   CSC, tal cual.
 - **Trade-off (una sola planilla juega las 4 apuestas):** 1 flip/semana casi
   no mueve los pots (84%→79% N=10; 53%→53% N=20) y multiplica la Batalla.
-  **Decisión: favoritos + 1-2 flips en coin-flips.** Si cerca del corte vas
-  detrás en un pot, sube flips (al perdedor le pagan la varianza); si vas
-  adelante, flips=0.
+  **Decisión (CORREGIDA 10-sep-2026): favoritos + 3 flips (m3).** El texto
+  anterior decía "1-2 flips" y quedó desactualizado frente a la propia
+  simulación de temporada con las reglas de plata reales
+  (`nfl/PICKEM/temporada.py`), que es la autoridad porque contabiliza pozos,
+  acumulaciones y cortes. Verificado con 3 semillas (23/77/501), 300 sims ×
+  15 temporadas, pool de 14:
+
+  | política | E[batalla] | E[pots] | **E[TOTAL]** | P(total>0) |
+  |---|---|---|---|---|
+  | m1 | +0.80M | +2.52M | +3.33M | 84.5% |
+  | m2 | +1.10M | +2.11M | +3.20M | 83.6% |
+  | **m3** | **+1.62M** | +2.15M | **+3.77M** | **87.1%** |
+  | m4 | +1.68M | +1.72M | +3.39M | 82.7% |
+  | dinámica | +1.11M | +2.20M | +3.31M | 84.9% |
+
+  m3 gana en E[TOTAL] **y** en P(total>0) con las tres semillas: no es ruido.
+  El ajuste por corte sigue vivo (adelante en un pot → bajar flips; detrás →
+  subirlos), pero la base es 3, no 1-2.
 
 ## 6. Operatividad 2026
 
