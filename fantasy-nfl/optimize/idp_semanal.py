@@ -61,8 +61,12 @@ NFLV = str(RAIZ / 'data' / 'nflverse' / 'semanal_*.parquet')
 PESOS = dict(solo=1.0, asis=0.5, sack_dt=3.0, sack_otro=2.0, tfl=0.5,
              int_=3.0, pd=1.0, ff=1.2, fr=1.0, td=6.5, saf=1.5, blk=3.0)
 POS_DT = ("DT", "NT")
-GRUPOS = {'DL': ('DT', 'NT', 'DE', 'EDGE'), 'LB': ('LB', 'OLB', 'ILB', 'MLB'),
-          'DB': ('CB', 'S', 'FS', 'SS', 'DB')}
+# OJO: nflverse codifica a los safeties de CUATRO formas distintas (S, FS, SS y
+# SAF). Faltaba SAF y eso borraba 5.848 filas jugador-semana del modelo sin
+# avisar — entre ellas Tre'von Moehrig entero. El test test_cobertura_posiciones
+# truena si aparece una posición defensiva nueva que no esté mapeada aquí.
+GRUPOS = {'DL': ('DT', 'NT', 'DE', 'EDGE', 'DL'), 'LB': ('LB', 'OLB', 'ILB', 'MLB'),
+          'DB': ('CB', 'S', 'FS', 'SS', 'SAF', 'DB')}
 MIN_JUEGOS = 3          # historia mínima del jugador para predecirlo
 VENTANA_JUGADOR = 17    # jornadas de historia propia. Medido, no elegido: ver VENTANAS.
 MIN_OBS_RIVAL = 3       # partidos mínimos del rival para creerle su multiplicador
