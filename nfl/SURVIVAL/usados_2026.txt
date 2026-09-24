@@ -2,3 +2,4 @@
 # Anotar acá el pick que DE VERDAD se metió en Yahoo cada semana
 # (semana.py los lee automáticamente y no los vuelve a ofrecer).
 LAC
+# ELIMINADOS semana 2 (LAC w1, TB w2 — dos vidas). Pozo: espectadores.
