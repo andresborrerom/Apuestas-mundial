@@ -242,12 +242,21 @@ def main():
         print(f"  {f['equipo'][:28]:29}{f['dejado']:>7.1f}  (alineó {f['ejecutado']:.1f} "
               f"de {f['optimo']:.1f} posibles)")
 
-    with open(SALIDA, 'w', newline='') as fh:
-        w = csv.DictWriter(fh, fieldnames=['equipo', 'ejecutado', 'calc_espn',
-                                           'calc_propio', 'optimo', 'dejado'])
-        w.writeheader()
-        w.writerows(filas)
-    print(f"\n→ {SALIDA.name}")
+    # Una sola SALIDA que se sobreescribe y SIN columna de semana hacia
+    # imposible saber que contenia el archivo: comparar dos corridas producia
+    # "correcciones" de +113 pts que en realidad eran semana 1 contra semana 2.
+    # Ahora cada semana tiene su archivo Y su columna.
+    for f in filas:
+        f['semana'] = semana
+    dst = SALIDA.with_name(f'auditoria_s{semana:02d}.csv')
+    for ruta in (dst, SALIDA):
+        with open(ruta, 'w', newline='') as fh:
+            w = csv.DictWriter(fh, fieldnames=['semana', 'equipo', 'ejecutado',
+                                               'calc_espn', 'calc_propio',
+                                               'optimo', 'dejado'])
+            w.writeheader()
+            w.writerows(filas)
+    print(f"\n→ {dst.name} (y {SALIDA.name} como copia de la última corrida)")
     if cob < 0.75:
         print("⚠️ Cobertura del modelo propio por debajo del 75%: su sesgo es "
               "indicativo, no concluyente.")
