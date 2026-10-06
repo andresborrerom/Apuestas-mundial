@@ -1,0 +1,23 @@
+# Parámetros de liga — v2 (dump 12-ago validado + payouts oficiales)
+liga: {plataforma: espn, temporada: 2026, equipos: 16, buyin_usd: 650, pozo_usd: 10950}
+draft:
+  fecha: 2026-09-07                    # confirmada: app y Andrés coinciden (13-ago)
+  sorteo_orden: 2026-08-27             # lotería del draft order
+  formato: snake
+  segundos_por_pick: 45
+  mi_pick: null                        # pendiente (próxima semana)
+slots_titulares: [QB, RB, RBWR, RBWR, WR, TE, OP, DT, DE, LB, CB, S, DST, K]
+banca: 4
+ir: 1
+temporada_regular: {semanas: 14, tie_breaker: ninguno}
+playoffs: {equipos: 8, semanas_por_ronda: 1, reseeding: true, siembra_tiebreak: total_points_for}
+faab: {presupuesto: 9999, minimo: 1}
+# FUNCIÓN OBJETIVO (payouts oficiales, xlsx 12-ago): maximizar E[$]
+premios_usd:
+  semanal_high_score: {por_semana: 50, total: 700}
+  heads_up_por_victoria: {por_partido: 20, total: 2240}
+  temporada_regular_standings: {1: 1610, 2: 900, 3: 700, 4: 550, 5: 400, 6: 325, 7: 275, 8: 200}
+  playoffs: {1: 1200, 2: 600, 3: 350, 4: 250}
+  otros: {max_pts_temporada: 250, max_pts_semana: 50, max_pts_contra: 50, racha_invicta: 50,
+          losers_bracket: 250, DFL: 200, DFL2: 150, DFL3: 100, DFL4: 75, min_margen_derrota: 25}
+scoring_ruleset: espn_settings_2026   # v2, 75 items, motor validado 1801/1801

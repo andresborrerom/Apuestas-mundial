@@ -147,7 +147,7 @@ def generar_field(matrices, E, skill, params, rng, G=7, concentracion=3.0):
 
 
 def generar_nuestras(matrices, k, params, estrategia="diversificada",
-                     T=0.6, rng=None, G=7, n_swaps=8, pool=25):
+                     T=0.6, rng=None, G=7, n_swaps=8, pool=25, gap_max=None):
     """Genera nuestras k entradas.
 
     - "evmax": las k idénticas al relleno EV-máximo (media máxima, correlación
@@ -156,6 +156,11 @@ def generar_nuestras(matrices, k, params, estrategia="diversificada",
       EV-máximo pero CAMBIA al 2º mejor relleno en `n_swaps` partidos elegidos
       entre los `pool` más "empatados" (menor brecha de EV). Aleatoriedad MÍNIMA
       que descorrelaciona sin alejarse del modelo.
+      `gap_max` (opcional): restringe el pool a partidos con brecha de EV <=
+      gap_max, o sea SOLO los genuinamente empatados ("vecindarios factibles").
+      Importa en rondas de pocos partidos (knockout): sin él, el piso de `pool`
+      (p. ej. 40) abarca los 16 partidos y se perturban cruces caros (gap grande),
+      botando puntos. Con él nunca se cambia un partido lopsidado.
     - "diversificada": cada cupo extra muestrea por partido desde softmax(EV/T)
       (más diversidad, más pérdida de media; referencia de "demasiado azar").
     """
@@ -178,8 +183,18 @@ def generar_nuestras(matrices, k, params, estrategia="diversificada",
 
     if estrategia == "perturbada":
         e_h, e_a, s_h, s_a, gap = fill_evmax_y_segundo(matrices, params, G)
-        # candidatos a perturbar: los `pool` partidos con menor brecha de EV
-        candidatos = np.argsort(gap)[:min(pool, Mn)]
+        # candidatos a perturbar: partidos de menor brecha de EV. Con gap_max,
+        # SOLO los genuinamente empatados (brecha <= gap_max); si no, los `pool`
+        # de menor brecha (compatibilidad con el comportamiento previo).
+        orden = np.argsort(gap)
+        if gap_max is not None:
+            orden = orden[gap[orden] <= gap_max]
+        candidatos = orden[:min(pool, len(orden))]
+        if len(candidatos) == 0:
+            # nada barato que perturbar: los cupos extra quedan = ancla EV-máximo.
+            for c in range(1, k):
+                ph[c] = e_h; pa[c] = e_a
+            return ph, pa
         for c in range(1, k):
             ph[c] = e_h; pa[c] = e_a
             swaps = rng.choice(candidatos, size=min(n_swaps, len(candidatos)),

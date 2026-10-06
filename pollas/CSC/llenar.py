@@ -112,6 +112,10 @@ def main(argv=None):
     p.add_argument("--n-swaps", type=int, default=-1,
                    help="partidos a perturbar por cupo extra (-1 = auto por ronda: "
                         "poco en grupos, mucho en eliminatorias)")
+    p.add_argument("--gap-max", type=float, default=-1.0,
+                   help="solo perturba partidos con brecha EV(1º-2º) <= este valor "
+                        "(vecindarios factibles). -1 = auto: sin límite en grupos, "
+                        "0.3 en knockout (no malgastar swaps en cruces lopsidados)")
     p.add_argument("--csv", help="guardar resultado en este archivo CSV")
     p.add_argument("--mock", help="leer JSON de eventos de un archivo (sin red)")
     p.add_argument("--list-sports", action="store_true",
@@ -230,9 +234,16 @@ def main(argv=None):
         ns = (args.n_swaps if args.n_swaps >= 0
               else DISPERSION_POR_RONDA.get(ronda_param, 12))
         ns_usado = ns
+        # gap_max: en knockout limita la perturbación a cruces genuinamente
+        # empatados (no botar puntos en partidos lopsidados). En grupos, sin límite.
+        if args.gap_max >= 0:
+            gap_max = args.gap_max
+        else:
+            gap_max = None if ronda_param == "primera" else 0.3
         ph, pa = sp.generar_nuestras(
             Msesgo, args.cupos, RONDAS[ronda_param], estrategia="perturbada",
-            rng=np.random.default_rng(7), n_swaps=ns, pool=max(40, 2 * ns + 1))
+            rng=np.random.default_rng(7), n_swaps=ns, pool=max(40, 2 * ns + 1),
+            gap_max=gap_max)
         for idx, f in enumerate(filas):
             f["cupos"] = [f"{ph[c, idx]}-{pa[c, idx]}" for c in range(args.cupos)]
 
