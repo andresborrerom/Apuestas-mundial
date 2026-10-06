@@ -5,9 +5,10 @@
   "liga": "Peace and Love (2107128204)",
   "playoff_teams": 8,
   "alias": {
-    "_nota": "los managers pueden renombrar su equipo en cualquier momento (Team Names = 'Never Locks'). Sin este mapa el equipo se cae en silencio de TODA correlacion y nadie se entera. Verificado el 15-sep: 'Team 18' era el unico nombre del snapshot ausente de la liga y 'SGB' el unico nombre de la liga ausente del snapshot, aparte de los 4 ya marcados como ilegibles. 22-sep: 'No Team for Old Men' -> 'The Replacements' (el equipo de Andres se estaba cayendo de TODAS las correlaciones desde que se renombro).",
+    "_nota": "los managers pueden renombrar su equipo en cualquier momento (Team Names = 'Never Locks'). Sin este mapa el equipo se cae en silencio de TODA correlacion y nadie se entera. Verificado el 15-sep: 'Team 18' era el unico nombre del snapshot ausente de la liga y 'SGB' el unico nombre de la liga ausente del snapshot, aparte de los 4 ya marcados como ilegibles. 22-sep: 'No Team for Old Men' -> 'The Replacements' (el equipo de Andres se estaba cayendo de TODAS las correlaciones desde que se renombro). 06-oct: resuelto por team_id contra rosters_2026_postdraft.csv, no por eliminacion de nombres.",
     "Team 18": "SGB",
-    "No Team for Old Men": "The Replacements"
+    "No Team for Old Men": "The Replacements",
+    "Guru Vibes Only": "R.I.P"
   },
   "pantalla_league_analyzer": {
     "descripcion": "Proj record + Playoff odds",
