@@ -501,7 +501,34 @@ archiva consenso público — sonda inicial no concluyente (página JS),
 investigar acceso. Nota: distribución nacional != los 13 rivales del
 grupo; supuesto de independencia por partido.
 
-## 17. Preguntas abiertas / siguientes pasos
+## 17. HISTÓRICO ENCONTRADO: Pickwatch 2020-2025 — el anticrowd informado CONFIRMA
+
+El sitio de Pickwatch no publica archivo, pero un repo de GitHub
+(sarviinageelen/pickwatch-analysis) lo scrapeó: % de fans por juego (~5-6k
+votantes), cuotas y resultados, **6 temporadas REG completas 2020-2025**
+(cacheado en `nfl/datos/pickwatch_nfl.csv`; endpoint para recolectar en
+vivo: `api.pickwatch.com/v1/general/games`).
+
+**Backtest (`nfl/EDGE/anticrowd_informado.py`)**: 68 semanas, field de 13
+rivales muestreado de la distribución REAL de fans, resultados reales:
+
+| política | aciertos/sem | P(1º único) | 20-22 / 23-25 |
+|---|---|---|---|
+| favoritos | 8.56 | 1.7% | 0.8 / 2.6 |
+| m3 (3 más parejos) | 8.43 | 4.0% | 4.7 / 3.2 |
+| **anti3 (3 de mayor exceso fans-vs-mercado, p_dog>=0.35)** | 8.04 | **8.6%** | **7.8 / 9.5** |
+
+**anti3 DUPLICA a m3 en P(ganar la Batalla solo), consistente en ambas
+mitades.** La intuición anticrowd del usuario (semana 6/2026, TB y CLE)
+queda confirmada con datos. PENDIENTE antes de adoptarla como política
+oficial: el costo en pots es mayor que el del m3 (0.52 aciertos/sem vs
+favoritos ≈ 9 pts/temporada — los fades son dogs del 35-45%, no coin
+flips) → falta re-correr `PICKEM/temporada.py` con las reglas de plata
+completas y las distribuciones reales para el veredicto en $$. Y para las
+semanas en vivo: capturar la distribución de Yahoo del sábado (pantallazo
+o API de pickwatch) y voltear por exceso, no por cercanía a 50%.
+
+## 18. Preguntas abiertas / siguientes pasos
 
 1. ¿Yahoo muestra la **distribución de picks** del grupo antes del cierre?
    Si sí, el field model deja de ser supuesto y se puede esquivar el pick
