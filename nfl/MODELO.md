@@ -474,7 +474,34 @@ anota para revisar con más temporadas, no se actúa.
    y el flip de NYJ dio un punto que los favoritos puros no tienen. Sin
    cambios.
 
-## 16. Preguntas abiertas / siguientes pasos
+## 16. ¡El field model ya es DATO! Distribución de picks de Yahoo (sem. 6)
+
+El usuario descubrió que la pantalla My Picks de Yahoo muestra la
+**distribución de picks** por partido (precisión 0.01% => base nacional de
+Yahoo, no solo el grupo de 14; con 14 serían saltos de ~7.1pp). Capturada
+en `nfl/datos/picks_field/semana6_2026.csv`. Era la pregunta abierta #1.
+
+**Hallazgo medido (lo que el field model suponía, ahora con número):** el
+público se amontona en el favorito MUY por encima de la probabilidad de
+mercado — exceso de +13 a +32pp (JAX pickeado 89% con mercado 57%; BAL 91%
+con mercado 60%; PIT 80% con mercado 57%). Y en los partidos con vapor de
+viernes (CAR +10, BAL -10) el público quedó en el lado VIEJO de la línea:
+no re-pickea tras la noticia.
+
+**Consecuencia (sim con la distribución real, 13 rivales, semana 6):** la
+planilla del usuario con 2 desvíos anticrowd (TB al 43% vs PIT pickeado
+80%; CLE al 40% vs BAL pickeado 91%) da P(1º único)=5.1% vs 2.3% de la m3
+pura — MÁS DEL DOBLE — costando solo 0.35 aciertos esperados. El anticrowd
+INFORMADO (fade donde el público excede al mercado por >20pp) parece
+superior a voltear los 3 más parejos. ESTADO: candidato con n=1 semana;
+NO se cambia la política m3 sin backtest. Para backtestearlo se necesita
+histórico de distribuciones: (a) construimos archivo propio semana a
+semana (el usuario pantallazea, se captura al CSV); (b) NFL Pickwatch
+archiva consenso público — sonda inicial no concluyente (página JS),
+investigar acceso. Nota: distribución nacional != los 13 rivales del
+grupo; supuesto de independencia por partido.
+
+## 17. Preguntas abiertas / siguientes pasos
 
 1. ¿Yahoo muestra la **distribución de picks** del grupo antes del cierre?
    Si sí, el field model deja de ser supuesto y se puede esquivar el pick

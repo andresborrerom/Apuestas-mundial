@@ -1,0 +1,15 @@
+# Distribucion de picks Yahoo (pantalla My Picks, capturada sabado 2026-10-17 ~11:16 Panama)
+# pct_away/pct_home = % de jugadores Yahoo que escogio cada lado (precision 0.01% => base nacional, no solo el grupo de 14)
+away,home,pct_away,pct_home
+SEA,DEN,75.02,24.98
+HOU,JAX,10.71,89.29
+CHI,ATL,52.94,47.06
+BAL,CLE,90.68,9.32
+TEN,IND,2.39,97.61
+NYJ,NE,2.91,97.09
+NO,NYG,25.71,74.29
+CAR,PHI,43.77,56.23
+PIT,TB,80.40,19.60
+ARI,LA,1.42,98.58
+LAC,KC,2.75,97.25
+BUF,LV,94.35,5.65
