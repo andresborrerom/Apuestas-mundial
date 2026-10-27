@@ -1,0 +1,27 @@
+{
+ "fecha_utc": "2026-08-28T03:39:12.328791+00:00",
+ "temporada": 2026,
+ "archivos": [
+  {
+   "origen": "ESPN",
+   "archivo": "espn_proyeccion.csv",
+   "filas": 1403,
+   "sha256": "fad55b41762f722c",
+   "fuente": "corpus local espn_applied_2025.json (kona_player_info)"
+  },
+  {
+   "origen": "FantasyPros",
+   "archivo": "fantasypros_superflex_ecr.csv",
+   "filas": 14492,
+   "sha256": "56f09df1393c8233",
+   "fuente": "https://raw.githubusercontent.com/dynastyprocess/data/master/files/db_fpecr.parquet (snapshot más reciente 2026-08-21)"
+  },
+  {
+   "origen": "FFC",
+   "archivo": "ffc_2qb_adp.csv",
+   "filas": 246,
+   "sha256": "a8dfbb8c04a55913",
+   "fuente": "https://fantasyfootballcalculator.com/api/v1/adp/2qb?year=2026 · 5911 drafts · ventana 2026-07-28..2026-08-27"
+  }
+ ]
+}
