@@ -149,8 +149,9 @@ def main():
     jugadas = max(len(v) for v in anot.values())
     print(f"=== CANDADOS ===")
     print(f"  {'✅' if len(eq)==16 else '🚨'} 16 equipos: {len(eq)}")
-    print(f"  {'✅' if len(pend)==96 else '⚠️'} partidos pendientes: {len(pend)}"
-          f" (12 jornadas x 8)")
+    esperados = 8 * (14 - jugadas)
+    print(f"  {'✅' if len(pend)==esperados else '🚨'} partidos pendientes: {len(pend)}"
+          f" (esperados {esperados} = 8 x (14 - {jugadas} jugadas))")
     print(f"  ✅ jornadas ya jugadas: {jugadas}")
     print(f"\n⚠️ ruido semanal medido: sigma = {sd:.1f} pts sobre {n} observaciones "
           f"equipo-semana (n pequeño: el propio sigma es incierto)")
