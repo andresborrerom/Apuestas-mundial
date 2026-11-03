@@ -1,0 +1,59 @@
+{
+  "liga": "Peace and Love (2107128204)",
+  "fecha_registro": "2026-09-14",
+  "etiqueta": "VALIDADO — leido de la API (mSettings) Y verificado celda por celda contra el pantallazo de LM Tools > Edit League Settings > Transactions and Keepers enviado por Andres el 14-sep-2026",
+
+  "pantalla_transactions_and_keepers": {
+    "_nota": "editable=true si el campo aparece como dropdown/input activo; editable=false si aparece en gris (bloqueado por ESPN hasta el proximo draft)",
+    "Observe ESPN's Undroppable Players List": {"valor": "Yes", "editable": true, "api": "isUsingUndroppableList=true"},
+    "Player Universe": {"valor": "NFL", "editable": false},
+    "Lineup Changes": {"valor": "Lock individually at Scheduled Gametime", "editable": false,
+                       "api": "lineupLocktimeType=INDIVIDUAL_GAME / rosterLocktimeType=INDIVIDUAL_GAME",
+                       "consecuencia": "un jugador cuyo partido ya arranco NO se puede soltar hasta que termine el scoring period"},
+    "Player Acquisition System": {"valor": "Free Agent Budget", "editable": false,
+                                  "api": "acquisitionType=WAIVERS_TRADITIONAL + isUsingAcquisitionBudget=true"},
+    "Season Acquisition Limit": {"valor": "No Limit", "editable": true, "api": "acquisitionLimit=-1"},
+    "Waiver Period": {"valor": "1 Day", "editable": true, "api": "waiverHours=24"},
+    "Player Acquisition Budget": {"valor": 9999, "editable": false, "api": "acquisitionBudget=9999"},
+    "Minimum Offer": {"valor": 0, "editable": true, "api": "minimumBid=0"},
+    "Free Agent Budget Tiebreaker": {"valor": "Reset Each Week to Inverse Order of Standings", "editable": true,
+                                     "api": "waiverOrderReset=true"},
+    "Lock Transactions for Eliminated Teams During Playoffs": {"valor": "No", "editable": true},
+    "Trade Limit": {"valor": "No Limit", "editable": true},
+    "Trade Deadline": {"valor": "2026-12-02T12:00:00-05:00", "editable": true},
+    "Trade Review Period": {"valor": "1 Day", "editable": true, "api": "revisionHours=24"},
+    "Votes Required to Veto Trade": {"valor": "LM Only Vetoes", "editable": true, "api": "vetoVotesRequired=0"},
+    "Use Keepers for 2026 Season": {"valor": "No", "editable": false},
+    "Use Keepers for 2027 Season": {"valor": "No", "editable": true}
+  },
+
+  "no_visible_en_esa_pantalla": [
+    "waiverProcessDays=[WEDNESDAY] y waiverProcessHour=7 salen en la API pero NO tienen fila propia en Transactions and Keepers; vienen atados al Player Acquisition System, que esta bloqueado."
+  ],
+
+  "historico_api": {
+    "_nota": "bajado de leagueHistory; muestra que el candado de roster NUNCA cambio y que lo que SI cambio en 2026 fue el sistema de adquisicion",
+    "2019_2025": {"rosterLocktimeType": "INDIVIDUAL_GAME", "lineupLocktimeType": "INDIVIDUAL_GAME",
+                  "acquisitionType": "WAIVERS_CONTINUOUS",
+                  "waiverProcessDays": ["MONDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"],
+                  "equipos": 14},
+    "2026": {"rosterLocktimeType": "INDIVIDUAL_GAME", "lineupLocktimeType": "INDIVIDUAL_GAME",
+             "acquisitionType": "WAIVERS_TRADITIONAL", "waiverProcessDays": ["WEDNESDAY"], "equipos": 16}
+  },
+
+  "correcciones_a_afirmaciones_previas": [
+    {
+      "dije": "tu waiverRank es 16 de 16, en waivers pierdes contra todos",
+      "realidad": "la liga corre FAAB (Free Agent Budget) con presupuesto 9999, minimum offer 0 y acquisitionBudgetSpent=0 para el equipo 10. El orden de waiver es SOLO desempate de pujas iguales, y ademas se resetea cada semana. No hay desventaja estructural: se gana pujando.",
+      "causa_raiz": "lei waiverRank sin leer isUsingAcquisitionBudget en el mismo objeto de settings",
+      "regla_nueva": "acquisitionSettings se lee COMPLETO antes de opinar sobre waivers; waiverRank sin mirar el presupuesto no significa nada"
+    },
+    {
+      "dije": "la fila se llama Roster Locktime",
+      "realidad": "en la UI de Transactions and Keepers la fila visible se llama 'Lineup Changes' con valor 'Lock individually at Scheduled Gametime', y sale en gris",
+      "regla_nueva": "el nombre de API != el nombre de la UI; el canal se lee del canal mismo"
+    }
+  ],
+
+  "conclusion_operativa": "Nada editable en esta pantalla desbloquea soltar a un jugador que ya jugo. Ese candado solo se toca antes del draft (2027)."
+}

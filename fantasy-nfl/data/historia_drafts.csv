@@ -1,0 +1,3259 @@
+season,ronda,pick,jugador,pos,nfl,team_id,equipo,manager
+2010,1,1,Chris Johnson,RB,TEN,4,El Real McCoy,Nicholas
+2010,1,2,Adrian Peterson,RB,MIN,3,Mean Machine,Sergio
+2010,1,3,Maurice Jones-Drew,RB,JAC,5,Coitus Interrupted,Luis Carlos
+2010,1,4,Ray Rice,RB,BAL,1,Big Ben her over,Daniel
+2010,1,5,Frank Gore,RB,SF,2,The Returners,Mauricio
+2010,1,6,Aaron Rodgers,QB,GB,8,CALZETO,jose
+2010,1,7,Peyton Manning,QB,IND,7,YoureMine,Julian
+2010,1,8,Michael Turner,RB,ATL,6,LEONS,Brian
+2010,2,9,Andre Johnson,WR,HOU,6,LEONS,Brian
+2010,2,10,Rashard Mendenhall,RB,PIT,7,YoureMine,Julian
+2010,2,11,Ryan Mathews,RB,LAC,8,CALZETO,jose
+2010,2,12,Drew Brees,QB,NO,2,The Returners,Mauricio
+2010,2,13,Randy Moss,WR,TEN,1,Big Ben her over,Daniel
+2010,2,14,Larry Fitzgerald,WR,ARI,5,Coitus Interrupted,Luis Carlos
+2010,2,15,Reggie Wayne,WR,IND,3,Mean Machine,Sergio
+2010,2,16,Steven Jackson,RB,STL,4,El Real McCoy,Nicholas
+2010,3,17,Calvin Johnson,WR,DET,4,El Real McCoy,Nicholas
+2010,3,18,Greg Jennings,WR,GB,3,Mean Machine,Sergio
+2010,3,19,Tom Brady,QB,NE,5,Coitus Interrupted,Luis Carlos
+2010,3,20,Jamaal Charles,RB,KC,1,Big Ben her over,Daniel
+2010,3,21,Shonn Greene,RB,NYJ,2,The Returners,Mauricio
+2010,3,22,Cedric Benson,RB,CIN,8,CALZETO,jose
+2010,3,23,Thomas Jones,RB,KC,7,YoureMine,Julian
+2010,3,24,Miles Austin,WR,DAL,6,LEONS,Brian
+2010,4,25,Matt Schaub,QB,HOU,6,LEONS,Brian
+2010,4,26,Marques Colston,WR,NO,7,YoureMine,Julian
+2010,4,27,DeAngelo Williams,RB,CAR,8,CALZETO,jose
+2010,4,28,Ryan Grant,RB,GB,2,The Returners,Mauricio
+2010,4,29,DeSean Jackson,WR,PHI,1,Big Ben her over,Daniel
+2010,4,30,Arian Foster,RB,HOU,5,Coitus Interrupted,Luis Carlos
+2010,4,31,Tony Romo,QB,DAL,3,Mean Machine,Sergio
+2010,4,32,Brandon Marshall,WR,MIA,4,El Real McCoy,Nicholas
+2010,5,33,Roddy White,WR,ATL,4,El Real McCoy,Nicholas
+2010,5,34,Knowshon Moreno,RB,DEN,3,Mean Machine,Sergio
+2010,5,35,C.J. Spiller,RB,BUF,5,Coitus Interrupted,Luis Carlos
+2010,5,36,Steve Smith,WR,CAR,1,Big Ben her over,Daniel
+2010,5,37,Anquan Boldin,WR,BAL,2,The Returners,Mauricio
+2010,5,38,Steve Smith,WR,NYG,8,CALZETO,jose
+2010,5,39,Chad Ochocinco,WR,CIN,7,YoureMine,Julian
+2010,5,40,Pierre Thomas,RB,NO,6,LEONS,Brian
+2010,6,41,Dallas Clark,TE,IND,6,LEONS,Brian
+2010,6,42,Devery Henderson,WR,NO,7,YoureMine,Julian
+2010,6,43,Michael Crabtree,WR,SF,8,CALZETO,jose
+2010,6,44,Antonio Gates,TE,LAC,2,The Returners,Mauricio
+2010,6,45,Philip Rivers,QB,LAC,1,Big Ben her over,Daniel
+2010,6,46,Mike Sims-Walker,WR,JAC,5,Coitus Interrupted,Luis Carlos
+2010,6,47,Vernon Davis,TE,SF,3,Mean Machine,Sergio
+2010,6,48,Wes Welker,WR,NE,4,El Real McCoy,Nicholas
+2010,7,49,Jason Witten,TE,DAL,4,El Real McCoy,Nicholas
+2010,7,50,Hines Ward,WR,PIT,3,Mean Machine,Sergio
+2010,7,51,Mike Wallace,WR,PIT,5,Coitus Interrupted,Luis Carlos
+2010,7,52,Joseph Addai,RB,IND,1,Big Ben her over,Daniel
+2010,7,53,Dwayne Bowe,WR,KC,2,The Returners,Mauricio
+2010,7,54,Brent Celek,TE,PHI,8,CALZETO,jose
+2010,7,55,Pittsburgh Steelers,DEF,,7,YoureMine,Julian
+2010,7,56,Jonathan Stewart,RB,CAR,6,LEONS,Brian
+2010,8,57,Sidney Rice,WR,MIN,6,LEONS,Brian
+2010,8,58,Tony Gonzalez,TE,ATL,7,YoureMine,Julian
+2010,8,59,Percy Harvin,WR,MIN,8,CALZETO,jose
+2010,8,60,Hakeem Nicks,WR,NYG,2,The Returners,Mauricio
+2010,8,61,Visanthe Shiancoe,TE,MIN,1,Big Ben her over,Daniel
+2010,8,62,Jermichael Finley,TE,GB,5,Coitus Interrupted,Luis Carlos
+2010,8,63,Matt Forte,RB,CHI,3,Mean Machine,Sergio
+2010,8,64,Ronnie Brown,RB,MIA,4,El Real McCoy,Nicholas
+2010,9,65,LeSean McCoy,RB,PHI,4,El Real McCoy,Nicholas
+2010,9,66,Santana Moss,WR,WAS,3,Mean Machine,Sergio
+2010,9,67,Terrell Owens,WR,CIN,5,Coitus Interrupted,Luis Carlos
+2010,9,68,Jahvid Best,RB,DET,1,Big Ben her over,Daniel
+2010,9,69,New York Jets,DEF,,2,The Returners,Mauricio
+2010,9,70,Minnesota Vikings,DEF,,8,CALZETO,jose
+2010,9,71,Antwaan Randle El,WR,PIT,7,YoureMine,Julian
+2010,9,72,Beanie Wells,RB,ARI,6,LEONS,Brian
+2010,10,73,Green Bay Packers,DEF,,6,LEONS,Brian
+2010,10,74,Antonio Brown,WR,PIT,7,YoureMine,Julian
+2010,10,75,Stephen Gostkowski,K,NE,8,CALZETO,jose
+2010,10,76,Garrett Hartley,K,NO,2,The Returners,Mauricio
+2010,10,77,Vincent Jackson,WR,LAC,1,Big Ben her over,Daniel
+2010,10,78,Robert Meachem,WR,NO,5,Coitus Interrupted,Luis Carlos
+2010,10,79,Johnny Knox,WR,CHI,3,Mean Machine,Sergio
+2010,10,80,Jay Cutler,QB,CHI,4,El Real McCoy,Nicholas
+2010,11,81,Pierre Garcon,WR,IND,4,El Real McCoy,Nicholas
+2010,11,82,Marion Barber,RB,DAL,3,Mean Machine,Sergio
+2010,11,83,Kevin Kolb,QB,PHI,5,Coitus Interrupted,Luis Carlos
+2010,11,84,Ben Roethlisberger,QB,PIT,1,Big Ben her over,Daniel
+2010,11,85,Brett Favre,QB,MIN,2,The Returners,Mauricio
+2010,11,86,Ahmad Bradshaw,RB,NYG,8,CALZETO,jose
+2010,11,87,Reggie Bush,RB,NO,7,YoureMine,Julian
+2010,11,88,Kenny Britt,WR,TEN,6,LEONS,Brian
+2010,12,89,Derrick Mason,WR,BAL,6,LEONS,Brian
+2010,12,90,Arnaz Battle,WR,PIT,7,YoureMine,Julian
+2010,12,91,Jerome Harrison,RB,PHI,8,CALZETO,jose
+2010,12,92,Felix Jones,RB,DAL,2,The Returners,Mauricio
+2010,12,93,New Orleans Saints,DEF,,1,Big Ben her over,Daniel
+2010,12,94,Dez Bryant,WR,DAL,5,Coitus Interrupted,Luis Carlos
+2010,12,95,Bernard Berrian,WR,MIN,3,Mean Machine,Sergio
+2010,12,96,Ricky Williams,RB,MIA,4,El Real McCoy,Nicholas
+2010,13,97,Clinton Portis,RB,WAS,4,El Real McCoy,Nicholas
+2010,13,98,Brandon Jacobs,RB,NYG,3,Mean Machine,Sergio
+2010,13,99,Philadelphia Eagles,DEF,,5,Coitus Interrupted,Luis Carlos
+2010,13,100,Fred Jackson,RB,BUF,1,Big Ben her over,Daniel
+2010,13,101,Malcom Floyd,WR,LAC,2,The Returners,Mauricio
+2010,13,102,Jeremy Maclin,WR,PHI,8,CALZETO,jose
+2010,13,103,Heath Miller,TE,PIT,7,YoureMine,Julian
+2010,13,104,Cadillac Williams,RB,TB,6,LEONS,Brian
+2010,14,105,Steve Slaton,RB,HOU,6,LEONS,Brian
+2010,14,106,Chris Cooley,TE,WAS,7,YoureMine,Julian
+2010,14,107,Darren McFadden,RB,LV,8,CALZETO,jose
+2010,14,108,Michael Bush,RB,LV,2,The Returners,Mauricio
+2010,14,109,Victor Cruz,WR,NYG,1,Big Ben her over,Daniel
+2010,14,110,Justin Forsett,RB,SEA,5,Coitus Interrupted,Luis Carlos
+2010,14,111,San Francisco 49ers,DEF,,3,Mean Machine,Sergio
+2010,14,112,Owen Daniels,TE,HOU,4,El Real McCoy,Nicholas
+2010,15,113,Baltimore Ravens,DEF,,4,El Real McCoy,Nicholas
+2010,15,114,Mohamed Massaquoi,WR,CLE,3,Mean Machine,Sergio
+2010,15,115,Donald Brown,RB,IND,5,Coitus Interrupted,Luis Carlos
+2010,15,116,LaDainian Tomlinson,RB,NYJ,1,Big Ben her over,Daniel
+2010,15,117,Donald Driver,WR,GB,2,The Returners,Mauricio
+2010,15,118,Steve Breaston,WR,ARI,8,CALZETO,jose
+2010,15,119,Jeff Reed,K,SF,7,YoureMine,Julian
+2010,15,120,Nate Kaeding,K,LAC,6,LEONS,Brian
+2010,16,121,Zach Miller,TE,LV,6,LEONS,Brian
+2010,16,122,Mewelde Moore,RB,PIT,7,YoureMine,Julian
+2010,16,123,T.J. Houshmandzadeh,WR,BAL,8,CALZETO,jose
+2010,16,124,Joe Flacco,QB,BAL,2,The Returners,Mauricio
+2010,16,125,David Akers,K,PHI,1,Big Ben her over,Daniel
+2010,16,126,Ryan Longwell,K,MIN,5,Coitus Interrupted,Luis Carlos
+2010,16,127,Mason Crosby,K,GB,3,Mean Machine,Sergio
+2010,16,128,Rob Bironas,K,TEN,4,El Real McCoy,Nicholas
+2011,1,1,Adrian Peterson,RB,MIN,8,HongKongHustle,Vince
+2011,1,2,Michael Vick,QB,PHI,3,Mean Machine,Sergio
+2011,1,3,Arian Foster,RB,HOU,10,Cheater's Team,Spooky
+2011,1,4,Chris Johnson,RB,TEN,5,The Fantasy GURU,Luis Carlos
+2011,1,5,Ray Rice,RB,BAL,4,Frank has TANKed,Nicholas
+2011,1,6,LeSean McCoy,RB,PHI,2,Touchdown There,Mauricio
+2011,1,7,Jamaal Charles,RB,KC,9,The Teabaggers,Gustavo
+2011,1,8,Maurice Jones-Drew,RB,JAC,1,Big Ben her over,Daniel
+2011,1,9,Aaron Rodgers,QB,GB,7,YoureMine,Julian
+2011,1,10,Rashard Mendenhall,RB,PIT,6,LEONS,Brian
+2011,2,11,Tom Brady,QB,NE,6,LEONS,Brian
+2011,2,12,Darren McFadden,RB,LV,7,YoureMine,Julian
+2011,2,13,Peyton Manning,QB,IND,1,Big Ben her over,Daniel
+2011,2,14,Reggie Wayne,WR,IND,9,The Teabaggers,Gustavo
+2011,2,15,Calvin Johnson,WR,DET,2,Touchdown There,Mauricio
+2011,2,16,Frank Gore,RB,SF,4,Frank has TANKed,Nicholas
+2011,2,17,Andre Johnson,WR,HOU,5,The Fantasy GURU,Luis Carlos
+2011,2,18,Drew Brees,QB,NO,10,Cheater's Team,Spooky
+2011,2,19,Michael Turner,RB,ATL,3,Mean Machine,Sergio
+2011,2,20,Roddy White,WR,ATL,8,HongKongHustle,Vince
+2011,3,21,Hakeem Nicks,WR,NYG,8,HongKongHustle,Vince
+2011,3,22,Larry Fitzgerald,WR,ARI,3,Mean Machine,Sergio
+2011,3,23,DeSean Jackson,WR,PHI,10,Cheater's Team,Spooky
+2011,3,24,Philip Rivers,QB,LAC,5,The Fantasy GURU,Luis Carlos
+2011,3,25,Vincent Jackson,WR,LAC,4,Frank has TANKed,Nicholas
+2011,3,26,Matt Forte,RB,CHI,2,Touchdown There,Mauricio
+2011,3,27,Chad Ochocinco,WR,NE,9,The Teabaggers,Gustavo
+2011,3,28,Greg Jennings,WR,GB,1,Big Ben her over,Daniel
+2011,3,29,Steven Jackson,RB,STL,7,YoureMine,Julian
+2011,3,30,Mike Wallace,WR,PIT,6,LEONS,Brian
+2011,4,31,Peyton Hillis,RB,CLE,6,LEONS,Brian
+2011,4,32,Miles Austin,WR,DAL,7,YoureMine,Julian
+2011,4,33,Antonio Gates,TE,LAC,1,Big Ben her over,Daniel
+2011,4,34,Jermichael Finley,TE,GB,9,The Teabaggers,Gustavo
+2011,4,35,Matt Ryan,QB,ATL,2,Touchdown There,Mauricio
+2011,4,36,Dallas Clark,TE,IND,4,Frank has TANKed,Nicholas
+2011,4,37,LeGarrette Blount,RB,TB,5,The Fantasy GURU,Luis Carlos
+2011,4,38,Ahmad Bradshaw,RB,NYG,10,Cheater's Team,Spooky
+2011,4,39,Dez Bryant,WR,DAL,3,Mean Machine,Sergio
+2011,4,40,Tony Romo,QB,DAL,8,HongKongHustle,Vince
+2011,5,41,Felix Jones,RB,DAL,8,HongKongHustle,Vince
+2011,5,42,DeAngelo Williams,RB,CAR,3,Mean Machine,Sergio
+2011,5,43,Wes Welker,WR,NE,10,Cheater's Team,Spooky
+2011,5,44,Santonio Holmes,WR,NYJ,5,The Fantasy GURU,Luis Carlos
+2011,5,45,Marques Colston,WR,NO,4,Frank has TANKed,Nicholas
+2011,5,46,Brandon Lloyd,WR,STL,2,Touchdown There,Mauricio
+2011,5,47,Knowshon Moreno,RB,DEN,9,The Teabaggers,Gustavo
+2011,5,48,Jahvid Best,RB,DET,1,Big Ben her over,Daniel
+2011,5,49,Dwayne Bowe,WR,KC,7,YoureMine,Julian
+2011,5,50,Kenny Britt,WR,TEN,6,LEONS,Brian
+2011,6,51,Jason Witten,TE,DAL,6,LEONS,Brian
+2011,6,52,Brandon Marshall,WR,MIA,7,YoureMine,Julian
+2011,6,53,Anquan Boldin,WR,BAL,1,Big Ben her over,Daniel
+2011,6,54,Percy Harvin,WR,MIN,9,The Teabaggers,Gustavo
+2011,6,55,Vernon Davis,TE,SF,2,Touchdown There,Mauricio
+2011,6,56,Shonn Greene,RB,NYJ,4,Frank has TANKed,Nicholas
+2011,6,57,Mike Williams,WR,TB,5,The Fantasy GURU,Luis Carlos
+2011,6,58,Mark Ingram,RB,NO,10,Cheater's Team,Spooky
+2011,6,59,Tim Hightower,RB,WAS,3,Mean Machine,Sergio
+2011,6,60,Reggie Bush,RB,MIA,8,HongKongHustle,Vince
+2011,7,61,Jeremy Maclin,WR,PHI,8,HongKongHustle,Vince
+2011,7,62,Steve Johnson,WR,BUF,3,Mean Machine,Sergio
+2011,7,63,Ryan Mathews,RB,LAC,10,Cheater's Team,Spooky
+2011,7,64,Beanie Wells,RB,ARI,5,The Fantasy GURU,Luis Carlos
+2011,7,65,Mario Manningham,WR,NYG,4,Frank has TANKed,Nicholas
+2011,7,66,BenJarvus Green-Ellis,RB,NE,2,Touchdown There,Mauricio
+2011,7,67,Ben Roethlisberger,QB,PIT,9,The Teabaggers,Gustavo
+2011,7,68,Austin Collie,WR,IND,1,Big Ben her over,Daniel
+2011,7,69,Ryan Grant,RB,GB,7,YoureMine,Julian
+2011,7,70,Sidney Rice,WR,SEA,6,LEONS,Brian
+2011,8,71,Fred Jackson,RB,BUF,6,LEONS,Brian
+2011,8,72,Owen Daniels,TE,HOU,7,YoureMine,Julian
+2011,8,73,Daniel Thomas,RB,MIA,1,Big Ben her over,Daniel
+2011,8,74,Thomas Jones,RB,KC,9,The Teabaggers,Gustavo
+2011,8,75,Mike Thomas,WR,JAC,2,Touchdown There,Mauricio
+2011,8,76,Cedric Benson,RB,CIN,4,Frank has TANKed,Nicholas
+2011,8,77,Jimmy Graham,TE,NO,5,The Fantasy GURU,Luis Carlos
+2011,8,78,Steve Smith,WR,CAR,10,Cheater's Team,Spooky
+2011,8,79,Joseph Addai,RB,IND,3,Mean Machine,Sergio
+2011,8,80,Aaron Hernandez,TE,NE,8,HongKongHustle,Vince
+2011,9,81,Philadelphia Eagles,DEF,,8,HongKongHustle,Vince
+2011,9,82,Tony Gonzalez,TE,ATL,3,Mean Machine,Sergio
+2011,9,83,Santana Moss,WR,WAS,10,Cheater's Team,Spooky
+2011,9,84,Mike Sims-Walker,WR,JAC,5,The Fantasy GURU,Luis Carlos
+2011,9,85,Matt Schaub,QB,HOU,4,Frank has TANKed,Nicholas
+2011,9,86,New England Patriots,DEF,,2,Touchdown There,Mauricio
+2011,9,87,Pierre Garcon,WR,IND,9,The Teabaggers,Gustavo
+2011,9,88,Pittsburgh Steelers,DEF,,1,Big Ben her over,Daniel
+2011,9,89,Green Bay Packers,DEF,,7,YoureMine,Julian
+2011,9,90,New York Jets,DEF,,6,LEONS,Brian
+2011,10,91,Hines Ward,WR,PIT,6,LEONS,Brian
+2011,10,92,Mason Crosby,K,GB,7,YoureMine,Julian
+2011,10,93,Antonio Brown,WR,PIT,1,Big Ben her over,Daniel
+2011,10,94,Baltimore Ravens,DEF,,9,The Teabaggers,Gustavo
+2011,10,95,Mike Tolbert,RB,LAC,2,Touchdown There,Mauricio
+2011,10,96,Plaxico Burress,WR,NYJ,4,Frank has TANKed,Nicholas
+2011,10,97,James Starks,RB,GB,5,The Fantasy GURU,Luis Carlos
+2011,10,98,New Orleans Saints,DEF,,10,Cheater's Team,Spooky
+2011,10,99,Matthew Stafford,QB,DET,3,Mean Machine,Sergio
+2011,10,100,Julio Jones,WR,ATL,8,HongKongHustle,Vince
+2011,11,101,Nate Burleson,WR,DET,8,HongKongHustle,Vince
+2011,11,102,A.J. Green,WR,CIN,3,Mean Machine,Sergio
+2011,11,103,Zach Miller,TE,SEA,10,Cheater's Team,Spooky
+2011,11,104,Marshawn Lynch,RB,SEA,5,The Fantasy GURU,Luis Carlos
+2011,11,105,Jonathan Stewart,RB,CAR,4,Frank has TANKed,Nicholas
+2011,11,106,Josh Freeman,QB,TB,2,Touchdown There,Mauricio
+2011,11,107,Johnny Knox,WR,CHI,9,The Teabaggers,Gustavo
+2011,11,108,LaDainian Tomlinson,RB,NYJ,1,Big Ben her over,Daniel
+2011,11,109,Joe Flacco,QB,BAL,7,YoureMine,Julian
+2011,11,110,Jay Cutler,QB,CHI,6,LEONS,Brian
+2011,12,111,Braylon Edwards,WR,SF,6,LEONS,Brian
+2011,12,112,C.J. Spiller,RB,BUF,7,YoureMine,Julian
+2011,12,113,Deion Branch,WR,NE,1,Big Ben her over,Daniel
+2011,12,114,Sam Bradford,QB,STL,9,The Teabaggers,Gustavo
+2011,12,115,Danny Amendola,WR,STL,2,Touchdown There,Mauricio
+2011,12,116,Ronnie Brown,RB,PHI,4,Frank has TANKed,Nicholas
+2011,12,117,Lee Evans,WR,BAL,5,The Fantasy GURU,Luis Carlos
+2011,12,118,Lance Moore,WR,NO,10,Cheater's Team,Spooky
+2011,12,119,Malcom Floyd,WR,LAC,3,Mean Machine,Sergio
+2011,12,120,Pierre Thomas,RB,NO,8,HongKongHustle,Vince
+2011,13,121,Tashard Choice,RB,BUF,8,HongKongHustle,Vince
+2011,13,122,Chicago Bears,DEF,,3,Mean Machine,Sergio
+2011,13,123,Matt Bryant,K,ATL,10,Cheater's Team,Spooky
+2011,13,124,Michael Crabtree,WR,SF,5,The Fantasy GURU,Luis Carlos
+2011,13,125,Kevin Kolb,QB,ARI,4,Frank has TANKed,Nicholas
+2011,13,126,Kellen Winslow,TE,TB,2,Touchdown There,Mauricio
+2011,13,127,Sebastian Janikowski,K,LV,9,The Teabaggers,Gustavo
+2011,13,128,Kyle Orton,QB,KC,1,Big Ben her over,Daniel
+2011,13,129,Brandon Jacobs,RB,NYG,7,YoureMine,Julian
+2011,13,130,Marion Barber,RB,CHI,6,LEONS,Brian
+2011,14,131,Derrick Ward,RB,HOU,6,LEONS,Brian
+2011,14,132,Michael Bush,RB,LV,7,YoureMine,Julian
+2011,14,133,Mohamed Massaquoi,WR,CLE,1,Big Ben her over,Daniel
+2011,14,134,Devery Henderson,WR,NO,9,The Teabaggers,Gustavo
+2011,14,135,Donald Driver,WR,GB,2,Touchdown There,Mauricio
+2011,14,136,Mike Williams,WR,SEA,4,Frank has TANKed,Nicholas
+2011,14,137,Deji Karim,RB,JAC,5,The Fantasy GURU,Luis Carlos
+2011,14,138,Steve Smith,WR,PHI,10,Cheater's Team,Spooky
+2011,14,139,Robert Meachem,WR,NO,3,Mean Machine,Sergio
+2011,14,140,Eli Manning,QB,NYG,8,HongKongHustle,Vince
+2011,15,141,Detroit Lions,DEF,,8,HongKongHustle,Vince
+2011,15,142,Jordy Nelson,WR,GB,3,Mean Machine,Sergio
+2011,15,143,Donovan McNabb,QB,MIN,10,Cheater's Team,Spooky
+2011,15,144,Alex Henery,K,PHI,5,The Fantasy GURU,Luis Carlos
+2011,15,145,Stephen Gostkowski,K,NE,4,Frank has TANKed,Nicholas
+2011,15,146,Nick Folk,K,NYJ,2,Touchdown There,Mauricio
+2011,15,147,Brandon Pettigrew,TE,DET,9,The Teabaggers,Gustavo
+2011,15,148,Willis McGahee,RB,DEN,1,Big Ben her over,Daniel
+2011,15,149,Marcedes Lewis,TE,JAC,7,YoureMine,Julian
+2011,15,150,David Akers,K,SF,6,LEONS,Brian
+2011,16,151,Justin Forsett,RB,SEA,6,LEONS,Brian
+2011,16,152,Jacoby Ford,WR,LV,7,YoureMine,Julian
+2011,16,153,Josh Brown,K,STL,1,Big Ben her over,Daniel
+2011,16,154,Kevin Walter,WR,HOU,9,The Teabaggers,Gustavo
+2011,16,155,Nate Washington,WR,TEN,2,Touchdown There,Mauricio
+2011,16,156,Los Angeles Chargers,DEF,,4,Frank has TANKed,Nicholas
+2011,16,157,New York Giants,DEF,,5,The Fantasy GURU,Luis Carlos
+2011,16,158,Brent Celek,TE,PHI,10,Cheater's Team,Spooky
+2011,16,159,Neil Rackers,K,HOU,3,Mean Machine,Sergio
+2011,16,160,Nate Kaeding,K,LAC,8,HongKongHustle,Vince
+2012,1,1,Arian Foster,RB,HOU,2,0 and 4 and 6 to go,Mauricio
+2012,1,2,Aaron Rodgers,QB,GB,7,Albino Greens,Julian
+2012,1,3,Tom Brady,QB,NE,3,Mean Machine,Sergio
+2012,1,4,LeSean McCoy,RB,PHI,5,COITUS INTERRUPTED THE IV,Luis Carlos
+2012,1,5,Ray Rice,RB,BAL,9,The Teabaggers,Gustavo
+2012,1,6,Matt Forte,RB,CHI,10,Your fucking fired,Fernando
+2012,1,7,Drew Brees,QB,NO,1,Big Ben her over,Daniel
+2012,1,8,Calvin Johnson,WR,DET,4,Manning Up,Nicholas
+2012,1,9,Matthew Stafford,QB,DET,6,LEONS,Brian
+2012,1,10,Cam Newton,QB,CAR,8,HongKongHustle,Vince
+2012,2,11,Darren McFadden,RB,LV,8,HongKongHustle,Vince
+2012,2,12,Chris Johnson,RB,TEN,6,LEONS,Brian
+2012,2,13,Jimmy Graham,TE,NO,4,Manning Up,Nicholas
+2012,2,14,Andre Johnson,WR,HOU,1,Big Ben her over,Daniel
+2012,2,15,Larry Fitzgerald,WR,ARI,10,Your fucking fired,Fernando
+2012,2,16,Philip Rivers,QB,LAC,9,The Teabaggers,Gustavo
+2012,2,17,Julio Jones,WR,ATL,5,COITUS INTERRUPTED THE IV,Luis Carlos
+2012,2,18,Rob Gronkowski,TE,NE,3,Mean Machine,Sergio
+2012,2,19,Roddy White,WR,ATL,7,Albino Greens,Julian
+2012,2,20,A.J. Green,WR,CIN,2,0 and 4 and 6 to go,Mauricio
+2012,3,21,Greg Jennings,WR,GB,2,0 and 4 and 6 to go,Mauricio
+2012,3,22,DeMarco Murray,RB,DAL,7,Albino Greens,Julian
+2012,3,23,Michael Vick,QB,PHI,3,Mean Machine,Sergio
+2012,3,24,Maurice Jones-Drew,RB,JAC,5,COITUS INTERRUPTED THE IV,Luis Carlos
+2012,3,25,Jamaal Charles,RB,KC,9,The Teabaggers,Gustavo
+2012,3,26,Wes Welker,WR,NE,10,Your fucking fired,Fernando
+2012,3,27,Adrian Peterson,RB,MIN,1,Big Ben her over,Daniel
+2012,3,28,Hakeem Nicks,WR,NYG,4,Manning Up,Nicholas
+2012,3,29,Ryan Mathews,RB,LAC,6,LEONS,Brian
+2012,3,30,Antonio Gates,TE,LAC,8,HongKongHustle,Vince
+2012,4,31,Jordy Nelson,WR,GB,8,HongKongHustle,Vince
+2012,4,32,Victor Cruz,WR,NYG,6,LEONS,Brian
+2012,4,33,Peyton Manning,QB,DEN,4,Manning Up,Nicholas
+2012,4,34,Vernon Davis,TE,SF,1,Big Ben her over,Daniel
+2012,4,35,Fred Jackson,RB,BUF,10,Your fucking fired,Fernando
+2012,4,36,Steve Smith,WR,CAR,9,The Teabaggers,Gustavo
+2012,4,37,Marshawn Lynch,RB,SEA,5,COITUS INTERRUPTED THE IV,Luis Carlos
+2012,4,38,Steven Jackson,RB,STL,3,Mean Machine,Sergio
+2012,4,39,Trent Richardson,RB,CLE,7,Albino Greens,Julian
+2012,4,40,Brandon Marshall,WR,CHI,2,0 and 4 and 6 to go,Mauricio
+2012,5,41,Tony Romo,QB,DAL,2,0 and 4 and 6 to go,Mauricio
+2012,5,42,Ahmad Bradshaw,RB,NYG,7,Albino Greens,Julian
+2012,5,43,Michael Turner,RB,ATL,3,Mean Machine,Sergio
+2012,5,44,Brandon Lloyd,WR,NE,5,COITUS INTERRUPTED THE IV,Luis Carlos
+2012,5,45,Marques Colston,WR,NO,9,The Teabaggers,Gustavo
+2012,5,46,Eli Manning,QB,NYG,10,Your fucking fired,Fernando
+2012,5,47,Frank Gore,RB,SF,1,Big Ben her over,Daniel
+2012,5,48,Demaryius Thomas,WR,DEN,4,Manning Up,Nicholas
+2012,5,49,Percy Harvin,WR,MIN,6,LEONS,Brian
+2012,5,50,Darren Sproles,RB,NO,8,HongKongHustle,Vince
+2012,6,51,Antonio Brown,WR,PIT,8,HongKongHustle,Vince
+2012,6,52,Dez Bryant,WR,DAL,6,LEONS,Brian
+2012,6,53,Doug Martin,RB,TB,4,Manning Up,Nicholas
+2012,6,54,Mike Wallace,WR,PIT,1,Big Ben her over,Daniel
+2012,6,55,Dwayne Bowe,WR,KC,10,Your fucking fired,Fernando
+2012,6,56,Jermichael Finley,TE,GB,9,The Teabaggers,Gustavo
+2012,6,57,Matt Ryan,QB,ATL,5,COITUS INTERRUPTED THE IV,Luis Carlos
+2012,6,58,DeSean Jackson,WR,PHI,3,Mean Machine,Sergio
+2012,6,59,Eric Decker,WR,DEN,7,Albino Greens,Julian
+2012,6,60,Jeremy Maclin,WR,PHI,2,0 and 4 and 6 to go,Mauricio
+2012,7,61,Aaron Hernandez,TE,NE,2,0 and 4 and 6 to go,Mauricio
+2012,7,62,Miles Austin,WR,DAL,7,Albino Greens,Julian
+2012,7,63,Steve Johnson,WR,BUF,3,Mean Machine,Sergio
+2012,7,64,Cedric Benson,RB,GB,5,COITUS INTERRUPTED THE IV,Luis Carlos
+2012,7,65,Anquan Boldin,WR,BAL,9,The Teabaggers,Gustavo
+2012,7,66,Reggie Bush,RB,MIA,10,Your fucking fired,Fernando
+2012,7,67,Torrey Smith,WR,BAL,1,Big Ben her over,Daniel
+2012,7,68,Beanie Wells,RB,ARI,4,Manning Up,Nicholas
+2012,7,69,Kenny Britt,WR,TEN,6,LEONS,Brian
+2012,7,70,Stevan Ridley,RB,NE,8,HongKongHustle,Vince
+2012,8,71,Willis McGahee,RB,DEN,8,HongKongHustle,Vince
+2012,8,72,Fred Davis,TE,WAS,6,LEONS,Brian
+2012,8,73,Vincent Jackson,WR,TB,4,Manning Up,Nicholas
+2012,8,74,Shonn Greene,RB,NYJ,1,Big Ben her over,Daniel
+2012,8,75,Reggie Wayne,WR,IND,10,Your fucking fired,Fernando
+2012,8,76,BenJarvus Green-Ellis,RB,CIN,9,The Teabaggers,Gustavo
+2012,8,77,Tony Gonzalez,TE,ATL,5,COITUS INTERRUPTED THE IV,Luis Carlos
+2012,8,78,Robert Meachem,WR,LAC,3,Mean Machine,Sergio
+2012,8,79,Jason Witten,TE,DAL,7,Albino Greens,Julian
+2012,8,80,Jonathan Stewart,RB,CAR,2,0 and 4 and 6 to go,Mauricio
+2012,9,81,San Francisco 49ers,DEF,,2,0 and 4 and 6 to go,Mauricio
+2012,9,82,Chicago Bears,DEF,,7,Albino Greens,Julian
+2012,9,83,Roy Helu,RB,WAS,3,Mean Machine,Sergio
+2012,9,84,Robert Griffin III,QB,WAS,5,COITUS INTERRUPTED THE IV,Luis Carlos
+2012,9,85,Sebastian Janikowski,K,LV,9,The Teabaggers,Gustavo
+2012,9,86,Brandon Pettigrew,TE,DET,10,Your fucking fired,Fernando
+2012,9,87,Pierre Garcon,WR,WAS,1,Big Ben her over,Daniel
+2012,9,88,Donald Brown,RB,IND,4,Manning Up,Nicholas
+2012,9,89,DeAngelo Williams,RB,CAR,6,LEONS,Brian
+2012,9,90,Titus Young,WR,DET,8,HongKongHustle,Vince
+2012,10,91,Detroit Lions,DEF,,8,HongKongHustle,Vince
+2012,10,92,Baltimore Ravens,DEF,,6,LEONS,Brian
+2012,10,93,Kevin Smith,RB,DET,4,Manning Up,Nicholas
+2012,10,94,Isaac Redman,RB,PIT,1,Big Ben her over,Daniel
+2012,10,95,Green Bay Packers,DEF,,10,Your fucking fired,Fernando
+2012,10,96,New England Patriots,DEF,,9,The Teabaggers,Gustavo
+2012,10,97,Santonio Holmes,WR,NYJ,5,COITUS INTERRUPTED THE IV,Luis Carlos
+2012,10,98,Danny Amendola,WR,STL,3,Mean Machine,Sergio
+2012,10,99,David Akers,K,SF,7,Albino Greens,Julian
+2012,10,100,Dan Bailey,K,DAL,2,0 and 4 and 6 to go,Mauricio
+2012,11,101,Mark Ingram,RB,NO,2,0 and 4 and 6 to go,Mauricio
+2012,11,102,Ben Roethlisberger,QB,PIT,7,Albino Greens,Julian
+2012,11,103,Darrius Heyward-Bey,WR,LV,3,Mean Machine,Sergio
+2012,11,104,Peyton Hillis,RB,KC,5,COITUS INTERRUPTED THE IV,Luis Carlos
+2012,11,105,Malcom Floyd,WR,LAC,9,The Teabaggers,Gustavo
+2012,11,106,Toby Gerhart,RB,MIN,10,Your fucking fired,Fernando
+2012,11,107,Michael Crabtree,WR,SF,1,Big Ben her over,Daniel
+2012,11,108,Justin Blackmon,WR,JAC,4,Manning Up,Nicholas
+2012,11,109,Denarius Moore,WR,LV,6,LEONS,Brian
+2012,11,110,Seattle Seahawks,DEF,,8,HongKongHustle,Vince
+2012,12,111,Matt Prater,K,DEN,8,HongKongHustle,Vince
+2012,12,112,David Wilson,RB,NYG,6,LEONS,Brian
+2012,12,113,Jacob Tamme,TE,DEN,4,Manning Up,Nicholas
+2012,12,114,Rashard Mendenhall,RB,PIT,1,Big Ben her over,Daniel
+2012,12,115,Lance Moore,WR,NO,10,Your fucking fired,Fernando
+2012,12,116,Ben Tate,RB,HOU,9,The Teabaggers,Gustavo
+2012,12,117,Randy Moss,WR,SF,5,COITUS INTERRUPTED THE IV,Luis Carlos
+2012,12,118,Ryan Williams,RB,ARI,3,Mean Machine,Sergio
+2012,12,119,Greg Little,WR,CLE,7,Albino Greens,Julian
+2012,12,120,Matt Schaub,QB,HOU,2,0 and 4 and 6 to go,Mauricio
+2012,13,121,Mikel Leshoure,RB,DET,2,0 and 4 and 6 to go,Mauricio
+2012,13,122,Michael Bush,RB,CHI,7,Albino Greens,Julian
+2012,13,123,Mike Williams,WR,TB,3,Mean Machine,Sergio
+2012,13,124,Laurent Robinson,WR,JAC,5,COITUS INTERRUPTED THE IV,Luis Carlos
+2012,13,125,Ryan Fitzpatrick,QB,BUF,9,The Teabaggers,Gustavo
+2012,13,126,Nate Washington,WR,TEN,10,Your fucking fired,Fernando
+2012,13,127,Pittsburgh Steelers,DEF,,1,Big Ben her over,Daniel
+2012,13,128,Santana Moss,WR,WAS,4,Manning Up,Nicholas
+2012,13,129,Doug Baldwin,WR,SEA,6,LEONS,Brian
+2012,13,130,Devery Henderson,WR,NO,8,HongKongHustle,Vince
+2012,14,131,Taiwan Jones,RB,LV,8,HongKongHustle,Vince
+2012,14,132,Stephen Gostkowski,K,NE,6,LEONS,Brian
+2012,14,133,New York Jets,DEF,,4,Manning Up,Nicholas
+2012,14,134,Andrew Luck,QB,IND,1,Big Ben her over,Daniel
+2012,14,135,Dustin Keller,TE,NYJ,10,Your fucking fired,Fernando
+2012,14,136,Jon Baldwin,WR,KC,9,The Teabaggers,Gustavo
+2012,14,137,Braylon Edwards,WR,NYJ,5,COITUS INTERRUPTED THE IV,Luis Carlos
+2012,14,138,Houston Texans,DEF,,3,Mean Machine,Sergio
+2012,14,139,C.J. Spiller,RB,BUF,7,Albino Greens,Julian
+2012,14,140,Rashad Jennings,RB,JAC,2,0 and 4 and 6 to go,Mauricio
+2012,15,141,Austin Collie,WR,IND,2,0 and 4 and 6 to go,Mauricio
+2012,15,142,Mario Manningham,WR,SF,7,Albino Greens,Julian
+2012,15,143,Mason Crosby,K,GB,3,Mean Machine,Sergio
+2012,15,144,Alex Henery,K,PHI,5,COITUS INTERRUPTED THE IV,Luis Carlos
+2012,15,145,New York Giants,DEF,,9,The Teabaggers,Gustavo
+2012,15,146,Robbie Gould,K,CHI,10,Your fucking fired,Fernando
+2012,15,147,Matt Bryant,K,ATL,1,Big Ben her over,Daniel
+2012,15,148,Dan Carpenter,K,MIA,4,Manning Up,Nicholas
+2012,15,149,Alfred Morris,RB,WAS,6,LEONS,Brian
+2012,15,150,Vincent Brown,WR,LAC,8,HongKongHustle,Vince
+2012,16,151,Joe Flacco,QB,BAL,8,HongKongHustle,Vince
+2012,16,152,Sidney Rice,WR,SEA,6,LEONS,Brian
+2012,16,153,Pierre Thomas,RB,NO,4,Manning Up,Nicholas
+2012,16,154,Brandon LaFell,WR,CAR,1,Big Ben her over,Daniel
+2012,16,155,Jay Cutler,QB,CHI,10,Your fucking fired,Fernando
+2012,16,156,Tony Moeaki,TE,KC,9,The Teabaggers,Gustavo
+2012,16,157,Philadelphia Eagles,DEF,,5,COITUS INTERRUPTED THE IV,Luis Carlos
+2012,16,158,Kellen Davis,TE,CHI,3,Mean Machine,Sergio
+2012,16,159,Coby Fleener,TE,IND,7,Albino Greens,Julian
+2012,16,160,Kendall Wright,WR,TEN,2,0 and 4 and 6 to go,Mauricio
+2013,1,1,Adrian Peterson,RB,MIN,4,Manning Up,Nicholas
+2013,1,2,Marshawn Lynch,RB,SEA,7,Albino Greens,Julian
+2013,1,3,Arian Foster,RB,HOU,2,CFC,Mauricio
+2013,1,4,Doug Martin,RB,TB,5,COITUS Interrupted Da V,Luis Carlos
+2013,1,5,Ray Rice,RB,BAL,1,Big Ben her over,Daniel
+2013,1,6,Jamaal Charles,RB,KC,6,WORLD CHAMPION LEONS,Brian
+2013,1,7,Drew Brees,QB,NO,10,Muchos Negros y un Blanco,Andres
+2013,1,8,Aaron Rodgers,QB,GB,9,The Teabaggers,Gustavo
+2013,1,9,C.J. Spiller,RB,BUF,3,General Hospital,Sergio
+2013,1,10,LeSean McCoy,RB,PHI,8,Little Gomez's Underachievers,"Martin, Fernando"
+2013,2,11,Calvin Johnson,WR,DET,8,Little Gomez's Underachievers,"Martin, Fernando"
+2013,2,12,Trent Richardson,RB,IND,3,General Hospital,Sergio
+2013,2,13,Alfred Morris,RB,WAS,9,The Teabaggers,Gustavo
+2013,2,14,Demaryius Thomas,WR,DEN,10,Muchos Negros y un Blanco,Andres
+2013,2,15,A.J. Green,WR,CIN,6,WORLD CHAMPION LEONS,Brian
+2013,2,16,Matt Forte,RB,CHI,1,Big Ben her over,Daniel
+2013,2,17,Julio Jones,WR,ATL,5,COITUS Interrupted Da V,Luis Carlos
+2013,2,18,Dez Bryant,WR,DAL,2,CFC,Mauricio
+2013,2,19,Brandon Marshall,WR,CHI,7,Albino Greens,Julian
+2013,2,20,Peyton Manning,QB,DEN,4,Manning Up,Nicholas
+2013,3,21,Jimmy Graham,TE,NO,4,Manning Up,Nicholas
+2013,3,22,Chris Johnson,RB,TEN,7,Albino Greens,Julian
+2013,3,23,Larry Fitzgerald,WR,ARI,2,CFC,Mauricio
+2013,3,24,Stevan Ridley,RB,NE,5,COITUS Interrupted Da V,Luis Carlos
+2013,3,25,Randall Cobb,WR,GB,1,Big Ben her over,Daniel
+2013,3,26,David Wilson,RB,NYG,6,WORLD CHAMPION LEONS,Brian
+2013,3,27,Vernon Davis,TE,SF,10,Muchos Negros y un Blanco,Andres
+2013,3,28,Maurice Jones-Drew,RB,JAX,9,The Teabaggers,Gustavo
+2013,3,29,Vincent Jackson,WR,TB,3,General Hospital,Sergio
+2013,3,30,Tom Brady,QB,NE,8,Little Gomez's Underachievers,"Martin, Fernando"
+2013,4,31,Steven Jackson,RB,ATL,8,Little Gomez's Underachievers,"Martin, Fernando"
+2013,4,32,Andre Johnson,WR,HOU,3,General Hospital,Sergio
+2013,4,33,Victor Cruz,WR,NYG,9,The Teabaggers,Gustavo
+2013,4,34,New England Patriots,DEF,,10,Muchos Negros y un Blanco,Andres
+2013,4,35,Matt Ryan,QB,ATL,6,WORLD CHAMPION LEONS,Brian
+2013,4,36,Roddy White,WR,ATL,1,Big Ben her over,Daniel
+2013,4,37,Andrew Luck,QB,IND,5,COITUS Interrupted Da V,Luis Carlos
+2013,4,38,Frank Gore,RB,SF,2,CFC,Mauricio
+2013,4,39,Reggie Bush,RB,DET,7,Albino Greens,Julian
+2013,4,40,Dwayne Bowe,WR,KC,4,Manning Up,Nicholas
+2013,5,41,Reggie Wayne,WR,IND,4,Manning Up,Nicholas
+2013,5,42,Cam Newton,QB,CAR,7,Albino Greens,Julian
+2013,5,43,Darren McFadden,RB,LV,2,CFC,Mauricio
+2013,5,44,Marques Colston,WR,NO,5,COITUS Interrupted Da V,Luis Carlos
+2013,5,45,DeMarco Murray,RB,DAL,1,Big Ben her over,Daniel
+2013,5,46,Wes Welker,WR,DEN,6,WORLD CHAMPION LEONS,Brian
+2013,5,47,Lamar Miller,RB,MIA,10,Muchos Negros y un Blanco,Andres
+2013,5,48,Torrey Smith,WR,BAL,9,The Teabaggers,Gustavo
+2013,5,49,Danny Amendola,WR,NE,3,General Hospital,Sergio
+2013,5,50,Pierre Garcon,WR,WAS,8,Little Gomez's Underachievers,"Martin, Fernando"
+2013,6,51,Rob Gronkowski,TE,NE,8,Little Gomez's Underachievers,"Martin, Fernando"
+2013,6,52,Colin Kaepernick,QB,SF,3,General Hospital,Sergio
+2013,6,53,Antonio Brown,WR,PIT,9,The Teabaggers,Gustavo
+2013,6,54,Hakeem Nicks,WR,NYG,10,Muchos Negros y un Blanco,Andres
+2013,6,55,Jason Witten,TE,DAL,6,WORLD CHAMPION LEONS,Brian
+2013,6,56,Robert Griffin III,QB,WAS,1,Big Ben her over,Daniel
+2013,6,57,Eddie Lacy,RB,GB,5,COITUS Interrupted Da V,Luis Carlos
+2013,6,58,Steve Smith,WR,CAR,2,CFC,Mauricio
+2013,6,59,Mike Wallace,WR,MIA,7,Albino Greens,Julian
+2013,6,60,Darren Sproles,RB,NO,4,Manning Up,Nicholas
+2013,7,61,Ryan Mathews,RB,LAC,4,Manning Up,Nicholas
+2013,7,62,Tony Gonzalez,TE,ATL,7,Albino Greens,Julian
+2013,7,63,Russell Wilson,QB,SEA,2,CFC,Mauricio
+2013,7,64,DeSean Jackson,WR,PHI,5,COITUS Interrupted Da V,Luis Carlos
+2013,7,65,Jordy Nelson,WR,GB,1,Big Ben her over,Daniel
+2013,7,66,James Jones,WR,GB,6,WORLD CHAMPION LEONS,Brian
+2013,7,67,Giovani Bernard,RB,CIN,10,Muchos Negros y un Blanco,Andres
+2013,7,68,Greg Olsen,TE,CAR,9,The Teabaggers,Gustavo
+2013,7,69,Montee Ball,RB,DEN,3,General Hospital,Sergio
+2013,7,70,Ahmad Bradshaw,RB,IND,8,Little Gomez's Underachievers,"Martin, Fernando"
+2013,8,71,Chris Ivory,RB,NYJ,8,Little Gomez's Underachievers,"Martin, Fernando"
+2013,8,72,Jermichael Finley,TE,GB,3,General Hospital,Sergio
+2013,8,73,Ben Tate,RB,HOU,9,The Teabaggers,Gustavo
+2013,8,74,Tavon Austin,WR,STL,10,Muchos Negros y un Blanco,Andres
+2013,8,75,Eric Decker,WR,DEN,6,WORLD CHAMPION LEONS,Brian
+2013,8,76,Kyle Rudolph,TE,MIN,1,Big Ben her over,Daniel
+2013,8,77,Matthew Stafford,QB,DET,5,COITUS Interrupted Da V,Luis Carlos
+2013,8,78,Brandon Myers,TE,NYG,2,CFC,Mauricio
+2013,8,79,Cecil Shorts,WR,JAX,7,Albino Greens,Julian
+2013,8,80,Mike Williams,WR,TB,4,Manning Up,Nicholas
+2013,9,81,Rashard Mendenhall,RB,ARI,4,Manning Up,Nicholas
+2013,9,82,Seattle Seahawks,DEF,,7,Albino Greens,Julian
+2013,9,83,San Francisco 49ers,DEF,,2,CFC,Mauricio
+2013,9,84,T.Y. Hilton,WR,IND,5,COITUS Interrupted Da V,Luis Carlos
+2013,9,85,Chicago Bears,DEF,,1,Big Ben her over,Daniel
+2013,9,86,Houston Texans,DEF,,6,WORLD CHAMPION LEONS,Brian
+2013,9,87,DeAngelo Williams,RB,CAR,10,Muchos Negros y un Blanco,Andres
+2013,9,88,Denver Broncos,DEF,,9,The Teabaggers,Gustavo
+2013,9,89,Michael Vick,QB,PHI,3,General Hospital,Sergio
+2013,9,90,Greg Jennings,WR,MIN,8,Little Gomez's Underachievers,"Martin, Fernando"
+2013,10,91,Cincinnati Bengals,DEF,,8,Little Gomez's Underachievers,"Martin, Fernando"
+2013,10,92,BenJarvus Green-Ellis,RB,CIN,3,General Hospital,Sergio
+2013,10,93,Blair Walsh,K,MIN,9,The Teabaggers,Gustavo
+2013,10,94,Stephen Gostkowski,K,NE,10,Muchos Negros y un Blanco,Andres
+2013,10,95,Daryl Richardson,RB,STL,6,WORLD CHAMPION LEONS,Brian
+2013,10,96,Matt Bryant,K,ATL,1,Big Ben her over,Daniel
+2013,10,97,Jared Cook,TE,STL,5,COITUS Interrupted Da V,Luis Carlos
+2013,10,98,Matt Prater,K,DEN,2,CFC,Mauricio
+2013,10,99,Justin Tucker,K,BAL,7,Albino Greens,Julian
+2013,10,100,Miles Austin,WR,DAL,4,Manning Up,Nicholas
+2013,11,101,Antonio Gates,TE,LAC,4,Manning Up,Nicholas
+2013,11,102,Tony Romo,QB,DAL,7,Albino Greens,Julian
+2013,11,103,Steve Johnson,WR,BUF,2,CFC,Mauricio
+2013,11,104,Lance Moore,WR,NO,5,COITUS Interrupted Da V,Luis Carlos
+2013,11,105,Shane Vereen,RB,NE,1,Big Ben her over,Daniel
+2013,11,106,Anquan Boldin,WR,SF,6,WORLD CHAMPION LEONS,Brian
+2013,11,107,Eli Manning,QB,NYG,10,Muchos Negros y un Blanco,Andres
+2013,11,108,Ben Roethlisberger,QB,PIT,9,The Teabaggers,Gustavo
+2013,11,109,Danny Woodhead,RB,LAC,3,General Hospital,Sergio
+2013,11,110,Josh Brown,K,NYG,8,Little Gomez's Underachievers,"Martin, Fernando"
+2013,12,111,Mark Ingram,RB,NO,8,Little Gomez's Underachievers,"Martin, Fernando"
+2013,12,112,Green Bay Packers,DEF,,3,General Hospital,Sergio
+2013,12,113,Kenny Britt,WR,TEN,9,The Teabaggers,Gustavo
+2013,12,114,Sidney Rice,WR,SEA,10,Muchos Negros y un Blanco,Andres
+2013,12,115,Denarius Moore,WR,LV,6,WORLD CHAMPION LEONS,Brian
+2013,12,116,Isaac Redman,RB,,1,Big Ben her over,Daniel
+2013,12,117,Golden Tate,WR,SEA,5,COITUS Interrupted Da V,Luis Carlos
+2013,12,118,Bryce Brown,RB,PHI,2,CFC,Mauricio
+2013,12,119,Chris Givens,WR,STL,7,Albino Greens,Julian
+2013,12,120,Aaron Dobson,WR,NE,4,Manning Up,Nicholas
+2013,13,121,Alshon Jeffery,WR,CHI,4,Manning Up,Nicholas
+2013,13,122,Ronnie Hillman,RB,DEN,7,Albino Greens,Julian
+2013,13,123,Andy Dalton,QB,CIN,2,CFC,Mauricio
+2013,13,124,Vick Ballard,RB,IND,5,COITUS Interrupted Da V,Luis Carlos
+2013,13,125,Josh Freeman,QB,MIN,1,Big Ben her over,Daniel
+2013,13,126,Bilal Powell,RB,NYJ,6,WORLD CHAMPION LEONS,Brian
+2013,13,127,Zach Sudfeld,TE,NYJ,10,Muchos Negros y un Blanco,Andres
+2013,13,128,Fred Jackson,RB,BUF,9,The Teabaggers,Gustavo
+2013,13,129,Randy Bullock,K,HOU,3,General Hospital,Sergio
+2013,13,130,Joe Flacco,QB,BAL,8,Little Gomez's Underachievers,"Martin, Fernando"
+2013,14,131,Emmanuel Sanders,WR,PIT,8,Little Gomez's Underachievers,"Martin, Fernando"
+2013,14,132,Kendall Wright,WR,TEN,3,General Hospital,Sergio
+2013,14,133,Ed Dickson,TE,BAL,9,The Teabaggers,Gustavo
+2013,14,134,Pierre Thomas,RB,NO,10,Muchos Negros y un Blanco,Andres
+2013,14,135,Isaiah Pead,RB,STL,6,WORLD CHAMPION LEONS,Brian
+2013,14,136,Josh Gordon,WR,CLE,1,Big Ben her over,Daniel
+2013,14,137,DeAndre Hopkins,WR,HOU,5,COITUS Interrupted Da V,Luis Carlos
+2013,14,138,Michael Floyd,WR,ARI,2,CFC,Mauricio
+2013,14,139,Owen Daniels,TE,HOU,7,Albino Greens,Julian
+2013,14,140,Greg Zuerlein,K,STL,4,Manning Up,Nicholas
+2013,15,141,Kenbrell Thompkins,WR,NE,4,Manning Up,Nicholas
+2013,15,142,Bernard Pierce,RB,BAL,7,Albino Greens,Julian
+2013,15,143,Johnathan Franklin,RB,GB,2,CFC,Mauricio
+2013,15,144,Steven Hauschka,K,SEA,5,COITUS Interrupted Da V,Luis Carlos
+2013,15,145,Jordan Cameron,TE,CLE,1,Big Ben her over,Daniel
+2013,15,146,Phil Dawson,K,SF,6,WORLD CHAMPION LEONS,Brian
+2013,15,147,New Orleans Saints,DEF,,10,Muchos Negros y un Blanco,Andres
+2013,15,148,Baltimore Ravens,DEF,,9,The Teabaggers,Gustavo
+2013,15,149,Shonn Greene,RB,TEN,3,General Hospital,Sergio
+2013,15,150,Jacquizz Rodgers,RB,ATL,8,Little Gomez's Underachievers,"Martin, Fernando"
+2013,16,151,Jermaine Gresham,TE,CIN,8,Little Gomez's Underachievers,"Martin, Fernando"
+2013,16,152,Justin Blackmon,WR,JAX,3,General Hospital,Sergio
+2013,16,153,David Akers,K,DET,9,The Teabaggers,Gustavo
+2013,16,154,Knowshon Moreno,RB,DEN,10,Muchos Negros y un Blanco,Andres
+2013,16,155,Vincent Brown,WR,LAC,6,WORLD CHAMPION LEONS,Brian
+2013,16,156,Ryan Broyles,WR,DET,1,Big Ben her over,Daniel
+2013,16,157,Tampa Bay Buccaneers,DEF,,5,COITUS Interrupted Da V,Luis Carlos
+2013,16,158,Brandon Pettigrew,TE,DET,2,CFC,Mauricio
+2013,16,159,Brian Hartline,WR,MIA,7,Albino Greens,Julian
+2013,16,160,Joique Bell,RB,DET,4,Manning Up,Nicholas
+2014,1,1,Peyton Manning,QB,DEN,7,A Black Sheriff,Julian
+2014,1,2,Adrian Peterson,RB,MIN,3,Dominant Twins,Sergio
+2014,1,3,LeSean McCoy,RB,PHI,12,THE DICK-TATOR,Fernando
+2014,1,4,Matt Forte,RB,CHI,2,CFC,Mauricio
+2014,1,5,Marshawn Lynch,RB,SEA,8,The Pirrians,david
+2014,1,6,Jamaal Charles,RB,KC,6,LA YEON,Brian
+2014,1,7,Drew Brees,QB,NO,10,white fat runningbacks,Andres
+2014,1,8,Eddie Lacy,RB,GB,1,Click-Clackin Rivers of Cum,Daniel
+2014,1,9,Calvin Johnson,WR,DET,5,Coitus Interrupted,Luis Carlos
+2014,1,10,Aaron Rodgers,QB,GB,4,BEASTMODE,Nicholas
+2014,1,11,Andrew Luck,QB,IND,11,suck for luck,Renzo
+2014,1,12,Ryan Mathews,RB,LAC,9,The Teabaggers,Gustavo
+2014,2,13,DeMarco Murray,RB,DAL,9,The Teabaggers,Gustavo
+2014,2,14,Montee Ball,RB,DEN,11,suck for luck,Renzo
+2014,2,15,Demaryius Thomas,WR,DEN,4,BEASTMODE,Nicholas
+2014,2,16,Jimmy Graham,TE,NO,5,Coitus Interrupted,Luis Carlos
+2014,2,17,Dez Bryant,WR,DAL,1,Click-Clackin Rivers of Cum,Daniel
+2014,2,18,A.J. Green,WR,CIN,10,white fat runningbacks,Andres
+2014,2,19,Julio Jones,WR,ATL,6,LA YEON,Brian
+2014,2,20,Brandon Marshall,WR,CHI,8,The Pirrians,david
+2014,2,21,Julius Thomas,TE,DEN,2,CFC,Mauricio
+2014,2,22,Giovani Bernard,RB,CIN,12,THE DICK-TATOR,Fernando
+2014,2,23,Jordy Nelson,WR,GB,3,Dominant Twins,Sergio
+2014,2,24,Arian Foster,RB,HOU,7,A Black Sheriff,Julian
+2014,3,25,Le'Veon Bell,RB,PIT,7,A Black Sheriff,Julian
+2014,3,26,Roddy White,WR,ATL,3,Dominant Twins,Sergio
+2014,3,27,Andre Ellington,RB,ARI,12,THE DICK-TATOR,Fernando
+2014,3,28,Larry Fitzgerald,WR,ARI,2,CFC,Mauricio
+2014,3,29,Michael Crabtree,WR,SF,8,The Pirrians,david
+2014,3,30,Antonio Brown,WR,PIT,6,LA YEON,Brian
+2014,3,31,Doug Martin,RB,TB,10,white fat runningbacks,Andres
+2014,3,32,Alfred Morris,RB,WAS,1,Click-Clackin Rivers of Cum,Daniel
+2014,3,33,C.J. Spiller,RB,BUF,5,Coitus Interrupted,Luis Carlos
+2014,3,34,Randall Cobb,WR,GB,4,BEASTMODE,Nicholas
+2014,3,35,Andre Johnson,WR,HOU,11,suck for luck,Renzo
+2014,3,36,Alshon Jeffery,WR,CHI,9,The Teabaggers,Gustavo
+2014,4,37,Cam Newton,QB,CAR,9,The Teabaggers,Gustavo
+2014,4,38,Zac Stacy,RB,STL,11,suck for luck,Renzo
+2014,4,39,Reggie Bush,RB,DET,4,BEASTMODE,Nicholas
+2014,4,40,Matthew Stafford,QB,DET,5,Coitus Interrupted,Luis Carlos
+2014,4,41,Keenan Allen,WR,LAC,1,Click-Clackin Rivers of Cum,Daniel
+2014,4,42,Pierre Garcon,WR,WAS,10,white fat runningbacks,Andres
+2014,4,43,Toby Gerhart,RB,JAC,6,LA YEON,Brian
+2014,4,44,Cordarrelle Patterson,WR,MIN,8,The Pirrians,david
+2014,4,45,Nick Foles,QB,PHI,2,CFC,Mauricio
+2014,4,46,Vincent Jackson,WR,TB,12,THE DICK-TATOR,Fernando
+2014,4,47,Rashad Jennings,RB,NYG,3,Dominant Twins,Sergio
+2014,4,48,Emmanuel Sanders,WR,DEN,7,A Black Sheriff,Julian
+2014,5,49,DeSean Jackson,WR,WAS,7,A Black Sheriff,Julian
+2014,5,50,Tom Brady,QB,NE,3,Dominant Twins,Sergio
+2014,5,51,Matt Ryan,QB,ATL,12,THE DICK-TATOR,Fernando
+2014,5,52,Victor Cruz,WR,NYG,2,CFC,Mauricio
+2014,5,53,Russell Wilson,QB,SEA,8,The Pirrians,david
+2014,5,54,Colin Kaepernick,QB,SF,6,LA YEON,Brian
+2014,5,55,Frank Gore,RB,SF,10,white fat runningbacks,Andres
+2014,5,56,Rob Gronkowski,TE,NE,1,Click-Clackin Rivers of Cum,Daniel
+2014,5,57,Percy Harvin,WR,NYJ,5,Coitus Interrupted,Luis Carlos
+2014,5,58,Mike Wallace,WR,MIA,4,BEASTMODE,Nicholas
+2014,5,59,Marques Colston,WR,NO,11,suck for luck,Renzo
+2014,5,60,Vernon Davis,TE,SF,9,The Teabaggers,Gustavo
+2014,6,61,Wes Welker,WR,DEN,9,The Teabaggers,Gustavo
+2014,6,62,Greg Olsen,TE,CAR,11,suck for luck,Renzo
+2014,6,63,Chris Johnson,RB,NYJ,4,BEASTMODE,Nicholas
+2014,6,64,Shane Vereen,RB,NE,5,Coitus Interrupted,Luis Carlos
+2014,6,65,Joique Bell,RB,DET,1,Click-Clackin Rivers of Cum,Daniel
+2014,6,66,Brandin Cooks,WR,NO,10,white fat runningbacks,Andres
+2014,6,67,Michael Floyd,WR,ARI,6,LA YEON,Brian
+2014,6,68,Jason Witten,TE,DAL,8,The Pirrians,david
+2014,6,69,Torrey Smith,WR,BAL,2,CFC,Mauricio
+2014,6,70,Julian Edelman,WR,NE,12,THE DICK-TATOR,Fernando
+2014,6,71,Maurice Jones-Drew,RB,LV,3,Dominant Twins,Sergio
+2014,6,72,T.Y. Hilton,WR,IND,7,A Black Sheriff,Julian
+2014,7,73,Trent Richardson,RB,IND,7,A Black Sheriff,Julian
+2014,7,74,Kendall Wright,WR,TEN,3,Dominant Twins,Sergio
+2014,7,75,Golden Tate,WR,DET,12,THE DICK-TATOR,Fernando
+2014,7,76,Knowshon Moreno,RB,MIA,2,CFC,Mauricio
+2014,7,77,Fred Jackson,RB,BUF,8,The Pirrians,david
+2014,7,78,Bishop Sankey,RB,TEN,6,LA YEON,Brian
+2014,7,79,Jordan Cameron,TE,CLE,10,white fat runningbacks,Andres
+2014,7,80,Eric Decker,WR,NYJ,1,Click-Clackin Rivers of Cum,Daniel
+2014,7,81,Reggie Wayne,WR,IND,5,Coitus Interrupted,Luis Carlos
+2014,7,82,Ray Rice,RB,,4,BEASTMODE,Nicholas
+2014,7,83,Seattle Seahawks,DEF,,11,suck for luck,Renzo
+2014,7,84,Ben Tate,RB,PIT,9,The Teabaggers,Gustavo
+2014,8,85,Jeremy Maclin,WR,PHI,9,The Teabaggers,Gustavo
+2014,8,86,Lamar Miller,RB,MIA,11,suck for luck,Renzo
+2014,8,87,Steven Jackson,RB,ATL,4,BEASTMODE,Nicholas
+2014,8,88,Sammy Watkins,WR,BUF,5,Coitus Interrupted,Luis Carlos
+2014,8,89,Robert Griffin III,QB,WAS,1,Click-Clackin Rivers of Cum,Daniel
+2014,8,90,Carolina Panthers,DEF,,10,white fat runningbacks,Andres
+2014,8,91,Jordan Reed,TE,WAS,6,LA YEON,Brian
+2014,8,92,Pierre Thomas,RB,NO,8,The Pirrians,david
+2014,8,93,Antonio Gates,TE,LAC,2,CFC,Mauricio
+2014,8,94,Dennis Pitta,TE,BAL,12,THE DICK-TATOR,Fernando
+2014,8,95,Martellus Bennett,TE,CHI,3,Dominant Twins,Sergio
+2014,8,96,San Francisco 49ers,DEF,,7,A Black Sheriff,Julian
+2014,9,97,Ben Roethlisberger,QB,PIT,7,A Black Sheriff,Julian
+2014,9,98,Cincinnati Bengals,DEF,,3,Dominant Twins,Sergio
+2014,9,99,Terrance Williams,WR,DAL,12,THE DICK-TATOR,Fernando
+2014,9,100,New England Patriots,DEF,,2,CFC,Mauricio
+2014,9,101,Buffalo Bills,DEF,,8,The Pirrians,david
+2014,9,102,Dwayne Bowe,WR,KC,6,LA YEON,Brian
+2014,9,103,Stephen Gostkowski,K,NE,10,white fat runningbacks,Andres
+2014,9,104,Denver Broncos,DEF,,1,Click-Clackin Rivers of Cum,Daniel
+2014,9,105,Mark Ingram,RB,NO,5,Coitus Interrupted,Luis Carlos
+2014,9,106,DeAndre Hopkins,WR,HOU,4,BEASTMODE,Nicholas
+2014,9,107,Brian Hartline,WR,MIA,11,suck for luck,Renzo
+2014,9,108,Justin Tucker,K,BAL,9,The Teabaggers,Gustavo
+2014,10,109,Danny Woodhead,RB,LAC,9,The Teabaggers,Gustavo
+2014,10,110,Ryan Tannehill,QB,MIA,11,suck for luck,Renzo
+2014,10,111,Darren Sproles,RB,PHI,4,BEASTMODE,Nicholas
+2014,10,112,Jay Cutler,QB,CHI,5,Coitus Interrupted,Luis Carlos
+2014,10,113,Steven Hauschka,K,SEA,1,Click-Clackin Rivers of Cum,Daniel
+2014,10,114,DeAngelo Williams,RB,CAR,10,white fat runningbacks,Andres
+2014,10,115,Riley Cooper,WR,PHI,6,LA YEON,Brian
+2014,10,116,Phil Dawson,K,SF,8,The Pirrians,david
+2014,10,117,Bernard Pierce,RB,BAL,2,CFC,Mauricio
+2014,10,118,Hakeem Nicks,WR,IND,12,THE DICK-TATOR,Fernando
+2014,10,119,Dan Bailey,K,DAL,3,Dominant Twins,Sergio
+2014,10,120,Jonathan Grimes,RB,HOU,7,A Black Sheriff,Julian
+2014,11,121,Jarvis Landry,WR,MIA,7,A Black Sheriff,Julian
+2014,11,122,Stevan Ridley,RB,NE,3,Dominant Twins,Sergio
+2014,11,123,Tony Romo,QB,DAL,12,THE DICK-TATOR,Fernando
+2014,11,124,Philip Rivers,QB,LAC,2,CFC,Mauricio
+2014,11,125,Alex Smith,QB,KC,8,The Pirrians,david
+2014,11,126,Tavon Austin,WR,STL,6,LA YEON,Brian
+2014,11,127,Kelvin Benjamin,WR,CAR,10,white fat runningbacks,Andres
+2014,11,128,Rueben Randle,WR,NYG,1,Click-Clackin Rivers of Cum,Daniel
+2014,11,129,St. Louis Rams,DEF,,5,Coitus Interrupted,Luis Carlos
+2014,11,130,Kyle Rudolph,TE,MIN,4,BEASTMODE,Nicholas
+2014,11,131,Andre Williams,RB,NYG,11,suck for luck,Renzo
+2014,11,132,Arizona Cardinals,DEF,,9,The Teabaggers,Gustavo
+2014,12,133,Anquan Boldin,WR,SF,9,The Teabaggers,Gustavo
+2014,12,134,Darren McFadden,RB,LV,11,suck for luck,Renzo
+2014,12,135,Chris Ivory,RB,NYJ,4,BEASTMODE,Nicholas
+2014,12,136,Jordan Matthews,WR,PHI,5,Coitus Interrupted,Luis Carlos
+2014,12,137,Zach Ertz,TE,PHI,1,Click-Clackin Rivers of Cum,Daniel
+2014,12,138,Charles Clay,TE,MIA,10,white fat runningbacks,Andres
+2014,12,139,Kansas City Chiefs,DEF,,6,LA YEON,Brian
+2014,12,140,Chicago Bears,DEF,,8,The Pirrians,david
+2014,12,141,Danny Amendola,WR,NE,2,CFC,Mauricio
+2014,12,142,Terrance West,RB,CLE,12,THE DICK-TATOR,Fernando
+2014,12,143,Justin Hunter,WR,TEN,3,Dominant Twins,Sergio
+2014,12,144,Heath Miller,TE,PIT,7,A Black Sheriff,Julian
+2014,13,145,Doug Baldwin,WR,SEA,7,A Black Sheriff,Julian
+2014,13,146,Carlos Hyde,RB,SF,3,Dominant Twins,Sergio
+2014,13,147,Baltimore Ravens,DEF,,12,THE DICK-TATOR,Fernando
+2014,13,148,Mohamed Sanu,WR,CIN,2,CFC,Mauricio
+2014,13,149,Jarrett Boykin,WR,GB,8,The Pirrians,david
+2014,13,150,Andy Dalton,QB,CIN,6,LA YEON,Brian
+2014,13,151,Jeremy Hill,RB,CIN,10,white fat runningbacks,Andres
+2014,13,152,Mike Evans,WR,TB,1,Click-Clackin Rivers of Cum,Daniel
+2014,13,153,LeGarrette Blount,RB,NE,5,Coitus Interrupted,Luis Carlos
+2014,13,154,Andrew Hawkins,WR,CLE,4,BEASTMODE,Nicholas
+2014,13,155,Markus Wheaton,WR,PIT,11,suck for luck,Renzo
+2014,13,156,Joe Flacco,QB,BAL,9,The Teabaggers,Gustavo
+2014,14,157,Jared Cook,TE,STL,9,The Teabaggers,Gustavo
+2014,14,158,Mason Crosby,K,GB,11,suck for luck,Renzo
+2014,14,159,Cleveland Browns,DEF,,4,BEASTMODE,Nicholas
+2014,14,160,Aaron Dobson,WR,NE,5,Coitus Interrupted,Luis Carlos
+2014,14,161,Khiry Robinson,RB,NO,1,Click-Clackin Rivers of Cum,Daniel
+2014,14,162,Eli Manning,QB,NYG,10,white fat runningbacks,Andres
+2014,14,163,Lance Dunbar,RB,DAL,6,LA YEON,Brian
+2014,14,164,James White,RB,NE,8,The Pirrians,david
+2014,14,165,Cecil Shorts,WR,JAC,2,CFC,Mauricio
+2014,14,166,Devonta Freeman,RB,ATL,12,THE DICK-TATOR,Fernando
+2014,14,167,Shonn Greene,RB,TEN,3,Dominant Twins,Sergio
+2014,14,168,Adam Vinatieri,K,IND,7,A Black Sheriff,Julian
+2014,15,169,Miles Austin,WR,CLE,7,A Black Sheriff,Julian
+2014,15,170,Ladarius Green,TE,LAC,3,Dominant Twins,Sergio
+2014,15,171,Nick Novak,K,LAC,12,THE DICK-TATOR,Fernando
+2014,15,172,Marvin Jones,WR,CIN,2,CFC,Mauricio
+2014,15,173,Jake Locker,QB,TEN,8,The Pirrians,david
+2014,15,174,Matt Bryant,K,ATL,6,LA YEON,Brian
+2014,15,175,Houston Texans,DEF,,10,white fat runningbacks,Andres
+2014,15,176,Greg Jennings,WR,MIN,1,Click-Clackin Rivers of Cum,Daniel
+2014,15,177,Christine Michael,RB,SEA,5,Coitus Interrupted,Luis Carlos
+2014,15,178,Robbie Gould,K,CHI,4,BEASTMODE,Nicholas
+2014,15,179,Steve Smith,WR,BAL,11,suck for luck,Renzo
+2014,15,180,James Jones,WR,LV,9,The Teabaggers,Gustavo
+2014,16,181,Kenny Britt,WR,STL,9,The Teabaggers,Gustavo
+2014,16,182,Robert Woods,WR,BUF,11,suck for luck,Renzo
+2014,16,183,Ronnie Hillman,RB,DEN,4,BEASTMODE,Nicholas
+2014,16,184,Alex Henery,K,,5,Coitus Interrupted,Luis Carlos
+2014,16,185,Ahmad Bradshaw,RB,IND,1,Click-Clackin Rivers of Cum,Daniel
+2014,16,186,Cody Latimer,WR,DEN,10,white fat runningbacks,Andres
+2014,16,187,Knile Davis,RB,KC,6,LA YEON,Brian
+2014,16,188,Delanie Walker,TE,TEN,8,The Pirrians,david
+2014,16,189,Dan Carpenter,K,BUF,2,CFC,Mauricio
+2014,16,190,Josh Gordon,WR,CLE,12,THE DICK-TATOR,Fernando
+2014,16,191,Kenny Stills,WR,NO,3,Dominant Twins,Sergio
+2014,16,192,Donnie Avery,WR,KC,7,A Black Sheriff,Julian
+2015,1,1,Le'Veon Bell,RB,PIT,9,The Teabaggers,Gustavo
+2015,1,2,Aaron Rodgers,QB,GB,4,Discount Double Doughnut,Nicholas
+2015,1,3,Adrian Peterson,RB,MIN,6,ADRIAN Y LA YEON,Brian
+2015,1,4,Andrew Luck,QB,IND,7,JnJ 4 UR VJJ,Julian
+2015,1,5,Eddie Lacy,RB,GB,12,MONDAY WET DREAMS,Fernando
+2015,1,6,Marshawn Lynch,RB,SEA,1,Click-Clacking deflated nigs,Daniel
+2015,1,7,Jamaal Charles,RB,KC,11,Your Nightmare,Renzo
+2015,1,8,Matt Forte,RB,CHI,8,FOREST HILL,GUIDO
+2015,1,9,Calvin Johnson,WR,DET,5,Burping it out,Luis Carlos
+2015,1,10,Antonio Brown,WR,PIT,10,Monday Nightmares,Andres
+2015,1,11,DeMarco Murray,RB,PHI,2,CFC,Mauricio
+2015,1,12,Jeremy Hill,RB,CIN,3,The Squirt Producers,Sergio
+2015,2,13,Dez Bryant,WR,DAL,3,The Squirt Producers,Sergio
+2015,2,14,Julio Jones,WR,ATL,2,CFC,Mauricio
+2015,2,15,Demaryius Thomas,WR,DEN,10,Monday Nightmares,Andres
+2015,2,16,C.J. Anderson,RB,DEN,5,Burping it out,Luis Carlos
+2015,2,17,Rob Gronkowski,TE,NE,8,FOREST HILL,GUIDO
+2015,2,18,Odell Beckham,WR,NYG,11,Your Nightmare,Renzo
+2015,2,19,Randall Cobb,WR,GB,1,Click-Clacking deflated nigs,Daniel
+2015,2,20,A.J. Green,WR,CIN,12,MONDAY WET DREAMS,Fernando
+2015,2,21,Seattle Seahawks,DEF,,7,JnJ 4 UR VJJ,Julian
+2015,2,22,Alshon Jeffery,WR,CHI,6,ADRIAN Y LA YEON,Brian
+2015,2,23,Lamar Miller,RB,MIA,4,Discount Double Doughnut,Nicholas
+2015,2,24,Peyton Manning,QB,DEN,9,The Teabaggers,Gustavo
+2015,3,25,LeSean McCoy,RB,BUF,9,The Teabaggers,Gustavo
+2015,3,26,Justin Forsett,RB,BAL,4,Discount Double Doughnut,Nicholas
+2015,3,27,T.Y. Hilton,WR,IND,6,ADRIAN Y LA YEON,Brian
+2015,3,28,Ben Roethlisberger,QB,PIT,7,JnJ 4 UR VJJ,Julian
+2015,3,29,Drew Brees,QB,NO,12,MONDAY WET DREAMS,Fernando
+2015,3,30,Tom Brady,QB,NE,1,Click-Clacking deflated nigs,Daniel
+2015,3,31,DeAndre Hopkins,WR,HOU,11,Your Nightmare,Renzo
+2015,3,32,Mark Ingram,RB,NO,8,FOREST HILL,GUIDO
+2015,3,33,Jimmy Graham,TE,SEA,5,Burping it out,Luis Carlos
+2015,3,34,Mike Evans,WR,TB,10,Monday Nightmares,Andres
+2015,3,35,Russell Wilson,QB,SEA,2,CFC,Mauricio
+2015,3,36,Alfred Morris,RB,WAS,3,The Squirt Producers,Sergio
+2015,4,37,Emmanuel Sanders,WR,DEN,3,The Squirt Producers,Sergio
+2015,4,38,Jeremy Maclin,WR,KC,2,CFC,Mauricio
+2015,4,39,Frank Gore,RB,IND,10,Monday Nightmares,Andres
+2015,4,40,Davante Adams,WR,GB,5,Burping it out,Luis Carlos
+2015,4,41,Jonathan Stewart,RB,CAR,8,FOREST HILL,GUIDO
+2015,4,42,Brandin Cooks,WR,NO,11,Your Nightmare,Renzo
+2015,4,43,Carlos Hyde,RB,SF,1,Click-Clacking deflated nigs,Daniel
+2015,4,44,Jordan Matthews,WR,PHI,12,MONDAY WET DREAMS,Fernando
+2015,4,45,Julian Edelman,WR,NE,7,JnJ 4 UR VJJ,Julian
+2015,4,46,Travis Kelce,TE,KC,6,ADRIAN Y LA YEON,Brian
+2015,4,47,Amari Cooper,WR,LV,4,Discount Double Doughnut,Nicholas
+2015,4,48,Andre Johnson,WR,IND,9,The Teabaggers,Gustavo
+2015,5,49,Larry Fitzgerald,WR,ARI,9,The Teabaggers,Gustavo
+2015,5,50,Keenan Allen,WR,LAC,4,Discount Double Doughnut,Nicholas
+2015,5,51,DeSean Jackson,WR,WAS,6,ADRIAN Y LA YEON,Brian
+2015,5,52,Golden Tate,WR,DET,7,JnJ 4 UR VJJ,Julian
+2015,5,53,Latavius Murray,RB,LV,12,MONDAY WET DREAMS,Fernando
+2015,5,54,Sammy Watkins,WR,BUF,1,Click-Clacking deflated nigs,Daniel
+2015,5,55,Jarvis Landry,WR,MIA,11,Your Nightmare,Renzo
+2015,5,56,Matt Ryan,QB,ATL,8,FOREST HILL,GUIDO
+2015,5,57,Matthew Stafford,QB,DET,5,Burping it out,Luis Carlos
+2015,5,58,Tony Romo,QB,DAL,10,Monday Nightmares,Andres
+2015,5,59,Andre Ellington,RB,ARI,2,CFC,Mauricio
+2015,5,60,Allen Robinson,WR,JAC,3,The Squirt Producers,Sergio
+2015,6,61,T.J. Yeldon,RB,JAC,3,The Squirt Producers,Sergio
+2015,6,62,Melvin Gordon,RB,LAC,2,CFC,Mauricio
+2015,6,63,Greg Olsen,TE,CAR,10,Monday Nightmares,Andres
+2015,6,64,LeGarrette Blount,RB,NE,5,Burping it out,Luis Carlos
+2015,6,65,Vincent Jackson,WR,TB,8,FOREST HILL,GUIDO
+2015,6,66,Joseph Randle,RB,,11,Your Nightmare,Renzo
+2015,6,67,Brandon LaFell,WR,NE,1,Click-Clacking deflated nigs,Daniel
+2015,6,68,Ameer Abdullah,RB,DET,12,MONDAY WET DREAMS,Fernando
+2015,6,69,Stephen Gostkowski,K,NE,7,JnJ 4 UR VJJ,Julian
+2015,6,70,Joique Bell,RB,DET,6,ADRIAN Y LA YEON,Brian
+2015,6,71,Brandon Marshall,WR,NYJ,4,Discount Double Doughnut,Nicholas
+2015,6,72,Jason Witten,TE,DAL,9,The Teabaggers,Gustavo
+2015,7,73,Torrey Smith,WR,SF,9,The Teabaggers,Gustavo
+2015,7,74,Doug Martin,RB,TB,4,Discount Double Doughnut,Nicholas
+2015,7,75,Nelson Agholor,WR,PHI,6,ADRIAN Y LA YEON,Brian
+2015,7,76,Heath Miller,TE,PIT,7,JnJ 4 UR VJJ,Julian
+2015,7,77,Martavis Bryant,WR,PIT,12,MONDAY WET DREAMS,Fernando
+2015,7,78,Rashad Jennings,RB,NYG,1,Click-Clacking deflated nigs,Daniel
+2015,7,79,Martellus Bennett,TE,CHI,11,Your Nightmare,Renzo
+2015,7,80,Steve Smith,WR,BAL,8,FOREST HILL,GUIDO
+2015,7,81,Todd Gurley,RB,STL,5,Burping it out,Luis Carlos
+2015,7,82,Giovani Bernard,RB,CIN,10,Monday Nightmares,Andres
+2015,7,83,John Brown,WR,ARI,2,CFC,Mauricio
+2015,7,84,Zach Ertz,TE,PHI,3,The Squirt Producers,Sergio
+2015,8,85,Chris Ivory,RB,NYJ,3,The Squirt Producers,Sergio
+2015,8,86,Coby Fleener,TE,IND,2,CFC,Mauricio
+2015,8,87,Houston Texans,DEF,,10,Monday Nightmares,Andres
+2015,8,88,C.J. Spiller,RB,NO,5,Burping it out,Luis Carlos
+2015,8,89,Roddy White,WR,ATL,8,FOREST HILL,GUIDO
+2015,8,90,Ryan Tannehill,QB,MIA,11,Your Nightmare,Renzo
+2015,8,91,Vernon Davis,TE,DEN,1,Click-Clacking deflated nigs,Daniel
+2015,8,92,Jordan Cameron,TE,MIA,12,MONDAY WET DREAMS,Fernando
+2015,8,93,Alfred Blue,RB,HOU,7,JnJ 4 UR VJJ,Julian
+2015,8,94,Arian Foster,RB,HOU,6,ADRIAN Y LA YEON,Brian
+2015,8,95,Devin Funchess,WR,CAR,4,Discount Double Doughnut,Nicholas
+2015,8,96,Marques Colston,WR,NO,9,The Teabaggers,Gustavo
+2015,9,97,Darren Sproles,RB,PHI,9,The Teabaggers,Gustavo
+2015,9,98,Philip Rivers,QB,LAC,4,Discount Double Doughnut,Nicholas
+2015,9,99,Sam Bradford,QB,PHI,6,ADRIAN Y LA YEON,Brian
+2015,9,100,Ryan Mathews,RB,PHI,7,JnJ 4 UR VJJ,Julian
+2015,9,101,Bishop Sankey,RB,TEN,12,MONDAY WET DREAMS,Fernando
+2015,9,102,Victor Cruz,WR,NYG,1,Click-Clacking deflated nigs,Daniel
+2015,9,103,Miami Dolphins,DEF,,11,Your Nightmare,Renzo
+2015,9,104,Buffalo Bills,DEF,,8,FOREST HILL,GUIDO
+2015,9,105,Mike Wallace,WR,MIN,5,Burping it out,Luis Carlos
+2015,9,106,Tre Mason,RB,STL,10,Monday Nightmares,Andres
+2015,9,107,Cody Parkey,K,PHI,2,CFC,Mauricio
+2015,9,108,Cam Newton,QB,CAR,3,The Squirt Producers,Sergio
+2015,10,109,Danny Woodhead,RB,LAC,3,The Squirt Producers,Sergio
+2015,10,110,Green Bay Packers,DEF,,2,CFC,Mauricio
+2015,10,111,Adam Vinatieri,K,IND,10,Monday Nightmares,Andres
+2015,10,112,Dorial Green-Beckham,WR,TEN,5,Burping it out,Luis Carlos
+2015,10,113,Dan Carpenter,K,BUF,8,FOREST HILL,GUIDO
+2015,10,114,Isaiah Crowell,RB,CLE,11,Your Nightmare,Renzo
+2015,10,115,Markus Wheaton,WR,PIT,1,Click-Clacking deflated nigs,Daniel
+2015,10,116,Owen Daniels,TE,DEN,12,MONDAY WET DREAMS,Fernando
+2015,10,117,Devonta Freeman,RB,ATL,7,JnJ 4 UR VJJ,Julian
+2015,10,118,St. Louis Rams,DEF,,6,ADRIAN Y LA YEON,Brian
+2015,10,119,Terrance Williams,WR,DAL,4,Discount Double Doughnut,Nicholas
+2015,10,120,Mason Crosby,K,GB,9,The Teabaggers,Gustavo
+2015,11,121,Darren McFadden,RB,DAL,9,The Teabaggers,Gustavo
+2015,11,122,Eddie Royal,WR,CHI,4,Discount Double Doughnut,Nicholas
+2015,11,123,Teddy Bridgewater,QB,MIN,6,ADRIAN Y LA YEON,Brian
+2015,11,124,Charles Johnson,WR,MIN,7,JnJ 4 UR VJJ,Julian
+2015,11,125,Arizona Cardinals,DEF,,12,MONDAY WET DREAMS,Fernando
+2015,11,126,Tevin Coleman,RB,ATL,1,Click-Clacking deflated nigs,Daniel
+2015,11,127,Matt Bryant,K,ATL,11,Your Nightmare,Renzo
+2015,11,128,Eli Manning,QB,NYG,8,FOREST HILL,GUIDO
+2015,11,129,Percy Harvin,WR,BUF,5,Burping it out,Luis Carlos
+2015,11,130,Jay Cutler,QB,CHI,10,Monday Nightmares,Andres
+2015,11,131,Joe Flacco,QB,BAL,2,CFC,Mauricio
+2015,11,132,Kendall Wright,WR,TEN,3,The Squirt Producers,Sergio
+2015,12,133,Shane Vereen,RB,NYG,3,The Squirt Producers,Sergio
+2015,12,134,Dwayne Allen,TE,IND,2,CFC,Mauricio
+2015,12,135,Khiry Robinson,RB,NO,10,Monday Nightmares,Andres
+2015,12,136,Randy Bullock,K,NYJ,5,Burping it out,Luis Carlos
+2015,12,137,Michael Crabtree,WR,LV,8,FOREST HILL,GUIDO
+2015,12,138,Kenny Stills,WR,MIA,11,Your Nightmare,Renzo
+2015,12,139,DeAngelo Williams,RB,PIT,1,Click-Clacking deflated nigs,Daniel
+2015,12,140,David Johnson,RB,ARI,12,MONDAY WET DREAMS,Fernando
+2015,12,141,Charles Sims,RB,TB,7,JnJ 4 UR VJJ,Julian
+2015,12,142,Knile Davis,RB,KC,6,ADRIAN Y LA YEON,Brian
+2015,12,143,Kyle Rudolph,TE,MIN,4,Discount Double Doughnut,Nicholas
+2015,12,144,Kansas City Chiefs,DEF,,9,The Teabaggers,Gustavo
+2015,13,145,Cincinnati Bengals,DEF,,9,The Teabaggers,Gustavo
+2015,13,146,Pierre Garcon,WR,WAS,4,Discount Double Doughnut,Nicholas
+2015,13,147,Allen Hurns,WR,JAC,6,ADRIAN Y LA YEON,Brian
+2015,13,148,Terrance West,RB,BAL,7,JnJ 4 UR VJJ,Julian
+2015,13,149,Philadelphia Eagles,DEF,,12,MONDAY WET DREAMS,Fernando
+2015,13,150,Carson Palmer,QB,ARI,1,Click-Clacking deflated nigs,Daniel
+2015,13,151,Colin Kaepernick,QB,SF,11,Your Nightmare,Renzo
+2015,13,152,Anquan Boldin,WR,SF,8,FOREST HILL,GUIDO
+2015,13,153,Eric Decker,WR,NYJ,5,Burping it out,Luis Carlos
+2015,13,154,Charles Clay,TE,BUF,10,Monday Nightmares,Andres
+2015,13,155,Duke Johnson,RB,CLE,2,CFC,Mauricio
+2015,13,156,Michael Floyd,WR,ARI,3,The Squirt Producers,Sergio
+2015,14,157,Baltimore Ravens,DEF,,3,The Squirt Producers,Sergio
+2015,14,158,Jaelen Strong,WR,HOU,2,CFC,Mauricio
+2015,14,159,Donte Moncrief,WR,IND,10,Monday Nightmares,Andres
+2015,14,160,Phillip Dorsett,WR,IND,5,Burping it out,Luis Carlos
+2015,14,161,Robert Woods,WR,BUF,8,FOREST HILL,GUIDO
+2015,14,162,Branden Oliver,RB,LAC,11,Your Nightmare,Renzo
+2015,14,163,Julius Thomas,TE,JAC,1,Click-Clacking deflated nigs,Daniel
+2015,14,164,Dan Bailey,K,DAL,12,MONDAY WET DREAMS,Fernando
+2015,14,165,Andre Williams,RB,NYG,7,JnJ 4 UR VJJ,Julian
+2015,14,166,Doug Baldwin,WR,SEA,6,ADRIAN Y LA YEON,Brian
+2015,14,167,New York Jets,DEF,,4,Discount Double Doughnut,Nicholas
+2015,14,168,Kamar Aiken,WR,BAL,9,The Teabaggers,Gustavo
+2015,15,169,Alex Smith,QB,KC,9,The Teabaggers,Gustavo
+2015,15,170,Fred Jackson,RB,SEA,4,Discount Double Doughnut,Nicholas
+2015,15,171,Brian Quick,WR,STL,6,ADRIAN Y LA YEON,Brian
+2015,15,172,Malcom Floyd,WR,LAC,7,JnJ 4 UR VJJ,Julian
+2015,15,173,Marcus Mariota,QB,TEN,12,MONDAY WET DREAMS,Fernando
+2015,15,174,San Francisco 49ers,DEF,,1,Click-Clacking deflated nigs,Daniel
+2015,15,175,Jameis Winston,QB,TB,11,Your Nightmare,Renzo
+2015,15,176,Delanie Walker,TE,TEN,8,FOREST HILL,GUIDO
+2015,15,177,Antonio Gates,TE,LAC,5,Burping it out,Luis Carlos
+2015,15,178,Andy Dalton,QB,CIN,10,Monday Nightmares,Andres
+2015,15,179,Lorenzo Taliaferro,RB,BAL,2,CFC,Mauricio
+2015,15,180,Justin Tucker,K,BAL,3,The Squirt Producers,Sergio
+2015,16,181,Nick Foles,QB,STL,3,The Squirt Producers,Sergio
+2015,16,182,Reggie Bush,RB,SF,2,CFC,Mauricio
+2015,16,183,Jerick McKinnon,RB,MIN,10,Monday Nightmares,Andres
+2015,16,184,New England Patriots,DEF,,5,Burping it out,Luis Carlos
+2015,16,185,Cordarrelle Patterson,WR,MIN,8,FOREST HILL,GUIDO
+2015,16,186,Mohamed Sanu,WR,CIN,11,Your Nightmare,Renzo
+2015,16,187,Josh Scobee,K,,1,Click-Clacking deflated nigs,Daniel
+2015,16,188,Kevin White,WR,CHI,12,MONDAY WET DREAMS,Fernando
+2015,16,189,Ladarius Green,TE,LAC,7,JnJ 4 UR VJJ,Julian
+2015,16,190,Steven Hauschka,K,SEA,6,ADRIAN Y LA YEON,Brian
+2015,16,191,Chandler Catanzaro,K,ARI,4,Discount Double Doughnut,Nicholas
+2015,16,192,Matt Prater,K,DET,9,The Teabaggers,Gustavo
+2016,1,1,Antonio Brown,WR,PIT,8,FOREST HILL,GUIDO
+2016,1,2,Jamaal Charles,RB,KC,9,The Unlucky MoFos,Gustavo
+2016,1,3,Odell Beckham,WR,NYG,7,JnJ 4 UR VJJ,Julian
+2016,1,4,Aaron Rodgers,QB,GB,5,Koitus Interrupted,Luis Carlos
+2016,1,5,Julio Jones,WR,ATL,12,Montgomery Warts,Fernando
+2016,1,6,David Johnson,RB,ARI,2,CFC,Mauricio
+2016,1,7,Lamar Miller,RB,HOU,10,Monday Nightmares,Andres
+2016,1,8,Todd Gurley,RB,LA,1,Click-Clacking deflated nigs,Daniel
+2016,1,9,DeAndre Hopkins,WR,HOU,6,LA YEON,Brian
+2016,1,10,Cam Newton,QB,CAR,11,N W A,Renzo
+2016,1,11,Ezekiel Elliott,RB,DAL,4,Rookies and Old Timers,Nicholas
+2016,1,12,Adrian Peterson,RB,MIN,3,The Squirt Producers,Sergio
+2016,2,13,A.J. Green,WR,CIN,3,The Squirt Producers,Sergio
+2016,2,14,Jordy Nelson,WR,GB,4,Rookies and Old Timers,Nicholas
+2016,2,15,Devonta Freeman,RB,ATL,11,N W A,Renzo
+2016,2,16,Rob Gronkowski,TE,NE,6,LA YEON,Brian
+2016,2,17,Dez Bryant,WR,DAL,1,Click-Clacking deflated nigs,Daniel
+2016,2,18,Allen Robinson,WR,JAX,10,Monday Nightmares,Andres
+2016,2,19,Eddie Lacy,RB,GB,2,CFC,Mauricio
+2016,2,20,Le'Veon Bell,RB,PIT,12,Montgomery Warts,Fernando
+2016,2,21,Keenan Allen,WR,LAC,5,Koitus Interrupted,Luis Carlos
+2016,2,22,Mark Ingram,RB,NO,7,JnJ 4 UR VJJ,Julian
+2016,2,23,LeSean McCoy,RB,BUF,9,The Unlucky MoFos,Gustavo
+2016,2,24,Doug Martin,RB,TB,8,FOREST HILL,GUIDO
+2016,3,25,Alshon Jeffery,WR,CHI,8,FOREST HILL,GUIDO
+2016,3,26,Travis Kelce,TE,KC,9,The Unlucky MoFos,Gustavo
+2016,3,27,Brandon Marshall,WR,NYJ,7,JnJ 4 UR VJJ,Julian
+2016,3,28,Mike Evans,WR,TB,5,Koitus Interrupted,Luis Carlos
+2016,3,29,Sammy Watkins,WR,BUF,12,Montgomery Warts,Fernando
+2016,3,30,Amari Cooper,WR,LV,2,CFC,Mauricio
+2016,3,31,Matt Forte,RB,NYJ,10,Monday Nightmares,Andres
+2016,3,32,Demaryius Thomas,WR,DEN,1,Click-Clacking deflated nigs,Daniel
+2016,3,33,Brandin Cooks,WR,NO,6,LA YEON,Brian
+2016,3,34,Jarvis Landry,WR,MIA,11,N W A,Renzo
+2016,3,35,Drew Brees,QB,NO,4,Rookies and Old Timers,Nicholas
+2016,3,36,C.J. Anderson,RB,DEN,3,The Squirt Producers,Sergio
+2016,4,37,Michael Floyd,WR,NE,3,The Squirt Producers,Sergio
+2016,4,38,Greg Olsen,TE,CAR,4,Rookies and Old Timers,Nicholas
+2016,4,39,T.Y. Hilton,WR,IND,11,N W A,Renzo
+2016,4,40,Thomas Rawls,RB,SEA,6,LA YEON,Brian
+2016,4,41,Carlos Hyde,RB,SF,1,Click-Clacking deflated nigs,Daniel
+2016,4,42,Ryan Mathews,RB,PHI,10,Monday Nightmares,Andres
+2016,4,43,Jonathan Stewart,RB,CAR,2,CFC,Mauricio
+2016,4,44,Jordan Reed,TE,WAS,12,Montgomery Warts,Fernando
+2016,4,45,Latavius Murray,RB,LV,5,Koitus Interrupted,Luis Carlos
+2016,4,46,Jeremy Maclin,WR,KC,7,JnJ 4 UR VJJ,Julian
+2016,4,47,Eric Decker,WR,NYJ,9,The Unlucky MoFos,Gustavo
+2016,4,48,Julian Edelman,WR,NE,8,FOREST HILL,GUIDO
+2016,5,49,Russell Wilson,QB,SEA,8,FOREST HILL,GUIDO
+2016,5,50,Doug Baldwin,WR,SEA,9,The Unlucky MoFos,Gustavo
+2016,5,51,Randall Cobb,WR,GB,7,JnJ 4 UR VJJ,Julian
+2016,5,52,Kelvin Benjamin,WR,CAR,5,Koitus Interrupted,Luis Carlos
+2016,5,53,Andrew Luck,QB,IND,12,Montgomery Warts,Fernando
+2016,5,54,John Brown,WR,ARI,2,CFC,Mauricio
+2016,5,55,Donte Moncrief,WR,IND,10,Monday Nightmares,Andres
+2016,5,56,Golden Tate,WR,DET,1,Click-Clacking deflated nigs,Daniel
+2016,5,57,Jeremy Hill,RB,CIN,6,LA YEON,Brian
+2016,5,58,Duke Johnson,RB,CLE,11,N W A,Renzo
+2016,5,59,Arian Foster,RB,MIA,4,Rookies and Old Timers,Nicholas
+2016,5,60,Carson Palmer,QB,ARI,3,The Squirt Producers,Sergio
+2016,6,61,DeMarco Murray,RB,TEN,3,The Squirt Producers,Sergio
+2016,6,62,Sterling Shepard,WR,NYG,4,Rookies and Old Timers,Nicholas
+2016,6,63,Jeremy Langford,RB,CHI,11,N W A,Renzo
+2016,6,64,Jordan Matthews,WR,PHI,6,LA YEON,Brian
+2016,6,65,Giovani Bernard,RB,CIN,1,Click-Clacking deflated nigs,Daniel
+2016,6,66,Corey Coleman,WR,CLE,10,Monday Nightmares,Andres
+2016,6,67,DeSean Jackson,WR,WAS,2,CFC,Mauricio
+2016,6,68,Danny Woodhead,RB,LAC,12,Montgomery Warts,Fernando
+2016,6,69,Matt Jones,RB,WAS,5,Koitus Interrupted,Luis Carlos
+2016,6,70,Tyler Eifert,TE,CIN,7,JnJ 4 UR VJJ,Julian
+2016,6,71,Allen Hurns,WR,JAX,9,The Unlucky MoFos,Gustavo
+2016,6,72,Emmanuel Sanders,WR,DEN,8,FOREST HILL,GUIDO
+2016,7,73,Jay Ajayi,RB,MIA,8,FOREST HILL,GUIDO
+2016,7,74,LeGarrette Blount,RB,NE,9,The Unlucky MoFos,Gustavo
+2016,7,75,Chris Ivory,RB,JAX,7,JnJ 4 UR VJJ,Julian
+2016,7,76,Melvin Gordon,RB,LAC,5,Koitus Interrupted,Luis Carlos
+2016,7,77,Josh Gordon,WR,CLE,12,Montgomery Warts,Fernando
+2016,7,78,Gary Barnidge,TE,CLE,2,CFC,Mauricio
+2016,7,79,Tom Brady,QB,NE,10,Monday Nightmares,Andres
+2016,7,80,Delanie Walker,TE,TEN,1,Click-Clacking deflated nigs,Daniel
+2016,7,81,Philip Rivers,QB,LAC,6,LA YEON,Brian
+2016,7,82,Michael Crabtree,WR,LV,11,N W A,Renzo
+2016,7,83,Larry Fitzgerald,WR,ARI,4,Rookies and Old Timers,Nicholas
+2016,7,84,Coby Fleener,TE,NO,3,The Squirt Producers,Sergio
+2016,8,85,Frank Gore,RB,IND,3,The Squirt Producers,Sergio
+2016,8,86,Kevin White,WR,CHI,4,Rookies and Old Timers,Nicholas
+2016,8,87,Zach Ertz,TE,PHI,11,N W A,Renzo
+2016,8,88,Tyler Lockett,WR,SEA,6,LA YEON,Brian
+2016,8,89,Eli Manning,QB,NYG,1,Click-Clacking deflated nigs,Daniel
+2016,8,90,Antonio Gates,TE,LAC,10,Monday Nightmares,Andres
+2016,8,91,Ben Roethlisberger,QB,PIT,2,CFC,Mauricio
+2016,8,92,Tyrod Taylor,QB,BUF,12,Montgomery Warts,Fernando
+2016,8,93,Marvin Jones,WR,DET,5,Koitus Interrupted,Luis Carlos
+2016,8,94,Blake Bortles,QB,JAX,7,JnJ 4 UR VJJ,Julian
+2016,8,95,Ryan Fitzpatrick,QB,NYJ,9,The Unlucky MoFos,Gustavo
+2016,8,96,Julius Thomas,TE,JAX,8,FOREST HILL,GUIDO
+2016,9,97,Seattle Seahawks,DEF,,8,FOREST HILL,GUIDO
+2016,9,98,Pierre Garcon,WR,WAS,9,The Unlucky MoFos,Gustavo
+2016,9,99,Kansas City Chiefs,DEF,,7,JnJ 4 UR VJJ,Julian
+2016,9,100,Jared Cook,TE,GB,5,Koitus Interrupted,Luis Carlos
+2016,9,101,Tavon Austin,WR,LA,12,Montgomery Warts,Fernando
+2016,9,102,Denver Broncos,DEF,,2,CFC,Mauricio
+2016,9,103,Rashad Jennings,RB,NYG,10,Monday Nightmares,Andres
+2016,9,104,Arizona Cardinals,DEF,,1,Click-Clacking deflated nigs,Daniel
+2016,9,105,Carolina Panthers,DEF,,6,LA YEON,Brian
+2016,9,106,DeAngelo Williams,RB,PIT,11,N W A,Renzo
+2016,9,107,DeVante Parker,WR,MIA,4,Rookies and Old Timers,Nicholas
+2016,9,108,Stefon Diggs,WR,MIN,3,The Squirt Producers,Sergio
+2016,10,109,T.J. Yeldon,RB,JAX,3,The Squirt Producers,Sergio
+2016,10,110,Markus Wheaton,WR,PIT,4,Rookies and Old Timers,Nicholas
+2016,10,111,Graham Gano,K,CAR,11,N W A,Renzo
+2016,10,112,Ameer Abdullah,RB,DET,6,LA YEON,Brian
+2016,10,113,Chandler Catanzaro,K,ARI,1,Click-Clacking deflated nigs,Daniel
+2016,10,114,Kamar Aiken,WR,BAL,10,Monday Nightmares,Andres
+2016,10,115,Steven Hauschka,K,SEA,2,CFC,Mauricio
+2016,10,116,Willie Snead,WR,NO,12,Montgomery Warts,Fernando
+2016,10,117,Derrick Henry,RB,TEN,5,Koitus Interrupted,Luis Carlos
+2016,10,118,Cairo Santos,K,KC,7,JnJ 4 UR VJJ,Julian
+2016,10,119,Los Angeles Rams,DEF,,9,The Unlucky MoFos,Gustavo
+2016,10,120,Chris Boswell,K,PIT,8,FOREST HILL,GUIDO
+2016,11,121,Torrey Smith,WR,SF,8,FOREST HILL,GUIDO
+2016,11,122,Stephen Gostkowski,K,NE,9,The Unlucky MoFos,Gustavo
+2016,11,123,Charles Sims,RB,TB,7,JnJ 4 UR VJJ,Julian
+2016,11,124,Nelson Agholor,WR,PHI,5,Koitus Interrupted,Luis Carlos
+2016,11,125,Cincinnati Bengals,DEF,,12,Montgomery Warts,Fernando
+2016,11,126,Theo Riddick,RB,DET,2,CFC,Mauricio
+2016,11,127,Christine Michael,RB,GB,10,Monday Nightmares,Andres
+2016,11,128,Justin Forsett,RB,DEN,1,Click-Clacking deflated nigs,Daniel
+2016,11,129,Devin Funchess,WR,CAR,6,LA YEON,Brian
+2016,11,130,Houston Texans,DEF,,11,N W A,Renzo
+2016,11,131,Travis Benjamin,WR,LAC,4,Rookies and Old Timers,Nicholas
+2016,11,132,Matthew Stafford,QB,DET,3,The Squirt Producers,Sergio
+2016,12,133,Isaiah Crowell,RB,CLE,3,The Squirt Producers,Sergio
+2016,12,134,Jordan Howard,RB,CHI,4,Rookies and Old Timers,Nicholas
+2016,12,135,Victor Cruz,WR,NYG,11,N W A,Renzo
+2016,12,136,Matt Ryan,QB,ATL,6,LA YEON,Brian
+2016,12,137,Bilal Powell,RB,NYJ,1,Click-Clacking deflated nigs,Daniel
+2016,12,138,Michael Thomas,WR,NO,10,Monday Nightmares,Andres
+2016,12,139,Derek Carr,QB,LV,2,CFC,Mauricio
+2016,12,140,Mike Wallace,WR,BAL,12,Montgomery Warts,Fernando
+2016,12,141,Mohamed Sanu,WR,ATL,5,Koitus Interrupted,Luis Carlos
+2016,12,142,Terrance West,RB,BAL,7,JnJ 4 UR VJJ,Julian
+2016,12,143,Jameis Winston,QB,TB,9,The Unlucky MoFos,Gustavo
+2016,12,144,Andy Dalton,QB,CIN,8,FOREST HILL,GUIDO
+2016,13,145,Tevin Coleman,RB,ATL,8,FOREST HILL,GUIDO
+2016,13,146,Jason Witten,TE,DAL,9,The Unlucky MoFos,Gustavo
+2016,13,147,Josh Doctson,WR,WAS,7,JnJ 4 UR VJJ,Julian
+2016,13,148,Alfred Morris,RB,DAL,5,Koitus Interrupted,Luis Carlos
+2016,13,149,Mason Crosby,K,GB,12,Montgomery Warts,Fernando
+2016,13,150,Vincent Jackson,WR,TB,2,CFC,Mauricio
+2016,13,151,Kirk Cousins,QB,WAS,10,Monday Nightmares,Andres
+2016,13,152,Marcus Mariota,QB,TEN,1,Click-Clacking deflated nigs,Daniel
+2016,13,153,Mike Nugent,K,,6,LA YEON,Brian
+2016,13,154,Alex Smith,QB,KC,11,N W A,Renzo
+2016,13,155,DeAndre Washington,RB,LV,4,Rookies and Old Timers,Nicholas
+2016,13,156,New England Patriots,DEF,,3,The Squirt Producers,Sergio
+2016,14,157,Dan Bailey,K,DAL,3,The Squirt Producers,Sergio
+2016,14,158,Jimmy Graham,TE,SEA,4,Rookies and Old Timers,Nicholas
+2016,14,159,Phillip Dorsett,WR,IND,11,N W A,Renzo
+2016,14,160,Dwayne Allen,TE,IND,6,LA YEON,Brian
+2016,14,161,Jerick McKinnon,RB,MIN,1,Click-Clacking deflated nigs,Daniel
+2016,14,162,Minnesota Vikings,DEF,,10,Monday Nightmares,Andres
+2016,14,163,Devontae Booker,RB,DEN,2,CFC,Mauricio
+2016,14,164,James Starks,RB,GB,12,Montgomery Warts,Fernando
+2016,14,165,Brandon McManus,K,DEN,5,Koitus Interrupted,Luis Carlos
+2016,14,166,Laquon Treadwell,WR,MIN,7,JnJ 4 UR VJJ,Julian
+2016,14,167,Justin Tucker,K,BAL,9,The Unlucky MoFos,Gustavo
+2016,14,168,Martellus Bennett,TE,NE,8,FOREST HILL,GUIDO
+2016,15,169,C.J. Prosise,RB,SEA,8,FOREST HILL,GUIDO
+2016,15,170,Matt Prater,K,DET,9,The Unlucky MoFos,Gustavo
+2016,15,171,Rishard Matthews,WR,TEN,7,JnJ 4 UR VJJ,Julian
+2016,15,172,Pittsburgh Steelers,DEF,,5,Koitus Interrupted,Luis Carlos
+2016,15,173,Spencer Ware,RB,KC,12,Montgomery Warts,Fernando
+2016,15,174,Zach Miller,TE,CHI,2,CFC,Mauricio
+2016,15,175,Josh Brown,K,,10,Monday Nightmares,Andres
+2016,15,176,Tajae Sharpe,WR,TEN,1,Click-Clacking deflated nigs,Daniel
+2016,15,177,Charcandrick West,RB,KC,6,LA YEON,Brian
+2016,15,178,C.J. Spiller,RB,,11,N W A,Renzo
+2016,15,179,Adam Vinatieri,K,IND,4,Rookies and Old Timers,Nicholas
+2016,15,180,Ted Ginn,WR,CAR,3,The Squirt Producers,Sergio
+2016,16,181,Justin Hardy,WR,ATL,3,The Squirt Producers,Sergio
+2016,16,182,Philadelphia Eagles,DEF,,4,Rookies and Old Timers,Nicholas
+2016,16,183,Darren Sproles,RB,PHI,11,N W A,Renzo
+2016,16,184,New York Jets,DEF,,6,LA YEON,Brian
+2016,16,185,Anquan Boldin,WR,DET,1,Click-Clacking deflated nigs,Daniel
+2016,16,186,Richard Rodgers,TE,GB,10,Monday Nightmares,Andres
+2016,16,187,Shane Vereen,RB,NYG,2,CFC,Mauricio
+2016,16,188,Ka'Deem Carey,RB,CHI,12,Montgomery Warts,Fernando
+2016,16,189,Carson Wentz,QB,PHI,5,Koitus Interrupted,Luis Carlos
+2016,16,190,Javorius Allen,RB,BAL,7,JnJ 4 UR VJJ,Julian
+2016,16,191,Kenny Stills,WR,MIA,9,The Unlucky MoFos,Gustavo
+2016,16,192,Robert Woods,WR,BUF,8,FOREST HILL,GUIDO
+2017,1,1,David Johnson,RB,ARI,12,bench warmers,Fernando
+2017,1,2,Le'Veon Bell,RB,PIT,7,51 years and counting,Julian
+2017,1,3,Antonio Brown,WR,PIT,1,la zero 8,Diego
+2017,1,4,Julio Jones,WR,ATL,6,YULIANA'S REVENGE,Brian
+2017,1,5,Odell Beckham,WR,NYG,3,The Squirt Producers,Sergio
+2017,1,6,Mike Evans,WR,TB,2,The Dak Side,Rodrigo
+2017,1,7,Aaron Rodgers,QB,GB,5,Le Sheriff Consolateur,Luis Carlos
+2017,1,8,LeSean McCoy,RB,BUF,10,Monday Nightmares,Andres
+2017,1,9,Ezekiel Elliott,RB,DAL,11,N W A,Renzo
+2017,1,10,Melvin Gordon,RB,LAC,4,Real Monday Nightmares,Nicholas
+2017,2,11,A.J. Green,WR,CIN,4,Real Monday Nightmares,Nicholas
+2017,2,12,Jordy Nelson,WR,GB,11,N W A,Renzo
+2017,2,13,Devonta Freeman,RB,ATL,10,Monday Nightmares,Andres
+2017,2,14,Marshawn Lynch,RB,LV,5,Le Sheriff Consolateur,Luis Carlos
+2017,2,15,Jay Ajayi,RB,PHI,2,The Dak Side,Rodrigo
+2017,2,16,DeMarco Murray,RB,TEN,3,The Squirt Producers,Sergio
+2017,2,17,Jordan Howard,RB,CHI,6,YULIANA'S REVENGE,Brian
+2017,2,18,Michael Thomas,WR,NO,1,la zero 8,Diego
+2017,2,19,Tom Brady,QB,NE,7,51 years and counting,Julian
+2017,2,20,Dez Bryant,WR,DAL,12,bench warmers,Fernando
+2017,3,21,T.Y. Hilton,WR,IND,12,bench warmers,Fernando
+2017,3,22,Julian Edelman,WR,NE,7,51 years and counting,Julian
+2017,3,23,Todd Gurley,RB,LA,1,la zero 8,Diego
+2017,3,24,Leonard Fournette,RB,JAX,6,YULIANA'S REVENGE,Brian
+2017,3,25,Brandin Cooks,WR,NE,3,The Squirt Producers,Sergio
+2017,3,26,Rob Gronkowski,TE,NE,2,The Dak Side,Rodrigo
+2017,3,27,Terrelle Pryor,WR,WAS,5,Le Sheriff Consolateur,Luis Carlos
+2017,3,28,Amari Cooper,WR,LV,10,Monday Nightmares,Andres
+2017,3,29,DeAndre Hopkins,WR,HOU,11,N W A,Renzo
+2017,3,30,Drew Brees,QB,NO,4,Real Monday Nightmares,Nicholas
+2017,4,31,Lamar Miller,RB,HOU,4,Real Monday Nightmares,Nicholas
+2017,4,32,Matt Ryan,QB,ATL,11,N W A,Renzo
+2017,4,33,Doug Baldwin,WR,SEA,10,Monday Nightmares,Andres
+2017,4,34,Alshon Jeffery,WR,PHI,5,Le Sheriff Consolateur,Luis Carlos
+2017,4,35,Kareem Hunt,RB,KC,2,The Dak Side,Rodrigo
+2017,4,36,Isaiah Crowell,RB,CLE,3,The Squirt Producers,Sergio
+2017,4,37,Russell Wilson,QB,SEA,6,YULIANA'S REVENGE,Brian
+2017,4,38,Joe Mixon,RB,CIN,1,la zero 8,Diego
+2017,4,39,Emmanuel Sanders,WR,DEN,7,51 years and counting,Julian
+2017,4,40,Christian McCaffrey,RB,CAR,12,bench warmers,Fernando
+2017,5,41,Demaryius Thomas,WR,DEN,12,bench warmers,Fernando
+2017,5,42,Travis Kelce,TE,KC,7,51 years and counting,Julian
+2017,5,43,Carlos Hyde,RB,SF,1,la zero 8,Diego
+2017,5,44,Allen Robinson,WR,JAX,6,YULIANA'S REVENGE,Brian
+2017,5,45,C.J. Anderson,RB,DEN,3,The Squirt Producers,Sergio
+2017,5,46,Sammy Watkins,WR,LA,2,The Dak Side,Rodrigo
+2017,5,47,Tyreek Hill,WR,KC,5,Le Sheriff Consolateur,Luis Carlos
+2017,5,48,Keenan Allen,WR,LAC,10,Monday Nightmares,Andres
+2017,5,49,Jarvis Landry,WR,MIA,11,N W A,Renzo
+2017,5,50,Greg Olsen,TE,CAR,4,Real Monday Nightmares,Nicholas
+2017,6,51,Larry Fitzgerald,WR,ARI,4,Real Monday Nightmares,Nicholas
+2017,6,52,Michael Crabtree,WR,LV,11,N W A,Renzo
+2017,6,53,Ty Montgomery,RB,GB,10,Monday Nightmares,Andres
+2017,6,54,Davante Adams,WR,GB,5,Le Sheriff Consolateur,Luis Carlos
+2017,6,55,Golden Tate,WR,DET,2,The Dak Side,Rodrigo
+2017,6,56,Jordan Reed,TE,WAS,3,The Squirt Producers,Sergio
+2017,6,57,Jimmy Graham,TE,SEA,6,YULIANA'S REVENGE,Brian
+2017,6,58,Andrew Luck,QB,IND,1,la zero 8,Diego
+2017,6,59,Pierre Garcon,WR,SF,7,51 years and counting,Julian
+2017,6,60,Bilal Powell,RB,NYJ,12,bench warmers,Fernando
+2017,7,61,Delanie Walker,TE,TEN,12,bench warmers,Fernando
+2017,7,62,Frank Gore,RB,IND,7,51 years and counting,Julian
+2017,7,63,Stefon Diggs,WR,MIN,1,la zero 8,Diego
+2017,7,64,Kelvin Benjamin,WR,BUF,6,YULIANA'S REVENGE,Brian
+2017,7,65,Jamison Crowder,WR,WAS,3,The Squirt Producers,Sergio
+2017,7,66,Dak Prescott,QB,DAL,2,The Dak Side,Rodrigo
+2017,7,67,Dalvin Cook,RB,MIN,5,Le Sheriff Consolateur,Luis Carlos
+2017,7,68,Mike Gillislee,RB,NE,10,Monday Nightmares,Andres
+2017,7,69,Tevin Coleman,RB,ATL,11,N W A,Renzo
+2017,7,70,Martavis Bryant,WR,PIT,4,Real Monday Nightmares,Nicholas
+2017,8,71,Brandon Marshall,WR,NYG,4,Real Monday Nightmares,Nicholas
+2017,8,72,Denver Broncos,DEF,,11,N W A,Renzo
+2017,8,73,Marcus Mariota,QB,TEN,10,Monday Nightmares,Andres
+2017,8,74,LeGarrette Blount,RB,PHI,5,Le Sheriff Consolateur,Luis Carlos
+2017,8,75,Mark Ingram,RB,NO,2,The Dak Side,Rodrigo
+2017,8,76,Cam Newton,QB,CAR,3,The Squirt Producers,Sergio
+2017,8,77,DeSean Jackson,WR,TB,6,YULIANA'S REVENGE,Brian
+2017,8,78,Tyler Eifert,TE,CIN,1,la zero 8,Diego
+2017,8,79,Seattle Seahawks,DEF,,7,51 years and counting,Julian
+2017,8,80,Kirk Cousins,QB,WAS,12,bench warmers,Fernando
+2017,9,81,Kansas City Chiefs,DEF,,12,bench warmers,Fernando
+2017,9,82,Stephen Gostkowski,K,NE,7,51 years and counting,Julian
+2017,9,83,Justin Tucker,K,BAL,1,la zero 8,Diego
+2017,9,84,Adrian Peterson,RB,ARI,6,YULIANA'S REVENGE,Brian
+2017,9,85,Minnesota Vikings,DEF,,3,The Squirt Producers,Sergio
+2017,9,86,Danny Woodhead,RB,BAL,2,The Dak Side,Rodrigo
+2017,9,87,Martellus Bennett,TE,NE,5,Le Sheriff Consolateur,Luis Carlos
+2017,9,88,Kenny Britt,WR,NE,10,Monday Nightmares,Andres
+2017,9,89,Kyle Rudolph,TE,MIN,11,N W A,Renzo
+2017,9,90,Doug Martin,RB,TB,4,Real Monday Nightmares,Nicholas
+2017,10,91,Rob Kelley,RB,WAS,4,Real Monday Nightmares,Nicholas
+2017,10,92,Matt Bryant,K,ATL,11,N W A,Renzo
+2017,10,93,Jack Doyle,TE,IND,10,Monday Nightmares,Andres
+2017,10,94,James White,RB,NE,5,Le Sheriff Consolateur,Luis Carlos
+2017,10,95,Eddie Lacy,RB,SEA,2,The Dak Side,Rodrigo
+2017,10,96,Dan Bailey,K,DAL,3,The Squirt Producers,Sergio
+2017,10,97,Jeremy Maclin,WR,BAL,6,YULIANA'S REVENGE,Brian
+2017,10,98,New England Patriots,DEF,,1,la zero 8,Diego
+2017,10,99,Chris Hogan,WR,NE,7,51 years and counting,Julian
+2017,10,100,Cairo Santos,K,CHI,12,bench warmers,Fernando
+2017,11,101,Ameer Abdullah,RB,DET,12,bench warmers,Fernando
+2017,11,102,Ben Roethlisberger,QB,PIT,7,51 years and counting,Julian
+2017,11,103,Paul Perkins,RB,NYG,1,la zero 8,Diego
+2017,11,104,Houston Texans,DEF,,6,YULIANA'S REVENGE,Brian
+2017,11,105,Donte Moncrief,WR,IND,3,The Squirt Producers,Sergio
+2017,11,106,Theo Riddick,RB,DET,2,The Dak Side,Rodrigo
+2017,11,107,Mike Wallace,WR,BAL,5,Le Sheriff Consolateur,Luis Carlos
+2017,11,108,Eric Decker,WR,TEN,10,Monday Nightmares,Andres
+2017,11,109,Matt Forte,RB,NYJ,11,N W A,Renzo
+2017,11,110,DeVante Parker,WR,MIA,4,Real Monday Nightmares,Nicholas
+2017,12,111,Darren McFadden,RB,,4,Real Monday Nightmares,Nicholas
+2017,12,112,Jonathan Stewart,RB,CAR,11,N W A,Renzo
+2017,12,113,Arizona Cardinals,DEF,,10,Monday Nightmares,Andres
+2017,12,114,Jamaal Charles,RB,DEN,5,Le Sheriff Consolateur,Luis Carlos
+2017,12,115,Adam Thielen,WR,MIN,2,The Dak Side,Rodrigo
+2017,12,116,Thomas Rawls,RB,SEA,3,The Squirt Producers,Sergio
+2017,12,117,Jameis Winston,QB,TB,6,YULIANA'S REVENGE,Brian
+2017,12,118,Corey Davis,WR,TEN,1,la zero 8,Diego
+2017,12,119,Randall Cobb,WR,GB,7,51 years and counting,Julian
+2017,12,120,Samaje Perine,RB,WAS,12,bench warmers,Fernando
+2017,13,121,Derrick Henry,RB,TEN,12,bench warmers,Fernando
+2017,13,122,Pittsburgh Steelers,DEF,,7,51 years and counting,Julian
+2017,13,123,Tyrell Williams,WR,LAC,1,la zero 8,Diego
+2017,13,124,John Brown,WR,ARI,6,YULIANA'S REVENGE,Brian
+2017,13,125,Darren Sproles,RB,PHI,3,The Squirt Producers,Sergio
+2017,13,126,Marvin Jones,WR,DET,2,The Dak Side,Rodrigo
+2017,13,127,Jordan Matthews,WR,BUF,5,Le Sheriff Consolateur,Luis Carlos
+2017,13,128,Derek Carr,QB,LV,10,Monday Nightmares,Andres
+2017,13,129,Duke Johnson,RB,CLE,11,N W A,Renzo
+2017,13,130,Kevin White,WR,CHI,4,Real Monday Nightmares,Nicholas
+2017,14,131,Jamaal Williams,RB,GB,4,Real Monday Nightmares,Nicholas
+2017,14,132,Zach Ertz,TE,PHI,11,N W A,Renzo
+2017,14,133,Ted Ginn,WR,NO,10,Monday Nightmares,Andres
+2017,14,134,Philadelphia Eagles,DEF,,5,Le Sheriff Consolateur,Luis Carlos
+2017,14,135,Matthew Stafford,QB,DET,2,The Dak Side,Rodrigo
+2017,14,136,Corey Coleman,WR,CLE,3,The Squirt Producers,Sergio
+2017,14,137,Sterling Shepard,WR,NYG,6,YULIANA'S REVENGE,Brian
+2017,14,138,C.J. Prosise,RB,SEA,1,la zero 8,Diego
+2017,14,139,Chris Boswell,K,PIT,7,51 years and counting,Julian
+2017,14,140,Eric Ebron,TE,DET,12,bench warmers,Fernando
+2017,15,141,Rishard Matthews,WR,TEN,12,bench warmers,Fernando
+2017,15,142,Latavius Murray,RB,MIN,7,51 years and counting,Julian
+2017,15,143,Willie Snead,WR,NO,1,la zero 8,Diego
+2017,15,144,Stephen Hauschka,K,BUF,6,YULIANA'S REVENGE,Brian
+2017,15,145,Tyrod Taylor,QB,BUF,3,The Squirt Producers,Sergio
+2017,15,146,New York Giants,DEF,,2,The Dak Side,Rodrigo
+2017,15,147,Wil Lutz,K,NO,5,Le Sheriff Consolateur,Luis Carlos
+2017,15,148,Mason Crosby,K,GB,10,Monday Nightmares,Andres
+2017,15,149,Taylor Gabriel,WR,ATL,11,N W A,Renzo
+2017,15,150,Adam Vinatieri,K,IND,4,Real Monday Nightmares,Nicholas
+2017,16,151,Carolina Panthers,DEF,,4,Real Monday Nightmares,Nicholas
+2017,16,152,Terrance West,RB,BAL,11,N W A,Renzo
+2017,16,153,Hunter Henry,TE,LAC,10,Monday Nightmares,Andres
+2017,16,154,Cole Beasley,WR,DAL,5,Le Sheriff Consolateur,Luis Carlos
+2017,16,155,Graham Gano,K,CAR,2,The Dak Side,Rodrigo
+2017,16,156,Zay Jones,WR,BUF,3,The Squirt Producers,Sergio
+2017,16,157,Alvin Kamara,RB,NO,6,YULIANA'S REVENGE,Brian
+2017,16,158,Philip Rivers,QB,LAC,1,la zero 8,Diego
+2017,16,159,Breshad Perriman,WR,BAL,7,51 years and counting,Julian
+2017,16,160,Josh Doctson,WR,WAS,12,bench warmers,Fernando
+2018,1,1,Todd Gurley,RB,LA,3,The Squirt Producers,Sergio
+2018,1,2,Le'Veon Bell,RB,PIT,12,KPulido,Kike
+2018,1,3,David Johnson,RB,ARI,5,Yo No Limpio,Luis Carlos
+2018,1,4,Antonio Brown,WR,PIT,1,la zero 8,Diego
+2018,1,5,Ezekiel Elliott,RB,DAL,13,Victorious Secret,Santiago
+2018,1,6,Saquon Barkley,RB,NYG,10,Monday  Nightmares,Andres
+2018,1,7,DeAndre Hopkins,WR,HOU,4,ABC,Nicholas
+2018,1,8,Alvin Kamara,RB,NO,8,Game of Joe,Jose
+2018,1,9,Melvin Gordon,RB,LAC,14,Ferchos,Camilo
+2018,1,10,Kareem Hunt,RB,,11,Miami Miracles,Renzo
+2018,1,11,Tom Brady,QB,NE,7,El Lechon Retardado,Carlos
+2018,1,12,Odell Beckham,WR,NYG,2,Raw Dawg,Rodrigo
+2018,1,13,Julio Jones,WR,ATL,9,Nigger's,Alejandro
+2018,1,14,Michael Thomas,WR,NO,6,LOCOCHINO,Brian
+2018,2,15,Dalvin Cook,RB,MIN,6,LOCOCHINO,Brian
+2018,2,16,Leonard Fournette,RB,JAX,9,Nigger's,Alejandro
+2018,2,17,Keenan Allen,WR,LAC,2,Raw Dawg,Rodrigo
+2018,2,18,LeSean McCoy,RB,BUF,7,El Lechon Retardado,Carlos
+2018,2,19,A.J. Green,WR,CIN,11,Miami Miracles,Renzo
+2018,2,20,Davante Adams,WR,GB,14,Ferchos,Camilo
+2018,2,21,Devonta Freeman,RB,ATL,8,Game of Joe,Jose
+2018,2,22,Rob Gronkowski,TE,NE,4,ABC,Nicholas
+2018,2,23,T.Y. Hilton,WR,IND,10,Monday  Nightmares,Andres
+2018,2,24,Christian McCaffrey,RB,CAR,13,Victorious Secret,Santiago
+2018,2,25,Aaron Rodgers,QB,GB,1,la zero 8,Diego
+2018,2,26,Mike Evans,WR,TB,5,Yo No Limpio,Luis Carlos
+2018,2,27,Jordan Howard,RB,CHI,12,KPulido,Kike
+2018,2,28,Adam Thielen,WR,MIN,3,The Squirt Producers,Sergio
+2018,3,29,Travis Kelce,TE,KC,3,The Squirt Producers,Sergio
+2018,3,30,Tyreek Hill,WR,KC,12,KPulido,Kike
+2018,3,31,JuJu Smith-Schuster,WR,PIT,5,Yo No Limpio,Luis Carlos
+2018,3,32,Larry Fitzgerald,WR,ARI,1,la zero 8,Diego
+2018,3,33,Kenyan Drake,RB,MIA,13,Victorious Secret,Santiago
+2018,3,34,Zach Ertz,TE,PHI,10,Monday  Nightmares,Andres
+2018,3,35,Deshaun Watson,QB,HOU,4,ABC,Nicholas
+2018,3,36,Doug Baldwin,WR,SEA,8,Game of Joe,Jose
+2018,3,37,Alex Collins,RB,BAL,14,Ferchos,Camilo
+2018,3,38,Joe Mixon,RB,CIN,11,Miami Miracles,Renzo
+2018,3,39,Derrick Henry,RB,TEN,7,El Lechon Retardado,Carlos
+2018,3,40,Stefon Diggs,WR,MIN,2,Raw Dawg,Rodrigo
+2018,3,41,Amari Cooper,WR,DAL,9,Nigger's,Alejandro
+2018,3,42,Josh Gordon,WR,NE,6,LOCOCHINO,Brian
+2018,4,43,Lamar Miller,RB,HOU,6,LOCOCHINO,Brian
+2018,4,44,Jerick McKinnon,RB,SF,9,Nigger's,Alejandro
+2018,4,45,Jay Ajayi,RB,PHI,2,Raw Dawg,Rodrigo
+2018,4,46,Marvin Jones,WR,DET,7,El Lechon Retardado,Carlos
+2018,4,47,Allen Robinson,WR,CHI,11,Miami Miracles,Renzo
+2018,4,48,Demaryius Thomas,WR,HOU,14,Ferchos,Camilo
+2018,4,49,Cam Newton,QB,CAR,8,Game of Joe,Jose
+2018,4,50,Jarvis Landry,WR,CLE,4,ABC,Nicholas
+2018,4,51,Royce Freeman,RB,DEN,10,Monday  Nightmares,Andres
+2018,4,52,Alshon Jeffery,WR,PHI,13,Victorious Secret,Santiago
+2018,4,53,Golden Tate,WR,PHI,1,la zero 8,Diego
+2018,4,54,Greg Olsen,TE,CAR,5,Yo No Limpio,Luis Carlos
+2018,4,55,Pierre Garcon,WR,SF,12,KPulido,Kike
+2018,4,56,Chris Hogan,WR,NE,3,The Squirt Producers,Sergio
+2018,5,57,Mark Ingram,RB,NO,3,The Squirt Producers,Sergio
+2018,5,58,Evan Engram,TE,NYG,12,KPulido,Kike
+2018,5,59,Brandin Cooks,WR,LA,5,Yo No Limpio,Luis Carlos
+2018,5,60,Michael Crabtree,WR,BAL,1,la zero 8,Diego
+2018,5,61,Robert Woods,WR,LA,13,Victorious Secret,Santiago
+2018,5,62,Kirk Cousins,QB,MIN,10,Monday  Nightmares,Andres
+2018,5,63,Marshawn Lynch,RB,LV,4,ABC,Nicholas
+2018,5,64,Drew Brees,QB,NO,8,Game of Joe,Jose
+2018,5,65,Russell Wilson,QB,SEA,14,Ferchos,Camilo
+2018,5,66,Tevin Coleman,RB,ATL,11,Miami Miracles,Renzo
+2018,5,67,Jamaal Williams,RB,GB,7,El Lechon Retardado,Carlos
+2018,5,68,Dion Lewis,RB,TEN,2,Raw Dawg,Rodrigo
+2018,5,69,Corey Davis,WR,TEN,9,Nigger's,Alejandro
+2018,5,70,Carson Wentz,QB,PHI,6,LOCOCHINO,Brian
+2018,6,71,Andrew Luck,QB,IND,6,LOCOCHINO,Brian
+2018,6,72,Delanie Walker,TE,TEN,9,Nigger's,Alejandro
+2018,6,73,Emmanuel Sanders,WR,DEN,2,Raw Dawg,Rodrigo
+2018,6,74,Marquise Goodwin,WR,SF,7,El Lechon Retardado,Carlos
+2018,6,75,Matthew Stafford,QB,DET,11,Miami Miracles,Renzo
+2018,6,76,Jimmy Graham,TE,GB,14,Ferchos,Camilo
+2018,6,77,Cooper Kupp,WR,LA,8,Game of Joe,Jose
+2018,6,78,Carlos Hyde,RB,JAX,4,ABC,Nicholas
+2018,6,79,Chris Carson,RB,SEA,10,Monday  Nightmares,Andres
+2018,6,80,Devin Funchess,WR,CAR,13,Victorious Secret,Santiago
+2018,6,81,Chris Thompson,RB,WAS,1,la zero 8,Diego
+2018,6,82,Jacksonville Jaguars,DEF,,5,Yo No Limpio,Luis Carlos
+2018,6,83,Kerryon Johnson,RB,DET,12,KPulido,Kike
+2018,6,84,Isaiah Crowell,RB,NYJ,3,The Squirt Producers,Sergio
+2018,7,85,DeVante Parker,WR,MIA,3,The Squirt Producers,Sergio
+2018,7,86,Philip Rivers,QB,LAC,12,KPulido,Kike
+2018,7,87,Ben Roethlisberger,QB,PIT,5,Yo No Limpio,Luis Carlos
+2018,7,88,Tarik Cohen,RB,CHI,1,la zero 8,Diego
+2018,7,89,Matt Breida,RB,SF,13,Victorious Secret,Santiago
+2018,7,90,Jordan Reed,TE,WAS,10,Monday  Nightmares,Andres
+2018,7,91,Jordy Nelson,WR,LV,4,ABC,Nicholas
+2018,7,92,Stephen Gostkowski,K,NE,8,Game of Joe,Jose
+2018,7,93,Jamison Crowder,WR,WAS,14,Ferchos,Camilo
+2018,7,94,Kyle Rudolph,TE,MIN,11,Miami Miracles,Renzo
+2018,7,95,Peyton Barber,RB,TB,7,El Lechon Retardado,Carlos
+2018,7,96,Sammy Watkins,WR,KC,2,Raw Dawg,Rodrigo
+2018,7,97,Rex Burkhead,RB,NE,9,Nigger's,Alejandro
+2018,7,98,Jack Doyle,TE,IND,6,LOCOCHINO,Brian
+2018,8,99,Duke Johnson,RB,CLE,6,LOCOCHINO,Brian
+2018,8,100,Jimmy Garoppolo,QB,SF,9,Nigger's,Alejandro
+2018,8,101,Trey Burton,TE,CHI,2,Raw Dawg,Rodrigo
+2018,8,102,Ted Ginn,WR,NO,7,El Lechon Retardado,Carlos
+2018,8,103,Randall Cobb,WR,GB,11,Miami Miracles,Renzo
+2018,8,104,Marlon Mack,RB,IND,14,Ferchos,Camilo
+2018,8,105,Minnesota Vikings,DEF,,8,Game of Joe,Jose
+2018,8,106,Kelvin Benjamin,WR,KC,4,ABC,Nicholas
+2018,8,107,Julian Edelman,WR,NE,10,Monday  Nightmares,Andres
+2018,8,108,Robby Anderson,WR,NYJ,13,Victorious Secret,Santiago
+2018,8,109,Jared Cook,TE,LV,1,la zero 8,Diego
+2018,8,110,Adrian Peterson,RB,WAS,5,Yo No Limpio,Luis Carlos
+2018,8,111,Will Fuller,WR,HOU,12,KPulido,Kike
+2018,8,112,Marcus Mariota,QB,TEN,3,The Squirt Producers,Sergio
+2018,9,113,Sterling Shepard,WR,NYG,3,The Squirt Producers,Sergio
+2018,9,114,Rishard Matthews,WR,NYJ,12,KPulido,Kike
+2018,9,115,Calvin Ridley,WR,ATL,5,Yo No Limpio,Luis Carlos
+2018,9,116,Matt Bryant,K,ATL,1,la zero 8,Diego
+2018,9,117,Alex Smith,QB,WAS,13,Victorious Secret,Santiago
+2018,9,118,Los Angeles Rams,DEF,,10,Monday  Nightmares,Andres
+2018,9,119,James White,RB,NE,4,ABC,Nicholas
+2018,9,120,George Kittle,TE,SF,8,Game of Joe,Jose
+2018,9,121,Nelson Agholor,WR,PHI,14,Ferchos,Camilo
+2018,9,122,Kenny Stills,WR,MIA,11,Miami Miracles,Renzo
+2018,9,123,Eric Ebron,TE,IND,7,El Lechon Retardado,Carlos
+2018,9,124,Matt Ryan,QB,ATL,2,Raw Dawg,Rodrigo
+2018,9,125,Rashaad Penny,RB,SEA,9,Nigger's,Alejandro
+2018,9,126,Mohamed Sanu,WR,ATL,6,LOCOCHINO,Brian
+2018,10,127,Allen Hurns,WR,DAL,6,LOCOCHINO,Brian
+2018,10,128,Jared Goff,QB,LA,9,Nigger's,Alejandro
+2018,10,129,Sony Michel,RB,NE,2,Raw Dawg,Rodrigo
+2018,10,130,New England Patriots,DEF,,7,El Lechon Retardado,Carlos
+2018,10,131,D.J. Moore,WR,CAR,11,Miami Miracles,Renzo
+2018,10,132,Bilal Powell,RB,NYJ,14,Ferchos,Camilo
+2018,10,133,Tyler Eifert,TE,CIN,8,Game of Joe,Jose
+2018,10,134,Josh Doctson,WR,WAS,4,ABC,Nicholas
+2018,10,135,Keelan Cole,WR,JAX,10,Monday  Nightmares,Andres
+2018,10,136,Charles Clay,TE,BUF,13,Victorious Secret,Santiago
+2018,10,137,Cameron Brate,TE,TB,1,la zero 8,Diego
+2018,10,138,Patrick Mahomes,QB,KC,5,Yo No Limpio,Luis Carlos
+2018,10,139,C.J. Anderson,RB,LA,12,KPulido,Kike
+2018,10,140,Ronald Jones,RB,TB,3,The Squirt Producers,Sergio
+2018,11,141,DeSean Jackson,WR,TB,3,The Squirt Producers,Sergio
+2018,11,142,Tyler Lockett,WR,SEA,12,KPulido,Kike
+2018,11,143,Michael Gallup,WR,DAL,5,Yo No Limpio,Luis Carlos
+2018,11,144,Baltimore Ravens,DEF,,1,la zero 8,Diego
+2018,11,145,Giovani Bernard,RB,CIN,13,Victorious Secret,Santiago
+2018,11,146,John Brown,WR,BAL,10,Monday  Nightmares,Andres
+2018,11,147,Danny Amendola,WR,MIA,4,ABC,Nicholas
+2018,11,148,Kenny Golladay,WR,DET,8,Game of Joe,Jose
+2018,11,149,Tyrell Williams,WR,LAC,14,Ferchos,Camilo
+2018,11,150,Philadelphia Eagles,DEF,,11,Miami Miracles,Renzo
+2018,11,151,Mike Wallace,WR,PHI,7,El Lechon Retardado,Carlos
+2018,11,152,Alfred Morris,RB,SF,2,Raw Dawg,Rodrigo
+2018,11,153,David Njoku,TE,CLE,9,Nigger's,Alejandro
+2018,11,154,Houston Texans,DEF,,6,LOCOCHINO,Brian
+2018,12,155,Nick Chubb,RB,CLE,6,LOCOCHINO,Brian
+2018,12,156,Cameron Meredith,WR,NO,9,Nigger's,Alejandro
+2018,12,157,Aaron Jones,RB,GB,2,Raw Dawg,Rodrigo
+2018,12,158,Rob Kelley,RB,WAS,7,El Lechon Retardado,Carlos
+2018,12,159,Doug Martin,RB,LV,11,Miami Miracles,Renzo
+2018,12,160,Benjamin Watson,TE,NO,14,Ferchos,Camilo
+2018,12,161,Bruce Ellington,WR,DET,8,Game of Joe,Jose
+2018,12,162,Devontae Booker,RB,DEN,4,ABC,Nicholas
+2018,12,163,Mike Williams,WR,LAC,10,Monday  Nightmares,Andres
+2018,12,164,Dede Westbrook,WR,JAX,13,Victorious Secret,Santiago
+2018,12,165,Theo Riddick,RB,DET,1,la zero 8,Diego
+2018,12,166,Jake Elliott,K,PHI,5,Yo No Limpio,Luis Carlos
+2018,12,167,Case Keenum,QB,DEN,12,KPulido,Kike
+2018,12,168,Ty Montgomery,RB,BAL,3,The Squirt Producers,Sergio
+2018,13,169,Anthony Miller,WR,CHI,3,The Squirt Producers,Sergio
+2018,13,170,Vance McDonald,TE,PIT,12,KPulido,Kike
+2018,13,171,Corey Clement,RB,PHI,5,Yo No Limpio,Luis Carlos
+2018,13,172,Kenneth Dixon,RB,BAL,1,la zero 8,Diego
+2018,13,173,Greg Zuerlein,K,LA,13,Victorious Secret,Santiago
+2018,13,174,Geronimo Allison,WR,GB,10,Monday  Nightmares,Andres
+2018,13,175,Donte Moncrief,WR,JAX,4,ABC,Nicholas
+2018,13,176,James Washington,WR,PIT,8,Game of Joe,Jose
+2018,13,177,Jermaine Kearse,WR,NYJ,14,Ferchos,Camilo
+2018,13,178,Latavius Murray,RB,MIN,11,Miami Miracles,Renzo
+2018,13,179,Ryan Grant,WR,IND,7,El Lechon Retardado,Carlos
+2018,13,180,O.J. Howard,TE,TB,2,Raw Dawg,Rodrigo
+2018,13,181,Chris Godwin,WR,TB,9,Nigger's,Alejandro
+2018,13,182,Austin Ekeler,RB,LAC,6,LOCOCHINO,Brian
+2018,14,183,Jordan Wilkins,RB,IND,6,LOCOCHINO,Brian
+2018,14,184,Los Angeles Chargers,DEF,,9,Nigger's,Alejandro
+2018,14,185,Dak Prescott,QB,DAL,2,Raw Dawg,Rodrigo
+2018,14,186,Blake Bortles,QB,JAX,7,El Lechon Retardado,Carlos
+2018,14,187,Justin Tucker,K,BAL,11,Miami Miracles,Renzo
+2018,14,188,Javorius Allen,RB,BAL,14,Ferchos,Camilo
+2018,14,189,T.J. Yeldon,RB,JAX,8,Game of Joe,Jose
+2018,14,190,New Orleans Saints,DEF,,4,ABC,Nicholas
+2018,14,191,John Ross,WR,CIN,10,Monday  Nightmares,Andres
+2018,14,192,Paul Richardson,WR,WAS,13,Victorious Secret,Santiago
+2018,14,193,Darren Sproles,RB,PHI,1,la zero 8,Diego
+2018,14,194,Frank Gore,RB,MIA,5,Yo No Limpio,Luis Carlos
+2018,14,195,Jonathan Stewart,RB,NYG,12,KPulido,Kike
+2018,14,196,Carolina Panthers,DEF,,3,The Squirt Producers,Sergio
+2018,15,197,Wil Lutz,K,NO,3,The Squirt Producers,Sergio
+2018,15,198,Detroit Lions,DEF,,12,KPulido,Kike
+2018,15,199,Cordarrelle Patterson,WR,NE,5,Yo No Limpio,Luis Carlos
+2018,15,200,Jameis Winston,QB,TB,1,la zero 8,Diego
+2018,15,201,Ricky Seals-Jones,TE,ARI,13,Victorious Secret,Santiago
+2018,15,202,Robbie Gould,K,SF,10,Monday  Nightmares,Andres
+2018,15,203,Chris Boswell,K,PIT,4,ABC,Nicholas
+2018,15,204,Quincy Enunwa,WR,NYJ,8,Game of Joe,Jose
+2018,15,205,Harrison Butker,K,KC,14,Ferchos,Camilo
+2018,15,206,Courtland Sutton,WR,DEN,11,Miami Miracles,Renzo
+2018,15,207,Vernon Davis,TE,WAS,7,El Lechon Retardado,Carlos
+2018,15,208,Denver Broncos,DEF,,2,Raw Dawg,Rodrigo
+2018,15,209,Nyheim Hines,RB,IND,9,Nigger's,Alejandro
+2018,15,210,Spencer Ware,RB,KC,6,LOCOCHINO,Brian
+2018,16,211,Christian Kirk,WR,ARI,6,LOCOCHINO,Brian
+2018,16,212,Matt Prater,K,DET,9,Nigger's,Alejandro
+2018,16,213,LeGarrette Blount,RB,DET,2,Raw Dawg,Rodrigo
+2018,16,214,Mason Crosby,K,GB,7,El Lechon Retardado,Carlos
+2018,16,215,Austin Hooper,TE,ATL,11,Miami Miracles,Renzo
+2018,16,216,Chicago Bears,DEF,,14,Ferchos,Camilo
+2018,16,217,Tyler Boyd,WR,CIN,8,Game of Joe,Jose
+2018,16,218,Luke Willson,TE,DET,4,ABC,Nicholas
+2018,16,219,John Kelly,RB,LA,10,Monday  Nightmares,Andres
+2018,16,220,Terrance Williams,WR,DAL,13,Victorious Secret,Santiago
+2018,16,221,Austin Seferian-Jenkins,TE,JAX,1,la zero 8,Diego
+2018,16,222,Dez Bryant,WR,NO,5,Yo No Limpio,Luis Carlos
+2018,16,223,Graham Gano,K,CAR,12,KPulido,Kike
+2018,16,224,Chase Edmonds,RB,ARI,3,The Squirt Producers,Sergio
+2018,17,225,Alfred Blue,RB,HOU,3,The Squirt Producers,Sergio
+2018,17,226,Chris Ivory,RB,BUF,12,KPulido,Kike
+2018,17,227,Terrelle Pryor,WR,,5,Yo No Limpio,Luis Carlos
+2018,17,228,Mitchell Trubisky,QB,CHI,1,la zero 8,Diego
+2018,17,229,Miami Dolphins,DEF,,13,Victorious Secret,Santiago
+2018,17,230,Brandon Marshall,WR,,10,Monday  Nightmares,Andres
+2018,17,231,James Conner,RB,PIT,4,ABC,Nicholas
+2018,17,232,Derek Carr,QB,LV,8,Game of Joe,Jose
+2018,17,233,J.J. Nelson,WR,ARI,14,Ferchos,Camilo
+2018,17,234,Jacquizz Rodgers,RB,TB,11,Miami Miracles,Renzo
+2018,17,235,Travis Benjamin,WR,LAC,7,El Lechon Retardado,Carlos
+2018,17,236,Taywan Taylor,WR,TEN,2,Raw Dawg,Rodrigo
+2018,17,237,Cole Beasley,WR,DAL,9,Nigger's,Alejandro
+2018,17,238,Sebastian Janikowski,K,SEA,6,LOCOCHINO,Brian
+2018,18,239,Albert Wilson,WR,MIA,6,LOCOCHINO,Brian
+2018,18,240,Mike Gesicki,TE,MIA,9,Nigger's,Alejandro
+2018,18,241,Dan Bailey,K,MIN,2,Raw Dawg,Rodrigo
+2018,18,242,Rod Smith,RB,DAL,7,El Lechon Retardado,Carlos
+2018,18,243,Eli Manning,QB,NYG,11,Miami Miracles,Renzo
+2018,18,244,Zay Jones,WR,BUF,14,Ferchos,Camilo
+2018,18,245,Chris Conley,WR,KC,8,Game of Joe,Jose
+2018,18,246,Nick Foles,QB,PHI,4,ABC,Nicholas
+2018,18,247,Wayne Gallman,RB,NYG,10,Monday  Nightmares,Andres
+2018,18,248,Ryan Tannehill,QB,MIA,13,Victorious Secret,Santiago
+2018,18,249,Willie Snead,WR,BAL,1,la zero 8,Diego
+2018,18,250,Baker Mayfield,QB,CLE,5,Yo No Limpio,Luis Carlos
+2018,18,251,Jeremy Hill,RB,NE,12,KPulido,Kike
+2018,18,252,Torrey Smith,WR,CAR,3,The Squirt Producers,Sergio
+2019,1,1,Saquon Barkley,RB,NYG,15,Jeffrey Epstein,Santiago
+2019,1,2,Alvin Kamara,RB,NO,4,ABC,Nicholas
+2019,1,3,Christian McCaffrey,RB,CAR,2,Raw Dawg,Rodrigo
+2019,1,4,Ezekiel Elliott,RB,DAL,7,Yo SI necesito QB,JHJ
+2019,1,5,DeAndre Hopkins,WR,HOU,18,Jenny Ambuila Chara,Santiago
+2019,1,6,David Johnson,RB,ARI,11,Miami Miracles,Renzo
+2019,1,7,Patrick Mahomes,QB,KC,8,Game of Joe,Jose
+2019,1,8,Davante Adams,WR,GB,10,Monday  Nightmares,Andres
+2019,1,9,Le'Veon Bell,RB,NYJ,13,Victorious Secret,Santiago
+2019,1,10,James Conner,RB,PIT,16,ASU,Andres
+2019,1,11,Julio Jones,WR,ATL,12,KPulido,Kike
+2019,1,12,Michael Thomas,WR,NO,1,la zero 8,Diego
+2019,1,13,Todd Gurley,RB,LA,3,The Squirt Producers,Sergio
+2019,1,14,Nick Chubb,RB,CLE,14,Ferchos,Camilo
+2019,1,15,Tyreek Hill,WR,KC,5,Hkna,Luis Carlos
+2019,1,16,Odell Beckham,WR,CLE,17,IsWar,Santiago E
+2019,1,17,JuJu Smith-Schuster,WR,PIT,6,Koreano Go Loko,Brian
+2019,1,18,Dalvin Cook,RB,MIN,9,SisasParce,Alejandro
+2019,2,19,Travis Kelce,TE,KC,9,SisasParce,Alejandro
+2019,2,20,Joe Mixon,RB,CIN,6,Koreano Go Loko,Brian
+2019,2,21,Antonio Brown,WR,,17,IsWar,Santiago E
+2019,2,22,Damien Williams,RB,KC,5,Hkna,Luis Carlos
+2019,2,23,Mike Evans,WR,TB,14,Ferchos,Camilo
+2019,2,24,Keenan Allen,WR,LAC,3,The Squirt Producers,Sergio
+2019,2,25,Kerryon Johnson,RB,DET,1,la zero 8,Diego
+2019,2,26,George Kittle,TE,SF,12,KPulido,Kike
+2019,2,27,Adam Thielen,WR,MIN,16,ASU,Andres
+2019,2,28,Leonard Fournette,RB,JAX,13,Victorious Secret,Santiago
+2019,2,29,Zach Ertz,TE,PHI,10,Monday  Nightmares,Andres
+2019,2,30,Chris Carson,RB,SEA,8,Game of Joe,Jose
+2019,2,31,Stefon Diggs,WR,MIN,11,Miami Miracles,Renzo
+2019,2,32,Aaron Jones,RB,GB,18,Jenny Ambuila Chara,Santiago
+2019,2,33,Robert Woods,WR,LA,7,Yo SI necesito QB,JHJ
+2019,2,34,Melvin Gordon,RB,LAC,2,Raw Dawg,Rodrigo
+2019,2,35,Julian Edelman,WR,NE,4,ABC,Nicholas
+2019,2,36,Derrick Henry,RB,TEN,15,Jeffrey Epstein,Santiago
+2019,3,37,Amari Cooper,WR,DAL,15,Jeffrey Epstein,Santiago
+2019,3,38,Deshaun Watson,QB,HOU,4,ABC,Nicholas
+2019,3,39,Brandin Cooks,WR,LA,2,Raw Dawg,Rodrigo
+2019,3,40,Devonta Freeman,RB,ATL,7,Yo SI necesito QB,JHJ
+2019,3,41,Josh Jacobs,RB,LV,18,Jenny Ambuila Chara,Santiago
+2019,3,42,Tyler Boyd,WR,CIN,11,Miami Miracles,Renzo
+2019,3,43,Tyler Lockett,WR,SEA,8,Game of Joe,Jose
+2019,3,44,Chris Godwin,WR,TB,10,Monday  Nightmares,Andres
+2019,3,45,Aaron Rodgers,QB,GB,13,Victorious Secret,Santiago
+2019,3,46,Baker Mayfield,QB,CLE,16,ASU,Andres
+2019,3,47,Marlon Mack,RB,IND,12,KPulido,Kike
+2019,3,48,James White,RB,NE,1,la zero 8,Diego
+2019,3,49,Cooper Kupp,WR,LA,3,The Squirt Producers,Sergio
+2019,3,50,Kenny Golladay,WR,DET,14,Ferchos,Camilo
+2019,3,51,David Montgomery,RB,CHI,5,Hkna,Luis Carlos
+2019,3,52,Phillip Lindsay,RB,DEN,17,IsWar,Santiago E
+2019,3,53,Sony Michel,RB,NE,6,Koreano Go Loko,Brian
+2019,3,54,T.Y. Hilton,WR,IND,9,SisasParce,Alejandro
+2019,4,55,Mark Ingram,RB,BAL,9,SisasParce,Alejandro
+2019,4,56,Matt Ryan,QB,ATL,6,Koreano Go Loko,Brian
+2019,4,57,Drew Brees,QB,NO,17,IsWar,Santiago E
+2019,4,58,Duke Johnson,RB,HOU,5,Hkna,Luis Carlos
+2019,4,59,Tevin Coleman,RB,SF,14,Ferchos,Camilo
+2019,4,60,Russell Wilson,QB,SEA,3,The Squirt Producers,Sergio
+2019,4,61,Alshon Jeffery,WR,PHI,1,la zero 8,Diego
+2019,4,62,Calvin Ridley,WR,ATL,12,KPulido,Kike
+2019,4,63,Evan Engram,TE,NYG,16,ASU,Andres
+2019,4,64,A.J. Green,WR,CIN,13,Victorious Secret,Santiago
+2019,4,65,Rashaad Penny,RB,SEA,10,Monday  Nightmares,Andres
+2019,4,66,O.J. Howard,TE,TB,8,Game of Joe,Jose
+2019,4,67,Kenyan Drake,RB,ARI,11,Miami Miracles,Renzo
+2019,4,68,Jared Goff,QB,LA,18,Jenny Ambuila Chara,Santiago
+2019,4,69,Cam Newton,QB,CAR,7,Yo SI necesito QB,JHJ
+2019,4,70,Mike Williams,WR,LAC,2,Raw Dawg,Rodrigo
+2019,4,71,Hunter Henry,TE,LAC,4,ABC,Nicholas
+2019,4,72,Jarvis Landry,WR,CLE,15,Jeffrey Epstein,Santiago
+2019,5,73,Jared Cook,TE,NO,15,Jeffrey Epstein,Santiago
+2019,5,74,Will Fuller,WR,HOU,4,ABC,Nicholas
+2019,5,75,D.J. Moore,WR,CAR,2,Raw Dawg,Rodrigo
+2019,5,76,Sammy Watkins,WR,KC,7,Yo SI necesito QB,JHJ
+2019,5,77,Allen Robinson,WR,CHI,18,Jenny Ambuila Chara,Santiago
+2019,5,78,Ben Roethlisberger,QB,PIT,11,Miami Miracles,Renzo
+2019,5,79,Peyton Barber,RB,TB,8,Game of Joe,Jose
+2019,5,80,Austin Ekeler,RB,LAC,10,Monday  Nightmares,Andres
+2019,5,81,Tarik Cohen,RB,CHI,13,Victorious Secret,Santiago
+2019,5,82,Dion Lewis,RB,TEN,16,ASU,Andres
+2019,5,83,Miles Sanders,RB,PHI,12,KPulido,Kike
+2019,5,84,Josh Gordon,WR,SEA,1,la zero 8,Diego
+2019,5,85,Vance McDonald,TE,PIT,3,The Squirt Producers,Sergio
+2019,5,86,Robby Anderson,WR,NYJ,14,Ferchos,Camilo
+2019,5,87,Carson Wentz,QB,PHI,5,Hkna,Luis Carlos
+2019,5,88,Eric Ebron,TE,IND,17,IsWar,Santiago E
+2019,5,89,Mark Andrews,TE,BAL,6,Koreano Go Loko,Brian
+2019,5,90,Jameis Winston,QB,TB,9,SisasParce,Alejandro
+2019,6,91,Christian Kirk,WR,ARI,9,SisasParce,Alejandro
+2019,6,92,Dede Westbrook,WR,JAX,6,Koreano Go Loko,Brian
+2019,6,93,Darrell Henderson,RB,LA,17,IsWar,Santiago E
+2019,6,94,Curtis Samuel,WR,CAR,5,Hkna,Luis Carlos
+2019,6,95,David Njoku,TE,CLE,14,Ferchos,Camilo
+2019,6,96,Matt Breida,RB,SF,3,The Squirt Producers,Sergio
+2019,6,97,Tom Brady,QB,NE,1,la zero 8,Diego
+2019,6,98,Corey Davis,WR,TEN,12,KPulido,Kike
+2019,6,99,Chris Thompson,RB,WAS,16,ASU,Andres
+2019,6,100,Emmanuel Sanders,WR,SF,13,Victorious Secret,Santiago
+2019,6,101,Latavius Murray,RB,NO,10,Monday  Nightmares,Andres
+2019,6,102,Aldrick Robinson,WR,,8,Game of Joe,Jose
+2019,6,103,Austin Hooper,TE,ATL,11,Miami Miracles,Renzo
+2019,6,104,Delanie Walker,TE,TEN,18,Jenny Ambuila Chara,Santiago
+2019,6,105,Marvin Jones,WR,DET,7,Yo SI necesito QB,JHJ
+2019,6,106,Derrius Guice,RB,WAS,2,Raw Dawg,Rodrigo
+2019,6,107,Sterling Shepard,WR,NYG,4,ABC,Nicholas
+2019,6,108,LeSean McCoy,RB,KC,15,Jeffrey Epstein,Santiago
+2019,7,109,Courtland Sutton,WR,DEN,15,Jeffrey Epstein,Santiago
+2019,7,110,Kalen Ballage,RB,MIA,4,ABC,Nicholas
+2019,7,111,Dante Pettis,WR,SF,2,Raw Dawg,Rodrigo
+2019,7,112,Jordan Reed,TE,WAS,7,Yo SI necesito QB,JHJ
+2019,7,113,Donte Moncrief,WR,,18,Jenny Ambuila Chara,Santiago
+2019,7,114,Chicago Bears,DEF,,11,Miami Miracles,Renzo
+2019,7,115,Stephen Gostkowski,K,NE,8,Game of Joe,Jose
+2019,7,116,Geronimo Allison,WR,GB,10,Monday  Nightmares,Andres
+2019,7,117,Larry Fitzgerald,WR,ARI,13,Victorious Secret,Santiago
+2019,7,118,Marquez Valdes-Scantling,WR,GB,16,ASU,Andres
+2019,7,119,Kyler Murray,QB,ARI,12,KPulido,Kike
+2019,7,120,Jamison Crowder,WR,NYJ,1,la zero 8,Diego
+2019,7,121,DeSean Jackson,WR,PHI,3,The Squirt Producers,Sergio
+2019,7,122,Lamar Jackson,QB,BAL,14,Ferchos,Camilo
+2019,7,123,Jordan Howard,RB,PHI,5,Hkna,Luis Carlos
+2019,7,124,Philip Rivers,QB,LAC,17,IsWar,Santiago E
+2019,7,125,John Brown,WR,BUF,6,Koreano Go Loko,Brian
+2019,7,126,Royce Freeman,RB,DEN,9,SisasParce,Alejandro
+2019,8,127,Alexander Mattison,RB,MIN,9,SisasParce,Alejandro
+2019,8,128,DeVante Parker,WR,MIA,6,Koreano Go Loko,Brian
+2019,8,129,Adrian Peterson,RB,WAS,17,IsWar,Santiago E
+2019,8,130,Tyrell Williams,WR,LV,5,Hkna,Luis Carlos
+2019,8,131,Anthony Miller,WR,CHI,14,Ferchos,Camilo
+2019,8,132,Los Angeles Rams,DEF,,3,The Squirt Producers,Sergio
+2019,8,133,Justin Tucker,K,BAL,1,la zero 8,Diego
+2019,8,134,Ronald Jones,RB,TB,12,KPulido,Kike
+2019,8,135,Kenny Stills,WR,HOU,16,ASU,Andres
+2019,8,136,Greg Olsen,TE,CAR,13,Victorious Secret,Santiago
+2019,8,137,Los Angeles Chargers,DEF,,10,Monday  Nightmares,Andres
+2019,8,138,New England Patriots,DEF,,8,Game of Joe,Jose
+2019,8,139,Michael Gallup,WR,DAL,11,Miami Miracles,Renzo
+2019,8,140,Greg Zuerlein,K,LA,18,Jenny Ambuila Chara,Santiago
+2019,8,141,Mohamed Sanu,WR,NE,7,Yo SI necesito QB,JHJ
+2019,8,142,Dak Prescott,QB,DAL,2,Raw Dawg,Rodrigo
+2019,8,143,Darwin Thompson,RB,KC,4,ABC,Nicholas
+2019,8,144,Kirk Cousins,QB,MIN,15,Jeffrey Epstein,Santiago
+2019,9,145,Jerick McKinnon,RB,SF,15,Jeffrey Epstein,Santiago
+2019,9,146,Golden Tate,WR,NYG,4,ABC,Nicholas
+2019,9,147,Keke Coutee,WR,HOU,2,Raw Dawg,Rodrigo
+2019,9,148,Jaylen Samuels,RB,PIT,7,Yo SI necesito QB,JHJ
+2019,9,149,Ito Smith,RB,ATL,18,Jenny Ambuila Chara,Santiago
+2019,9,150,Kyle Rudolph,TE,MIN,11,Miami Miracles,Renzo
+2019,9,151,Jimmy Garoppolo,QB,SF,8,Game of Joe,Jose
+2019,9,152,Tony Pollard,RB,DAL,10,Monday  Nightmares,Andres
+2019,9,153,Nyheim Hines,RB,IND,13,Victorious Secret,Santiago
+2019,9,154,Pittsburgh Steelers,DEF,,16,ASU,Andres
+2019,9,155,Justin Jackson,RB,LAC,12,KPulido,Kike
+2019,9,156,Kareem Hunt,RB,CLE,1,la zero 8,Diego
+2019,9,157,Marquise Goodwin,WR,SF,3,The Squirt Producers,Sergio
+2019,9,158,Justice Hill,RB,BAL,14,Ferchos,Camilo
+2019,9,159,T.J. Hockenson,TE,DET,5,Hkna,Luis Carlos
+2019,9,160,Harrison Butker,K,KC,17,IsWar,Santiago E
+2019,9,161,Baltimore Ravens,DEF,,6,Koreano Go Loko,Brian
+2019,9,162,James Washington,WR,PIT,9,SisasParce,Alejandro
+2019,10,163,D.K. Metcalf,WR,SEA,9,SisasParce,Alejandro
+2019,10,164,Mecole Hardman,WR,KC,6,Koreano Go Loko,Brian
+2019,10,165,Damien Harris,RB,NE,17,IsWar,Santiago E
+2019,10,166,Jimmy Graham,TE,GB,5,Hkna,Luis Carlos
+2019,10,167,Devin Singletary,RB,BUF,14,Ferchos,Camilo
+2019,10,168,Wil Lutz,K,NO,3,The Squirt Producers,Sergio
+2019,10,169,Trey Burton,TE,CHI,1,la zero 8,Diego
+2019,10,170,C.J. Anderson,RB,,12,KPulido,Kike
+2019,10,171,Albert Wilson,WR,MIA,16,ASU,Andres
+2019,10,172,Zay Jones,WR,LV,13,Victorious Secret,Santiago
+2019,10,173,Mitchell Trubisky,QB,CHI,10,Monday  Nightmares,Andres
+2019,10,174,DaeSean Hamilton,WR,DEN,8,Game of Joe,Jose
+2019,10,175,Jalen Richard,RB,LV,11,Miami Miracles,Renzo
+2019,10,176,Jamaal Williams,RB,GB,18,Jenny Ambuila Chara,Santiago
+2019,10,177,Lamar Miller,RB,HOU,7,Yo SI necesito QB,JHJ
+2019,10,178,Tre'Quan Smith,WR,NO,2,Raw Dawg,Rodrigo
+2019,10,179,Giovani Bernard,RB,CIN,4,ABC,Nicholas
+2019,10,180,Jacksonville Jaguars,DEF,,15,Jeffrey Epstein,Santiago
+2019,11,181,Adam Humphries,WR,TEN,15,Jeffrey Epstein,Santiago
+2019,11,182,Quincy Enunwa,WR,NYJ,4,ABC,Nicholas
+2019,11,183,Mike Davis,RB,CAR,2,Raw Dawg,Rodrigo
+2019,11,184,Ka'imi Fairbairn,K,HOU,7,Yo SI necesito QB,JHJ
+2019,11,185,Jack Doyle,TE,IND,18,Jenny Ambuila Chara,Santiago
+2019,11,186,Mason Crosby,K,GB,11,Miami Miracles,Renzo
+2019,11,187,Marquise Brown,WR,BAL,8,Game of Joe,Jose
+2019,11,188,Dallas Goedert,TE,PHI,10,Monday  Nightmares,Andres
+2019,11,189,Marqise Lee,WR,JAX,13,Victorious Secret,Santiago
+2019,11,190,Robert Foster,WR,BUF,16,ASU,Andres
+2019,11,191,N'Keal Harry,WR,NE,12,KPulido,Kike
+2019,11,192,Derek Carr,QB,LV,1,la zero 8,Diego
+2019,11,193,Chris Herndon,TE,NYJ,3,The Squirt Producers,Sergio
+2019,11,194,Noah Fant,TE,DEN,14,Ferchos,Camilo
+2019,11,195,Philadelphia Eagles,DEF,,5,Hkna,Luis Carlos
+2019,11,196,Taylor Gabriel,WR,CHI,17,IsWar,Santiago E
+2019,11,197,Jordan Scarlett,RB,CAR,6,Koreano Go Loko,Brian
+2019,11,198,Minnesota Vikings,DEF,,9,SisasParce,Alejandro
+2019,12,199,Carlos Hyde,RB,HOU,9,SisasParce,Alejandro
+2019,12,200,Gus Edwards,RB,BAL,6,Koreano Go Loko,Brian
+2019,12,201,Houston Texans,DEF,,17,IsWar,Santiago E
+2019,12,202,Parris Campbell,WR,IND,5,Hkna,Luis Carlos
+2019,12,203,Chase Edmonds,RB,ARI,14,Ferchos,Camilo
+2019,12,204,Devin Funchess,WR,IND,3,The Squirt Producers,Sergio
+2019,12,205,New Orleans Saints,DEF,,1,la zero 8,Diego
+2019,12,206,Cleveland Browns,DEF,,12,KPulido,Kike
+2019,12,207,Tyler Eifert,TE,CIN,16,ASU,Andres
+2019,12,208,Matthew Stafford,QB,DET,13,Victorious Secret,Santiago
+2019,12,209,Malcolm Brown,RB,LA,10,Monday  Nightmares,Andres
+2019,12,210,Theo Riddick,RB,DEN,8,Game of Joe,Jose
+2019,12,211,Andy Dalton,QB,CIN,11,Miami Miracles,Renzo
+2019,12,212,Deebo Samuel,WR,SF,18,Jenny Ambuila Chara,Santiago
+2019,12,213,Ryan Fitzpatrick,QB,MIA,7,Yo SI necesito QB,JHJ
+2019,12,214,Darren Waller,TE,LV,2,Raw Dawg,Rodrigo
+2019,12,215,Robbie Gould,K,SF,4,ABC,Nicholas
+2019,12,216,Nick Foles,QB,JAX,15,Jeffrey Epstein,Santiago
+2019,13,217,Preston Williams,WR,MIA,15,Jeffrey Epstein,Santiago
+2019,13,218,Dallas Cowboys,DEF,,4,ABC,Nicholas
+2019,13,219,Denver Broncos,DEF,,2,Raw Dawg,Rodrigo
+2019,13,220,Detroit Lions,DEF,,7,Yo SI necesito QB,JHJ
+2019,13,221,Ted Ginn,WR,NO,18,Jenny Ambuila Chara,Santiago
+2019,13,222,A.J. Brown,WR,TEN,11,Miami Miracles,Renzo
+2019,13,223,Jason Witten,TE,DAL,8,Game of Joe,Jose
+2019,13,224,Josh Allen,QB,BUF,10,Monday  Nightmares,Andres
+2019,13,225,Mike Badgley,K,LAC,13,Victorious Secret,Santiago
+2019,13,226,Aldrick Rosas,K,NYG,16,ASU,Andres
+2019,13,227,Jake Elliott,K,PHI,12,KPulido,Kike
+2019,13,228,Demarcus Robinson,WR,KC,1,la zero 8,Diego
+2019,13,229,Sam Darnold,QB,NYJ,3,The Squirt Producers,Sergio
+2019,13,230,Buffalo Bills,DEF,,14,Ferchos,Camilo
+2019,13,231,Randall Cobb,WR,DAL,5,Hkna,Luis Carlos
+2019,13,232,Benjamin Watson,TE,NE,17,IsWar,Santiago E
+2019,13,233,Adam Vinatieri,K,IND,6,Koreano Go Loko,Brian
+2019,13,234,Trey Quinn,WR,WAS,9,SisasParce,Alejandro
+2019,14,235,Brett Maher,K,,9,SisasParce,Alejandro
+2019,14,236,Nelson Agholor,WR,PHI,6,Koreano Go Loko,Brian
+2019,14,237,Ryquell Armstead,RB,JAX,17,IsWar,Santiago E
+2019,14,238,Giorgio Tavecchio,K,,5,Hkna,Luis Carlos
+2019,14,239,Matt Prater,K,DET,14,Ferchos,Camilo
+2019,14,240,Andy Isabella,WR,ARI,3,The Squirt Producers,Sergio
+2019,14,241,Will Dissly,TE,SEA,1,la zero 8,Diego
+2019,14,242,Andrew Luck,QB,,12,KPulido,Kike
+2019,14,243,Bilal Powell,RB,NYJ,16,ASU,Andres
+2019,14,244,Carolina Panthers,DEF,,13,Victorious Secret,Santiago
+2019,14,245,Stephen Hauschka,K,BUF,10,Monday  Nightmares,Andres
+2019,14,246,Corey Clement,RB,PHI,8,Game of Joe,Jose
+2019,14,247,Phillip Dorsett,WR,NE,11,Miami Miracles,Renzo
+2019,14,248,New York Jets,DEF,,18,Jenny Ambuila Chara,Santiago
+2019,14,249,Paul Richardson,WR,WAS,7,Yo SI necesito QB,JHJ
+2019,14,250,Jason Myers,K,SEA,2,Raw Dawg,Rodrigo
+2019,14,251,Travis Benjamin,WR,LAC,4,ABC,Nicholas
+2019,14,252,Jason Sanders,K,MIA,15,Jeffrey Epstein,Santiago
+2020,1,1,Christian McCaffrey,RB,CAR,4,ABC,Nicholas
+2020,1,2,Saquon Barkley,RB,NYG,3,The Squirt Producers,Sergio
+2020,1,3,Ezekiel Elliott,RB,DAL,10,Monday  Nightmares,Andres
+2020,1,4,Dalvin Cook,RB,MIN,6,LOKORONA,Brian
+2020,1,5,Alvin Kamara,RB,NO,12,Smile Candid Kamara,Kike
+2020,1,6,Derrick Henry,RB,TEN,14,Ferchos,Camilo
+2020,1,7,Michael Thomas,WR,NO,17,IsWar,Santiago E
+2020,1,8,Austin Ekeler,RB,LAC,7,Please sweet little baby Jesus,JHJ
+2020,1,9,Davante Adams,WR,GB,13,Victorious Secret,Santiago
+2020,1,10,Clyde Edwards-Helaire,RB,KC,2,Raw Dawg,Rodrigo
+2020,1,11,Tyreek Hill,WR,KC,1,la zero 8,Diego
+2020,1,12,Patrick Mahomes,QB,KC,5,Patrick Cheetah,Luis Carlos
+2020,2,13,Miles Sanders,RB,PHI,5,Patrick Cheetah,Luis Carlos
+2020,2,14,Julio Jones,WR,ATL,1,la zero 8,Diego
+2020,2,15,Josh Jacobs,RB,LV,2,Raw Dawg,Rodrigo
+2020,2,16,Kenyan Drake,RB,ARI,13,Victorious Secret,Santiago
+2020,2,17,Lamar Jackson,QB,BAL,7,Please sweet little baby Jesus,JHJ
+2020,2,18,Joe Mixon,RB,CIN,17,IsWar,Santiago E
+2020,2,19,Nick Chubb,RB,CLE,14,Ferchos,Camilo
+2020,2,20,Travis Kelce,TE,KC,12,Smile Candid Kamara,Kike
+2020,2,21,Chris Carson,RB,SEA,6,LOKORONA,Brian
+2020,2,22,Aaron Jones,RB,GB,10,Monday  Nightmares,Andres
+2020,2,23,Chris Godwin,WR,TB,3,The Squirt Producers,Sergio
+2020,2,24,George Kittle,TE,SF,4,ABC,Nicholas
+2020,3,25,Deshaun Watson,QB,HOU,4,ABC,Nicholas
+2020,3,26,DeAndre Hopkins,WR,ARI,3,The Squirt Producers,Sergio
+2020,3,27,Kenny Golladay,WR,DET,10,Monday  Nightmares,Andres
+2020,3,28,James Conner,RB,PIT,6,LOKORONA,Brian
+2020,3,29,Allen Robinson,WR,CHI,12,Smile Candid Kamara,Kike
+2020,3,30,Mike Evans,WR,TB,14,Ferchos,Camilo
+2020,3,31,Melvin Gordon,RB,DEN,17,IsWar,Santiago E
+2020,3,32,D.J. Moore,WR,CAR,7,Please sweet little baby Jesus,JHJ
+2020,3,33,Le'Veon Bell,RB,KC,13,Victorious Secret,Santiago
+2020,3,34,Adam Thielen,WR,MIN,2,Raw Dawg,Rodrigo
+2020,3,35,David Johnson,RB,HOU,1,la zero 8,Diego
+2020,3,36,Odell Beckham Jr.,WR,CLE,5,Patrick Cheetah,Luis Carlos
+2020,4,37,A.J. Brown,WR,TEN,5,Patrick Cheetah,Luis Carlos
+2020,4,38,Rob Gronkowski,TE,TB,1,la zero 8,Diego
+2020,4,39,JuJu Smith-Schuster,WR,PIT,2,Raw Dawg,Rodrigo
+2020,4,40,Todd Gurley,RB,ATL,13,Victorious Secret,Santiago
+2020,4,41,Mark Ingram,RB,BAL,7,Please sweet little baby Jesus,JHJ
+2020,4,42,Amari Cooper,WR,DAL,17,IsWar,Santiago E
+2020,4,43,Calvin Ridley,WR,ATL,14,Ferchos,Camilo
+2020,4,44,Robert Woods,WR,LA,12,Smile Candid Kamara,Kike
+2020,4,45,Cooper Kupp,WR,LA,6,LOKORONA,Brian
+2020,4,46,Jonathan Taylor,RB,IND,10,Monday  Nightmares,Andres
+2020,4,47,Mark Andrews,TE,BAL,3,The Squirt Producers,Sergio
+2020,4,48,Keenan Allen,WR,LAC,4,ABC,Nicholas
+2020,5,49,T.Y. Hilton,WR,IND,4,ABC,Nicholas
+2020,5,50,Devin Singletary,RB,BUF,3,The Squirt Producers,Sergio
+2020,5,51,Zach Ertz,TE,PHI,10,Monday  Nightmares,Andres
+2020,5,52,Tyler Lockett,WR,SEA,6,LOKORONA,Brian
+2020,5,53,D.J. Chark,WR,JAX,12,Smile Candid Kamara,Kike
+2020,5,54,Terry McLaurin,WR,WAS,14,Ferchos,Camilo
+2020,5,55,Dak Prescott,QB,DAL,17,IsWar,Santiago E
+2020,5,56,DK Metcalf,WR,SEA,7,Please sweet little baby Jesus,JHJ
+2020,5,57,DeVante Parker,WR,MIA,13,Victorious Secret,Santiago
+2020,5,58,Courtland Sutton,WR,DEN,2,Raw Dawg,Rodrigo
+2020,5,59,Kareem Hunt,RB,CLE,1,la zero 8,Diego
+2020,5,60,Marquise Brown,WR,BAL,5,Patrick Cheetah,Luis Carlos
+2020,6,61,D'Andre Swift,RB,DET,5,Patrick Cheetah,Luis Carlos
+2020,6,62,Cam Akers,RB,LA,1,la zero 8,Diego
+2020,6,63,Raheem Mostert,RB,SF,2,Raw Dawg,Rodrigo
+2020,6,64,Russell Wilson,QB,SEA,13,Victorious Secret,Santiago
+2020,6,65,Marvin Jones,WR,DET,7,Please sweet little baby Jesus,JHJ
+2020,6,66,Darren Waller,TE,LV,17,IsWar,Santiago E
+2020,6,67,Kyler Murray,QB,ARI,14,Ferchos,Camilo
+2020,6,68,Leonard Fournette,RB,TB,12,Smile Candid Kamara,Kike
+2020,6,69,Carson Wentz,QB,PHI,6,LOKORONA,Brian
+2020,6,70,Stefon Diggs,WR,BUF,10,Monday  Nightmares,Andres
+2020,6,71,Ronald Jones,RB,TB,3,The Squirt Producers,Sergio
+2020,6,72,Will Fuller,WR,HOU,4,ABC,Nicholas
+2020,7,73,Jordan Howard,RB,,4,ABC,Nicholas
+2020,7,74,Jarvis Landry,WR,CLE,3,The Squirt Producers,Sergio
+2020,7,75,Michael Gallup,WR,DAL,10,Monday  Nightmares,Andres
+2020,7,76,Evan Engram,TE,NYG,6,LOKORONA,Brian
+2020,7,77,Josh Allen,QB,BUF,12,Smile Candid Kamara,Kike
+2020,7,78,Tyler Boyd,WR,CIN,14,Ferchos,Camilo
+2020,7,79,A.J. Green,WR,CIN,17,IsWar,Santiago E
+2020,7,80,Marlon Mack,RB,IND,7,Please sweet little baby Jesus,JHJ
+2020,7,81,Julian Edelman,WR,NE,13,Victorious Secret,Santiago
+2020,7,82,David Montgomery,RB,CHI,2,Raw Dawg,Rodrigo
+2020,7,83,Brandin Cooks,WR,HOU,1,la zero 8,Diego
+2020,7,84,Phillip Lindsay,RB,DEN,5,Patrick Cheetah,Luis Carlos
+2020,8,85,CeeDee Lamb,WR,DAL,5,Patrick Cheetah,Luis Carlos
+2020,8,86,Tom Brady,QB,TB,1,la zero 8,Diego
+2020,8,87,Antonio Gibson,RB,WAS,2,Raw Dawg,Rodrigo
+2020,8,88,Darius Slayton,WR,NYG,13,Victorious Secret,Santiago
+2020,8,89,Jared Cook,TE,NO,7,Please sweet little baby Jesus,JHJ
+2020,8,90,Zack Moss,RB,BUF,17,IsWar,Santiago E
+2020,8,91,Tyler Higbee,TE,LA,14,Ferchos,Camilo
+2020,8,92,Jamison Crowder,WR,NYJ,12,Smile Candid Kamara,Kike
+2020,8,93,Diontae Johnson,WR,PIT,6,LOKORONA,Brian
+2020,8,94,Matt Ryan,QB,ATL,10,Monday  Nightmares,Andres
+2020,8,95,Deebo Samuel,WR,SF,3,The Squirt Producers,Sergio
+2020,8,96,James White,RB,NE,4,ABC,Nicholas
+2020,9,97,Mecole Hardman,WR,KC,4,ABC,Nicholas
+2020,9,98,Drew Brees,QB,NO,3,The Squirt Producers,Sergio
+2020,9,99,J.K. Dobbins,RB,BAL,10,Monday  Nightmares,Andres
+2020,9,100,Emmanuel Sanders,WR,NO,6,LOKORONA,Brian
+2020,9,101,Tarik Cohen,RB,CHI,12,Smile Candid Kamara,Kike
+2020,9,102,Matt Breida,RB,MIA,14,Ferchos,Camilo
+2020,9,103,Christian Kirk,WR,ARI,17,IsWar,Santiago E
+2020,9,104,Adrian Peterson,RB,DET,7,Please sweet little baby Jesus,JHJ
+2020,9,105,Hunter Henry,TE,LAC,13,Victorious Secret,Santiago
+2020,9,106,Hayden Hurst,TE,ATL,2,Raw Dawg,Rodrigo
+2020,9,107,Devonta Freeman,RB,,1,la zero 8,Diego
+2020,9,108,Noah Fant,TE,DEN,5,Patrick Cheetah,Luis Carlos
+2020,10,109,Jerry Jeudy,WR,DEN,5,Patrick Cheetah,Luis Carlos
+2020,10,110,Aaron Rodgers,QB,GB,1,la zero 8,Diego
+2020,10,111,Matthew Stafford,QB,DET,2,Raw Dawg,Rodrigo
+2020,10,112,Sony Michel,RB,NE,13,Victorious Secret,Santiago
+2020,10,113,John Brown,WR,BUF,7,Please sweet little baby Jesus,JHJ
+2020,10,114,Kerryon Johnson,RB,DET,17,IsWar,Santiago E
+2020,10,115,Tevin Coleman,RB,SF,14,Ferchos,Camilo
+2020,10,116,Latavius Murray,RB,NO,12,Smile Candid Kamara,Kike
+2020,10,117,Preston Williams,WR,MIA,6,LOKORONA,Brian
+2020,10,118,Sterling Shepard,WR,NYG,10,Monday  Nightmares,Andres
+2020,10,119,Anthony Miller,WR,CHI,3,The Squirt Producers,Sergio
+2020,10,120,San Francisco 49ers,DEF,,4,ABC,Nicholas
+2020,11,121,Golden Tate,WR,NYG,4,ABC,Nicholas
+2020,11,122,Mike Williams,WR,LAC,3,The Squirt Producers,Sergio
+2020,11,123,Henry Ruggs III,WR,LV,10,Monday  Nightmares,Andres
+2020,11,124,Austin Hooper,TE,CLE,6,LOKORONA,Brian
+2020,11,125,Jalen Reagor,WR,PHI,12,Smile Candid Kamara,Kike
+2020,11,126,DeSean Jackson,WR,PHI,14,Ferchos,Camilo
+2020,11,127,Baltimore Ravens,DEF,,17,IsWar,Santiago E
+2020,11,128,Pittsburgh Steelers,DEF,,7,Please sweet little baby Jesus,JHJ
+2020,11,129,Justin Jefferson,WR,MIN,13,Victorious Secret,Santiago
+2020,11,130,Breshad Perriman,WR,NYJ,2,Raw Dawg,Rodrigo
+2020,11,131,N'Keal Harry,WR,NE,1,la zero 8,Diego
+2020,11,132,Sammy Watkins,WR,KC,5,Patrick Cheetah,Luis Carlos
+2020,12,133,Dallas Goedert,TE,PHI,5,Patrick Cheetah,Luis Carlos
+2020,12,134,Buffalo Bills,DEF,,1,la zero 8,Diego
+2020,12,135,Robby Anderson,WR,CAR,2,Raw Dawg,Rodrigo
+2020,12,136,Chris Thompson,RB,JAX,13,Victorious Secret,Santiago
+2020,12,137,Justin Tucker,K,BAL,7,Please sweet little baby Jesus,JHJ
+2020,12,138,Harrison Butker,K,KC,17,IsWar,Santiago E
+2020,12,139,Duke Johnson,RB,HOU,14,Ferchos,Camilo
+2020,12,140,Boston Scott,RB,PHI,12,Smile Candid Kamara,Kike
+2020,12,141,Brandon Aiyuk,WR,SF,6,LOKORONA,Brian
+2020,12,142,New England Patriots,DEF,,10,Monday  Nightmares,Andres
+2020,12,143,Alexander Mattison,RB,MIN,3,The Squirt Producers,Sergio
+2020,12,144,Chris Herndon,TE,NYJ,4,ABC,Nicholas
+2020,13,145,Wil Lutz,K,NO,4,ABC,Nicholas
+2020,13,146,Curtis Samuel,WR,CAR,3,The Squirt Producers,Sergio
+2020,13,147,Greg Zuerlein,K,DAL,10,Monday  Nightmares,Andres
+2020,13,148,New Orleans Saints,DEF,,6,LOKORONA,Brian
+2020,13,149,Robbie Gould,K,SF,12,Smile Candid Kamara,Kike
+2020,13,150,Darrynton Evans,RB,TEN,14,Ferchos,Camilo
+2020,13,151,Tony Pollard,RB,DAL,17,IsWar,Santiago E
+2020,13,152,Cam Newton,QB,NE,7,Please sweet little baby Jesus,JHJ
+2020,13,153,Matt Prater,K,DET,13,Victorious Secret,Santiago
+2020,13,154,Daniel Jones,QB,NYG,2,Raw Dawg,Rodrigo
+2020,13,155,Chris Boswell,K,PIT,1,la zero 8,Diego
+2020,13,156,Darrel Williams,RB,KC,5,Patrick Cheetah,Luis Carlos
+2020,14,157,Jake Elliott,K,PHI,5,Patrick Cheetah,Luis Carlos
+2020,14,158,Larry Fitzgerald,WR,ARI,1,la zero 8,Diego
+2020,14,159,Chicago Bears,DEF,,2,Raw Dawg,Rodrigo
+2020,14,160,Indianapolis Colts,DEF,,13,Victorious Secret,Santiago
+2020,14,161,Ryan Griffin,TE,NYJ,7,Please sweet little baby Jesus,JHJ
+2020,14,162,Blake Jarwin,TE,DAL,17,IsWar,Santiago E
+2020,14,163,Kansas City Chiefs,DEF,,14,Ferchos,Camilo
+2020,14,164,Jared Goff,QB,LA,12,Smile Candid Kamara,Kike
+2020,14,165,Allen Lazard,WR,GB,6,LOKORONA,Brian
+2020,14,166,Jerick McKinnon,RB,SF,10,Monday  Nightmares,Andres
+2020,14,167,Minnesota Vikings,DEF,,3,The Squirt Producers,Sergio
+2020,14,168,Ben Roethlisberger,QB,PIT,4,ABC,Nicholas
+2020,15,169,Randall Cobb,WR,HOU,4,ABC,Nicholas
+2020,15,170,Zane Gonzalez,K,ARI,3,The Squirt Producers,Sergio
+2020,15,171,Baker Mayfield,QB,CLE,10,Monday  Nightmares,Andres
+2020,15,172,Younghoe Koo,K,ATL,6,LOKORONA,Brian
+2020,15,173,Los Angeles Rams,DEF,,12,Smile Candid Kamara,Kike
+2020,15,174,Ka'imi Fairbairn,K,HOU,14,Ferchos,Camilo
+2020,15,175,Joe Burrow,QB,CIN,17,IsWar,Santiago E
+2020,15,176,Cole Beasley,WR,BUF,7,Please sweet little baby Jesus,JHJ
+2020,15,177,Philip Rivers,QB,IND,13,Victorious Secret,Santiago
+2020,15,178,Mike Badgley,K,LAC,2,Raw Dawg,Rodrigo
+2020,15,179,T.J. Hockenson,TE,DET,1,la zero 8,Diego
+2020,15,180,Philadelphia Eagles,DEF,,5,Patrick Cheetah,Luis Carlos
+2021,1,1,Patrick Mahomes,QB,KC,10,Monday  Nightmares,Andres
+2021,1,2,Christian McCaffrey,RB,CAR,8,Karen Abudinen,Santiago
+2021,1,3,Dalvin Cook,RB,MIN,4,Red Solo Kupp,Nicholas
+2021,1,4,Derrick Henry,RB,TEN,2,Raw Dawg,Rodrigo
+2021,1,5,Josh Allen,QB,BUF,5,Clydesdales and Bisons,Luis Carlos
+2021,1,6,Austin Ekeler,RB,LAC,6,LOKOREA,Brian
+2021,1,7,Kyler Murray,QB,ARI,13,Victorious Secret,Santiago
+2021,1,8,Alvin Kamara,RB,NO,9,MiamiDolphins1972,Renzo
+2021,1,9,Ezekiel Elliott,RB,DAL,17,PAW PATROL,Santiago E
+2021,1,10,Davante Adams,WR,LV,3,Bolivia,Sergio
+2021,1,11,Aaron Jones,RB,GB,14,Ferchos,Camilo
+2021,1,12,Lamar Jackson,QB,BAL,12,Your Reigning Champ,Kike
+2021,1,13,Saquon Barkley,RB,NYG,7,ER,JHJ
+2021,1,14,Joe Mixon,RB,CIN,1,la zero 8,Diego
+2021,2,15,Tyreek Hill,WR,MIA,1,la zero 8,Diego
+2021,2,16,Russell Wilson,QB,DEN,7,ER,JHJ
+2021,2,17,Travis Kelce,TE,KC,12,Your Reigning Champ,Kike
+2021,2,18,Calvin Ridley,WR,ATL,14,Ferchos,Camilo
+2021,2,19,Stefon Diggs,WR,BUF,3,Bolivia,Sergio
+2021,2,20,DeAndre Hopkins,WR,ARI,17,PAW PATROL,Santiago E
+2021,2,21,Jonathan Taylor,RB,IND,9,MiamiDolphins1972,Renzo
+2021,2,22,Nick Chubb,RB,CLE,13,Victorious Secret,Santiago
+2021,2,23,Najee Harris,RB,PIT,6,LOKOREA,Brian
+2021,2,24,DK Metcalf,WR,SEA,5,Clydesdales and Bisons,Luis Carlos
+2021,2,25,Aaron Rodgers,QB,GB,2,Raw Dawg,Rodrigo
+2021,2,26,Dak Prescott,QB,DAL,4,Red Solo Kupp,Nicholas
+2021,2,27,Justin Herbert,QB,LAC,8,Karen Abudinen,Santiago
+2021,2,28,Keenan Allen,WR,LAC,10,Monday  Nightmares,Andres
+2021,3,29,Justin Jefferson,WR,MIN,10,Monday  Nightmares,Andres
+2021,3,30,Antonio Gibson,RB,WAS,8,Karen Abudinen,Santiago
+2021,3,31,A.J. Brown,WR,PHI,4,Red Solo Kupp,Nicholas
+2021,3,32,Darren Waller,TE,LV,2,Raw Dawg,Rodrigo
+2021,3,33,Clyde Edwards-Helaire,RB,KC,5,Clydesdales and Bisons,Luis Carlos
+2021,3,34,Chris Carson,RB,SEA,6,LOKOREA,Brian
+2021,3,35,Allen Robinson,WR,LA,13,Victorious Secret,Santiago
+2021,3,36,Matthew Stafford,QB,LA,9,MiamiDolphins1972,Renzo
+2021,3,37,Ryan Tannehill,QB,TEN,17,PAW PATROL,Santiago E
+2021,3,38,James Robinson,RB,JAX,3,Bolivia,Sergio
+2021,3,39,Tom Brady,QB,TB,14,Ferchos,Camilo
+2021,3,40,D'Andre Swift,RB,DET,12,Your Reigning Champ,Kike
+2021,3,41,Diontae Johnson,WR,PIT,7,ER,JHJ
+2021,3,42,CeeDee Lamb,WR,DAL,1,la zero 8,Diego
+2021,4,43,David Montgomery,RB,CHI,1,la zero 8,Diego
+2021,4,44,Myles Gaskin,RB,MIA,7,ER,JHJ
+2021,4,45,Terry McLaurin,WR,WAS,12,Your Reigning Champ,Kike
+2021,4,46,George Kittle,TE,SF,14,Ferchos,Camilo
+2021,4,47,Robert Woods,WR,TEN,3,Bolivia,Sergio
+2021,4,48,Gus Edwards,RB,BAL,17,PAW PATROL,Santiago E
+2021,4,49,Amari Cooper,WR,CLE,9,MiamiDolphins1972,Renzo
+2021,4,50,Miles Sanders,RB,PHI,13,Victorious Secret,Santiago
+2021,4,51,Julio Jones,WR,TEN,6,LOKOREA,Brian
+2021,4,52,Jalen Hurts,QB,PHI,5,Clydesdales and Bisons,Luis Carlos
+2021,4,53,Mike Evans,WR,TB,2,Raw Dawg,Rodrigo
+2021,4,54,Cooper Kupp,WR,LA,4,Red Solo Kupp,Nicholas
+2021,4,55,Chris Godwin,WR,TB,8,Karen Abudinen,Santiago
+2021,4,56,Darrell Henderson,RB,LA,10,Monday  Nightmares,Andres
+2021,5,57,Joe Burrow,QB,CIN,10,Monday  Nightmares,Andres
+2021,5,58,Josh Jacobs,RB,LV,8,Karen Abudinen,Santiago
+2021,5,59,Mike Davis,RB,ATL,4,Red Solo Kupp,Nicholas
+2021,5,60,D.J. Moore,WR,CAR,2,Raw Dawg,Rodrigo
+2021,5,61,Chase Claypool,WR,PIT,5,Clydesdales and Bisons,Luis Carlos
+2021,5,62,Tyler Lockett,WR,SEA,6,LOKOREA,Brian
+2021,5,63,Kirk Cousins,QB,MIN,13,Victorious Secret,Santiago
+2021,5,64,Adam Thielen,WR,MIN,9,MiamiDolphins1972,Renzo
+2021,5,65,Damien Harris,RB,NE,17,PAW PATROL,Santiago E
+2021,5,66,T.J. Hockenson,TE,DET,3,Bolivia,Sergio
+2021,5,67,Tee Higgins,WR,CIN,14,Ferchos,Camilo
+2021,5,68,Brandon Aiyuk,WR,SF,12,Your Reigning Champ,Kike
+2021,5,69,Brandin Cooks,WR,HOU,7,ER,JHJ
+2021,5,70,Kyle Pitts,TE,ATL,1,la zero 8,Diego
+2021,6,71,Jerry Jeudy,WR,DEN,1,la zero 8,Diego
+2021,6,72,Baker Mayfield,QB,CLE,7,ER,JHJ
+2021,6,73,Matt Ryan,QB,IND,12,Your Reigning Champ,Kike
+2021,6,74,Odell Beckham Jr.,WR,LA,14,Ferchos,Camilo
+2021,6,75,Tua Tagovailoa,QB,MIA,3,Bolivia,Sergio
+2021,6,76,Trevor Lawrence,QB,JAX,17,PAW PATROL,Santiago E
+2021,6,77,Kareem Hunt,RB,CLE,9,MiamiDolphins1972,Renzo
+2021,6,78,Melvin Gordon,RB,DEN,13,Victorious Secret,Santiago
+2021,6,79,Ben Roethlisberger,QB,PIT,6,LOKOREA,Brian
+2021,6,80,Mark Andrews,TE,BAL,5,Clydesdales and Bisons,Luis Carlos
+2021,6,81,Kenny Golladay,WR,NYG,2,Raw Dawg,Rodrigo
+2021,6,82,Ryan Fitzpatrick,QB,WAS,4,Red Solo Kupp,Nicholas
+2021,6,83,Trey Lance,QB,SF,8,Karen Abudinen,Santiago
+2021,6,84,Raheem Mostert,RB,MIA,10,Monday  Nightmares,Andres
+2021,7,85,Trey Sermon,RB,SF,10,Monday  Nightmares,Andres
+2021,7,86,Courtland Sutton,WR,DEN,8,Karen Abudinen,Santiago
+2021,7,87,Robby Anderson,WR,CAR,4,Red Solo Kupp,Nicholas
+2021,7,88,Javonte Williams,RB,DEN,2,Raw Dawg,Rodrigo
+2021,7,89,DeVonta Smith,WR,PHI,5,Clydesdales and Bisons,Luis Carlos
+2021,7,90,Mike Williams,WR,LAC,6,LOKOREA,Brian
+2021,7,91,JuJu Smith-Schuster,WR,KC,13,Victorious Secret,Santiago
+2021,7,92,Justin Fields,QB,CHI,9,MiamiDolphins1972,Renzo
+2021,7,93,Tyler Boyd,WR,CIN,17,PAW PATROL,Santiago E
+2021,7,94,Chase Edmonds,RB,MIA,3,Bolivia,Sergio
+2021,7,95,Ja'Marr Chase,WR,CIN,14,Ferchos,Camilo
+2021,7,96,Deebo Samuel,WR,SF,12,Your Reigning Champ,Kike
+2021,7,97,Sony Michel,RB,LA,7,ER,JHJ
+2021,7,98,Derek Carr,QB,LV,1,la zero 8,Diego
+2021,8,99,Teddy Bridgewater,QB,MIA,1,la zero 8,Diego
+2021,8,100,Mike Gesicki,TE,MIA,7,ER,JHJ
+2021,8,101,Logan Thomas,TE,WAS,12,Your Reigning Champ,Kike
+2021,8,102,Jameis Winston,QB,NO,14,Ferchos,Camilo
+2021,8,103,Ronald Jones,RB,KC,3,Bolivia,Sergio
+2021,8,104,Michael Carter,RB,NYJ,17,PAW PATROL,Santiago E
+2021,8,105,Robert Tonyan,TE,GB,9,MiamiDolphins1972,Renzo
+2021,8,106,Corey Davis,WR,NYJ,13,Victorious Secret,Santiago
+2021,8,107,Daniel Jones,QB,NYG,6,LOKOREA,Brian
+2021,8,108,Leonard Fournette,RB,TB,5,Clydesdales and Bisons,Luis Carlos
+2021,8,109,James Conner,RB,ARI,2,Raw Dawg,Rodrigo
+2021,8,110,Jarvis Landry,WR,CLE,4,Red Solo Kupp,Nicholas
+2021,8,111,Los Angeles Rams,DEF,,8,Karen Abudinen,Santiago
+2021,8,112,Michael Pittman,WR,IND,10,Monday  Nightmares,Andres
+2021,9,113,Jonnu Smith,TE,NE,10,Monday  Nightmares,Andres
+2021,9,114,Marquez Callaway,WR,NO,8,Karen Abudinen,Santiago
+2021,9,115,Curtis Samuel,WR,WAS,4,Red Solo Kupp,Nicholas
+2021,9,116,Will Fuller,WR,MIA,2,Raw Dawg,Rodrigo
+2021,9,117,Mecole Hardman,WR,KC,5,Clydesdales and Bisons,Luis Carlos
+2021,9,118,Marvin Jones,WR,JAX,6,LOKOREA,Brian
+2021,9,119,Jared Cook,TE,LAC,13,Victorious Secret,Santiago
+2021,9,120,Michael Gallup,WR,DAL,9,MiamiDolphins1972,Renzo
+2021,9,121,Antonio Brown,WR,,17,PAW PATROL,Santiago E
+2021,9,122,DeVante Parker,WR,NE,3,Bolivia,Sergio
+2021,9,123,Kenyan Drake,RB,LV,14,Ferchos,Camilo
+2021,9,124,Nyheim Hines,RB,IND,12,Your Reigning Champ,Kike
+2021,9,125,Russell Gage,WR,TB,7,ER,JHJ
+2021,9,126,Jamaal Williams,RB,DET,1,la zero 8,Diego
+2021,10,127,Justin Tucker,K,BAL,1,la zero 8,Diego
+2021,10,128,Tyrod Taylor,QB,NYG,7,ER,JHJ
+2021,10,129,Zach Wilson,QB,NYJ,12,Your Reigning Champ,Kike
+2021,10,130,Zack Moss,RB,BUF,14,Ferchos,Camilo
+2021,10,131,Laviska Shenault Jr.,WR,JAX,3,Bolivia,Sergio
+2021,10,132,Noah Fant,TE,SEA,17,PAW PATROL,Santiago E
+2021,10,133,D.J. Chark,WR,DET,9,MiamiDolphins1972,Renzo
+2021,10,134,Michael Thomas,WR,NO,13,Victorious Secret,Santiago
+2021,10,135,Rob Gronkowski,TE,TB,6,LOKOREA,Brian
+2021,10,136,Phillip Lindsay,RB,MIA,5,Clydesdales and Bisons,Luis Carlos
+2021,10,137,AJ Dillon,RB,GB,2,Raw Dawg,Rodrigo
+2021,10,138,Devin Singletary,RB,BUF,4,Red Solo Kupp,Nicholas
+2021,10,139,Jaylen Waddle,WR,MIA,8,Karen Abudinen,Santiago
+2021,10,140,Darnell Mooney,WR,CHI,10,Monday  Nightmares,Andres
+2021,11,141,Tony Pollard,RB,DAL,10,Monday  Nightmares,Andres
+2021,11,142,Hunter Henry,TE,NE,8,Karen Abudinen,Santiago
+2021,11,143,Carson Wentz,QB,WAS,4,Red Solo Kupp,Nicholas
+2021,11,144,Marquise Brown,WR,ARI,2,Raw Dawg,Rodrigo
+2021,11,145,Mac Jones,QB,NE,5,Clydesdales and Bisons,Luis Carlos
+2021,11,146,Cole Beasley,WR,BUF,6,LOKOREA,Brian
+2021,11,147,J.D. McKissic,RB,WAS,13,Victorious Secret,Santiago
+2021,11,148,Deshaun Watson,QB,CLE,9,MiamiDolphins1972,Renzo
+2021,11,149,Jakobi Meyers,WR,NE,17,PAW PATROL,Santiago E
+2021,11,150,Tevin Coleman,RB,NYJ,3,Bolivia,Sergio
+2021,11,151,James White,RB,NE,14,Ferchos,Camilo
+2021,11,152,David Johnson,RB,HOU,12,Your Reigning Champ,Kike
+2021,11,153,Nelson Agholor,WR,NE,7,ER,JHJ
+2021,11,154,Elijah Moore,WR,NYJ,1,la zero 8,Diego
+2021,12,155,Tampa Bay Buccaneers,DEF,,1,la zero 8,Diego
+2021,12,156,Arizona Cardinals,DEF,,7,ER,JHJ
+2021,12,157,Sterling Shepard,WR,NYG,12,Your Reigning Champ,Kike
+2021,12,158,Sam Darnold,QB,CAR,14,Ferchos,Camilo
+2021,12,159,Emmanuel Sanders,WR,BUF,3,Bolivia,Sergio
+2021,12,160,Dallas Goedert,TE,PHI,17,PAW PATROL,Santiago E
+2021,12,161,Tyler Higbee,TE,LA,9,MiamiDolphins1972,Renzo
+2021,12,162,Pittsburgh Steelers,DEF,,13,Victorious Secret,Santiago
+2021,12,163,Younghoe Koo,K,ATL,6,LOKOREA,Brian
+2021,12,164,Zach Ertz,TE,ARI,5,Clydesdales and Bisons,Luis Carlos
+2021,12,165,Alexander Mattison,RB,MIN,2,Raw Dawg,Rodrigo
+2021,12,166,Baltimore Ravens,DEF,,4,Red Solo Kupp,Nicholas
+2021,12,167,Jamison Crowder,WR,BUF,8,Karen Abudinen,Santiago
+2021,12,168,Washington Football Team,DEF,,10,Monday  Nightmares,Andres
+2021,13,169,Henry Ruggs III,WR,,10,Monday  Nightmares,Andres
+2021,13,170,Greg Zuerlein,K,NYJ,8,Karen Abudinen,Santiago
+2021,13,171,Jason Sanders,K,MIA,4,Red Solo Kupp,Nicholas
+2021,13,172,Jared Goff,QB,DET,2,Raw Dawg,Rodrigo
+2021,13,173,Harrison Butker,K,KC,5,Clydesdales and Bisons,Luis Carlos
+2021,13,174,San Francisco 49ers,DEF,,6,LOKOREA,Brian
+2021,13,175,Ryan Succop,K,TB,13,Victorious Secret,Santiago
+2021,13,176,Terrace Marshall Jr.,WR,CAR,9,MiamiDolphins1972,Renzo
+2021,13,177,Rodrigo Blankenship,K,IND,17,PAW PATROL,Santiago E
+2021,13,178,Damien Williams,RB,ATL,3,Bolivia,Sergio
+2021,13,179,Giovani Bernard,RB,TB,14,Ferchos,Camilo
+2021,13,180,Tyler Bass,K,BUF,12,Your Reigning Champ,Kike
+2021,13,181,Devontae Booker,RB,NYG,7,ER,JHJ
+2021,13,182,Ty'Son Williams,RB,BAL,1,la zero 8,Diego
+2021,14,183,Gerald Everett,TE,LAC,1,la zero 8,Diego
+2021,14,184,Cairo Santos,K,CHI,7,ER,JHJ
+2021,14,185,Latavius Murray,RB,BAL,12,Your Reigning Champ,Kike
+2021,14,186,Indianapolis Colts,DEF,,14,Ferchos,Camilo
+2021,14,187,Miami Dolphins,DEF,,3,Bolivia,Sergio
+2021,14,188,Kansas City Chiefs,DEF,,17,PAW PATROL,Santiago E
+2021,14,189,A.J. Green,WR,ARI,9,MiamiDolphins1972,Renzo
+2021,14,190,Parris Campbell,WR,IND,13,Victorious Secret,Santiago
+2021,14,191,Bryan Edwards,WR,LV,6,LOKOREA,Brian
+2021,14,192,Amon-Ra St. Brown,WR,DET,5,Clydesdales and Bisons,Luis Carlos
+2021,14,193,Buffalo Bills,DEF,,2,Raw Dawg,Rodrigo
+2021,14,194,Randall Cobb,WR,GB,4,Red Solo Kupp,Nicholas
+2021,14,195,Josh Palmer,WR,LAC,8,Karen Abudinen,Santiago
+2021,14,196,Tre'Quan Smith,WR,NO,10,Monday  Nightmares,Andres
+2021,15,197,Wil Lutz,K,NO,10,Monday  Nightmares,Andres
+2021,15,198,Austin Hooper,TE,TEN,8,Karen Abudinen,Santiago
+2021,15,199,Evan Engram,TE,JAX,4,Red Solo Kupp,Nicholas
+2021,15,200,Matt Prater,K,ARI,2,Raw Dawg,Rodrigo
+2021,15,201,Rhamondre Stevenson,RB,NE,5,Clydesdales and Bisons,Luis Carlos
+2021,15,202,Cole Kmet,TE,CHI,6,LOKOREA,Brian
+2021,15,203,Christian Kirk,WR,JAX,13,Victorious Secret,Santiago
+2021,15,204,New Orleans Saints,DEF,,9,MiamiDolphins1972,Renzo
+2021,15,205,Jimmy Garoppolo,QB,SF,17,PAW PATROL,Santiago E
+2021,15,206,Austin Seibert,K,DET,3,Bolivia,Sergio
+2021,15,207,Rashaad Penny,RB,SEA,14,Ferchos,Camilo
+2021,15,208,Jalen Reagor,WR,PHI,12,Your Reigning Champ,Kike
+2021,15,209,DeSean Jackson,WR,LV,7,ER,JHJ
+2021,15,210,Taylor Heinicke,QB,WAS,1,la zero 8,Diego
+2021,16,211,Rondale Moore,WR,ARI,1,la zero 8,Diego
+2021,16,212,Hayden Hurst,TE,CIN,7,ER,JHJ
+2021,16,213,Los Angeles Chargers,DEF,,12,Your Reigning Champ,Kike
+2021,16,214,Robbie Gould,K,SF,14,Ferchos,Camilo
+2021,16,215,T.Y. Hilton,WR,IND,3,Bolivia,Sergio
+2021,16,216,Gabriel Davis,WR,BUF,17,PAW PATROL,Santiago E
+2021,16,217,Mason Crosby,K,GB,9,MiamiDolphins1972,Renzo
+2021,16,218,Anthony Firkser,TE,ATL,13,Victorious Secret,Santiago
+2021,16,219,Tony Jones,RB,NO,6,LOKOREA,Brian
+2021,16,220,Denver Broncos,DEF,,5,Clydesdales and Bisons,Luis Carlos
+2021,16,221,Taysom Hill,QB,NO,2,Raw Dawg,Rodrigo
+2021,16,222,Eric Ebron,TE,PIT,4,Red Solo Kupp,Nicholas
+2021,16,223,Allen Lazard,WR,GB,8,Karen Abudinen,Santiago
+2021,16,224,Andy Dalton,QB,NO,10,Monday  Nightmares,Andres
+2022,1,1,Josh Allen,QB,BUF,14,Ferchos,Camilo
+2022,1,2,Justin Herbert,QB,LAC,17,PAW PATROL,Santiago E
+2022,1,3,Patrick Mahomes,QB,KC,2,Raw Dawg,Rodrigo
+2022,1,4,Cooper Kupp,WR,LA,12,Kelce Ya Later,Kike
+2022,1,5,Jalen Hurts,QB,PHI,10,Los Meros Repochanboys,Andres
+2022,1,6,Justin Jefferson,WR,MIN,4,Mayor Humdinger,Nicholas
+2022,1,7,Jonathan Taylor,RB,IND,8,Show me them TDs,Santiago
+2022,1,8,Lamar Jackson,QB,BAL,13,Victorious Secret,Santiago
+2022,1,9,Ja'Marr Chase,WR,CIN,1,supernat,Diego
+2022,1,10,Christian McCaffrey,RB,SF,9,MiamiDolphins1972,Renzo
+2022,1,11,Austin Ekeler,RB,LAC,6,LOKOAUTODRAFTO,Brian
+2022,1,12,Kyler Murray,QB,ARI,5,The year of the Plankton,Luis Carlos
+2022,1,13,Dalvin Cook,RB,MIN,3,Bolivia,Sergio
+2022,1,14,Stefon Diggs,WR,BUF,7,Mucho hijo de Wil,JHJ
+2022,2,15,Russell Wilson,QB,DEN,7,Mucho hijo de Wil,JHJ
+2022,2,16,Tom Brady,QB,TB,3,Bolivia,Sergio
+2022,2,17,Joe Burrow,QB,CIN,5,The year of the Plankton,Luis Carlos
+2022,2,18,Derrick Henry,RB,TEN,6,LOKOAUTODRAFTO,Brian
+2022,2,19,Matthew Stafford,QB,LA,9,MiamiDolphins1972,Renzo
+2022,2,20,Dak Prescott,QB,DAL,1,supernat,Diego
+2022,2,21,Joe Mixon,RB,CIN,13,Victorious Secret,Santiago
+2022,2,22,Aaron Rodgers,QB,NYJ,8,Show me them TDs,Santiago
+2022,2,23,Kirk Cousins,QB,MIN,4,Mayor Humdinger,Nicholas
+2022,2,24,Najee Harris,RB,PIT,10,Los Meros Repochanboys,Andres
+2022,2,25,Trey Lance,QB,SF,12,Kelce Ya Later,Kike
+2022,2,26,Saquon Barkley,RB,NYG,2,Raw Dawg,Rodrigo
+2022,2,27,D'Andre Swift,RB,PHI,17,PAW PATROL,Santiago E
+2022,2,28,Aaron Jones,RB,GB,14,Ferchos,Camilo
+2022,3,29,Davante Adams,WR,LV,14,Ferchos,Camilo
+2022,3,30,CeeDee Lamb,WR,DAL,17,PAW PATROL,Santiago E
+2022,3,31,Alvin Kamara,RB,NO,2,Raw Dawg,Rodrigo
+2022,3,32,Travis Kelce,TE,KC,12,Kelce Ya Later,Kike
+2022,3,33,Deebo Samuel,WR,SF,10,Los Meros Repochanboys,Andres
+2022,3,34,Derek Carr,QB,NO,4,Mayor Humdinger,Nicholas
+2022,3,35,Mark Andrews,TE,BAL,8,Show me them TDs,Santiago
+2022,3,36,Tyreek Hill,WR,MIA,13,Victorious Secret,Santiago
+2022,3,37,Leonard Fournette,RB,TB,1,supernat,Diego
+2022,3,38,Tua Tagovailoa,QB,MIA,9,MiamiDolphins1972,Renzo
+2022,3,39,Mike Evans,WR,TB,6,LOKOAUTODRAFTO,Brian
+2022,3,40,A.J. Brown,WR,PHI,5,The year of the Plankton,Luis Carlos
+2022,3,41,Javonte Williams,RB,DEN,3,Bolivia,Sergio
+2022,3,42,Ezekiel Elliott,RB,DAL,7,Mucho hijo de Wil,JHJ
+2022,4,43,Matt Ryan,QB,IND,7,Mucho hijo de Wil,JHJ
+2022,4,44,Michael Pittman,WR,IND,3,Bolivia,Sergio
+2022,4,45,Nick Chubb,RB,CLE,5,The year of the Plankton,Luis Carlos
+2022,4,46,David Montgomery,RB,DET,6,LOKOAUTODRAFTO,Brian
+2022,4,47,Keenan Allen,WR,LAC,9,MiamiDolphins1972,Renzo
+2022,4,48,James Conner,RB,ARI,1,supernat,Diego
+2022,4,49,Trevor Lawrence,QB,JAX,13,Victorious Secret,Santiago
+2022,4,50,Tee Higgins,WR,CIN,8,Show me them TDs,Santiago
+2022,4,51,Travis Etienne,RB,JAX,4,Mayor Humdinger,Nicholas
+2022,4,52,Justin Fields,QB,CHI,10,Los Meros Repochanboys,Andres
+2022,4,53,Cam Akers,RB,LA,12,Kelce Ya Later,Kike
+2022,4,54,Kyle Pitts,TE,ATL,2,Raw Dawg,Rodrigo
+2022,4,55,Jameis Winston,QB,NO,17,PAW PATROL,Santiago E
+2022,4,56,D.J. Moore,WR,CHI,14,Ferchos,Camilo
+2022,5,57,Diontae Johnson,WR,PIT,14,Ferchos,Camilo
+2022,5,58,Breece Hall,RB,NYJ,17,PAW PATROL,Santiago E
+2022,5,59,Courtland Sutton,WR,DEN,2,Raw Dawg,Rodrigo
+2022,5,60,Jaylen Waddle,WR,MIA,12,Kelce Ya Later,Kike
+2022,5,61,Elijah Mitchell,RB,SF,10,Los Meros Repochanboys,Andres
+2022,5,62,Mike Williams,WR,LAC,4,Mayor Humdinger,Nicholas
+2022,5,63,Ryan Tannehill,QB,TEN,8,Show me them TDs,Santiago
+2022,5,64,Clyde Edwards-Helaire,RB,KC,13,Victorious Secret,Santiago
+2022,5,65,George Kittle,TE,SF,1,supernat,Diego
+2022,5,66,Michael Thomas,WR,NO,9,MiamiDolphins1972,Renzo
+2022,5,67,Allen Robinson,WR,PIT,6,LOKOAUTODRAFTO,Brian
+2022,5,68,Gabe Davis,WR,BUF,5,The year of the Plankton,Luis Carlos
+2022,5,69,Terry McLaurin,WR,WAS,3,Bolivia,Sergio
+2022,5,70,Rashaad Penny,RB,PHI,7,Mucho hijo de Wil,JHJ
+2022,6,71,Brandin Cooks,WR,DAL,7,Mucho hijo de Wil,JHJ
+2022,6,72,DK Metcalf,WR,SEA,3,Bolivia,Sergio
+2022,6,73,Darren Waller,TE,NYG,5,The year of the Plankton,Luis Carlos
+2022,6,74,Marquise Brown,WR,ARI,6,LOKOAUTODRAFTO,Brian
+2022,6,75,Josh Jacobs,RB,LV,9,MiamiDolphins1972,Renzo
+2022,6,76,Mac Jones,QB,NE,1,supernat,Diego
+2022,6,77,Dalton Schultz,TE,HOU,13,Victorious Secret,Santiago
+2022,6,78,Amon-Ra St. Brown,WR,DET,8,Show me them TDs,Santiago
+2022,6,79,Jerry Jeudy,WR,DEN,4,Mayor Humdinger,Nicholas
+2022,6,80,Darnell Mooney,WR,CHI,10,Los Meros Repochanboys,Andres
+2022,6,81,Daniel Jones,QB,NYG,12,Kelce Ya Later,Kike
+2022,6,82,Rashod Bateman,WR,BAL,2,Raw Dawg,Rodrigo
+2022,6,83,JuJu Smith-Schuster,WR,NE,17,PAW PATROL,Santiago E
+2022,6,84,AJ Dillon,RB,GB,14,Ferchos,Camilo
+2022,7,85,Carson Wentz,QB,WAS,14,Ferchos,Camilo
+2022,7,86,J.K. Dobbins,RB,BAL,17,PAW PATROL,Santiago E
+2022,7,87,Chris Godwin,WR,TB,2,Raw Dawg,Rodrigo
+2022,7,88,Jared Goff,QB,DET,12,Kelce Ya Later,Kike
+2022,7,89,Dameon Pierce,RB,HOU,10,Los Meros Repochanboys,Andres
+2022,7,90,Tony Pollard,RB,DAL,4,Mayor Humdinger,Nicholas
+2022,7,91,Amari Cooper,WR,CLE,8,Show me them TDs,Santiago
+2022,7,92,Elijah Moore,WR,CLE,13,Victorious Secret,Santiago
+2022,7,93,Brandon Aiyuk,WR,SF,1,supernat,Diego
+2022,7,94,Chase Edmonds,RB,TB,9,MiamiDolphins1972,Renzo
+2022,7,95,Drake London,WR,ATL,6,LOKOAUTODRAFTO,Brian
+2022,7,96,DeAndre Hopkins,WR,ARI,5,The year of the Plankton,Luis Carlos
+2022,7,97,Davis Mills,QB,HOU,3,Bolivia,Sergio
+2022,7,98,Dawson Knox,TE,BUF,7,Mucho hijo de Wil,JHJ
+2022,8,99,Tyler Lockett,WR,SEA,7,Mucho hijo de Wil,JHJ
+2022,8,100,Adam Thielen,WR,CAR,3,Bolivia,Sergio
+2022,8,101,Rhamondre Stevenson,RB,NE,5,The year of the Plankton,Luis Carlos
+2022,8,102,Dallas Goedert,TE,PHI,6,LOKOAUTODRAFTO,Brian
+2022,8,103,T.J. Hockenson,TE,MIN,9,MiamiDolphins1972,Renzo
+2022,8,104,Hunter Renfrow,WR,LV,1,supernat,Diego
+2022,8,105,Cordarrelle Patterson,RB,ATL,13,Victorious Secret,Santiago
+2022,8,106,Damien Harris,RB,BUF,8,Show me them TDs,Santiago
+2022,8,107,Baker Mayfield,QB,TB,4,Mayor Humdinger,Nicholas
+2022,8,108,Antonio Gibson,RB,WAS,10,Los Meros Repochanboys,Andres
+2022,8,109,Christian Kirk,WR,JAX,12,Kelce Ya Later,Kike
+2022,8,110,Kareem Hunt,RB,CLE,2,Raw Dawg,Rodrigo
+2022,8,111,DeVonta Smith,WR,PHI,17,PAW PATROL,Santiago E
+2022,8,112,Allen Lazard,WR,NYJ,14,Ferchos,Camilo
+2022,9,113,Zach Ertz,TE,ARI,14,Ferchos,Camilo
+2022,9,114,Miles Sanders,RB,CAR,17,PAW PATROL,Santiago E
+2022,9,115,Robert Woods,WR,HOU,2,Raw Dawg,Rodrigo
+2022,9,116,Devin Singletary,RB,HOU,12,Kelce Ya Later,Kike
+2022,9,117,Treylon Burks,WR,TEN,10,Los Meros Repochanboys,Andres
+2022,9,118,Darrell Henderson,RB,,4,Mayor Humdinger,Nicholas
+2022,9,119,Kadarius Toney,WR,KC,8,Show me them TDs,Santiago
+2022,9,120,Melvin Gordon,RB,KC,13,Victorious Secret,Santiago
+2022,9,121,Julio Jones,WR,TB,1,supernat,Diego
+2022,9,122,Chris Olave,WR,NO,9,MiamiDolphins1972,Renzo
+2022,9,123,Zach Wilson,QB,NYJ,6,LOKOAUTODRAFTO,Brian
+2022,9,124,George Pickens,WR,PIT,5,The year of the Plankton,Luis Carlos
+2022,9,125,Chase Claypool,WR,CHI,3,Bolivia,Sergio
+2022,9,126,Marcus Mariota,QB,PHI,7,Mucho hijo de Wil,JHJ
+2022,10,127,Kenneth Gainwell,RB,PHI,7,Mucho hijo de Wil,JHJ
+2022,10,128,Pat Freiermuth,TE,PIT,3,Bolivia,Sergio
+2022,10,129,Kenny Pickett,QB,PIT,5,The year of the Plankton,Luis Carlos
+2022,10,130,Miami Dolphins,DEF,,6,LOKOAUTODRAFTO,Brian
+2022,10,131,Justin Tucker,K,BAL,9,MiamiDolphins1972,Renzo
+2022,10,132,Marquez Valdes-Scantling,WR,KC,1,supernat,Diego
+2022,10,133,Skyy Moore,WR,KC,13,Victorious Secret,Santiago
+2022,10,134,Kenneth Walker III,RB,SEA,8,Show me them TDs,Santiago
+2022,10,135,Jahan Dotson,WR,WAS,4,Mayor Humdinger,Nicholas
+2022,10,136,Geno Smith,QB,SEA,10,Los Meros Repochanboys,Andres
+2022,10,137,Jakobi Meyers,WR,LV,12,Kelce Ya Later,Kike
+2022,10,138,Mitchell Trubisky,QB,PIT,2,Raw Dawg,Rodrigo
+2022,10,139,Russell Gage,WR,TB,17,PAW PATROL,Santiago E
+2022,10,140,James Cook,RB,BUF,14,Ferchos,Camilo
+2022,11,141,Michael Carter,RB,NYJ,14,Ferchos,Camilo
+2022,11,142,Cole Kmet,TE,CHI,17,PAW PATROL,Santiago E
+2022,11,143,James Robinson,RB,NE,2,Raw Dawg,Rodrigo
+2022,11,144,Tyler Boyd,WR,CIN,12,Kelce Ya Later,Kike
+2022,11,145,Brian Robinson,RB,WAS,10,Los Meros Repochanboys,Andres
+2022,11,146,Rachaad White,RB,TB,4,Mayor Humdinger,Nicholas
+2022,11,147,Alexander Mattison,RB,MIN,8,Show me them TDs,Santiago
+2022,11,148,Mike Gesicki,TE,NE,13,Victorious Secret,Santiago
+2022,11,149,Nyheim Hines,RB,BUF,1,supernat,Diego
+2022,11,150,Michael Gallup,WR,DAL,9,MiamiDolphins1972,Renzo
+2022,11,151,Mason Crosby,K,GB,6,LOKOAUTODRAFTO,Brian
+2022,11,152,Jamaal Williams,RB,NO,5,The year of the Plankton,Luis Carlos
+2022,11,153,Raheem Mostert,RB,MIA,3,Bolivia,Sergio
+2022,11,154,Matt Prater,K,ARI,7,Mucho hijo de Wil,JHJ
+2022,12,155,Hunter Henry,TE,NE,7,Mucho hijo de Wil,JHJ
+2022,12,156,Buffalo Bills,DEF,,3,Bolivia,Sergio
+2022,12,157,Garrett Wilson,WR,NYJ,5,The year of the Plankton,Luis Carlos
+2022,12,158,Isiah Pacheco,RB,KC,6,LOKOAUTODRAFTO,Brian
+2022,12,159,Wan'Dale Robinson,WR,NYG,9,MiamiDolphins1972,Renzo
+2022,12,160,Isaiah McKenzie,WR,IND,1,supernat,Diego
+2022,12,161,Rondale Moore,WR,ARI,13,Victorious Secret,Santiago
+2022,12,162,DeVante Parker,WR,NE,8,Show me them TDs,Santiago
+2022,12,163,New England Patriots,DEF,,4,Mayor Humdinger,Nicholas
+2022,12,164,Tampa Bay Buccaneers,DEF,,10,Los Meros Repochanboys,Andres
+2022,12,165,J.D. McKissic,RB,WAS,12,Kelce Ya Later,Kike
+2022,12,166,Khalil Herbert,RB,CHI,2,Raw Dawg,Rodrigo
+2022,12,167,Deshaun Watson,QB,CLE,17,PAW PATROL,Santiago E
+2022,12,168,Jarvis Landry,WR,NO,14,Ferchos,Camilo
+2022,13,169,Indianapolis Colts,DEF,,14,Ferchos,Camilo
+2022,13,170,San Francisco 49ers,DEF,,17,PAW PATROL,Santiago E
+2022,13,171,Mark Ingram,RB,NO,2,Raw Dawg,Rodrigo
+2022,13,172,Tyler Bass,K,BUF,12,Kelce Ya Later,Kike
+2022,13,173,DJ Chark,WR,CAR,10,Los Meros Repochanboys,Andres
+2022,13,174,Evan McPherson,K,CIN,4,Mayor Humdinger,Nicholas
+2022,13,175,Jacoby Brissett,QB,WAS,8,Show me them TDs,Santiago
+2022,13,176,Ryan Succop,K,TB,13,Victorious Secret,Santiago
+2022,13,177,Los Angeles Chargers,DEF,,1,supernat,Diego
+2022,13,178,Los Angeles Rams,DEF,,9,MiamiDolphins1972,Renzo
+2022,13,179,Jerick McKinnon,RB,KC,6,LOKOAUTODRAFTO,Brian
+2022,13,180,Jalen Tolbert,WR,DAL,5,The year of the Plankton,Luis Carlos
+2022,13,181,Tyler Allgeier,RB,ATL,3,Bolivia,Sergio
+2022,13,182,Baltimore Ravens,DEF,,7,Mucho hijo de Wil,JHJ
+2022,14,183,Mecole Hardman,WR,NYJ,7,Mucho hijo de Wil,JHJ
+2022,14,184,Zamir White,RB,LV,3,Bolivia,Sergio
+2022,14,185,Harrison Butker,K,KC,5,The year of the Plankton,Luis Carlos
+2022,14,186,Nico Collins,WR,HOU,6,LOKOAUTODRAFTO,Brian
+2022,14,187,Van Jefferson,WR,LA,9,MiamiDolphins1972,Renzo
+2022,14,188,Younghoe Koo,K,ATL,1,supernat,Diego
+2022,14,189,Curtis Samuel,WR,WAS,13,Victorious Secret,Santiago
+2022,14,190,Matt Gay,K,IND,8,Show me them TDs,Santiago
+2022,14,191,Evan Engram,TE,JAX,4,Mayor Humdinger,Nicholas
+2022,14,192,Irv Smith,TE,CIN,10,Los Meros Repochanboys,Andres
+2022,14,193,Dallas Cowboys,DEF,,12,Kelce Ya Later,Kike
+2022,14,194,Kenny Golladay,WR,NYG,2,Raw Dawg,Rodrigo
+2022,14,195,Daniel Carlson,K,LV,17,PAW PATROL,Santiago E
+2022,14,196,Josh Palmer,WR,LAC,14,Ferchos,Camilo
+2022,15,197,Corey Davis,WR,NYJ,14,Ferchos,Camilo
+2022,15,198,Gerald Everett,TE,LAC,17,PAW PATROL,Santiago E
+2022,15,199,Denver Broncos,DEF,,2,Raw Dawg,Rodrigo
+2022,15,200,Chosen Anderson,WR,ARI,12,Kelce Ya Later,Kike
+2022,15,201,Brandon McManus,K,DEN,10,Los Meros Repochanboys,Andres
+2022,15,202,KJ Hamler,WR,DEN,4,Mayor Humdinger,Nicholas
+2022,15,203,New Orleans Saints,DEF,,8,Show me them TDs,Santiago
+2022,15,204,Cleveland Browns,DEF,,13,Victorious Secret,Santiago
+2022,15,205,Parris Campbell,WR,NYG,1,supernat,Diego
+2022,15,206,Isaiah Spiller,RB,LAC,9,MiamiDolphins1972,Renzo
+2022,15,207,Romeo Doubs,WR,GB,6,LOKOAUTODRAFTO,Brian
+2022,15,208,Philadelphia Eagles,DEF,,5,The year of the Plankton,Luis Carlos
+2022,15,209,Darrel Williams,RB,ARI,3,Bolivia,Sergio
+2022,15,210,Jaylen Warren,RB,PIT,7,Mucho hijo de Wil,JHJ
+2022,16,211,Jameson Williams,WR,DET,7,Mucho hijo de Wil,JHJ
+2022,16,212,Rodrigo Blankenship,K,,3,Bolivia,Sergio
+2022,16,213,Kenyan Drake,RB,BAL,5,The year of the Plankton,Luis Carlos
+2022,16,214,Christian Watson,WR,GB,6,LOKOAUTODRAFTO,Brian
+2022,16,215,D'Onta Foreman,RB,CHI,9,MiamiDolphins1972,Renzo
+2022,16,216,Tyrion Davis-Price,RB,SF,1,supernat,Diego
+2022,16,217,Rex Burkhead,RB,HOU,13,Victorious Secret,Santiago
+2022,16,218,Gus Edwards,RB,BAL,8,Show me them TDs,Santiago
+2022,16,219,Alec Pierce,WR,IND,4,Mayor Humdinger,Nicholas
+2022,16,220,Albert Okwuegbunam,TE,DEN,10,Los Meros Repochanboys,Andres
+2022,16,221,Randall Cobb,WR,NYJ,12,Kelce Ya Later,Kike
+2022,16,222,Jason Sanders,K,MIA,2,Raw Dawg,Rodrigo
+2022,16,223,Boston Scott,RB,PHI,17,PAW PATROL,Santiago E
+2022,16,224,Nick Folk,K,NE,14,Ferchos,Camilo
+2023,1,1,Patrick Mahomes,QB,KC,8,Amon-Ra Dogging,Santiago
+2023,1,2,Jalen Hurts,QB,PHI,3,Bolivia,Sergio
+2023,1,3,Josh Allen,QB,BUF,13,Victorious Secret,Santiago
+2023,1,4,Joe Burrow,QB,CIN,1,los aguafiestas,Diego
+2023,1,5,Lamar Jackson,QB,BAL,14,Ferchos,Camilo
+2023,1,6,Justin Herbert,QB,LAC,2,Raw Dawg,Rodrigo
+2023,1,7,Trevor Lawrence,QB,JAX,5,Better Dayz,Luis Carlos
+2023,1,8,Justin Fields,QB,PIT,15,The Goats,Andres
+2023,1,9,Dak Prescott,QB,DAL,7,Skirt Team Ya noooooooooooo,JHJ
+2023,1,10,Justin Jefferson,WR,MIN,9,MiamiDolphins1972,Renzo
+2023,1,11,Tyreek Hill,WR,MIA,4,ComNich,Nicholas
+2023,1,12,Ja'Marr Chase,WR,CIN,6,LOKOPAPI23,Brian
+2023,1,13,Christian McCaffrey,RB,SF,17,LA PATRULLA,Santiago E
+2023,1,14,Travis Kelce,TE,KC,10,Stat Correctors,Andres
+2023,1,15,Deshaun Watson,QB,CLE,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2023,1,16,Cooper Kupp,WR,LA,11,TuPapa,Alejandro
+2023,2,17,Austin Ekeler,RB,WAS,11,TuPapa,Alejandro
+2023,2,18,Stefon Diggs,WR,HOU,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2023,2,19,Tua Tagovailoa,QB,MIA,10,Stat Correctors,Andres
+2023,2,20,Daniel Jones,QB,NYG,17,LA PATRULLA,Santiago E
+2023,2,21,A.J. Brown,WR,PHI,6,LOKOPAPI23,Brian
+2023,2,22,Geno Smith,QB,SEA,4,ComNich,Nicholas
+2023,2,23,Kirk Cousins,QB,ATL,9,MiamiDolphins1972,Renzo
+2023,2,24,Davante Adams,WR,LV,7,Skirt Team Ya noooooooooooo,JHJ
+2023,2,25,Bijan Robinson,RB,ATL,15,The Goats,Andres
+2023,2,26,Anthony Richardson,QB,IND,5,Better Dayz,Luis Carlos
+2023,2,27,Aaron Rodgers,QB,NYJ,2,Raw Dawg,Rodrigo
+2023,2,28,CeeDee Lamb,WR,DAL,14,Ferchos,Camilo
+2023,2,29,Derrick Henry,RB,BAL,1,los aguafiestas,Diego
+2023,2,30,Jared Goff,QB,DET,13,Victorious Secret,Santiago
+2023,2,31,Nick Chubb,RB,CLE,3,Bolivia,Sergio
+2023,2,32,Saquon Barkley,RB,PHI,8,Amon-Ra Dogging,Santiago
+2023,3,33,Amon-Ra St. Brown,WR,DET,8,Amon-Ra Dogging,Santiago
+2023,3,34,Garrett Wilson,WR,NYJ,3,Bolivia,Sergio
+2023,3,35,Tony Pollard,RB,TEN,13,Victorious Secret,Santiago
+2023,3,36,Russell Wilson,QB,PIT,1,los aguafiestas,Diego
+2023,3,37,Josh Jacobs,RB,GB,14,Ferchos,Camilo
+2023,3,38,Jaylen Waddle,WR,MIA,2,Raw Dawg,Rodrigo
+2023,3,39,Calvin Ridley,WR,TEN,5,Better Dayz,Luis Carlos
+2023,3,40,DK Metcalf,WR,SEA,15,The Goats,Andres
+2023,3,41,Matthew Stafford,QB,LA,7,Skirt Team Ya noooooooooooo,JHJ
+2023,3,42,Brock Purdy,QB,SF,9,MiamiDolphins1972,Renzo
+2023,3,43,Jonathan Taylor,RB,IND,4,ComNich,Nicholas
+2023,3,44,Derek Carr,QB,NO,6,LOKOPAPI23,Brian
+2023,3,45,Joe Mixon,RB,HOU,17,LA PATRULLA,Santiago E
+2023,3,46,Chris Olave,WR,NO,10,Stat Correctors,Andres
+2023,3,47,Rhamondre Stevenson,RB,NE,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2023,3,48,DeVonta Smith,WR,PHI,11,TuPapa,Alejandro
+2023,4,49,Mark Andrews,TE,BAL,11,TuPapa,Alejandro
+2023,4,50,Keenan Allen,WR,CHI,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2023,4,51,Travis Etienne,RB,JAX,10,Stat Correctors,Andres
+2023,4,52,Kenny Pickett,QB,PHI,17,LA PATRULLA,Santiago E
+2023,4,53,Bryce Young,QB,CAR,6,LOKOPAPI23,Brian
+2023,4,54,Amari Cooper,WR,CLE,4,ComNich,Nicholas
+2023,4,55,Jahmyr Gibbs,RB,DET,9,MiamiDolphins1972,Renzo
+2023,4,56,Miles Sanders,RB,CAR,7,Skirt Team Ya noooooooooooo,JHJ
+2023,4,57,Aaron Jones,RB,MIN,15,The Goats,Andres
+2023,4,58,Tee Higgins,WR,CIN,5,Better Dayz,Luis Carlos
+2023,4,59,Najee Harris,RB,PIT,2,Raw Dawg,Rodrigo
+2023,4,60,Deebo Samuel Sr.,WR,SF,14,Ferchos,Camilo
+2023,4,61,Kenneth Walker III,RB,SEA,1,los aguafiestas,Diego
+2023,4,62,James Conner,RB,ARI,13,Victorious Secret,Santiago
+2023,4,63,DJ Moore,WR,CHI,3,Bolivia,Sergio
+2023,4,64,T.J. Hockenson,TE,MIN,8,Amon-Ra Dogging,Santiago
+2023,5,65,Chris Godwin,WR,TB,8,Amon-Ra Dogging,Santiago
+2023,5,66,Breece Hall,RB,NYJ,3,Bolivia,Sergio
+2023,5,67,Mike Williams,WR,NYJ,13,Victorious Secret,Santiago
+2023,5,68,DeAndre Hopkins,WR,TEN,1,los aguafiestas,Diego
+2023,5,69,Rachaad White,RB,TB,14,Ferchos,Camilo
+2023,5,70,Christian Watson,WR,GB,2,Raw Dawg,Rodrigo
+2023,5,71,Drake London,WR,ATL,5,Better Dayz,Luis Carlos
+2023,5,72,Dameon Pierce,RB,HOU,15,The Goats,Andres
+2023,5,73,Darren Waller,TE,NYG,7,Skirt Team Ya noooooooooooo,JHJ
+2023,5,74,Terry McLaurin,WR,WAS,9,MiamiDolphins1972,Renzo
+2023,5,75,Diontae Johnson,WR,CAR,4,ComNich,Nicholas
+2023,5,76,Cam Akers,RB,MIN,6,LOKOPAPI23,Brian
+2023,5,77,Jerry Jeudy,WR,CLE,17,LA PATRULLA,Santiago E
+2023,5,78,Alexander Mattison,RB,LV,10,Stat Correctors,Andres
+2023,5,79,J.K. Dobbins,RB,LAC,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2023,5,80,Jordan Love,QB,GB,11,TuPapa,Alejandro
+2023,6,81,Tyler Lockett,WR,SEA,11,TuPapa,Alejandro
+2023,6,82,George Kittle,TE,SF,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2023,6,83,Christian Kirk,WR,JAX,10,Stat Correctors,Andres
+2023,6,84,Brandon Aiyuk,WR,SF,17,LA PATRULLA,Santiago E
+2023,6,85,Dallas Goedert,TE,PHI,6,LOKOPAPI23,Brian
+2023,6,86,Jordan Addison,WR,MIN,4,ComNich,Nicholas
+2023,6,87,Marquise Brown,WR,KC,9,MiamiDolphins1972,Renzo
+2023,6,88,Gabe Davis,WR,JAX,7,Skirt Team Ya noooooooooooo,JHJ
+2023,6,89,Mike Evans,WR,TB,15,The Goats,Andres
+2023,6,90,D'Andre Swift,RB,CHI,5,Better Dayz,Luis Carlos
+2023,6,91,James Cook,RB,BUF,2,Raw Dawg,Rodrigo
+2023,6,92,Michael Pittman,WR,IND,14,Ferchos,Camilo
+2023,6,93,Evan Engram,TE,JAX,1,los aguafiestas,Diego
+2023,6,94,Isiah Pacheco,RB,KC,13,Victorious Secret,Santiago
+2023,6,95,David Montgomery,RB,DET,3,Bolivia,Sergio
+2023,6,96,Dalvin Cook,RB,BAL,8,Amon-Ra Dogging,Santiago
+2023,7,97,Kyle Pitts,TE,ATL,8,Amon-Ra Dogging,Santiago
+2023,7,98,Sam Howell,QB,SEA,3,Bolivia,Sergio
+2023,7,99,Michael Thomas,WR,NO,13,Victorious Secret,Santiago
+2023,7,100,Skyy Moore,WR,KC,1,los aguafiestas,Diego
+2023,7,101,Pat Freiermuth,TE,PIT,14,Ferchos,Camilo
+2023,7,102,Javonte Williams,RB,DEN,2,Raw Dawg,Rodrigo
+2023,7,103,David Njoku,TE,CLE,5,Better Dayz,Luis Carlos
+2023,7,104,Alvin Kamara,RB,NO,15,The Goats,Andres
+2023,7,105,Jamaal Williams,RB,NO,7,Skirt Team Ya noooooooooooo,JHJ
+2023,7,106,Brandin Cooks,WR,DAL,9,MiamiDolphins1972,Renzo
+2023,7,107,Quentin Johnston,WR,LAC,4,ComNich,Nicholas
+2023,7,108,JuJu Smith-Schuster,WR,NE,6,LOKOPAPI23,Brian
+2023,7,109,Jahan Dotson,WR,WAS,17,LA PATRULLA,Santiago E
+2023,7,110,Jimmy Garoppolo,QB,LA,10,Stat Correctors,Andres
+2023,7,111,George Pickens,WR,PIT,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2023,7,112,Ryan Tannehill,QB,TEN,11,TuPapa,Alejandro
+2023,8,113,Antonio Gibson,RB,NE,11,TuPapa,Alejandro
+2023,8,114,AJ Dillon,RB,GB,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2023,8,115,Courtland Sutton,WR,DEN,10,Stat Correctors,Andres
+2023,8,116,Khalil Herbert,RB,CHI,17,LA PATRULLA,Santiago E
+2023,8,117,Jaxon Smith-Njigba,WR,SEA,6,LOKOPAPI23,Brian
+2023,8,118,C.J. Stroud,QB,HOU,4,ComNich,Nicholas
+2023,8,119,Dalton Kincaid,TE,BUF,9,MiamiDolphins1972,Renzo
+2023,8,120,De'Von Achane,RB,MIA,7,Skirt Team Ya noooooooooooo,JHJ
+2023,8,121,Odell Beckham Jr.,WR,BAL,15,The Goats,Andres
+2023,8,122,Zay Flowers,WR,BAL,5,Better Dayz,Luis Carlos
+2023,8,123,Dalton Schultz,TE,HOU,2,Raw Dawg,Rodrigo
+2023,8,124,Mac Jones,QB,JAX,14,Ferchos,Camilo
+2023,8,125,Justin Tucker,K,BAL,1,los aguafiestas,Diego
+2023,8,126,Kadarius Toney,WR,KC,13,Victorious Secret,Santiago
+2023,8,127,Brian Robinson,RB,WAS,3,Bolivia,Sergio
+2023,8,128,Treylon Burks,WR,TEN,8,Amon-Ra Dogging,Santiago
+2023,9,129,Elijah Moore,WR,CLE,8,Amon-Ra Dogging,Santiago
+2023,9,130,Chigoziem Okonkwo,TE,TEN,3,Bolivia,Sergio
+2023,9,131,Tyler Higbee,TE,LA,13,Victorious Secret,Santiago
+2023,9,132,Michael Gallup,WR,LV,1,los aguafiestas,Diego
+2023,9,133,Samaje Perine,RB,DEN,14,Ferchos,Camilo
+2023,9,134,Jaylen Warren,RB,PIT,2,Raw Dawg,Rodrigo
+2023,9,135,Philadelphia Eagles,DEF,,5,Better Dayz,Luis Carlos
+2023,9,136,Adam Thielen,WR,CAR,15,The Goats,Andres
+2023,9,137,Marquez Valdes-Scantling,WR,KC,7,Skirt Team Ya noooooooooooo,JHJ
+2023,9,138,Nico Collins,WR,HOU,9,MiamiDolphins1972,Renzo
+2023,9,139,Rashod Bateman,WR,BAL,4,ComNich,Nicholas
+2023,9,140,San Francisco 49ers,DEF,,6,LOKOPAPI23,Brian
+2023,9,141,Zach Charbonnet,RB,SEA,17,LA PATRULLA,Santiago E
+2023,9,142,Jakobi Meyers,WR,LV,10,Stat Correctors,Andres
+2023,9,143,Jerick McKinnon,RB,KC,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2023,9,144,Rashaad Penny,RB,PHI,11,TuPapa,Alejandro
+2023,10,145,Damien Harris,RB,BUF,11,TuPapa,Alejandro
+2023,10,146,Dallas Cowboys,DEF,,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2023,10,147,Elijah Mitchell,RB,SF,10,Stat Correctors,Andres
+2023,10,148,Cole Kmet,TE,CHI,17,LA PATRULLA,Santiago E
+2023,10,149,Foye Oluokun,LB,JAX,6,LOKOPAPI23,Brian
+2023,10,150,Kyler Murray,QB,ARI,4,ComNich,Nicholas
+2023,10,151,Roquan Smith,LB,BAL,9,MiamiDolphins1972,Renzo
+2023,10,152,Younghoe Koo,K,ATL,7,Skirt Team Ya noooooooooooo,JHJ
+2023,10,153,Zach Ertz,TE,WAS,15,The Goats,Andres
+2023,10,154,Marvin Mims Jr.,WR,DEN,5,Better Dayz,Luis Carlos
+2023,10,155,Allen Lazard,WR,NYJ,2,Raw Dawg,Rodrigo
+2023,10,156,Greg Dulcich,TE,DEN,14,Ferchos,Camilo
+2023,10,157,Devin Singletary,RB,NYG,1,los aguafiestas,Diego
+2023,10,158,Desmond Ridder,QB,ARI,13,Victorious Secret,Santiago
+2023,10,159,Tyler Allgeier,RB,ATL,3,Bolivia,Sergio
+2023,10,160,Baker Mayfield,QB,TB,8,Amon-Ra Dogging,Santiago
+2023,11,161,Rondale Moore,WR,ATL,8,Amon-Ra Dogging,Santiago
+2023,11,162,Jameson Williams,WR,DET,3,Bolivia,Sergio
+2023,11,163,Ezekiel Elliott,RB,DAL,13,Victorious Secret,Santiago
+2023,11,164,Zay Jones,WR,JAX,1,los aguafiestas,Diego
+2023,11,165,Buffalo Bills,DEF,,14,Ferchos,Camilo
+2023,11,166,Darnell Mooney,WR,ATL,2,Raw Dawg,Rodrigo
+2023,11,167,Nick Bosa,DL,SF,5,Better Dayz,Luis Carlos
+2023,11,168,Miami Dolphins,DEF,,15,The Goats,Andres
+2023,11,169,Luke Musgrave,TE,GB,7,Skirt Team Ya noooooooooooo,JHJ
+2023,11,170,Jeff Wilson,RB,MIA,9,MiamiDolphins1972,Renzo
+2023,11,171,Harrison Butker,K,KC,4,ComNich,Nicholas
+2023,11,172,Daniel Carlson,K,LV,6,LOKOPAPI23,Brian
+2023,11,173,New York Jets,DEF,,17,LA PATRULLA,Santiago E
+2023,11,174,Romeo Doubs,WR,GB,10,Stat Correctors,Andres
+2023,11,175,Tyler Boyd,WR,CIN,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2023,11,176,New England Patriots,DEF,,11,TuPapa,Alejandro
+2023,12,177,Raheem Mostert,RB,MIA,11,TuPapa,Alejandro
+2023,12,178,Monty Rice,LB,NO,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2023,12,179,Kenneth Gainwell,RB,PHI,10,Stat Correctors,Andres
+2023,12,180,Evan McPherson,K,CIN,17,LA PATRULLA,Santiago E
+2023,12,181,Rayshawn Jenkins,DB,SEA,6,LOKOPAPI23,Brian
+2023,12,182,Deuce Vaughn,RB,DAL,4,ComNich,Nicholas
+2023,12,183,DJ Chark,WR,CAR,9,MiamiDolphins1972,Renzo
+2023,12,184,Baltimore Ravens,DEF,,7,Skirt Team Ya noooooooooooo,JHJ
+2023,12,185,Andy Dalton,QB,CAR,15,The Goats,Andres
+2023,12,186,Jalin Hyatt,WR,NYG,5,Better Dayz,Luis Carlos
+2023,12,187,Tyler Bass,K,BUF,2,Raw Dawg,Rodrigo
+2023,12,188,Jason Myers,K,SEA,14,Ferchos,Camilo
+2023,12,189,Tyler Conklin,TE,NYJ,1,los aguafiestas,Diego
+2023,12,190,Wil Lutz,K,DEN,13,Victorious Secret,Santiago
+2023,12,191,Denver Broncos,DEF,,3,Bolivia,Sergio
+2023,12,192,Trey Lance,QB,DAL,8,Amon-Ra Dogging,Santiago
+2023,13,193,Kansas City Chiefs,DEF,,8,Amon-Ra Dogging,Santiago
+2023,13,194,Jonathan Mingo,WR,CAR,3,Bolivia,Sergio
+2023,13,195,Green Bay Packers,DEF,,13,Victorious Secret,Santiago
+2023,13,196,Jayden Reed,WR,GB,1,los aguafiestas,Diego
+2023,13,197,Donovan Peoples-Jones,WR,DET,14,Ferchos,Camilo
+2023,13,198,Nick Bolton,LB,KC,2,Raw Dawg,Rodrigo
+2023,13,199,Tank Bigsby,RB,JAX,5,Better Dayz,Luis Carlos
+2023,13,200,Christian Wilkins,DL,LV,15,The Goats,Andres
+2023,13,201,Jeffery Simmons,DL,TEN,7,Skirt Team Ya noooooooooooo,JHJ
+2023,13,202,Pittsburgh Steelers,DEF,,9,MiamiDolphins1972,Renzo
+2023,13,203,C.J. Mosley,LB,NYJ,4,ComNich,Nicholas
+2023,13,204,Maxx Crosby,DL,LV,6,LOKOPAPI23,Brian
+2023,13,205,Bobby Wagner,LB,WAS,17,LA PATRULLA,Santiago E
+2023,13,206,Jason Sanders,K,MIA,10,Stat Correctors,Andres
+2023,13,207,Brandon McManus,K,WAS,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2023,13,208,Jake Elliott,K,PHI,11,TuPapa,Alejandro
+2023,14,209,Joshua Kelley,RB,LAC,11,TuPapa,Alejandro
+2023,14,210,Julian Love,DB,SEA,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2023,14,211,Cincinnati Bengals,DEF,,10,Stat Correctors,Andres
+2023,14,212,Aaron Donald,DL,LA,17,LA PATRULLA,Santiago E
+2023,14,213,Rashee Rice,WR,KC,6,LOKOPAPI23,Brian
+2023,14,214,Washington Commanders,DEF,,4,ComNich,Nicholas
+2023,14,215,Greg Zuerlein,K,NYJ,9,MiamiDolphins1972,Renzo
+2023,14,216,Fred Warner,LB,SF,7,Skirt Team Ya noooooooooooo,JHJ
+2023,14,217,Devin White,LB,PHI,15,The Goats,Andres
+2023,14,218,Derwin James,DB,LAC,5,Better Dayz,Luis Carlos
+2023,14,219,D'Onta Foreman,RB,CLE,2,Raw Dawg,Rodrigo
+2023,14,220,Jalen Pitre,DB,HOU,14,Ferchos,Camilo
+2023,14,221,Minkah Fitzpatrick,DB,PIT,1,los aguafiestas,Diego
+2023,14,222,Zaire Franklin,LB,IND,13,Victorious Secret,Santiago
+2023,14,223,Matt Gay,K,IND,3,Bolivia,Sergio
+2023,14,224,Graham Gano,K,NYG,8,Amon-Ra Dogging,Santiago
+2023,15,225,Bobby Okereke,LB,NYG,8,Amon-Ra Dogging,Santiago
+2023,15,226,Myles Garrett,DL,CLE,3,Bolivia,Sergio
+2023,15,227,Quinnen Williams,DL,NYJ,13,Victorious Secret,Santiago
+2023,15,228,New York Giants,DEF,,1,los aguafiestas,Diego
+2023,15,229,DeForest Buckner,DL,IND,14,Ferchos,Camilo
+2023,15,230,New Orleans Saints,DEF,,2,Raw Dawg,Rodrigo
+2023,15,231,Micah Parsons,LB,DAL,5,Better Dayz,Luis Carlos
+2023,15,232,L'Jarius Sneed,DB,TEN,15,The Goats,Andres
+2023,15,233,Sauce Gardner,DB,NYJ,7,Skirt Team Ya noooooooooooo,JHJ
+2023,15,234,Budda Baker,DB,ARI,9,MiamiDolphins1972,Renzo
+2023,15,235,Talanoa Hufanga,DB,SF,4,ComNich,Nicholas
+2023,15,236,Gerald Everett,TE,CHI,6,LOKOPAPI23,Brian
+2023,15,237,Jake Ferguson,TE,DAL,17,LA PATRULLA,Santiago E
+2023,15,238,Jordyn Brooks,LB,MIA,10,Stat Correctors,Andres
+2023,15,239,K.J. Osborn,WR,NE,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2023,15,240,Drue Tranquill,LB,KC,11,TuPapa,Alejandro
+2023,16,241,Jalen Thompson,DB,ARI,11,TuPapa,Alejandro
+2023,16,242,Zach Sieler,DL,MIA,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2023,16,243,Jalen Ramsey,DB,MIA,10,Stat Correctors,Andres
+2023,16,244,Jaquan Brisker,DB,CHI,17,LA PATRULLA,Santiago E
+2023,16,245,Juwan Johnson,TE,NO,6,LOKOPAPI23,Brian
+2023,16,246,Taysom Hill,TE,NO,4,ComNich,Nicholas
+2023,16,247,Brian Burns,DL,NYG,9,MiamiDolphins1972,Renzo
+2023,16,248,DeVante Parker,WR,PHI,7,Skirt Team Ya noooooooooooo,JHJ
+2023,16,249,Eddy Pineiro,K,CAR,15,The Goats,Andres
+2023,16,250,Isaiah Hodgins,WR,NYG,5,Better Dayz,Luis Carlos
+2023,16,251,Jonathan Allen,DL,WAS,2,Raw Dawg,Rodrigo
+2023,16,252,Logan Wilson,LB,CIN,14,Ferchos,Camilo
+2023,16,253,Leonard Fournette,RB,,1,los aguafiestas,Diego
+2023,16,254,Kyle Hamilton,DB,BAL,13,Victorious Secret,Santiago
+2023,16,255,Van Jefferson,WR,PIT,3,Bolivia,Sergio
+2023,16,256,T.J. Watt,LB,PIT,8,Amon-Ra Dogging,Santiago
+2023,17,257,Kyle Dugger,DB,NE,8,Amon-Ra Dogging,Santiago
+2023,17,258,T.J. Edwards,LB,CHI,3,Bolivia,Sergio
+2023,17,259,Gus Edwards,RB,LAC,13,Victorious Secret,Santiago
+2023,17,260,Alex Singleton,LB,DEN,1,los aguafiestas,Diego
+2023,17,261,Curtis Samuel,WR,BUF,14,Ferchos,Camilo
+2023,17,262,Antoine Winfield Jr.,DB,TB,2,Raw Dawg,Rodrigo
+2023,17,263,Cameron Dicker,K,LAC,5,Better Dayz,Luis Carlos
+2023,17,264,Sam LaPorta,TE,DET,15,The Goats,Andres
+2023,17,265,Tracy Walker III,DB,DET,7,Skirt Team Ya noooooooooooo,JHJ
+2023,17,266,Braxton Berrios,WR,MIA,9,MiamiDolphins1972,Renzo
+2023,17,267,Demarcus Lawrence,DL,DAL,4,ComNich,Nicholas
+2023,17,268,Kendre Miller,RB,NO,6,LOKOPAPI23,Brian
+2023,17,269,Robert Woods,WR,HOU,17,LA PATRULLA,Santiago E
+2023,17,270,Cameron Heyward,DL,PIT,10,Stat Correctors,Andres
+2023,17,271,Alec Pierce,WR,IND,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2023,17,272,Darrell Taylor,DL,SEA,11,TuPapa,Alejandro
+2024,1,1,Christian McCaffrey,RB,SF,10,Stat Correctors,Andres
+2024,1,2,Breece Hall,RB,NYJ,3,Bolivia,Sergio
+2024,1,3,Tyreek Hill,WR,MIA,2,Raw Dawg,Rodrigo
+2024,1,4,CeeDee Lamb,WR,DAL,16,Hurts Like a Lamb,Santiago E
+2024,1,5,Ja'Marr Chase,WR,CIN,6,LEONRAWRI,Brian
+2024,1,6,Saquon Barkley,RB,PHI,1,Ayayay,Diego
+2024,1,7,Amon-Ra St. Brown,WR,DET,4,ComNich,Nicholas
+2024,1,8,Bijan Robinson,RB,ATL,14,Ferchos,Camilo
+2024,1,9,Garrett Wilson,WR,NYJ,7,White Trash,JHJ
+2024,1,10,Jahmyr Gibbs,RB,DET,9,Panamanian Pimps,Big Daddy James
+2024,1,11,Jonathan Taylor,RB,IND,13,Victorious Secret,Santiago
+2024,1,12,Justin Jefferson,WR,MIN,11,TuPapa,Alejandro
+2024,1,13,A.J. Brown,WR,PHI,8,La Vamba,Santiago
+2024,1,14,Marvin Harrison Jr.,WR,ARI,5,Undistinguished Naggers,Luis Carlos
+2024,1,15,Puka Nacua,WR,LAR,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2024,1,16,Josh Allen,QB,BUF,15,The Goats,Andres
+2024,2,17,Cooper Kupp,WR,SEA,15,The Goats,Andres
+2024,2,18,Drake London,WR,ATL,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2024,2,19,Derrick Henry,RB,BAL,5,Undistinguished Naggers,Luis Carlos
+2024,2,20,Travis Etienne,RB,JAX,8,La Vamba,Santiago
+2024,2,21,De'Von Achane,RB,MIA,11,TuPapa,Alejandro
+2024,2,22,Isiah Pacheco,RB,KC,13,Victorious Secret,Santiago
+2024,2,23,Nico Collins,WR,HOU,9,Panamanian Pimps,Big Daddy James
+2024,2,24,Rachaad White,RB,TB,7,White Trash,JHJ
+2024,2,25,Kyren Williams,RB,LAR,14,Ferchos,Camilo
+2024,2,26,Patrick Mahomes,QB,KC,4,ComNich,Nicholas
+2024,2,27,Chris Olave,WR,NO,1,Ayayay,Diego
+2024,2,28,Davante Adams,WR,LAR,6,LEONRAWRI,Brian
+2024,2,29,Jalen Hurts,QB,PHI,16,Hurts Like a Lamb,Santiago E
+2024,2,30,Deebo Samuel Sr.,WR,WAS,2,Raw Dawg,Rodrigo
+2024,2,31,Mike Evans,WR,TB,3,Bolivia,Sergio
+2024,2,32,Michael Pittman,WR,IND,10,Stat Correctors,Andres
+2024,3,33,Kenneth Walker III,RB,SEA,10,Stat Correctors,Andres
+2024,3,34,James Cook,RB,BUF,3,Bolivia,Sergio
+2024,3,35,Jaylen Waddle,WR,MIA,2,Raw Dawg,Rodrigo
+2024,3,36,Josh Jacobs,RB,GB,16,Hurts Like a Lamb,Santiago E
+2024,3,37,Brandon Aiyuk,WR,SF,6,LEONRAWRI,Brian
+2024,3,38,Lamar Jackson,QB,BAL,1,Ayayay,Diego
+2024,3,39,Alvin Kamara,RB,NO,4,ComNich,Nicholas
+2024,3,40,DeVonta Smith,WR,PHI,14,Ferchos,Camilo
+2024,3,41,C.J. Stroud,QB,HOU,7,White Trash,JHJ
+2024,3,42,Sam LaPorta,TE,DET,9,Panamanian Pimps,Big Daddy James
+2024,3,43,DK Metcalf,WR,PIT,13,Victorious Secret,Santiago
+2024,3,44,Joe Mixon,RB,HOU,11,TuPapa,Alejandro
+2024,3,45,Travis Kelce,TE,KC,8,La Vamba,Santiago
+2024,3,46,DJ Moore,WR,CHI,5,Undistinguished Naggers,Luis Carlos
+2024,3,47,Aaron Jones,RB,MIN,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2024,3,48,Amari Cooper,WR,BUF,15,The Goats,Andres
+2024,4,49,George Kittle,TE,SF,15,The Goats,Andres
+2024,4,50,James Conner,RB,ARI,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2024,4,51,Malik Nabers,WR,NYG,5,Undistinguished Naggers,Luis Carlos
+2024,4,52,Anthony Richardson,QB,IND,8,La Vamba,Santiago
+2024,4,53,Trey McBride,TE,ARI,11,TuPapa,Alejandro
+2024,4,54,Calvin Ridley,WR,TEN,13,Victorious Secret,Santiago
+2024,4,55,Raheem Mostert,RB,LV,9,Panamanian Pimps,Big Daddy James
+2024,4,56,Dalton Kincaid,TE,BUF,7,White Trash,JHJ
+2024,4,57,Kyler Murray,QB,ARI,14,Ferchos,Camilo
+2024,4,58,Mark Andrews,TE,BAL,4,ComNich,Nicholas
+2024,4,59,George Pickens,WR,DAL,1,Ayayay,Diego
+2024,4,60,Christian Kirk,WR,HOU,6,LEONRAWRI,Brian
+2024,4,61,Tee Higgins,WR,CIN,16,Hurts Like a Lamb,Santiago E
+2024,4,62,David Montgomery,RB,DET,2,Raw Dawg,Rodrigo
+2024,4,63,Tank Dell,WR,HOU,3,Bolivia,Sergio
+2024,4,64,Diontae Johnson,WR,CLE,10,Stat Correctors,Andres
+2024,5,65,Joe Burrow,QB,CIN,10,Stat Correctors,Andres
+2024,5,66,Rhamondre Stevenson,RB,NE,3,Bolivia,Sergio
+2024,5,67,D'Andre Swift,RB,CHI,2,Raw Dawg,Rodrigo
+2024,5,68,Javonte Williams,RB,DAL,16,Hurts Like a Lamb,Santiago E
+2024,5,69,Kyle Pitts,TE,ATL,6,LEONRAWRI,Brian
+2024,5,70,Evan Engram,TE,DEN,1,Ayayay,Diego
+2024,5,71,Rashee Rice,WR,KC,4,ComNich,Nicholas
+2024,5,72,Stefon Diggs,WR,NE,14,Ferchos,Camilo
+2024,5,73,Zamir White,RB,LV,7,White Trash,JHJ
+2024,5,74,Marquise Brown,WR,KC,9,Panamanian Pimps,Big Daddy James
+2024,5,75,Jaylen Warren,RB,PIT,13,Victorious Secret,Santiago
+2024,5,76,Terry McLaurin,WR,WAS,11,TuPapa,Alejandro
+2024,5,77,Zay Flowers,WR,BAL,8,La Vamba,Santiago
+2024,5,78,Jaxon Smith-Njigba,WR,SEA,5,Undistinguished Naggers,Luis Carlos
+2024,5,79,Najee Harris,RB,LAC,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2024,5,80,Ezekiel Elliott,RB,LAC,15,The Goats,Andres
+2024,6,81,Chris Godwin,WR,TB,15,The Goats,Andres
+2024,6,82,Dak Prescott,QB,DAL,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2024,6,83,Brock Purdy,QB,SF,5,Undistinguished Naggers,Luis Carlos
+2024,6,84,Tony Pollard,RB,TEN,8,La Vamba,Santiago
+2024,6,85,Keenan Allen,WR,CHI,11,TuPapa,Alejandro
+2024,6,86,Tua Tagovailoa,QB,MIA,13,Victorious Secret,Santiago
+2024,6,87,Rome Odunze,WR,CHI,9,Panamanian Pimps,Big Daddy James
+2024,6,88,Khalil Shakir,WR,BUF,7,White Trash,JHJ
+2024,6,89,Brian Robinson,RB,WAS,14,Ferchos,Camilo
+2024,6,90,DeAndre Hopkins,WR,BAL,4,ComNich,Nicholas
+2024,6,91,Austin Ekeler,RB,WAS,1,Ayayay,Diego
+2024,6,92,Jonathon Brooks,RB,CAR,6,LEONRAWRI,Brian
+2024,6,93,Devin Singletary,RB,NYG,16,Hurts Like a Lamb,Santiago E
+2024,6,94,Jordan Love,QB,GB,2,Raw Dawg,Rodrigo
+2024,6,95,Jared Goff,QB,DET,3,Bolivia,Sergio
+2024,6,96,Chase Brown,RB,CIN,10,Stat Correctors,Andres
+2024,7,97,Courtland Sutton,WR,DEN,10,Stat Correctors,Andres
+2024,7,98,Tyjae Spears,RB,TEN,3,Bolivia,Sergio
+2024,7,99,Jake Ferguson,TE,DAL,2,Raw Dawg,Rodrigo
+2024,7,100,Jerome Ford,RB,CLE,16,Hurts Like a Lamb,Santiago E
+2024,7,101,Gus Edwards,RB,LAC,6,LEONRAWRI,Brian
+2024,7,102,Jayden Reed,WR,GB,1,Ayayay,Diego
+2024,7,103,Keon Coleman,WR,BUF,4,ComNich,Nicholas
+2024,7,104,Xavier Worthy,WR,KC,14,Ferchos,Camilo
+2024,7,105,Luke McCaffrey,WR,WAS,7,White Trash,JHJ
+2024,7,106,Ladd McConkey,WR,LAC,9,Panamanian Pimps,Big Daddy James
+2024,7,107,Zack Moss,RB,CIN,13,Victorious Secret,Santiago
+2024,7,108,Jayden Daniels,QB,WAS,11,TuPapa,Alejandro
+2024,7,109,Brian Thomas Jr.,WR,JAX,8,La Vamba,Santiago
+2024,7,110,Dallas Goedert,TE,PHI,5,Undistinguished Naggers,Luis Carlos
+2024,7,111,Christian Watson,WR,GB,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2024,7,112,Blake Corum,RB,LAR,15,The Goats,Andres
+2024,8,113,Matthew Stafford,QB,LAR,15,The Goats,Andres
+2024,8,114,David Njoku,TE,CLE,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2024,8,115,Curtis Samuel,WR,BUF,5,Undistinguished Naggers,Luis Carlos
+2024,8,116,Chuba Hubbard,RB,CAR,8,La Vamba,Santiago
+2024,8,117,Zach Charbonnet,RB,SEA,11,TuPapa,Alejandro
+2024,8,118,Jordan Addison,WR,MIN,13,Victorious Secret,Santiago
+2024,8,119,Justin Herbert,QB,LAC,9,Panamanian Pimps,Big Daddy James
+2024,8,120,Antonio Gibson,RB,NE,7,White Trash,JHJ
+2024,8,121,Brock Bowers,TE,LV,14,Ferchos,Camilo
+2024,8,122,Jaleel McLaughlin,RB,DEN,4,ComNich,Nicholas
+2024,8,123,Skyy Moore,WR,KC,1,Ayayay,Diego
+2024,8,124,Caleb Williams,QB,CHI,6,LEONRAWRI,Brian
+2024,8,125,Josh Palmer,WR,BUF,16,Hurts Like a Lamb,Santiago E
+2024,8,126,Jameson Williams,WR,DET,2,Raw Dawg,Rodrigo
+2024,8,127,Tyler Lockett,WR,TEN,3,Bolivia,Sergio
+2024,8,128,DeMario Douglas,WR,NE,10,Stat Correctors,Andres
+2024,9,129,Ja'Lynn Polk,WR,NE,10,Stat Correctors,Andres
+2024,9,130,Pat Freiermuth,TE,PIT,3,Bolivia,Sergio
+2024,9,131,Trey Benson,RB,ARI,2,Raw Dawg,Rodrigo
+2024,9,132,T.J. Hockenson,TE,MIN,16,Hurts Like a Lamb,Santiago E
+2024,9,133,Jahan Dotson,WR,PHI,6,LEONRAWRI,Brian
+2024,9,134,Khalil Herbert,RB,IND,1,Ayayay,Diego
+2024,9,135,J.K. Dobbins,RB,LAC,4,ComNich,Nicholas
+2024,9,136,Rico Dowdle,RB,CAR,14,Ferchos,Camilo
+2024,9,137,Jerry Jeudy,WR,CLE,7,White Trash,JHJ
+2024,9,138,Trevor Lawrence,QB,JAX,9,Panamanian Pimps,Big Daddy James
+2024,9,139,Nick Chubb,RB,CLE,13,Victorious Secret,Santiago
+2024,9,140,Tyler Allgeier,RB,ATL,11,TuPapa,Alejandro
+2024,9,141,Ty Chandler,RB,MIN,8,La Vamba,Santiago
+2024,9,142,MarShawn Lloyd,RB,GB,5,Undistinguished Naggers,Luis Carlos
+2024,9,143,Jakobi Meyers,WR,LV,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2024,9,144,Jermaine Burton,WR,CIN,15,The Goats,Andres
+2024,10,145,San Francisco 49ers,DEF,,15,The Goats,Andres
+2024,10,146,Jaylen Wright,RB,MIA,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2024,10,147,Brandin Cooks,WR,NO,5,Undistinguished Naggers,Luis Carlos
+2024,10,148,Ray Davis,RB,BUF,8,La Vamba,Santiago
+2024,10,149,Bucky Irving,RB,TB,11,TuPapa,Alejandro
+2024,10,150,Dalton Schultz,TE,HOU,13,Victorious Secret,Santiago
+2024,10,151,Zaire Franklin,LB,IND,9,Panamanian Pimps,Big Daddy James
+2024,10,152,Brandon Aubrey,K,DAL,7,White Trash,JHJ
+2024,10,153,Baltimore Ravens,DEF,,14,Ferchos,Camilo
+2024,10,154,Romeo Doubs,WR,GB,4,ComNich,Nicholas
+2024,10,155,Rashaad Penny,RB,,1,Ayayay,Diego
+2024,10,156,Dustin Hopkins,K,CLE,6,LEONRAWRI,Brian
+2024,10,157,Luke Musgrave,TE,GB,16,Hurts Like a Lamb,Santiago E
+2024,10,158,Mike Williams,WR,LAC,2,Raw Dawg,Rodrigo
+2024,10,159,Rashid Shaheed,WR,NO,3,Bolivia,Sergio
+2024,10,160,Cole Kmet,TE,CHI,10,Stat Correctors,Andres
+2024,11,161,Jordan Mason,RB,MIN,10,Stat Correctors,Andres
+2024,11,162,New York Jets,DEF,,3,Bolivia,Sergio
+2024,11,163,Adonai Mitchell,WR,IND,2,Raw Dawg,Rodrigo
+2024,11,164,Dallas Cowboys,DEF,,16,Hurts Like a Lamb,Santiago E
+2024,11,165,Alex Singleton,LB,DEN,6,LEONRAWRI,Brian
+2024,11,166,Justin Tucker,K,BAL,1,Ayayay,Diego
+2024,11,167,Gabe Davis,WR,JAX,4,ComNich,Nicholas
+2024,11,168,Harrison Butker,K,KC,14,Ferchos,Camilo
+2024,11,169,Malachi Corley,WR,NYJ,7,White Trash,JHJ
+2024,11,170,Aaron Rodgers,QB,NYJ,9,Panamanian Pimps,Big Daddy James
+2024,11,171,Quentin Johnston,WR,LAC,13,Victorious Secret,Santiago
+2024,11,172,Cleveland Browns,DEF,,11,TuPapa,Alejandro
+2024,11,173,Deshaun Watson,QB,CLE,8,La Vamba,Santiago
+2024,11,174,Dontayvion Wicks,WR,GB,5,Undistinguished Naggers,Luis Carlos
+2024,11,175,T.J. Edwards,LB,CHI,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2024,11,176,Evan McPherson,K,CIN,15,The Goats,Andres
+2024,12,177,Buffalo Bills,DEF,,15,The Goats,Andres
+2024,12,178,Danielle Hunter,DL,HOU,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2024,12,179,Jake Elliott,K,PHI,5,Undistinguished Naggers,Luis Carlos
+2024,12,180,Kansas City Chiefs,DEF,,8,La Vamba,Santiago
+2024,12,181,Braelon Allen,RB,NYJ,11,TuPapa,Alejandro
+2024,12,182,Michael Wilson,WR,ARI,13,Victorious Secret,Santiago
+2024,12,183,Josh Downs,WR,IND,9,Panamanian Pimps,Big Daddy James
+2024,12,184,Kirk Cousins,QB,ATL,7,White Trash,JHJ
+2024,12,185,Roschon Johnson,RB,CHI,14,Ferchos,Camilo
+2024,12,186,Philadelphia Eagles,DEF,,4,ComNich,Nicholas
+2024,12,187,Baker Mayfield,QB,TB,1,Ayayay,Diego
+2024,12,188,Jessie Bates,DB,ATL,6,LEONRAWRI,Brian
+2024,12,189,Tank Bigsby,RB,JAX,16,Hurts Like a Lamb,Santiago E
+2024,12,190,Alexander Mattison,RB,MIA,2,Raw Dawg,Rodrigo
+2024,12,191,Roquan Smith,LB,BAL,3,Bolivia,Sergio
+2024,12,192,Hunter Henry,TE,NE,10,Stat Correctors,Andres
+2024,13,193,Cincinnati Bengals,DEF,,10,Stat Correctors,Andres
+2024,13,194,DeForest Buckner,DL,IND,3,Bolivia,Sergio
+2024,13,195,Pittsburgh Steelers,DEF,,2,Raw Dawg,Rodrigo
+2024,13,196,Adam Thielen,WR,CAR,16,Hurts Like a Lamb,Santiago E
+2024,13,197,Aidan Hutchinson,DL,DET,6,LEONRAWRI,Brian
+2024,13,198,Elijah Moore,WR,BUF,1,Ayayay,Diego
+2024,13,199,Kendre Miller,RB,NO,4,ComNich,Nicholas
+2024,13,200,Darnell Mooney,WR,ATL,14,Ferchos,Camilo
+2024,13,201,Seattle Seahawks,DEF,,7,White Trash,JHJ
+2024,13,202,Myles Garrett,DL,CLE,9,Panamanian Pimps,Big Daddy James
+2024,13,203,Cameron Dicker,K,LAC,13,Victorious Secret,Santiago
+2024,13,204,Jason Sanders,K,MIA,11,TuPapa,Alejandro
+2024,13,205,Younghoe Koo,K,ATL,8,La Vamba,Santiago
+2024,13,206,Samaje Perine,RB,CIN,5,Undistinguished Naggers,Luis Carlos
+2024,13,207,Ka'imi Fairbairn,K,HOU,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2024,13,208,Jalen Brooks,WR,DAL,15,The Goats,Andres
+2024,14,209,Xavier Legette,WR,CAR,15,The Goats,Andres
+2024,14,210,Houston Texans,DEF,,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2024,14,211,Chicago Bears,DEF,,5,Undistinguished Naggers,Luis Carlos
+2024,14,212,Kimani Vidal,RB,LAC,8,La Vamba,Santiago
+2024,14,213,Rashod Bateman,WR,BAL,11,TuPapa,Alejandro
+2024,14,214,Montez Sweat,DL,CHI,13,Victorious Secret,Santiago
+2024,14,215,Indianapolis Colts,DEF,,9,Panamanian Pimps,Big Daddy James
+2024,14,216,Trey Hendrickson,DL,CIN,7,White Trash,JHJ
+2024,14,217,Wan'Dale Robinson,WR,NYG,14,Ferchos,Camilo
+2024,14,218,Jake Moody,K,SF,4,ComNich,Nicholas
+2024,14,219,New England Patriots,DEF,,1,Ayayay,Diego
+2024,14,220,Denver Broncos,DEF,,6,LEONRAWRI,Brian
+2024,14,221,Foye Oluokun,LB,JAX,16,Hurts Like a Lamb,Santiago E
+2024,14,222,Tyler Bass,K,BUF,2,Raw Dawg,Rodrigo
+2024,14,223,Greg Zuerlein,K,NYJ,3,Bolivia,Sergio
+2024,14,224,Ricky Pearsall,WR,SF,10,Stat Correctors,Andres
+2024,15,225,Daniel Carlson,K,LV,10,Stat Correctors,Andres
+2024,15,226,Kevin Byard,DB,CHI,3,Bolivia,Sergio
+2024,15,227,Antoine Winfield Jr.,DB,TB,2,Raw Dawg,Rodrigo
+2024,15,228,Matt Gay,K,WAS,16,Hurts Like a Lamb,Santiago E
+2024,15,229,Greg Dortch,WR,ARI,6,LEONRAWRI,Brian
+2024,15,230,Xavier McKinney,DB,GB,1,Ayayay,Diego
+2024,15,231,T.J. Watt,LB,PIT,4,ComNich,Nicholas
+2024,15,232,Derwin James,DB,LAC,14,Ferchos,Camilo
+2024,15,233,Kenny Moore II,DB,IND,7,White Trash,JHJ
+2024,15,234,Kerby Joseph,DB,DET,9,Panamanian Pimps,Big Daddy James
+2024,15,235,Terrel Bernard,LB,BUF,13,Victorious Secret,Santiago
+2024,15,236,Kyle Hamilton,DB,BAL,11,TuPapa,Alejandro
+2024,15,237,Bobby Okereke,LB,NYG,8,La Vamba,Santiago
+2024,15,238,Bobby Wagner,LB,WAS,5,Undistinguished Naggers,Luis Carlos
+2024,15,239,Julian Love,DB,SEA,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2024,15,240,Alex Anzalone,LB,DET,15,The Goats,Andres
+2024,16,241,Chris Rodriguez Jr.,RB,WAS,15,The Goats,Andres
+2024,16,242,Tyler Conklin,TE,LAC,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2024,16,243,Brian Branch,DB,DET,5,Undistinguished Naggers,Luis Carlos
+2024,16,244,Maxx Crosby,DL,LV,8,La Vamba,Santiago
+2024,16,245,Micah Parsons,LB,DAL,11,TuPapa,Alejandro
+2024,16,246,Taron Johnson,DB,BUF,13,Victorious Secret,Santiago
+2024,16,247,Marvin Mims Jr.,WR,DEN,9,Panamanian Pimps,Big Daddy James
+2024,16,248,Fred Warner,LB,SF,7,White Trash,JHJ
+2024,16,249,Nick Bosa,DL,SF,14,Ferchos,Camilo
+2024,16,250,Julian Blackmon,DB,IND,4,ComNich,Nicholas
+2024,16,251,Arnold Ebiketie,LB,ATL,1,Ayayay,Diego
+2024,16,252,Russell Wilson,QB,NYG,6,LEONRAWRI,Brian
+2024,16,253,Jaquan Brisker,DB,CHI,16,Hurts Like a Lamb,Santiago E
+2024,16,254,Nick Bolton,LB,KC,2,Raw Dawg,Rodrigo
+2024,16,255,Geno Smith,QB,LV,3,Bolivia,Sergio
+2024,16,256,Camryn Bynum,DB,IND,10,Stat Correctors,Andres
+2024,17,257,Logan Wilson,LB,CIN,10,Stat Correctors,Andres
+2024,17,258,Roman Wilson,WR,PIT,3,Bolivia,Sergio
+2024,17,259,Derrick Brown,DL,CAR,2,Raw Dawg,Rodrigo
+2024,17,260,Tyrone Tracy Jr.,RB,NYG,16,Hurts Like a Lamb,Santiago E
+2024,17,261,Troy Franklin,WR,DEN,6,LEONRAWRI,Brian
+2024,17,262,Ta'Quon Graham,DL,ATL,1,Ayayay,Diego
+2024,17,263,Nnamdi Madubuike,DL,BAL,4,ComNich,Nicholas
+2024,17,264,Ernest Jones,LB,SEA,14,Ferchos,Camilo
+2024,17,265,Dalvin Cook,RB,DAL,7,White Trash,JHJ
+2024,17,266,Nick Folk,K,TEN,9,Panamanian Pimps,Big Daddy James
+2024,17,267,Tampa Bay Buccaneers,DEF,,13,Victorious Secret,Santiago
+2024,17,268,Will Anderson Jr.,DL,HOU,11,TuPapa,Alejandro
+2024,17,269,Christian Wilkins,DL,LV,8,La Vamba,Santiago
+2024,17,270,Jalen Carter,DL,PHI,5,Undistinguished Naggers,Luis Carlos
+2024,17,271,Justice Hill,RB,BAL,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2024,17,272,Sam Hubbard,DL,CIN,15,The Goats,Andres
+2025,1,1,Josh Allen,QB,BUF,1,Ayayay,Diego
+2025,1,2,Lamar Jackson,QB,BAL,9,Panamanian Pimps,Big Daddy James
+2025,1,3,Jayden Daniels,QB,WAS,3,Bolivia,Sergio
+2025,1,4,Jalen Hurts,QB,PHI,5,The Nest,Luis Carlos
+2025,1,5,Christian McCaffrey,RB,SF,7,White Trash,JHJ
+2025,1,6,Joe Burrow,QB,CIN,4,ComNich,Nicholas
+2025,1,7,Bijan Robinson,RB,ATL,8,Victorious Secret,"Santiago, Steve"
+2025,1,8,Ja'Marr Chase,WR,CIN,16,Dak Marrvelous,Santiago E
+2025,1,9,Patrick Mahomes,QB,KC,6,LEONRAWRII,Brian
+2025,1,10,CeeDee Lamb,WR,DAL,10,No Team for Old Men,Andres
+2025,1,11,Justin Jefferson,WR,MIN,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2025,1,12,Saquon Barkley,RB,PHI,14,Ferchos,Camilo
+2025,1,13,Jahmyr Gibbs,RB,DET,2,Raw Dawg,Rodrigo
+2025,1,14,C.J. Stroud,QB,HOU,11,Team 11,Gabriel
+2025,2,15,Tua Tagovailoa,QB,MIA,11,Team 11,Gabriel
+2025,2,16,Baker Mayfield,QB,TB,2,Raw Dawg,Rodrigo
+2025,2,17,Bo Nix,QB,DEN,14,Ferchos,Camilo
+2025,2,18,Kyler Murray,QB,ARI,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2025,2,19,Ashton Jeanty,RB,LV,10,No Team for Old Men,Andres
+2025,2,20,Brock Purdy,QB,SF,6,LEONRAWRII,Brian
+2025,2,21,Dak Prescott,QB,DAL,16,Dak Marrvelous,Santiago E
+2025,2,22,Caleb Williams,QB,CHI,8,Victorious Secret,"Santiago, Steve"
+2025,2,23,Amon-Ra St. Brown,WR,DET,4,ComNich,Nicholas
+2025,2,24,Chase Brown,RB,CIN,7,White Trash,JHJ
+2025,2,25,Derrick Henry,RB,BAL,5,The Nest,Luis Carlos
+2025,2,26,Malik Nabers,WR,NYG,3,Bolivia,Sergio
+2025,2,27,Jonathan Taylor,RB,IND,9,Panamanian Pimps,Big Daddy James
+2025,2,28,Justin Herbert,QB,LAC,1,Ayayay,Diego
+2025,3,29,Bucky Irving,RB,TB,1,Ayayay,Diego
+2025,3,30,Josh Jacobs,RB,GB,9,Panamanian Pimps,Big Daddy James
+2025,3,31,Brock Bowers,TE,LV,3,Bolivia,Sergio
+2025,3,32,A.J. Brown,WR,PHI,5,The Nest,Luis Carlos
+2025,3,33,J.J. McCarthy,QB,MIN,7,White Trash,JHJ
+2025,3,34,Brian Thomas Jr.,WR,JAX,4,ComNich,Nicholas
+2025,3,35,De'Von Achane,RB,MIA,8,Victorious Secret,"Santiago, Steve"
+2025,3,36,Nico Collins,WR,HOU,16,Dak Marrvelous,Santiago E
+2025,3,37,Kyren Williams,RB,LAR,6,LEONRAWRII,Brian
+2025,3,38,Drake Maye,QB,NE,10,No Team for Old Men,Andres
+2025,3,39,Puka Nacua,WR,LAR,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2025,3,40,Drake London,WR,ATL,14,Ferchos,Camilo
+2025,3,41,Ladd McConkey,WR,LAC,2,Raw Dawg,Rodrigo
+2025,3,42,Joe Mixon,RB,HOU,11,Team 11,Gabriel
+2025,4,43,Tee Higgins,WR,CIN,11,Team 11,Gabriel
+2025,4,44,Justin Fields,QB,NYJ,2,Raw Dawg,Rodrigo
+2025,4,45,George Kittle,TE,SF,14,Ferchos,Camilo
+2025,4,46,Alvin Kamara,RB,NO,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2025,4,47,Trey McBride,TE,ARI,10,No Team for Old Men,Andres
+2025,4,48,Mike Evans,WR,TB,6,LEONRAWRII,Brian
+2025,4,49,Omarion Hampton,RB,LAC,16,Dak Marrvelous,Santiago E
+2025,4,50,Terry McLaurin,WR,WAS,8,Victorious Secret,"Santiago, Steve"
+2025,4,51,James Cook,RB,BUF,4,ComNich,Nicholas
+2025,4,52,Calvin Ridley,WR,TEN,7,White Trash,JHJ
+2025,4,53,Jared Goff,QB,DET,5,The Nest,Luis Carlos
+2025,4,54,Breece Hall,RB,NYJ,3,Bolivia,Sergio
+2025,4,55,Marvin Harrison Jr.,WR,ARI,9,Panamanian Pimps,Big Daddy James
+2025,4,56,Tyreek Hill,WR,MIA,1,Ayayay,Diego
+2025,5,57,James Conner,RB,ARI,1,Ayayay,Diego
+2025,5,58,TreVeyon Henderson,RB,NE,9,Panamanian Pimps,Big Daddy James
+2025,5,59,Kenneth Walker III,RB,SEA,3,Bolivia,Sergio
+2025,5,60,Garrett Wilson,WR,NYJ,5,The Nest,Luis Carlos
+2025,5,61,David Njoku,TE,CLE,7,White Trash,JHJ
+2025,5,62,Trevor Lawrence,QB,JAX,4,ComNich,Nicholas
+2025,5,63,Jaxon Smith-Njigba,WR,SEA,8,Victorious Secret,"Santiago, Steve"
+2025,5,64,Chuba Hubbard,RB,CAR,16,Dak Marrvelous,Santiago E
+2025,5,65,Isiah Pacheco,RB,KC,6,LEONRAWRII,Brian
+2025,5,66,Jordan Love,QB,GB,10,No Team for Old Men,Andres
+2025,5,67,Tony Pollard,RB,TEN,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2025,5,68,Davante Adams,WR,LAR,14,Ferchos,Camilo
+2025,5,69,DK Metcalf,WR,PIT,2,Raw Dawg,Rodrigo
+2025,5,70,Aaron Jones,RB,MIN,11,Team 11,Gabriel
+2025,6,71,Evan Engram,TE,DEN,11,Team 11,Gabriel
+2025,6,72,D'Andre Swift,RB,CHI,2,Raw Dawg,Rodrigo
+2025,6,73,Courtland Sutton,WR,DEN,14,Ferchos,Camilo
+2025,6,74,Bryce Young,QB,CAR,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2025,6,75,Tetairoa McMillan,WR,CAR,10,No Team for Old Men,Andres
+2025,6,76,Jameson Williams,WR,DET,6,LEONRAWRII,Brian
+2025,6,77,DJ Moore,WR,CHI,16,Dak Marrvelous,Santiago E
+2025,6,78,Sam LaPorta,TE,DET,8,Victorious Secret,"Santiago, Steve"
+2025,6,79,RJ Harvey,RB,DEN,4,ComNich,Nicholas
+2025,6,80,Cam Ward,QB,TEN,7,White Trash,JHJ
+2025,6,81,Xavier Worthy,WR,KC,5,The Nest,Luis Carlos
+2025,6,82,Matthew Stafford,QB,LAR,3,Bolivia,Sergio
+2025,6,83,Aaron Rodgers,QB,PIT,9,Panamanian Pimps,Big Daddy James
+2025,6,84,Zay Flowers,WR,BAL,1,Ayayay,Diego
+2025,7,85,Ricky Pearsall,WR,SF,1,Ayayay,Diego
+2025,7,86,Travis Hunter,WR,JAX,9,Panamanian Pimps,Big Daddy James
+2025,7,87,George Pickens,WR,DAL,3,Bolivia,Sergio
+2025,7,88,Kaleb Johnson,RB,PIT,5,The Nest,Luis Carlos
+2025,7,89,Chris Olave,WR,NO,7,White Trash,JHJ
+2025,7,90,DeVonta Smith,WR,PHI,4,ComNich,Nicholas
+2025,7,91,Michael Penix Jr.,QB,ATL,8,Victorious Secret,"Santiago, Steve"
+2025,7,92,Sam Darnold,QB,SEA,16,Dak Marrvelous,Santiago E
+2025,7,93,Tucker Kraft,TE,GB,6,LEONRAWRII,Brian
+2025,7,94,Emeka Egbuka,WR,TB,10,No Team for Old Men,Andres
+2025,7,95,David Montgomery,RB,DET,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2025,7,96,Tyrone Tracy Jr.,RB,NYG,14,Ferchos,Camilo
+2025,7,97,Mark Andrews,TE,BAL,2,Raw Dawg,Rodrigo
+2025,7,98,Rachaad White,RB,TB,11,Team 11,Gabriel
+2025,8,99,Christian Kirk,WR,HOU,11,Team 11,Gabriel
+2025,8,100,Jaylen Waddle,WR,MIA,2,Raw Dawg,Rodrigo
+2025,8,101,Geno Smith,QB,LV,14,Ferchos,Camilo
+2025,8,102,Jerry Jeudy,WR,CLE,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2025,8,103,Rashee Rice,WR,KC,10,No Team for Old Men,Andres
+2025,8,104,Jordan Mason,RB,MIN,6,LEONRAWRII,Brian
+2025,8,105,Jaylen Warren,RB,PIT,16,Dak Marrvelous,Santiago E
+2025,8,106,Quinshon Judkins,RB,CLE,8,Victorious Secret,"Santiago, Steve"
+2025,8,107,Chris Godwin Jr.,WR,TB,4,ComNich,Nicholas
+2025,8,108,Matthew Golden,WR,GB,7,White Trash,JHJ
+2025,8,109,Travis Kelce,TE,KC,5,The Nest,Luis Carlos
+2025,8,110,Rome Odunze,WR,CHI,3,Bolivia,Sergio
+2025,8,111,Tyler Warren,TE,IND,9,Panamanian Pimps,Big Daddy James
+2025,8,112,T.J. Hockenson,TE,MIN,1,Ayayay,Diego
+2025,9,113,Cooper Kupp,WR,SEA,1,Ayayay,Diego
+2025,9,114,Deebo Samuel Sr.,WR,WAS,9,Panamanian Pimps,Big Daddy James
+2025,9,115,Khalil Shakir,WR,BUF,3,Bolivia,Sergio
+2025,9,116,Philadelphia Eagles,DEF,,5,The Nest,Luis Carlos
+2025,9,117,Cam Skattebo,RB,NYG,7,White Trash,JHJ
+2025,9,118,Jacory Croskey-Merritt,RB,WAS,4,ComNich,Nicholas
+2025,9,119,Keon Coleman,WR,BUF,8,Victorious Secret,"Santiago, Steve"
+2025,9,120,Jake Ferguson,TE,DAL,16,Dak Marrvelous,Santiago E
+2025,9,121,Jakobi Meyers,WR,JAX,6,LEONRAWRII,Brian
+2025,9,122,Javonte Williams,RB,DAL,10,No Team for Old Men,Andres
+2025,9,123,Colston Loveland,TE,CHI,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2025,9,124,Zach Charbonnet,RB,SEA,14,Ferchos,Camilo
+2025,9,125,Travis Etienne,RB,JAX,2,Raw Dawg,Rodrigo
+2025,9,126,Brian Robinson,RB,SF,11,Team 11,Gabriel
+2025,10,127,Diontae Johnson,WR,,11,Team 11,Gabriel
+2025,10,128,J.K. Dobbins,RB,DEN,2,Raw Dawg,Rodrigo
+2025,10,129,Tank Bigsby,RB,PHI,14,Ferchos,Camilo
+2025,10,130,Austin Ekeler,RB,WAS,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2025,10,131,Stefon Diggs,WR,NE,10,No Team for Old Men,Andres
+2025,10,132,Denver Broncos,DEF,,6,LEONRAWRII,Brian
+2025,10,133,Najee Harris,RB,LAC,16,Dak Marrvelous,Santiago E
+2025,10,134,Rhamondre Stevenson,RB,NE,8,Victorious Secret,"Santiago, Steve"
+2025,10,135,Jaydon Blue,RB,DAL,4,ComNich,Nicholas
+2025,10,136,Tre Harris,WR,LAC,7,White Trash,JHJ
+2025,10,137,Chris Boswell,K,PIT,5,The Nest,Luis Carlos
+2025,10,138,Braelon Allen,RB,NYJ,3,Bolivia,Sergio
+2025,10,139,Josh Downs,WR,IND,9,Panamanian Pimps,Big Daddy James
+2025,10,140,Tyler Allgeier,RB,ATL,1,Ayayay,Diego
+2025,11,141,Jayden Reed,WR,GB,1,Ayayay,Diego
+2025,11,142,Trey Benson,RB,ARI,9,Panamanian Pimps,Big Daddy James
+2025,11,143,Pittsburgh Steelers,DEF,,3,Bolivia,Sergio
+2025,11,144,Jauan Jennings,WR,SF,5,The Nest,Luis Carlos
+2025,11,145,Bhayshul Tuten,RB,JAX,7,White Trash,JHJ
+2025,11,146,Brandon Aubrey,K,DAL,4,ComNich,Nicholas
+2025,11,147,Jordan Addison,WR,MIN,8,Victorious Secret,"Santiago, Steve"
+2025,11,148,Brandon Aiyuk,WR,,16,Dak Marrvelous,Santiago E
+2025,11,149,Myles Garrett,DL,CLE,6,LEONRAWRII,Brian
+2025,11,150,Dylan Sampson,RB,CLE,10,No Team for Old Men,Andres
+2025,11,151,Zaire Franklin,LB,IND,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2025,11,152,Darnell Mooney,WR,ATL,14,Ferchos,Camilo
+2025,11,153,Michael Pittman,WR,IND,2,Raw Dawg,Rodrigo
+2025,11,154,Khalil Herbert,RB,NYJ,11,Team 11,Gabriel
+2025,12,155,Russell Wilson,QB,NYG,11,Team 11,Gabriel
+2025,12,156,Daniel Jones,QB,IND,2,Raw Dawg,Rodrigo
+2025,12,157,Baltimore Ravens,DEF,,14,Ferchos,Camilo
+2025,12,158,Ray Davis,RB,BUF,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2025,12,159,Marvin Mims Jr.,WR,DEN,10,No Team for Old Men,Andres
+2025,12,160,Fred Warner,LB,SF,6,LEONRAWRII,Brian
+2025,12,161,San Francisco 49ers,DEF,,16,Dak Marrvelous,Santiago E
+2025,12,162,Buffalo Bills,DEF,,8,Victorious Secret,"Santiago, Steve"
+2025,12,163,Rashid Shaheed,WR,SEA,4,ComNich,Nicholas
+2025,12,164,New England Patriots,DEF,,7,White Trash,JHJ
+2025,12,165,Nick Chubb,RB,HOU,5,The Nest,Luis Carlos
+2025,12,166,Jaleel McLaughlin,RB,DEN,3,Bolivia,Sergio
+2025,12,167,Arizona Cardinals,DEF,,9,Panamanian Pimps,Big Daddy James
+2025,12,168,Dalton Kincaid,TE,BUF,1,Ayayay,Diego
+2025,13,169,Cameron Dicker,K,LAC,1,Ayayay,Diego
+2025,13,170,Nick Cross,DB,IND,9,Panamanian Pimps,Big Daddy James
+2025,13,171,Harrison Butker,K,KC,3,Bolivia,Sergio
+2025,13,172,Jayden Higgins,WR,HOU,5,The Nest,Luis Carlos
+2025,13,173,Marquise Brown,WR,KC,7,White Trash,JHJ
+2025,13,174,Dallas Goedert,TE,PHI,4,ComNich,Nicholas
+2025,13,175,Zack Baun,LB,PHI,8,Victorious Secret,"Santiago, Steve"
+2025,13,176,Joe Flacco,QB,CIN,16,Dak Marrvelous,Santiago E
+2025,13,177,Jake Bates,K,DET,6,LEONRAWRII,Brian
+2025,13,178,Cedric Tillman,WR,CLE,10,No Team for Old Men,Andres
+2025,13,179,Minnesota Vikings,DEF,,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2025,13,180,Anthony Richardson,QB,IND,14,Ferchos,Camilo
+2025,13,181,Houston Texans,DEF,,2,Raw Dawg,Rodrigo
+2025,13,182,T.J. Watt,LB,PIT,11,Team 11,Gabriel
+2025,14,183,Kansas City Chiefs,DEF,,11,Team 11,Gabriel
+2025,14,184,Maxx Crosby,DL,LV,2,Raw Dawg,Rodrigo
+2025,14,185,Wil Lutz,K,DEN,14,Ferchos,Camilo
+2025,14,186,Josh Palmer,WR,BUF,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2025,14,187,Ka'imi Fairbairn,K,HOU,10,No Team for Old Men,Andres
+2025,14,188,Budda Baker,DB,ARI,6,LEONRAWRII,Brian
+2025,14,189,Roquan Smith,LB,BAL,16,Dak Marrvelous,Santiago E
+2025,14,190,Brian Branch,DB,DET,8,Victorious Secret,"Santiago, Steve"
+2025,14,191,Aidan Hutchinson,DL,DET,4,ComNich,Nicholas
+2025,14,192,Chase McLaughlin,K,TB,7,White Trash,JHJ
+2025,14,193,Rashod Bateman,WR,BAL,5,The Nest,Luis Carlos
+2025,14,194,Luther Burden III,WR,CHI,3,Bolivia,Sergio
+2025,14,195,Jason Sanders,K,MIA,9,Panamanian Pimps,Big Daddy James
+2025,14,196,Kirk Cousins,QB,ATL,1,Ayayay,Diego
+2025,15,197,Trey Hendrickson,DL,CIN,1,Ayayay,Diego
+2025,15,198,Robert Spillane,LB,NE,9,Panamanian Pimps,Big Daddy James
+2025,15,199,Foye Oluokun,LB,JAX,3,Bolivia,Sergio
+2025,15,200,Jalen Carter,DL,PHI,5,The Nest,Luis Carlos
+2025,15,201,Zach Sieler,DL,MIA,7,White Trash,JHJ
+2025,15,202,Detroit Lions,DEF,,4,ComNich,Nicholas
+2025,15,203,Will Anderson Jr.,DL,HOU,8,Victorious Secret,"Santiago, Steve"
+2025,15,204,Evan McPherson,K,CIN,16,Dak Marrvelous,Santiago E
+2025,15,205,Jerome Ford,RB,CLE,6,LEONRAWRII,Brian
+2025,15,206,Kaden Elliss,LB,ATL,10,No Team for Old Men,Andres
+2025,15,207,Jessie Bates,DB,ATL,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2025,15,208,Nick Bosa,DL,SF,14,Ferchos,Camilo
+2025,15,209,Tyler Bass,K,BUF,2,Raw Dawg,Rodrigo
+2025,15,210,Jalon Walker,DL,ATL,11,Team 11,Gabriel
+2025,16,211,DeShon Elliott,DB,PIT,11,Team 11,Gabriel
+2025,16,212,Kyle Hamilton,DB,BAL,2,Raw Dawg,Rodrigo
+2025,16,213,Jamien Sherwood,LB,NYJ,14,Ferchos,Camilo
+2025,16,214,DeForest Buckner,DL,IND,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2025,16,215,Green Bay Packers,DEF,,10,No Team for Old Men,Andres
+2025,16,216,Romeo Doubs,WR,GB,6,LEONRAWRII,Brian
+2025,16,217,Micah Parsons,LB,GB,16,Dak Marrvelous,Santiago E
+2025,16,218,Tyler Shough,QB,NO,8,Victorious Secret,"Santiago, Steve"
+2025,16,219,Tyjae Spears,RB,TEN,4,ComNich,Nicholas
+2025,16,220,T.J. Edwards,LB,CHI,7,White Trash,JHJ
+2025,16,221,Jordyn Brooks,LB,MIA,5,The Nest,Luis Carlos
+2025,16,222,Derwin James,DB,LAC,3,Bolivia,Sergio
+2025,16,223,Cameron Heyward,DL,PIT,9,Panamanian Pimps,Big Daddy James
+2025,16,224,Blake Corum,RB,LAR,1,Ayayay,Diego
+2025,17,225,Kyle Williams,WR,NE,1,Ayayay,Diego
+2025,17,226,Adam Thielen,WR,PIT,9,Panamanian Pimps,Big Daddy James
+2025,17,227,Leonard Williams,DL,SEA,3,Bolivia,Sergio
+2025,17,228,Cooper DeJean,DB,PHI,5,The Nest,Luis Carlos
+2025,17,229,Julian Love,DB,SEA,7,White Trash,JHJ
+2025,17,230,Ollie Gordon II,RB,MIA,4,ComNich,Nicholas
+2025,17,231,Will Reichard,K,MIN,8,Victorious Secret,"Santiago, Steve"
+2025,17,232,Antoine Winfield Jr.,DB,TB,16,Dak Marrvelous,Santiago E
+2025,17,233,Kyle Pitts,TE,ATL,6,LEONRAWRII,Brian
+2025,17,234,Keenan Allen,WR,LAC,10,No Team for Old Men,Andres
+2025,17,235,Jake Elliott,K,PHI,12,KeepMyTeamNameOuttaYoFMouth,Kike
+2025,17,236,Camryn Bynum,DB,IND,14,Ferchos,Camilo
+2025,17,237,Edgerrin Cooper,LB,GB,2,Raw Dawg,Rodrigo
+2025,17,238,Jason Myers,K,SEA,11,Team 11,Gabriel
