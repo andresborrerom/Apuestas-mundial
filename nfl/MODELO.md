@@ -539,3 +539,29 @@ o API de pickwatch) y voltear por exceso, no por cercanía a 50%.
    moneyline; el plan élite/marrano usa Elo hasta que se publiquen.
 4. Si el N real cambia (retiros antes del kickoff), re-correr `alianza.py`:
    la sensibilidad al tamaño ya está en `backtest_survival.py`.
+
+## 18. Tramo de 9 semanas con field REAL (Batalla + Small Pot)
+
+`nfl/PICKEM/temporada_anti3.py`: 400 tramos remuestreados de 9 semanas
+reales de Pickwatch (68 semanas, 2020-2025, sin temporadas completas) x 150
+sims del field, cada rival pickeando segun la distribucion real de fans.
+Misma planilla para Batalla y Small Pot (E[neto] por tramo, entradas $50k
+semanales y $100k del pot):
+
+| politica | pts/tramo | E[batalla] | E[pot] | E[total] | P(gana pot) |
+|---|---|---|---|---|---|
+| fav | 77.3 | -108k | +157k | +49k | 14.3% |
+| m3 | 75.9 | +82k | +72k | +155k | 10.0% |
+| anti1 | 74.3 | +216k | -2k | +214k | 5.3% |
+| anti2 | 72.9 | +231k | -30k | +201k | 3.9% |
+| anti3 | 72.5 | +480k | -8k | +472k | 5.5% |
+| anti4 | 69.9 | +221k | -49k | +172k | 3.1% |
+| anti5 | 69.3 | +311k | -59k | +252k | 2.4% |
+
+Error estandar de E[total] ~ 27-45k. Lectura: el Small Pot por si solo lo
+gana `fav`, pero la Batalla semanal (pozo de $700k por semana vs $1.4M del
+pot en 9 semanas) domina; con una sola planilla, anti3 maximiza el total.
+Supuesto clave: rivales = fans nacionales independientes entre juegos; un
+pool real mas "favoritero" o mas correlacionado puede cambiar el resultado.
+Realizado 2026: fades 0/3 en semanas 8 y 9 (varianza esperada: solo 62% de
+los tramos dan Batalla neta positiva con anti3).
